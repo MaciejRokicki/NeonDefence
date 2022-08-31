@@ -110,9 +110,9 @@ public class CameraController : MonoBehaviour
         cameraViewSize.x = Camera.main.orthographicSize * Screen.width / Screen.height;
         cameraViewSize.y = Camera.main.orthographicSize;
 
-        minX = cameraViewSize.x - gameManager.MapSize.x / 2;
-        maxX = gameManager.MapSize.x / 2 - cameraViewSize.x;
-        minY = cameraViewSize.y - gameManager.MapSize.y / 2;
-        maxY = gameManager.MapSize.y / 2 - cameraViewSize.y;
+        minX = cameraViewSize.x - gameManager.mapSize.x / 2;
+        maxX = gameManager.mapSize.x / 2 - cameraViewSize.x;
+        minY = cameraViewSize.y - gameManager.mapSize.y / 2;
+        maxY = gameManager.mapSize.y / 2 - cameraViewSize.y;
     }
 }
