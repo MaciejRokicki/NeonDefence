@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private int spawnedEnemies = 0;
     private float spawnTime = 0.0f;
+    public Transform[] waypoints;
 
     private void Awake()
     {
@@ -14,7 +15,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-
     }
 
     private void Update()
@@ -38,6 +38,8 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject enemy = Instantiate(gameManager.enemyPrefab, this.transform.position, Quaternion.identity, gameManager.enemiesParent.transform);
         enemy.GetComponent<Enemy>().SetVariant(gameManager.enemiesVariants[randomEnemyVariant]);
+
+        enemy.GetComponent<Enemy>().waypoints = waypoints;
 
         gameManager.spawnedEnemies++;
         spawnedEnemies++;

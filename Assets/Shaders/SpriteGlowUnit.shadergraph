@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "2c54d628ffd8c98daeb3a7f2abc5040f"
+        },
+        {
+            "m_Id": "47d0448d97294cb1941ea64960787319"
         }
     ],
     "m_Keywords": [],
@@ -556,6 +559,35 @@
 }
 
 {
+    "m_SGVersion": 3,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
+    "m_ObjectId": "47d0448d97294cb1941ea64960787319",
+    "m_Guid": {
+        "m_GuidSerialized": "a0dc60c0-b90a-4675-8ada-5e4142a68802"
+    },
+    "m_Name": "Color",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Color",
+    "m_DefaultReferenceName": "_Color",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
+    "isMainColor": false,
+    "m_ColorMode": 0
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ColorRGBAMaterialSlot",
     "m_ObjectId": "4899c45e56844cbfb2bae2268d3f6b7b",
@@ -898,6 +930,9 @@
         },
         {
             "m_Id": "679ec2308c0d3082a553ab5311e046b8"
+        },
+        {
+            "m_Id": "47d0448d97294cb1941ea64960787319"
         }
     ]
 }

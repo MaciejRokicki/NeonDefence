@@ -5,7 +5,7 @@ public class EnemyScriptableObject : ScriptableObject
 {
     public float health;
     public float movementSpeed;
-    public float dmg;
+    public float damage;
     public Sprite sprite;
     public Material material;
     public bool lightSource;
