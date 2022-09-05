@@ -1,3 +1,7 @@
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
+
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -15,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+
     }
 
     private void Update()
@@ -49,4 +54,19 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnedEnemies = 0;
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if(waypoints != null && waypoints.Length > 0)
+        {
+            Handles.color = Color.black;
+
+            for (int i = 1; i < waypoints.Length; i++)
+            {
+                Handles.DrawLine(waypoints[i - 1].position, waypoints[i].position, 10.0f);
+            }
+        }
+    }
+#endif
 }

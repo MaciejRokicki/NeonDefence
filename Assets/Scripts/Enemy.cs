@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         float dist = Vector2.Distance(transform.position, waypointTarget.position);
 
