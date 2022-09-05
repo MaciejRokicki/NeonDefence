@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     private GameManager gameManager;
+    public int spawnStartWave = 1;
     [SerializeField]
     private int spawnedEnemies = 0;
     private float spawnTime = 0.0f;
@@ -24,15 +25,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if(spawnedEnemies != gameManager.enemiesPerSpawner)
+        if (spawnStartWave <= gameManager.currentWave)
         {
-            spawnTime += Time.deltaTime;
-
-            if (spawnTime > gameManager.enemySpawnTime)
+            if (spawnedEnemies != gameManager.enemiesPerSpawner)
             {
-                SpawnEnemy();
+                spawnTime += Time.deltaTime;
 
-                spawnTime = 0.0f;
+                if (spawnTime > gameManager.enemySpawnTime)
+                {
+                    SpawnEnemy();
+
+                    spawnTime = 0.0f;
+                }
             }
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -23,10 +22,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private EnemySpawner[] enemySpawners;
 
-    //[Header("Environment")]
-    //public GameObject environment;
-    //public GameObject tilePrefab;
-
     private void Awake()
     {
         enemySpawners = FindObjectsOfType<EnemySpawner>();
@@ -36,7 +31,6 @@ public class GameManager : MonoBehaviour
     {
         background.size = mapSize;
         SetEnemiesCount();
-        //PreparePath();
     }
 
     private void Update()
@@ -79,42 +73,14 @@ public class GameManager : MonoBehaviour
 
     private void SetEnemiesCount()
     {
-        enemiesCount = enemiesPerSpawner * enemySpawners.Length;
+        enemiesCount = 0;
+
+        foreach (EnemySpawner spawner in enemySpawners)
+        {
+            if(spawner.spawnStartWave <= currentWave)
+            {
+                enemiesCount += enemiesPerSpawner;
+            }
+        }
     }
-
-    //private void PreparePath()
-    //{
-    //    foreach(EnemySpawner spawner in enemySpawners)
-    //    {
-    //        for(int i = 0; i < spawner.waypoints.Length - 1; i++)
-    //        {
-    //            Transform currentWaypoint = spawner.waypoints[i];
-    //            Transform nextWaypoint = spawner.waypoints[i + 1];
-
-    //            Vector2 direction = (nextWaypoint.position - currentWaypoint.position).normalized;
-
-    //            int tilesCount = 0;
-
-    //            if(direction == Vector2.up || direction == Vector2.down)
-    //            {
-    //                tilesCount = (int)Mathf.Abs(nextWaypoint.position.y - currentWaypoint.position.y);
-    //            }
-    //            else if(direction == Vector2.left || direction == Vector2.right)
-    //            {
-    //                tilesCount = (int)Mathf.Abs(nextWaypoint.position.x - currentWaypoint.position.x);
-    //            }
-
-    //            for(int j = 0; j < tilesCount; j++)
-    //            {
-    //                Vector2 newPosition = new Vector2(currentWaypoint.position.x, currentWaypoint.position.y) + direction * j;
-
-    //                GameObject tile = Instantiate(tilePrefab, newPosition, Quaternion.identity, environment.transform);
-
-    //                float z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-    //                tile.transform.rotation = Quaternion.Euler(0.0f, 0.0f, z);
-    //            }
-    //        }
-    //    }
-    //}
 }
