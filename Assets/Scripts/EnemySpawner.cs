@@ -43,10 +43,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int randomEnemyVariant = UnityEngine.Random.Range(0, gameManager.enemiesVariants.Length);
+        int randomEnemyVariant = UnityEngine.Random.Range(0, gameManager.availableVariants.Count);
 
         GameObject enemy = Instantiate(gameManager.enemyPrefab, this.transform.position, Quaternion.identity, gameManager.enemiesParent.transform);
-        enemy.GetComponent<Enemy>().SetVariant(gameManager.enemiesVariants[randomEnemyVariant]);
+        enemy.GetComponent<Enemy>().SetVariant(gameManager.availableVariants[randomEnemyVariant]);
 
         enemy.GetComponent<Enemy>().waypoints = waypoints;
 

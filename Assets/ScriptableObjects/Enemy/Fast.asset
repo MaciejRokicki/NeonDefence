@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710aa6daa5ae36c4ebc2073de94358d0, type: 3}
   m_Name: Fast
   m_EditorClassIdentifier: 
-  health: 0
-  movementSpeed: 0
-  damage: 0
-  sprite: {fileID: 0}
-  material: {fileID: 0}
+  health: 50
+  movementSpeed: 5
+  damage: 2
+  sprite: {fileID: 21300000, guid: 1d1237dccb48e134e88965469dc3f9f2, type: 3}
+  material: {fileID: 2100000, guid: 2af59e115ef7c3f4bb52a51c465d83b6, type: 2}
+  minWave: 3
   lightSource: 0
   lightSourceInnerRadius: 0
   lightSourceOuterRadius: 0

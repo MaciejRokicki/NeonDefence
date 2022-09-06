@@ -7477,14 +7477,16 @@ MonoBehaviour:
   currentWaveTime: 0
   nextWaveRefresh: 1
   spawnedEnemies: 0
-  enemiesPerSpawner: 0
+  enemiesPerSpawner: 1
   enemySpawnTime: 1
   enemiesCount: 0
   enemyPrefab: {fileID: 2261864713223431348, guid: 75d87cea24c9c04488403bac2d6c8a8e, type: 3}
   enemiesParent: {fileID: 1641231123}
   enemiesVariants:
   - {fileID: 11400000, guid: 63160d4f58da286418f029228055a41b, type: 2}
-  enemySpawners: []
+  - {fileID: 11400000, guid: 515266bc261494e469792eaa53e671a0, type: 2}
+  - {fileID: 11400000, guid: 3becda1e96719b94e8527b9d7c0665e1, type: 2}
+  availableVariants: []
 --- !u!4 &1364120533
 Transform:
   m_ObjectHideFlags: 0

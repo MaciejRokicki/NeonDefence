@@ -10,6 +10,8 @@ public class EnemyScriptableObject : ScriptableObject
     [Header("Appearance")]
     public Sprite sprite;
     public Material material;
+    [Header("Spawn options")]
+    public int minWave;
     [Header("Light options")]
     public bool lightSource;
     public float lightSourceInnerRadius;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,7 +22,9 @@ public class GameManager : MonoBehaviour
     private int enemiesCount = 0;
     public GameObject enemyPrefab;
     public GameObject enemiesParent;
-    public EnemyScriptableObject[] enemiesVariants;
+    [SerializeField]
+    private EnemyScriptableObject[] enemiesVariants;
+    public List<EnemyScriptableObject> availableVariants; //TODO: private
 
     private EnemySpawner[] enemySpawners;
 
@@ -62,6 +65,16 @@ public class GameManager : MonoBehaviour
     private void NextWave()
     {
         currentWave++;
+
+        availableVariants.Clear();
+
+        foreach(EnemyScriptableObject enemy in enemiesVariants)
+        {
+            if(currentWave >= enemy.minWave)
+            {
+                availableVariants.Add(enemy);
+            }
+        }
 
         int enemyMultiplier = currentWave / 10 == 0 ? 1 : currentWave / 10;
 
