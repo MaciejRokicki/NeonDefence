@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemiesParent;
     [SerializeField]
     private EnemyScriptableObject[] enemiesVariants;
-    public List<EnemyScriptableObject> availableVariants; //TODO: private
+    public List<EnemyScriptableObject> availableVariants; //TODO: HideInInspector
 
     private EnemySpawner[] enemySpawners;
 
@@ -81,7 +81,13 @@ public class GameManager : MonoBehaviour
         if(currentWave > 9 && currentWave % 10 == 0)
         {
             enemiesPerSpawner = 0;
-            //TODO: ulepszac statystyki przeciwnikow
+
+            foreach(EnemyScriptableObject enemy in availableVariants)
+            {
+                enemy.health += enemy.health / 10.0f;
+                enemy.damage++;
+                enemy.movementSpeed += 0.5f;
+            }
         }
 
         enemiesPerSpawner += enemyMultiplier * 3;
