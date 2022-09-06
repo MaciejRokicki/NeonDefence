@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameManager.instance;
     }
 
     private void Start()

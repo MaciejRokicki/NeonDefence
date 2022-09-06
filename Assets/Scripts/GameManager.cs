@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+    public static GameManager instance { get { return _instance; } }
+
     [Header("Map settings")]
     [SerializeField]
     private SpriteRenderer background;
@@ -24,6 +27,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if(_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         enemySpawners = FindObjectsOfType<EnemySpawner>();
     }
 
