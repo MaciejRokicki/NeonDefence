@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int enemiesPerSpawner = 0;
     public float enemySpawnTime = 1.0f;
     [SerializeField]
-    private int enemiesCount = 0;
+    private int currentEnemiesCount = 0;
     public GameObject enemyPrefab;
     public GameObject enemiesParent;
     [SerializeField]
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(spawnedEnemies == enemiesCount)
+        if(spawnedEnemies == currentEnemiesCount)
         {
             currentWaveTime += Time.deltaTime;
 
@@ -66,31 +66,18 @@ public class GameManager : MonoBehaviour
     {
         currentWave++;
 
-        availableVariants.Clear();
+        SetAvailableEnemyVariants();
 
-        foreach(EnemyScriptableObject enemy in enemiesVariants)
-        {
-            if(currentWave >= enemy.minWave)
-            {
-                availableVariants.Add(enemy);
-            }
-        }
-
-        int enemyMultiplier = currentWave / 10 == 0 ? 1 : currentWave / 10;
+        int enemyMultiplier = currentWave / 10 == 0 ? 1 : currentWave / 10 + 1;
 
         if(currentWave > 9 && currentWave % 10 == 0)
         {
             enemiesPerSpawner = 0;
 
-            foreach(EnemyScriptableObject enemy in availableVariants)
-            {
-                enemy.health += enemy.health / 10.0f;
-                enemy.damage++;
-                enemy.movementSpeed += 0.5f;
-            }
+            UpgradeEnemies();
         }
 
-        enemiesPerSpawner += enemyMultiplier * 3;
+        enemiesPerSpawner += enemyMultiplier * 2;
 
         foreach (EnemySpawner spawner in enemySpawners)
         {
@@ -104,14 +91,37 @@ public class GameManager : MonoBehaviour
 
     private void SetEnemiesCount()
     {
-        enemiesCount = 0;
+        currentEnemiesCount = 0;
 
         foreach (EnemySpawner spawner in enemySpawners)
         {
             if(spawner.spawnStartWave <= currentWave)
             {
-                enemiesCount += enemiesPerSpawner;
+                currentEnemiesCount += enemiesPerSpawner;
             }
+        }
+    }
+
+    private void SetAvailableEnemyVariants()
+    {
+        availableVariants.Clear();
+
+        foreach (EnemyScriptableObject enemy in enemiesVariants)
+        {
+            if (currentWave >= enemy.minWave)
+            {
+                availableVariants.Add(enemy);
+            }
+        }
+    }
+
+    private void UpgradeEnemies()
+    {
+        foreach (EnemyScriptableObject enemy in availableVariants)
+        {
+            enemy.health += enemy.health / 10.0f;
+            enemy.damage++;
+            enemy.movementSpeed += 0.5f;
         }
     }
 }

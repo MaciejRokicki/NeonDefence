@@ -18,11 +18,6 @@ public class EnemySpawner : MonoBehaviour
         gameManager = GameManager.instance;
     }
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (spawnStartWave <= gameManager.currentWave)

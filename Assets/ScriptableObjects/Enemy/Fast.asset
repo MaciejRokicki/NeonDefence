@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710aa6daa5ae36c4ebc2073de94358d0, type: 3}
   m_Name: Fast
   m_EditorClassIdentifier: 
+  _health: 50
+  _movementSpeed: 5
+  _damage: 2
+  _sprite: {fileID: 21300000, guid: 1d1237dccb48e134e88965469dc3f9f2, type: 3}
+  _material: {fileID: 2100000, guid: 2af59e115ef7c3f4bb52a51c465d83b6, type: 2}
+  _minWave: 3
+  _lightSource: 0
+  _lightSourceInnerRadius: 0
+  _lightSourceOuterRadius: 0
   health: 50
   movementSpeed: 5
   damage: 2

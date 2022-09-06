@@ -7479,7 +7479,7 @@ MonoBehaviour:
   spawnedEnemies: 0
   enemiesPerSpawner: 1
   enemySpawnTime: 1
-  enemiesCount: 0
+  currentEnemiesCount: 0
   enemyPrefab: {fileID: 2261864713223431348, guid: 75d87cea24c9c04488403bac2d6c8a8e, type: 3}
   enemiesParent: {fileID: 1641231123}
   enemiesVariants:

@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
         CalculatePositionLimits();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         Move();
     }
