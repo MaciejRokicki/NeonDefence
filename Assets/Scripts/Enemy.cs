@@ -86,17 +86,10 @@ public class Enemy : MonoBehaviour
 
         waypointTarget = waypoints[currentWaypointId + 1];
 
-        //Vector2 pos = this.transform.position;
-
-        //float xVelocity = 0.0f, yVelocity = 0.0f;
-
-        //float x = Mathf.SmoothDamp(pos.x, Mathf.Round(pos.x), ref xVelocity, 0.02f);
-        //float y = Mathf.SmoothDamp(pos.y, Mathf.Round(pos.y), ref yVelocity, 0.02f);
-
-        //transform.position = new Vector2(x, y);
-
-        //Vector2 direction = (waypoints[currentWaypointId + 1].position - waypoints[currentWaypointId].position).normalized;
         Vector2 direction = (waypointTarget.position - transform.position).normalized;
+        float zRot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
+
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, zRot);
         rb.velocity = direction * data.movementSpeed;
     }
 }

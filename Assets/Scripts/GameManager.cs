@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject enemiesParent;
     public EnemyScriptableObject[] enemiesVariants;
-    [SerializeField]
+
     private EnemySpawner[] enemySpawners;
 
     private void Awake()
