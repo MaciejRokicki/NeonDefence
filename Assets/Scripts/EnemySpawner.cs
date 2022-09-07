@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private GameManager gameManager;
+    private WaveManager waveManager;
     public int spawnStartWave = 1;
     [SerializeField]
     private int spawnedEnemies = 0;
@@ -15,18 +15,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameManager.instance;
+        waveManager = WaveManager.instance;
     }
 
     private void Update()
     {
-        if (spawnStartWave <= gameManager.currentWave)
+        if (spawnStartWave <= waveManager.currentWave)
         {
-            if (spawnedEnemies != gameManager.enemiesPerSpawner)
+            if (spawnedEnemies != waveManager.enemiesPerSpawner)
             {
                 spawnTime += Time.deltaTime;
 
-                if (spawnTime > gameManager.enemySpawnTime)
+                if (spawnTime > waveManager.enemySpawnTime)
                 {
                     SpawnEnemy();
 
@@ -38,14 +38,14 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int randomEnemyVariant = UnityEngine.Random.Range(0, gameManager.availableVariants.Count);
+        int randomEnemyVariant = UnityEngine.Random.Range(0, waveManager.availableVariants.Count);
 
-        GameObject enemy = Instantiate(gameManager.enemyPrefab, this.transform.position, Quaternion.identity, gameManager.enemiesParent.transform);
-        enemy.GetComponent<Enemy>().SetVariant(gameManager.availableVariants[randomEnemyVariant]);
+        GameObject enemy = Instantiate(waveManager.enemyPrefab, this.transform.position, Quaternion.identity, waveManager.enemiesParent.transform);
+        enemy.GetComponent<Enemy>().SetVariant(waveManager.availableVariants[randomEnemyVariant]);
 
         enemy.GetComponent<Enemy>().waypoints = waypoints;
 
-        gameManager.spawnedEnemies++;
+        waveManager.spawnedEnemies++;
         spawnedEnemies++;
     }
 

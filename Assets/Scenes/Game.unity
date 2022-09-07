@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 35083327}
   - component: {fileID: 35083328}
   m_Layer: 0
-  m_Name: BlueLava Light
+  m_Name: BlueLavaLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6048,7 +6048,7 @@ GameObject:
   - component: {fileID: 362681511}
   - component: {fileID: 362681510}
   m_Layer: 0
-  m_Name: Global Volume
+  m_Name: GlobalVolume
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6216,7 +6216,7 @@ GameObject:
   - component: {fileID: 393328795}
   - component: {fileID: 393328796}
   m_Layer: 0
-  m_Name: RedLava Light
+  m_Name: RedLavaLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7424,7 +7424,7 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9712,8 +9712,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1364120533}
   - component: {fileID: 1364120532}
+  - component: {fileID: 1364120534}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9733,20 +9734,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 344704513}
   mapSize: {x: 50, y: 30}
-  currentWave: 0
-  currentWaveTime: 0
-  nextWaveRefresh: 1
-  spawnedEnemies: 0
-  enemiesPerSpawner: 1
-  enemySpawnTime: 1
-  currentEnemiesCount: 0
-  enemyPrefab: {fileID: 2261864713223431348, guid: 75d87cea24c9c04488403bac2d6c8a8e, type: 3}
-  enemiesParent: {fileID: 1641231123}
-  enemiesVariants:
-  - {fileID: 11400000, guid: 63160d4f58da286418f029228055a41b, type: 2}
-  - {fileID: 11400000, guid: 515266bc261494e469792eaa53e671a0, type: 2}
-  - {fileID: 11400000, guid: 3becda1e96719b94e8527b9d7c0665e1, type: 2}
-  availableVariants: []
 --- !u!4 &1364120533
 Transform:
   m_ObjectHideFlags: 0
@@ -9762,6 +9749,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1364120534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364120531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abad5bafe16f4e41ab317cede63e27f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWave: 0
+  currentWaveTime: 0
+  nextWaveRefresh: 1
+  spawnedEnemies: 0
+  enemiesPerSpawner: 0
+  enemySpawnTime: 1
+  currentEnemiesCount: 0
+  enemyPrefab: {fileID: 2261864713223431348, guid: 75d87cea24c9c04488403bac2d6c8a8e, type: 3}
+  enemiesParent: {fileID: 1641231123}
+  enemiesVariants:
+  - {fileID: 11400000, guid: 63160d4f58da286418f029228055a41b, type: 2}
+  - {fileID: 11400000, guid: 515266bc261494e469792eaa53e671a0, type: 2}
+  - {fileID: 11400000, guid: 3becda1e96719b94e8527b9d7c0665e1, type: 2}
+  availableVariants: []
 --- !u!1001 &1377129032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10073,7 +10086,7 @@ GameObject:
   - component: {fileID: 1447010188}
   - component: {fileID: 1447010189}
   m_Layer: 0
-  m_Name: BlueLava Light (1)
+  m_Name: BlueLavaLight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11501,7 +11514,7 @@ GameObject:
   - component: {fileID: 1482797131}
   - component: {fileID: 1482797130}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: GlobalLight2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

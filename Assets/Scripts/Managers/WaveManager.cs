@@ -1,17 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    public static GameManager instance { get { return _instance; } }
+    private static WaveManager _instance;
+    public static WaveManager instance { get { return _instance; } }
 
-    [Header("Map settings")]
-    [SerializeField]
-    private SpriteRenderer background;
-    public Vector2 mapSize = new Vector2(50.0f, 30.0f);
-
-    [Header("Wave & enemy settings")]
     public int currentWave = 0;
     public float currentWaveTime = 0.0f;
     public float nextWaveRefresh = 15.0f;
@@ -25,12 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private EnemyScriptableObject[] enemiesVariants;
     public List<EnemyScriptableObject> availableVariants; //TODO: HideInInspector
-
     private EnemySpawner[] enemySpawners;
 
     private void Awake()
     {
-        if(_instance != null && _instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
         }
@@ -44,13 +37,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        background.size = mapSize;
         SetEnemiesCount();
     }
 
     private void Update()
     {
-        if(spawnedEnemies == currentEnemiesCount)
+        if (spawnedEnemies == currentEnemiesCount)
         {
             currentWaveTime += Time.deltaTime;
 
@@ -70,7 +62,7 @@ public class GameManager : MonoBehaviour
 
         int enemyMultiplier = currentWave / 10 == 0 ? 1 : currentWave / 10 + 1;
 
-        if(currentWave > 9 && currentWave % 10 == 0)
+        if (currentWave > 9 && currentWave % 10 == 0)
         {
             enemiesPerSpawner = 0;
 
@@ -95,7 +87,7 @@ public class GameManager : MonoBehaviour
 
         foreach (EnemySpawner spawner in enemySpawners)
         {
-            if(spawner.spawnStartWave <= currentWave)
+            if (spawner.spawnStartWave <= currentWave)
             {
                 currentEnemiesCount += enemiesPerSpawner;
             }
