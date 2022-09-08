@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/TurretScriptableObject", order = 2)]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/TurretScriptableObject", order = 3)]
 public class TurretScriptableObject : ScriptableObject
 {
     [SerializeField] 
@@ -21,8 +21,8 @@ public class TurretScriptableObject : ScriptableObject
     private bool _dealDamageOverTime;
     public bool dealDamageOverTime;
     [SerializeField]
-    private bool _explodeMissile;
-    public bool explodeMissile;
+    private bool _explosiveMissile;
+    public bool explosiveMissile;
     [SerializeField]
     private bool _slowdownOnMissileHit;
     public bool slowdownOnMissileHit;
@@ -44,11 +44,17 @@ public class TurretScriptableObject : ScriptableObject
     private float _damageOverTime;
     public float damageOverTime;
     [SerializeField]
+    private float _missilesPerSecond;
+    public float missilesPerSecond;
+    [SerializeField]
+    private float _missileSpeed;
+    public float missileSpeed;
+    [SerializeField]
     private float _range;
     public float range;
     [SerializeField]
-    private float _explodeRange;
-    public float explodeRange;
+    private float _explosionRange;
+    public float explosionRange;
     [SerializeField]
     private float _rotationSpeed;
     public float rotationSpeed;
@@ -69,11 +75,8 @@ public class TurretScriptableObject : ScriptableObject
     private Material _cannonMaterial;
     public Material cannonMaterial;
     [SerializeField]
-    private Sprite _missileSprite;
-    public Sprite missileSprite;
-    [SerializeField]
-    private Material _missileMaterial;
-    public Material missileMaterial;
+    private MissileScriptableObject _missileData;
+    public MissileScriptableObject missileData;
     [SerializeField]
     private Sprite _auraSprite;
     public Sprite auraSprite;
@@ -100,7 +103,7 @@ public class TurretScriptableObject : ScriptableObject
 
         laser = _laser;
         dealDamageOverTime = _dealDamageOverTime;
-        explodeMissile = _explodeMissile;
+        explosiveMissile = _explosiveMissile;
         slowdownOnMissileHit = _slowdownOnMissileHit;
 
         auraDamage = _auraDamage;
@@ -109,8 +112,10 @@ public class TurretScriptableObject : ScriptableObject
 
         damage = _damage;
         damageOverTime = _damageOverTime;
+        missilesPerSecond = _missilesPerSecond;
+        missileSpeed = _missileSpeed;
         range = _range;
-        explodeRange = _explodeRange;
+        explosionRange = _explosionRange;
         rotationSpeed = _rotationSpeed;
         slowdownEffectiveness = _slowdownEffectiveness;
 
@@ -118,8 +123,7 @@ public class TurretScriptableObject : ScriptableObject
         turretMaterial = _turretMaterial;
         cannonSprite = _cannonSprite;
         cannonMaterial = _cannonMaterial;
-        missileSprite = _missileSprite;
-        missileMaterial = _missileMaterial;
+        missileData = _missileData;
         auraSprite = _auraSprite;
         auraMaterial = _auraMaterial;
 

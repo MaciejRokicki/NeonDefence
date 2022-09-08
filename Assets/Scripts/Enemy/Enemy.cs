@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= dmg;
 
-        if(currentHealth < 0.0f)
+        if(currentHealth <= 0.0f)
         {
             Death();
         }

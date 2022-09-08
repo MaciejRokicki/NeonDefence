@@ -3,12 +3,12 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField]
-    private TurretScriptableObject data;
+    public TurretScriptableObject data;
+
+    public GameObject missilePrefab;
 
     [SerializeField]
     private GameObject cannon;
-    [SerializeField]
-    private GameObject missile;
     [SerializeField]
     private GameObject aura;
 
@@ -17,8 +17,6 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private SpriteRenderer cannonSpriteRenderer;
     [SerializeField]
-    private SpriteRenderer missileSpriteRenderer;
-    [SerializeField]
     private SpriteRenderer auraSpriteRenderer;
 
     [SerializeField]
@@ -26,13 +24,9 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private CircleCollider2D auraCollider;
 
-
-    public float rotationSpeed;
-
     private void Awake()
     {
         cannon = transform.Find("Cannon").gameObject;
-        missile = transform.Find("Missile").gameObject;
         aura = transform.Find("Aura").gameObject;
 
         turretSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,7 +34,6 @@ public class Turret : MonoBehaviour
         if(data.needTarget)
         {
             cannonSpriteRenderer = cannon.GetComponent<SpriteRenderer>();
-            missileSpriteRenderer = missile.GetComponent<SpriteRenderer>();
 
             cannonCollider = cannon.GetComponent<CircleCollider2D>();
         }
@@ -63,12 +56,7 @@ public class Turret : MonoBehaviour
             cannonSpriteRenderer.sprite = data.cannonSprite;
             cannonSpriteRenderer.material = data.cannonMaterial;
 
-            missileSpriteRenderer.sprite = data.missileSprite;
-            missileSpriteRenderer.material = data.missileMaterial;
-
             cannonCollider.radius = data.range + 0.5f;
-
-            rotationSpeed = data.rotationSpeed;
         }
 
 
@@ -79,10 +67,5 @@ public class Turret : MonoBehaviour
 
             auraCollider.radius = data.auraRange + 0.5f;
         }
-    }
-
-    private void Update()
-    {
-        
     }
 }

@@ -10,7 +10,7 @@ public class TurreteScriptableObjectEditor : Editor
 
     SerializedProperty _laser;
     SerializedProperty _dealDamageOverTime;
-    SerializedProperty _explodeMissile;
+    SerializedProperty _explosiveMissile;
     SerializedProperty _slowdownOnMissileHit;
 
     SerializedProperty _auraDamage;
@@ -19,8 +19,10 @@ public class TurreteScriptableObjectEditor : Editor
 
     SerializedProperty _damage;
     SerializedProperty _damageOverTime;
+    SerializedProperty _missilesPerSecond;
+    SerializedProperty _missileSpeed;
     SerializedProperty _range;
-    SerializedProperty _explodeRange;
+    SerializedProperty _explosionRange;
     SerializedProperty _rotationSpeed;
     SerializedProperty _slowdownEffectiveness;
 
@@ -28,8 +30,7 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _turretMaterial;
     SerializedProperty _cannonSprite;
     SerializedProperty _cannonMaterial;
-    SerializedProperty _missileSprite;
-    SerializedProperty _missileMaterial;
+    SerializedProperty _missileData;
     SerializedProperty _auraSprite;
     SerializedProperty _auraMaterial;
 
@@ -46,7 +47,7 @@ public class TurreteScriptableObjectEditor : Editor
 
         _laser = serializedObject.FindProperty("_laser");
         _dealDamageOverTime = serializedObject.FindProperty("_dealDamageOverTime");
-        _explodeMissile = serializedObject.FindProperty("_explodeMissile");
+        _explosiveMissile = serializedObject.FindProperty("_explosiveMissile");
         _slowdownOnMissileHit = serializedObject.FindProperty("_slowdownOnMissileHit");
 
         _auraDamage = serializedObject.FindProperty("_auraDamage");
@@ -55,8 +56,10 @@ public class TurreteScriptableObjectEditor : Editor
 
         _damage = serializedObject.FindProperty("_damage");
         _damageOverTime = serializedObject.FindProperty("_damageOverTime");
+        _missilesPerSecond = serializedObject.FindProperty("_missilesPerSecond");
+        _missileSpeed = serializedObject.FindProperty("_missileSpeed");
         _range = serializedObject.FindProperty("_range");
-        _explodeRange = serializedObject.FindProperty("_explodeRange");
+        _explosionRange = serializedObject.FindProperty("_explosionRange");
         _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
         _slowdownEffectiveness = serializedObject.FindProperty("_slowdownEffectiveness");
 
@@ -64,8 +67,7 @@ public class TurreteScriptableObjectEditor : Editor
         _turretMaterial = serializedObject.FindProperty("_turretMaterial");
         _cannonSprite = serializedObject.FindProperty("_cannonSprite");
         _cannonMaterial = serializedObject.FindProperty("_cannonMaterial");
-        _missileSprite = serializedObject.FindProperty("_missileSprite");
-        _missileMaterial = serializedObject.FindProperty("_missileMaterial");
+        _missileData = serializedObject.FindProperty("_missileData");
         _auraSprite = serializedObject.FindProperty("_auraSprite");
         _auraMaterial = serializedObject.FindProperty("_auraMaterial");
 
@@ -96,7 +98,7 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.LabelField("Missile Options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_laser);
             EditorGUILayout.PropertyField(_dealDamageOverTime);
-            EditorGUILayout.PropertyField(_explodeMissile);
+            EditorGUILayout.PropertyField(_explosiveMissile);
             EditorGUILayout.PropertyField(_slowdownOnMissileHit);
         }
 
@@ -118,6 +120,8 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Missile Statistics", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_damage);
+            EditorGUILayout.PropertyField(_missilesPerSecond);
+            EditorGUILayout.PropertyField(_missileSpeed);
 
             if (_dealDamageOverTime.boolValue)
             {
@@ -129,9 +133,9 @@ public class TurreteScriptableObjectEditor : Editor
                 EditorGUILayout.PropertyField(_range);
             }
 
-            if (_explodeMissile.boolValue)
+            if (_explosiveMissile.boolValue)
             {
-                EditorGUILayout.PropertyField(_explodeRange);
+                EditorGUILayout.PropertyField(_explosionRange);
             }
 
             if (_needTarget.boolValue)
@@ -154,8 +158,7 @@ public class TurreteScriptableObjectEditor : Editor
         {
             EditorGUILayout.PropertyField(_cannonSprite);
             EditorGUILayout.PropertyField(_cannonMaterial);
-            EditorGUILayout.PropertyField(_missileSprite);
-            EditorGUILayout.PropertyField(_missileMaterial);
+            EditorGUILayout.PropertyField(_missileData);
         }
 
         if (_aura.boolValue)

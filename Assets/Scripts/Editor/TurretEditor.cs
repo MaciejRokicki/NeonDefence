@@ -4,27 +4,25 @@ using UnityEditor;
 public class TurretEditor : Editor
 {
     SerializedProperty _data;
+    SerializedProperty missilePrefab;
 
     SerializedProperty cannon;
-    SerializedProperty missile;
     SerializedProperty aura;
 
     SerializedProperty turretSpriteRenderer;
     SerializedProperty cannonSpriteRenderer;
-    SerializedProperty missileSpriteRenderer;
     SerializedProperty auraSpriteRenderer;
 
     private void OnEnable()
     {
         _data = serializedObject.FindProperty("data");
+        missilePrefab = serializedObject.FindProperty("missilePrefab");
 
         cannon = serializedObject.FindProperty("cannon");
-        missile = serializedObject.FindProperty("missile");
         aura = serializedObject.FindProperty("aura");
 
         turretSpriteRenderer = serializedObject.FindProperty("turretSpriteRenderer");
         cannonSpriteRenderer = serializedObject.FindProperty("cannonSpriteRenderer");
-        missileSpriteRenderer = serializedObject.FindProperty("missileSpriteRenderer");
         auraSpriteRenderer = serializedObject.FindProperty("auraSpriteRenderer");
     }
 
@@ -34,14 +32,14 @@ public class TurretEditor : Editor
 
         EditorGUILayout.PropertyField(_data);
 
-        if(_data != null)
+        if (_data != null)
         {
             SerializedObject data = new SerializedObject(_data.objectReferenceValue);
 
             if (data.FindProperty("_needTarget").boolValue)
             {
+                EditorGUILayout.PropertyField(missilePrefab);
                 EditorGUILayout.PropertyField(cannon); //TODO: usunac
-                EditorGUILayout.PropertyField(missile); //TODO: usunac
             }
 
             if (data.FindProperty("_aura").boolValue)
@@ -54,7 +52,6 @@ public class TurretEditor : Editor
             if (data.FindProperty("_needTarget").boolValue)
             {
                 EditorGUILayout.PropertyField(cannonSpriteRenderer);  //TODO: usunac
-                EditorGUILayout.PropertyField(missileSpriteRenderer);  //TODO: usunac
             }
 
             if (data.FindProperty("_aura").boolValue)
