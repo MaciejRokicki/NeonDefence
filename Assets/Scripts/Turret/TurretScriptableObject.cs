@@ -6,41 +6,41 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField] 
     private bool _needTarget;
     public bool needTarget;
-    [SerializeField]
+    [SerializeField]    //TODO: todo
     private bool _aura;
     public bool aura;
 
     [SerializeField]
+    private bool _missile;
+    public bool missile;
+    [SerializeField]
+    private bool _laser;
+    public bool laser;
+
+    [SerializeField]    //TODO: todo
+    private bool _dealDamageOverTime;
+    public bool dealDamageOverTime;
+    [SerializeField]    //TODO: todo
+    private bool _explosiveMissile;
+    public bool explosiveMissile;
+    [SerializeField]    //TODO: todo
+    private bool _slowdownOnMissileHit;
+    public bool slowdownOnMissileHit;
+    [SerializeField]    //TODO: todo
+    private bool _penetrationMissile;
+    public bool penetrationMissile;
+    [SerializeField]    //TODO: todo
+    private bool _trackingMissile;
+    public bool trackingMissile;
+
+    [SerializeField]    //TODO: todo
     private bool _auraSlowdown;
     public bool auraSlowdown;
 
     [SerializeField]
-    private bool _laser;
-    public bool laser;
-    [SerializeField]
-    private bool _dealDamageOverTime;
-    public bool dealDamageOverTime;
-    [SerializeField]
-    private bool _explosiveMissile;
-    public bool explosiveMissile;
-    [SerializeField]
-    private bool _slowdownOnMissileHit;
-    public bool slowdownOnMissileHit;
-
-    [SerializeField]
-    private float _auraDamage;
-    public float auraDamage;
-    [SerializeField]
-    private float _auraRange;
-    public float auraRange;
-    [SerializeField]
-    private float _auraSlowdownEffectiveness;
-    public float auraSlowdownEffectiveness;
-
-    [SerializeField]
     private float _damage;
     public float damage;
-    [SerializeField]
+    [SerializeField]    //TODO: todo
     private float _damageOverTime;
     public float damageOverTime;
     [SerializeField]
@@ -52,15 +52,31 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private float _range;
     public float range;
-    [SerializeField]
+    [SerializeField]    //TODO: todo
     private float _explosionRange;
     public float explosionRange;
     [SerializeField]
     private float _rotationSpeed;
     public float rotationSpeed;
     [SerializeField]
+    private float _laserActivationTime;
+    public float laserActivationTime;
+    [SerializeField]
+    private float _timeToDeactiveLaser;
+    public float timeToDeactiveLaser;
+    [SerializeField]    //TODO: todo
     private float _slowdownEffectiveness;
     public float slowdownEffectiveness;
+
+    [SerializeField]    //TODO: todo
+    private float _auraDamage;
+    public float auraDamage;
+    [SerializeField]    //TODO: todo
+    private float _auraRange;
+    public float auraRange;
+    [SerializeField]    //TODO: todo
+    private float _auraSlowdownEffectiveness;
+    public float auraSlowdownEffectiveness;
 
     [SerializeField]
     private Sprite _turretSprite;
@@ -75,8 +91,17 @@ public class TurretScriptableObject : ScriptableObject
     private Material _cannonMaterial;
     public Material cannonMaterial;
     [SerializeField]
-    private MissileScriptableObject _missileData;
-    public MissileScriptableObject missileData;
+    private GameObject _missilePrefab;
+    public GameObject missilePrefab;
+    [SerializeField]
+    private Vector2 _missileSize;
+    public Vector2 missileSize;
+    [SerializeField]
+    private Sprite _missileSprite;
+    public Sprite missileSprite;
+    [SerializeField]
+    private Material _missileMaterial;
+    public Material missileMaterial;
     [SerializeField]
     private Sprite _auraSprite;
     public Sprite auraSprite;
@@ -99,16 +124,16 @@ public class TurretScriptableObject : ScriptableObject
         needTarget = _needTarget;
         aura = _aura;
 
-        auraSlowdown = _auraSlowdown;
-
+        missile = _missile;
         laser = _laser;
+
         dealDamageOverTime = _dealDamageOverTime;
         explosiveMissile = _explosiveMissile;
         slowdownOnMissileHit = _slowdownOnMissileHit;
+        penetrationMissile = _penetrationMissile;
+        trackingMissile = _trackingMissile;
 
-        auraDamage = _auraDamage;
-        auraRange = _auraRange;
-        auraSlowdownEffectiveness = _auraSlowdownEffectiveness;
+        auraSlowdown = _auraSlowdown;
 
         damage = _damage;
         damageOverTime = _damageOverTime;
@@ -117,13 +142,22 @@ public class TurretScriptableObject : ScriptableObject
         range = _range;
         explosionRange = _explosionRange;
         rotationSpeed = _rotationSpeed;
+        laserActivationTime = _laserActivationTime;
+        timeToDeactiveLaser = _timeToDeactiveLaser;
         slowdownEffectiveness = _slowdownEffectiveness;
+
+        auraDamage = _auraDamage;
+        auraRange = _auraRange;
+        auraSlowdownEffectiveness = _auraSlowdownEffectiveness;
 
         turretSprite = _turretSprite;
         turretMaterial = _turretMaterial;
         cannonSprite = _cannonSprite;
         cannonMaterial = _cannonMaterial;
-        missileData = _missileData;
+        missilePrefab = _missilePrefab;
+        missileSize = _missileSize;
+        missileSprite = _missileSprite;
+        missileMaterial = _missileMaterial;
         auraSprite = _auraSprite;
         auraMaterial = _auraMaterial;
 

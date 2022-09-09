@@ -1,51 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : MonoBehaviour
+public abstract class Cannon : MonoBehaviour
 {
     [SerializeField]
-    private Turret turret;
+    protected Turret turret;
     [SerializeField]
-    private GameObject target;
+    protected GameObject target;
 
-    private float shootTimer = 0.0f;
-
-    private int enemyLayerMask;
+    protected int enemyLayerMask;
     [SerializeField]
     private List<GameObject> enemiesInRange;
     private float nearestDistance;
 
-    private void Awake()
+    protected void Awake()
     {
         turret = transform.parent.GetComponent<Turret>();
     }
 
-    private void Start()
+    protected void Start()
     {
         enemiesInRange = new List<GameObject>();
         enemyLayerMask = LayerMask.GetMask("Enemy");
     }
 
-    private void Update()
-    {
-        if (target != null)
-        {
-            RotateToTarget();
-
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.rotation * Vector2.up, turret.data.range + transform.localScale.x / 2, enemyLayerMask);
-
-            if(hit && hit.transform.tag == "Enemy")
-            {
-                Shoot();
-            }
-        }
-        else
-        {
-            FindTarget();
-        }
-    }
-
-    private void FindTarget()
+    protected void FindTarget()
     {
         nearestDistance = turret.data.range;
         GameObject targetTmp = null;
@@ -69,7 +48,7 @@ public class Cannon : MonoBehaviour
         target = targetTmp;
     }
 
-    private void RotateToTarget()
+    protected void RotateToTarget()
     {
         Vector2 dir = target.transform.position - turret.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f;
@@ -78,17 +57,7 @@ public class Cannon : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    private void Shoot()
-    {
-        shootTimer += Time.deltaTime;
-
-        if(shootTimer > 1.0f / turret.data.missilesPerSecond)
-        {
-            Instantiate(turret.missilePrefab, transform.parent.position, transform.rotation, transform.parent);
-
-            shootTimer = 0.0f;
-        }
-    }
+    protected abstract void Shoot();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

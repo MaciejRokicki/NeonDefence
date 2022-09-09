@@ -5,8 +5,6 @@ public class Turret : MonoBehaviour
     [SerializeField]
     public TurretScriptableObject data;
 
-    public GameObject missilePrefab;
-
     [SerializeField]
     private GameObject cannon;
     [SerializeField]
@@ -53,6 +51,15 @@ public class Turret : MonoBehaviour
         
         if(data.needTarget)
         {
+            if(!data.laser)
+            {
+                cannon.AddComponent<MissileCannon>();
+            }
+            else
+            {
+                cannon.AddComponent<LaserCannon>();
+            }
+
             cannonSpriteRenderer.sprite = data.cannonSprite;
             cannonSpriteRenderer.material = data.cannonMaterial;
 

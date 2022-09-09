@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7881519901823784527}
   - component: {fileID: 6521799229172710858}
   - component: {fileID: 4417972046324945265}
-  - component: {fileID: 4467538322316914816}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -102,21 +101,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4467538322316914816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013506158812833404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5dbdfb00024408499b83847917448d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret: {fileID: 0}
-  target: {fileID: 0}
-  enemiesInRange: []
 --- !u!1 &3134689106102566678
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
-  missilePrefab: {fileID: 3152327773885027431, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
+  missilePrefab: {fileID: 1852088177446118189, guid: 57f465490c4923947913733898cbc798, type: 3}
   cannon: {fileID: 0}
   aura: {fileID: 0}
   turretSpriteRenderer: {fileID: 0}

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
+  m_Name: LaserTurret
+  m_EditorClassIdentifier: 
+  _needTarget: 1
+  needTarget: 1
+  _aura: 0
+  aura: 0
+  _missile: 0
+  missile: 0
+  _laser: 1
+  laser: 1
+  _dealDamageOverTime: 0
+  dealDamageOverTime: 0
+  _explosiveMissile: 0
+  explosiveMissile: 0
+  _slowdownOnMissileHit: 0
+  slowdownOnMissileHit: 0
+  _penetrationMissile: 0
+  penetrationMissile: 0
+  _trackingMissile: 0
+  trackingMissile: 0
+  _auraSlowdown: 0
+  auraSlowdown: 0
+  _damage: 10
+  damage: 10
+  _damageOverTime: 0
+  damageOverTime: 0
+  _missilesPerSecond: 0.25
+  missilesPerSecond: 0.25
+  _missileSpeed: 0
+  missileSpeed: 0
+  _range: 7
+  range: 7
+  _explosionRange: 0
+  explosionRange: 0
+  _rotationSpeed: 2
+  rotationSpeed: 2
+  _laserActivationTime: 2
+  laserActivationTime: 2
+  _timeToDeactiveLaser: 3
+  timeToDeactiveLaser: 3
+  _slowdownEffectiveness: 0
+  slowdownEffectiveness: 0
+  _auraDamage: 0
+  auraDamage: 0
+  _auraRange: 0
+  auraRange: 0
+  _auraSlowdownEffectiveness: 0
+  auraSlowdownEffectiveness: 0
+  _turretSprite: {fileID: 21300000, guid: 7d69dffa9326eee479ef086834a0fc19, type: 3}
+  turretSprite: {fileID: 21300000, guid: 7d69dffa9326eee479ef086834a0fc19, type: 3}
+  _turretMaterial: {fileID: 2100000, guid: 51320ece0ff4eb64f9fee557181c2441, type: 2}
+  turretMaterial: {fileID: 2100000, guid: 51320ece0ff4eb64f9fee557181c2441, type: 2}
+  _cannonSprite: {fileID: 21300000, guid: 137221ada560fd84b8b5cc2667886a94, type: 3}
+  cannonSprite: {fileID: 21300000, guid: 137221ada560fd84b8b5cc2667886a94, type: 3}
+  _cannonMaterial: {fileID: 2100000, guid: 3217b37a7df4fd3489f3900b6bf908c6, type: 2}
+  cannonMaterial: {fileID: 2100000, guid: 3217b37a7df4fd3489f3900b6bf908c6, type: 2}
+  _missilePrefab: {fileID: 3087113874713461607, guid: 506540a780c7ad04c8ff49e020663a4b, type: 3}
+  missilePrefab: {fileID: 3087113874713461607, guid: 506540a780c7ad04c8ff49e020663a4b, type: 3}
+  _missileSize: {x: 0.25, y: 1}
+  missileSize: {x: 0.25, y: 1}
+  _missileSprite: {fileID: 21300000, guid: f558f78fe18987447ae23d82b91fec1e, type: 3}
+  missileSprite: {fileID: 21300000, guid: f558f78fe18987447ae23d82b91fec1e, type: 3}
+  _missileMaterial: {fileID: 2100000, guid: 3b3fff54763b4e2438ba81d8760fe0c9, type: 2}
+  missileMaterial: {fileID: 2100000, guid: 3b3fff54763b4e2438ba81d8760fe0c9, type: 2}
+  _auraSprite: {fileID: 0}
+  auraSprite: {fileID: 0}
+  _auraMaterial: {fileID: 0}
+  auraMaterial: {fileID: 0}
+  _lightSource: 0
+  lightSource: 0
+  _lightSourceInnerRadius: 0
+  lightSourceInnerRadius: 0
+  _lightSourceOuterRadius: 0
+  lightSourceOuterRadius: 0

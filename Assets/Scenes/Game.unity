@@ -8981,6 +8981,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
+--- !u!1001 &1162493905
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3134689106102566678, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_Name
+      value: LaserTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872813878281770802, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: bdc47021dff72434991bb92f7cc76f4f, type: 2}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
 --- !u!1001 &1167263696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9761,9 +9822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abad5bafe16f4e41ab317cede63e27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWave: 8
+  currentWave: 0
   currentWaveTime: 0
-  nextWaveRefresh: 5
+  nextWaveRefresh: 1
   spawnedEnemies: 0
   enemiesPerSpawner: 0
   enemySpawnTime: 1
@@ -16667,7 +16728,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3134689106102566678, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
       propertyPath: m_Name
-      value: Turret
+      value: BasicTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134689106102566678, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5909131521114467436, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
       propertyPath: m_RootOrder

@@ -16,8 +16,8 @@ MonoBehaviour:
   needTarget: 1
   _aura: 0
   aura: 0
-  _auraSlowdown: 0
-  auraSlowdown: 0
+  _missile: 1
+  missile: 1
   _laser: 0
   laser: 0
   _dealDamageOverTime: 0
@@ -26,14 +26,14 @@ MonoBehaviour:
   explosiveMissile: 0
   _slowdownOnMissileHit: 0
   slowdownOnMissileHit: 0
-  _auraDamage: 0
-  auraDamage: 0
-  _auraRange: 10
-  auraRange: 10
-  _auraSlowdownEffectiveness: 0
-  auraSlowdownEffectiveness: 0
-  _damage: 50
-  damage: 50
+  _penetrationMissile: 0
+  penetrationMissile: 0
+  _trackingMissile: 0
+  trackingMissile: 0
+  _auraSlowdown: 0
+  auraSlowdown: 0
+  _damage: 10
+  damage: 10
   _damageOverTime: 0
   damageOverTime: 0
   _missilesPerSecond: 5
@@ -46,8 +46,16 @@ MonoBehaviour:
   explosionRange: 0
   _rotationSpeed: 20
   rotationSpeed: 20
+  _laserActivationTime: 0
+  laserActivationTime: 0
   _slowdownEffectiveness: 0
   slowdownEffectiveness: 0
+  _auraDamage: 0
+  auraDamage: 0
+  _auraRange: 10
+  auraRange: 10
+  _auraSlowdownEffectiveness: 0
+  auraSlowdownEffectiveness: 0
   _turretSprite: {fileID: 21300000, guid: 34eba5b696375234795b07afd02be4cb, type: 3}
   turretSprite: {fileID: 21300000, guid: 34eba5b696375234795b07afd02be4cb, type: 3}
   _turretMaterial: {fileID: 2100000, guid: 786de340566b7ca4f8314c870c4c216e, type: 2}
@@ -56,8 +64,14 @@ MonoBehaviour:
   cannonSprite: {fileID: 21300000, guid: d1b879c1346ef0f41887e0356b4f0746, type: 3}
   _cannonMaterial: {fileID: 2100000, guid: d6f057e9331bb6a46af5c79abee47840, type: 2}
   cannonMaterial: {fileID: 2100000, guid: d6f057e9331bb6a46af5c79abee47840, type: 2}
-  _missileData: {fileID: 11400000, guid: 41a95d43c8a02304aa0e8cab97b70b05, type: 2}
-  missileData: {fileID: 11400000, guid: 41a95d43c8a02304aa0e8cab97b70b05, type: 2}
+  _missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
+  missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
+  _missileSize: {x: 0.5, y: 0.5}
+  missileSize: {x: 0.5, y: 0.5}
+  _missileSprite: {fileID: 21300000, guid: a15c633874dfb174399e81864d25cde8, type: 3}
+  missileSprite: {fileID: 21300000, guid: a15c633874dfb174399e81864d25cde8, type: 3}
+  _missileMaterial: {fileID: 2100000, guid: 1ac7277447432bc4880c18b83a65a678, type: 2}
+  missileMaterial: {fileID: 2100000, guid: 1ac7277447432bc4880c18b83a65a678, type: 2}
   _auraSprite: {fileID: 0}
   auraSprite: {fileID: 0}
   _auraMaterial: {fileID: 0}
