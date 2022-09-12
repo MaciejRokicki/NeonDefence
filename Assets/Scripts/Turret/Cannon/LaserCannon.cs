@@ -55,10 +55,10 @@ public class LaserCannon : Cannon
         deactiveLaserTimer = 0.0f;
         activationTimer += Time.deltaTime;
 
-        float x = turret.data.missileSize.x * activationTimer;
+        float x = turret.data.missileSpriteSize.x * activationTimer;
         float y = turret.data.range + transform.localScale.x / 2;
 
-        x = Mathf.Clamp(x, 0.0f, turret.data.missileSize.x);
+        x = Mathf.Clamp(x, 0.0f, turret.data.missileSpriteSize.x);
 
         laser.transform.localPosition = new Vector2(0.0f, y / 2);
         laserSpriteRenderer.size = new Vector2(x, y);
@@ -88,6 +88,6 @@ public class LaserCannon : Cannon
     {
         float y = turret.data.range + transform.localScale.x / 2;
         laser.transform.localPosition = new Vector2(0.0f, y / 2);
-        laserSpriteRenderer.size = laser.GetComponent<BoxCollider2D>().size = new Vector2(turret.data.missileSize.x, y);
+        laserSpriteRenderer.size = laser.GetComponent<BoxCollider2D>().size = new Vector2(turret.data.missileSpriteSize.x, y);
     }
 }

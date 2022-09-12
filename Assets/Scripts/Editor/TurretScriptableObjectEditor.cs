@@ -39,7 +39,9 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _cannonSprite;
     SerializedProperty _cannonMaterial;
     SerializedProperty _missilePrefab;
-    SerializedProperty _missileSize;
+    SerializedProperty _missileColliderOffset;
+    SerializedProperty _missileColliderSize;
+    SerializedProperty _missileSpriteSize;
     SerializedProperty _missileSprite;
     SerializedProperty _missileMaterial;
     SerializedProperty _auraPrefab;
@@ -88,7 +90,9 @@ public class TurreteScriptableObjectEditor : Editor
         _cannonSprite = serializedObject.FindProperty("_cannonSprite");
         _cannonMaterial = serializedObject.FindProperty("_cannonMaterial");
         _missilePrefab = serializedObject.FindProperty("_missilePrefab");
-        _missileSize = serializedObject.FindProperty("_missileSize");
+        _missileColliderOffset = serializedObject.FindProperty("_missileColliderOffset");
+        _missileColliderSize = serializedObject.FindProperty("_missileColliderSize");
+        _missileSpriteSize = serializedObject.FindProperty("_missileSpriteSize");
         _missileSprite = serializedObject.FindProperty("_missileSprite");
         _missileMaterial = serializedObject.FindProperty("_missileMaterial");
         _auraPrefab = serializedObject.FindProperty("_auraPrefab");
@@ -203,7 +207,9 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Missile Appearance", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_missilePrefab);
-            EditorGUILayout.PropertyField(_missileSize);
+            EditorGUILayout.PropertyField(_missileColliderOffset);
+            EditorGUILayout.PropertyField(_missileColliderSize);
+            EditorGUILayout.PropertyField(_missileSpriteSize);
             EditorGUILayout.PropertyField(_missileSprite);
             EditorGUILayout.PropertyField(_missileMaterial);
         }

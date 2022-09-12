@@ -29,7 +29,7 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]    //TODO: todo
     private bool _penetrationMissile;
     public bool penetrationMissile;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private bool _trackingMissile;
     public bool trackingMissile;
 
@@ -100,8 +100,14 @@ public class TurretScriptableObject : ScriptableObject
     private GameObject _missilePrefab;
     public GameObject missilePrefab;
     [SerializeField]
-    private Vector2 _missileSize;
-    public Vector2 missileSize;
+    private Vector2 _missileColliderOffset;
+    public Vector2 missileColliderOffset;
+    [SerializeField]
+    private Vector2 _missileColliderSize;
+    public Vector2 missileColliderSize;
+    [SerializeField]
+    private Vector2 _missileSpriteSize;
+    public Vector2 missileSpriteSize;
     [SerializeField]
     private Sprite _missileSprite;
     public Sprite missileSprite;
@@ -166,7 +172,9 @@ public class TurretScriptableObject : ScriptableObject
         cannonSprite = _cannonSprite;
         cannonMaterial = _cannonMaterial;
         missilePrefab = _missilePrefab;
-        missileSize = _missileSize;
+        missileColliderOffset = _missileColliderOffset;
+        missileColliderSize = _missileColliderSize;
+        missileSpriteSize = _missileSpriteSize;
         missileSprite = _missileSprite;
         missileMaterial = _missileMaterial;
         auraPrefab = _auraPrefab;
