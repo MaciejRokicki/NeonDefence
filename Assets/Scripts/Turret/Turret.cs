@@ -5,41 +5,33 @@ public class Turret : MonoBehaviour
     [SerializeField]
     public TurretScriptableObject data;
 
-    [SerializeField]
     private GameObject cannon;
-    [SerializeField]
     private GameObject aura;
 
-    [SerializeField]
     private SpriteRenderer turretSpriteRenderer;
-    [SerializeField]
     private SpriteRenderer cannonSpriteRenderer;
-    [SerializeField]
     private SpriteRenderer auraSpriteRenderer;
 
-    [SerializeField]
     private CircleCollider2D cannonCollider;
-    [SerializeField]
     private CircleCollider2D auraCollider;
 
     private void Awake()
     {
-        cannon = transform.Find("Cannon").gameObject;
-        aura = transform.Find("Aura").gameObject;
-
         turretSpriteRenderer = GetComponent<SpriteRenderer>();
 
         if(data.needTarget)
         {
-            cannonSpriteRenderer = cannon.GetComponent<SpriteRenderer>();
+            cannon = Instantiate(data.cannonPrefab, transform.position, Quaternion.identity, transform);
 
+            cannonSpriteRenderer = cannon.GetComponent<SpriteRenderer>();
             cannonCollider = cannon.GetComponent<CircleCollider2D>();
         }
 
         if (data.aura)
         {
-            auraSpriteRenderer = aura.GetComponent<SpriteRenderer>();
+            cannon = Instantiate(data.auraPrefab, transform.position, Quaternion.identity, transform);
 
+            auraSpriteRenderer = aura.GetComponent<SpriteRenderer>();
             auraCollider = aura.GetComponent<CircleCollider2D>();
         }
     }

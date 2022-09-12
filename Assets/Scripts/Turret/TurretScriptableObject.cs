@@ -50,6 +50,9 @@ public class TurretScriptableObject : ScriptableObject
     private float _missileSpeed;
     public float missileSpeed;
     [SerializeField]
+    private float _laserHitsPerSecond;
+    public float laserHitsPerSecond;
+    [SerializeField]
     private float _range;
     public float range;
     [SerializeField]    //TODO: todo
@@ -85,6 +88,9 @@ public class TurretScriptableObject : ScriptableObject
     private Material _turretMaterial;
     public Material turretMaterial;
     [SerializeField]
+    private GameObject _cannonPrefab;
+    public GameObject cannonPrefab;
+    [SerializeField]
     private Sprite _cannonSprite;
     public Sprite cannonSprite;
     [SerializeField]
@@ -102,6 +108,9 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private Material _missileMaterial;
     public Material missileMaterial;
+    [SerializeField]
+    private GameObject _auraPrefab;
+    public GameObject auraPrefab;
     [SerializeField]
     private Sprite _auraSprite;
     public Sprite auraSprite;
@@ -139,6 +148,7 @@ public class TurretScriptableObject : ScriptableObject
         damageOverTime = _damageOverTime;
         missilesPerSecond = _missilesPerSecond;
         missileSpeed = _missileSpeed;
+        laserHitsPerSecond = _laserHitsPerSecond;
         range = _range;
         explosionRange = _explosionRange;
         rotationSpeed = _rotationSpeed;
@@ -152,12 +162,14 @@ public class TurretScriptableObject : ScriptableObject
 
         turretSprite = _turretSprite;
         turretMaterial = _turretMaterial;
+        cannonPrefab = _cannonPrefab;
         cannonSprite = _cannonSprite;
         cannonMaterial = _cannonMaterial;
         missilePrefab = _missilePrefab;
         missileSize = _missileSize;
         missileSprite = _missileSprite;
         missileMaterial = _missileMaterial;
+        auraPrefab = _auraPrefab;
         auraSprite = _auraSprite;
         auraMaterial = _auraMaterial;
 

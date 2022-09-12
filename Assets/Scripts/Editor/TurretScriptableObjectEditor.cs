@@ -21,6 +21,7 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _damageOverTime;
     SerializedProperty _missilesPerSecond;
     SerializedProperty _missileSpeed;
+    SerializedProperty _laserHitsPerSecond;
     SerializedProperty _range;
     SerializedProperty _explosionRange;
     SerializedProperty _rotationSpeed;
@@ -34,12 +35,14 @@ public class TurreteScriptableObjectEditor : Editor
 
     SerializedProperty _turretSprite;
     SerializedProperty _turretMaterial;
+    SerializedProperty _cannonPrefab;
     SerializedProperty _cannonSprite;
     SerializedProperty _cannonMaterial;
     SerializedProperty _missilePrefab;
     SerializedProperty _missileSize;
     SerializedProperty _missileSprite;
     SerializedProperty _missileMaterial;
+    SerializedProperty _auraPrefab;
     SerializedProperty _auraSprite;
     SerializedProperty _auraMaterial;
 
@@ -67,6 +70,7 @@ public class TurreteScriptableObjectEditor : Editor
         _damageOverTime = serializedObject.FindProperty("_damageOverTime");
         _missilesPerSecond = serializedObject.FindProperty("_missilesPerSecond");
         _missileSpeed = serializedObject.FindProperty("_missileSpeed");
+        _laserHitsPerSecond = serializedObject.FindProperty("_laserHitsPerSecond");
         _range = serializedObject.FindProperty("_range");
         _explosionRange = serializedObject.FindProperty("_explosionRange");
         _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
@@ -80,12 +84,14 @@ public class TurreteScriptableObjectEditor : Editor
 
         _turretSprite = serializedObject.FindProperty("_turretSprite");
         _turretMaterial = serializedObject.FindProperty("_turretMaterial");
+        _cannonPrefab = serializedObject.FindProperty("_cannonPrefab");
         _cannonSprite = serializedObject.FindProperty("_cannonSprite");
         _cannonMaterial = serializedObject.FindProperty("_cannonMaterial");
         _missilePrefab = serializedObject.FindProperty("_missilePrefab");
         _missileSize = serializedObject.FindProperty("_missileSize");
         _missileSprite = serializedObject.FindProperty("_missileSprite");
         _missileMaterial = serializedObject.FindProperty("_missileMaterial");
+        _auraPrefab = serializedObject.FindProperty("_auraPrefab");
         _auraSprite = serializedObject.FindProperty("_auraSprite");
         _auraMaterial = serializedObject.FindProperty("_auraMaterial");
 
@@ -141,8 +147,17 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Missile Statistics", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_damage);
-            EditorGUILayout.PropertyField(_missilesPerSecond);
-            EditorGUILayout.PropertyField(_missileSpeed);
+
+            if(_missile.boolValue)
+            {
+                EditorGUILayout.PropertyField(_missilesPerSecond);
+                EditorGUILayout.PropertyField(_missileSpeed);
+            }
+
+            if (_laser.boolValue)
+            {
+                EditorGUILayout.PropertyField(_laserHitsPerSecond);
+            }
 
             if (_dealDamageOverTime.boolValue)
             {
@@ -200,12 +215,14 @@ public class TurreteScriptableObjectEditor : Editor
 
         if (_needTarget.boolValue)
         {
+            EditorGUILayout.PropertyField(_cannonPrefab);
             EditorGUILayout.PropertyField(_cannonSprite);
             EditorGUILayout.PropertyField(_cannonMaterial);
         }
 
         if (_aura.boolValue)
         {
+            EditorGUILayout.PropertyField(_auraPrefab);
             EditorGUILayout.PropertyField(_auraSprite);
             EditorGUILayout.PropertyField(_auraMaterial);
         }

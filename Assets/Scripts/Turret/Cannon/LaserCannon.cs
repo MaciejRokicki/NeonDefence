@@ -22,17 +22,24 @@ public class LaserCannon : Cannon
         {
             RotateToTarget();
 
-            if(!isLaserActive)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.rotation * Vector2.up, turret.data.range + transform.localScale.x / 2, enemyLayerMask);
+
+            if (hit && hit.transform.tag == "Enemy")
             {
-                ActivateLaser();
+                if (!isLaserActive)
+                {
+                    ActivateLaser();
+                }
+                else
+                {
+                    Shoot();
+                }
             }
             else
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.rotation * Vector2.up, turret.data.range + transform.localScale.x / 2, enemyLayerMask);
-
-                if (hit && hit.transform.tag == "Enemy")
+                if(isLaserActive)
                 {
-                    Shoot();
+                    DeactivateLaser();
                 }
             }
         }
@@ -49,7 +56,7 @@ public class LaserCannon : Cannon
         activationTimer += Time.deltaTime;
 
         float x = turret.data.missileSize.x * activationTimer;
-        float y = turret.data.range;
+        float y = turret.data.range + transform.localScale.x / 2;
 
         x = Mathf.Clamp(x, 0.0f, turret.data.missileSize.x);
 
@@ -79,8 +86,7 @@ public class LaserCannon : Cannon
 
     protected override void Shoot()
     {
-        //float y = Vector2.Distance(transform.position, target.transform.position);
-        float y = turret.data.range;
+        float y = turret.data.range + transform.localScale.x / 2;
         laser.transform.localPosition = new Vector2(0.0f, y / 2);
         laserSpriteRenderer.size = laser.GetComponent<BoxCollider2D>().size = new Vector2(turret.data.missileSize.x, y);
     }

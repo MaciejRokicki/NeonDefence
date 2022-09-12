@@ -23,7 +23,7 @@ public class LaserMissile : Missile
         {
             timer += Time.deltaTime;
 
-            if(timer > turret.data.missilesPerSecond)
+            if(timer > 1.0f / turret.data.laserHitsPerSecond)
             {
                 collision.GetComponent<Enemy>().TakeDamage(turret.data.damage);
                 timer = 0.0f;
