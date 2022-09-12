@@ -30,7 +30,9 @@ public class MissileCannon : Cannon
         if (shootTimer > 1.0f / turret.data.missilesPerSecond)
         {
             GameObject missile = Instantiate(turret.data.missilePrefab, transform.parent.position, transform.rotation, transform.parent);
-            missile.GetComponent<Missile>().target = target;
+            missile.GetComponent<Missile>()
+                .SetTurret(turret)
+                .SetTarget(target);
 
             shootTimer = 0.0f;
         }

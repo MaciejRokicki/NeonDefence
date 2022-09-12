@@ -3,26 +3,22 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer), typeof(BoxCollider2D))]
 public class Missile : MonoBehaviour
 {
-    protected Turret turret;
-    public GameObject target;
-    protected SpriteRenderer spriteRenderer;
+    private Turret turret;
+    private GameObject target;
 
+    private MissileTypeStrategy missileTypeStrategy;
     private TrackingMissileStrategy trackingMissileStrategy;
-    private bool destroyOnHit = true;
 
-    protected void Awake()
+    private void Start()
     {
-        turret = transform.parent.GetComponent<Turret>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    protected void Start()
-    {
-        spriteRenderer.sprite = turret.data.missileSprite;
-        spriteRenderer.material = turret.data.missileMaterial;
-        GetComponent<BoxCollider2D>().offset = turret.data.missileColliderOffset;
-        GetComponent<BoxCollider2D>().size = turret.data.missileColliderSize;
-        spriteRenderer.size = turret.data.missileSpriteSize;
+        if(turret.data.needTarget)
+        {
+            missileTypeStrategy = new MissileBasicTypeStrategy(gameObject, turret);
+        }
+        else if(turret.data.laser)
+        {
+            missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret);
+        }
 
         if(turret.data.trackingMissile)
         {
@@ -33,10 +29,7 @@ public class Missile : MonoBehaviour
             trackingMissileStrategy = new BasicTrackingMissileStrategy(gameObject, turret);
         }
 
-        if(turret.data.laser)
-        {
-            destroyOnHit = false;
-        }
+        missileTypeStrategy.Start();
     }
 
     private void Update()
@@ -48,12 +41,43 @@ public class Missile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().TakeDamage(turret.data.damage);
+            missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
+            target = null;
 
-            if(destroyOnHit)
+            if(!turret.data.penetrationMissile && !turret.data.laser)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            missileTypeStrategy.OnEnemyTriggerStay2D(collision);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            missileTypeStrategy.OnEnemyTriggerExit2D(collision);
+        }
+    }
+
+    public Missile SetTurret(Turret turret)
+    {
+        this.turret = turret;
+
+        return this;
+    }
+
+    public Missile SetTarget(GameObject target)
+    {
+        this.target = target;
+
+        return this;
     }
 }

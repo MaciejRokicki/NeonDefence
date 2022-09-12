@@ -14,6 +14,7 @@ public class LaserCannon : Cannon
 
         laser = Instantiate(turret.data.missilePrefab, transform.parent.position, transform.rotation, transform);
         laserSpriteRenderer = laser.GetComponent<SpriteRenderer>();
+        laser.GetComponent<Missile>().SetTurret(turret);
     }
 
     private void Update()
