@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 692875357621091346}
   - component: {fileID: 4503400858523916183}
   - component: {fileID: 6463392019024542508}
+  - component: {fileID: 6274154889626351805}
   m_Layer: 0
   m_Name: TurretCannon
   m_TagString: Untagged
@@ -101,3 +102,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6274154889626351805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705074690237467681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5dbdfb00024408499b83847917448d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 0}
+  target: {fileID: 0}
+  enemyLayerMask: 0
+  enemiesInRange: []

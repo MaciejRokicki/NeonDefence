@@ -40,6 +40,8 @@ MonoBehaviour:
   missilesPerSecond: 5
   _missileSpeed: 15
   missileSpeed: 15
+  _laserHitsPerSecond: 0
+  laserHitsPerSecond: 0
   _range: 5
   range: 5
   _explosionRange: 0
@@ -48,6 +50,8 @@ MonoBehaviour:
   rotationSpeed: 20
   _laserActivationTime: 0
   laserActivationTime: 0
+  _timeToDeactiveLaser: 0
+  timeToDeactiveLaser: 0
   _slowdownEffectiveness: 0
   slowdownEffectiveness: 0
   _auraDamage: 0
@@ -60,18 +64,26 @@ MonoBehaviour:
   turretSprite: {fileID: 21300000, guid: 34eba5b696375234795b07afd02be4cb, type: 3}
   _turretMaterial: {fileID: 2100000, guid: 786de340566b7ca4f8314c870c4c216e, type: 2}
   turretMaterial: {fileID: 2100000, guid: 786de340566b7ca4f8314c870c4c216e, type: 2}
+  _cannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
+  cannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
   _cannonSprite: {fileID: 21300000, guid: d1b879c1346ef0f41887e0356b4f0746, type: 3}
   cannonSprite: {fileID: 21300000, guid: d1b879c1346ef0f41887e0356b4f0746, type: 3}
   _cannonMaterial: {fileID: 2100000, guid: d6f057e9331bb6a46af5c79abee47840, type: 2}
   cannonMaterial: {fileID: 2100000, guid: d6f057e9331bb6a46af5c79abee47840, type: 2}
   _missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
   missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
-  _missileSize: {x: 0.5, y: 0.5}
-  missileSize: {x: 0.5, y: 0.5}
+  _missileColliderOffset: {x: 0, y: 0}
+  missileColliderOffset: {x: 0, y: 0}
+  _missileColliderSize: {x: 0.5, y: 0.5}
+  missileColliderSize: {x: 0.5, y: 0.5}
+  _missileSpriteSize: {x: 0.5, y: 0.5}
+  missileSpriteSize: {x: 0.5, y: 0.5}
   _missileSprite: {fileID: 21300000, guid: a15c633874dfb174399e81864d25cde8, type: 3}
   missileSprite: {fileID: 21300000, guid: a15c633874dfb174399e81864d25cde8, type: 3}
   _missileMaterial: {fileID: 2100000, guid: 1ac7277447432bc4880c18b83a65a678, type: 2}
   missileMaterial: {fileID: 2100000, guid: 1ac7277447432bc4880c18b83a65a678, type: 2}
+  _auraPrefab: {fileID: 0}
+  auraPrefab: {fileID: 0}
   _auraSprite: {fileID: 0}
   auraSprite: {fileID: 0}
   _auraMaterial: {fileID: 0}

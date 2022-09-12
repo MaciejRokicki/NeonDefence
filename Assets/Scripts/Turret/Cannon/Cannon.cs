@@ -1,30 +1,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Cannon : MonoBehaviour
+public class Cannon : MonoBehaviour
 {
-    [SerializeField]
-    protected Turret turret;
-    [SerializeField]
-    protected GameObject target;
+    private Turret turret;
+    [HideInInspector]
+    public GameObject target;
 
-    protected int enemyLayerMask;
-    [SerializeField]
+    private CannonTypeStrategy cannonTypeStrategy;
+
+    [HideInInspector]
+    public int enemyLayerMask;
     private List<GameObject> enemiesInRange;
     private float nearestDistance;
 
-    protected void Awake()
-    {
-        turret = transform.parent.GetComponent<Turret>();
-    }
-
-    protected void Start()
+    private void Start()
     {
         enemiesInRange = new List<GameObject>();
         enemyLayerMask = LayerMask.GetMask("Enemy");
+
+        if(!turret.data.laser)
+        {
+            cannonTypeStrategy = new CannonBasicTypeStrategy(this, turret);
+        }
+        else
+        {
+            GameObject laser = Instantiate(turret.data.missilePrefab, transform.parent.position, transform.rotation, transform);
+            cannonTypeStrategy = new CannonLaserTypeStrategy(this, turret, laser);
+        }
+
+        cannonTypeStrategy.Start();
     }
 
-    protected void FindTarget()
+    private void Update()
+    {
+        cannonTypeStrategy.Update();
+    }
+
+    public void FindTarget()
     {
         nearestDistance = turret.data.range;
         GameObject targetTmp = null;
@@ -48,7 +61,7 @@ public abstract class Cannon : MonoBehaviour
         target = targetTmp;
     }
 
-    protected void RotateToTarget()
+    public void RotateToTarget()
     {
         Vector2 dir = target.transform.position - turret.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f;
@@ -57,15 +70,12 @@ public abstract class Cannon : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    protected abstract void Shoot();
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
         {
             enemiesInRange.Add(collision.gameObject);
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -87,5 +97,10 @@ public abstract class Cannon : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.rotation * Vector2.up * (turret.data.range + transform.localScale.x / 2), Color.red);
         }
+    }
+
+    public void SetTurret(Turret turret)
+    {
+        this.turret = turret;
     }
 }

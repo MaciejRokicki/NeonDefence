@@ -34,6 +34,8 @@ public class Turret : MonoBehaviour
             auraSpriteRenderer = aura.GetComponent<SpriteRenderer>();
             auraCollider = aura.GetComponent<CircleCollider2D>();
         }
+
+        cannon.GetComponent<Cannon>().SetTurret(this);
     }
 
     private void Start()
@@ -43,21 +45,11 @@ public class Turret : MonoBehaviour
         
         if(data.needTarget)
         {
-            if(!data.laser)
-            {
-                cannon.AddComponent<MissileCannon>();
-            }
-            else
-            {
-                cannon.AddComponent<LaserCannon>();
-            }
-
             cannonSpriteRenderer.sprite = data.cannonSprite;
             cannonSpriteRenderer.material = data.cannonMaterial;
 
             cannonCollider.radius = data.range + 0.5f;
         }
-
 
         if (data.aura)
         {
