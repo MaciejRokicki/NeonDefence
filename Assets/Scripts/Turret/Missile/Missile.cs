@@ -9,6 +9,8 @@ public class Missile : MonoBehaviour
     private MissileTypeStrategy missileTypeStrategy;
     private TrackingMissileStrategy trackingMissileStrategy;
 
+    private MissileShotEffectComponent missileComponent;
+
     private void Start()
     {
         if(turret.data.needTarget)
@@ -29,6 +31,23 @@ public class Missile : MonoBehaviour
             trackingMissileStrategy = new BasicTrackingMissileStrategy(gameObject, turret);
         }
 
+        missileComponent = new BasicMissileShotEffectComponent();
+
+        if(turret.data.dealDamageOverTime)
+        {
+            missileComponent = new MissileShotDamageOverTimeEffectDecorator(turret, missileComponent);
+        }
+
+        if(turret.data.explosiveMissile)
+        {
+            missileComponent = new MissileShotExplosiveEffectDecorator(turret, missileComponent);
+        }
+
+        if(turret.data.slowdownOnMissileHit)
+        {
+            missileComponent = new MissileShotSlowdownEffectDecorator(turret, missileComponent);
+        }
+
         missileTypeStrategy.Start();
     }
 
@@ -44,7 +63,9 @@ public class Missile : MonoBehaviour
             missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
             target = null;
 
-            if(!turret.data.penetrationMissile && !turret.data.laser)
+            missileComponent.OnHitEffect(collision.GetComponent<Enemy>());
+
+            if (!turret.data.penetrationMissile && !turret.data.laser)
             {
                 Destroy(gameObject);
             }

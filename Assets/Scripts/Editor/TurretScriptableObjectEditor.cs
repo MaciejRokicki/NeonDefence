@@ -18,6 +18,8 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _auraSlowdown;
 
     SerializedProperty _damage;
+    SerializedProperty _damageOverTimeDuration;
+    SerializedProperty _damageOverTimeCooldown;
     SerializedProperty _damageOverTime;
     SerializedProperty _missilesPerSecond;
     SerializedProperty _missileSpeed;
@@ -27,6 +29,7 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _rotationSpeed;
     SerializedProperty _laserActivationTime;
     SerializedProperty _timeToDeactiveLaser;
+    SerializedProperty _slowdownEffectDuration;
     SerializedProperty _slowdownEffectiveness;
 
     SerializedProperty _auraDamage;
@@ -69,6 +72,8 @@ public class TurreteScriptableObjectEditor : Editor
         _auraSlowdown = serializedObject.FindProperty("_auraSlowdown");
 
         _damage = serializedObject.FindProperty("_damage");
+        _damageOverTimeDuration = serializedObject.FindProperty("_damageOverTimeDuration");
+        _damageOverTimeCooldown = serializedObject.FindProperty("_damageOverTimeCooldown");
         _damageOverTime = serializedObject.FindProperty("_damageOverTime");
         _missilesPerSecond = serializedObject.FindProperty("_missilesPerSecond");
         _missileSpeed = serializedObject.FindProperty("_missileSpeed");
@@ -78,6 +83,7 @@ public class TurreteScriptableObjectEditor : Editor
         _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
         _laserActivationTime = serializedObject.FindProperty("_laserActivationTime");
         _timeToDeactiveLaser = serializedObject.FindProperty("_timeToDeactiveLaser");
+        _slowdownEffectDuration = serializedObject.FindProperty("_slowdownEffectDuration");
         _slowdownEffectiveness = serializedObject.FindProperty("_slowdownEffectiveness");
 
         _auraDamage = serializedObject.FindProperty("_auraDamage");
@@ -165,6 +171,8 @@ public class TurreteScriptableObjectEditor : Editor
 
             if (_dealDamageOverTime.boolValue)
             {
+                EditorGUILayout.PropertyField(_damageOverTimeDuration);
+                EditorGUILayout.PropertyField(_damageOverTimeCooldown);
                 EditorGUILayout.PropertyField(_damageOverTime);
             }
 
@@ -185,6 +193,7 @@ public class TurreteScriptableObjectEditor : Editor
 
             if (_slowdownOnMissileHit.boolValue)
             {
+                EditorGUILayout.PropertyField(_slowdownEffectDuration);
                 EditorGUILayout.PropertyField(_slowdownEffectiveness);
             }
         }

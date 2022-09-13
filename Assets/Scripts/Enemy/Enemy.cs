@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -5,11 +6,15 @@ using UnityEngine.Rendering.Universal;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private EnemyScriptableObject data;
+    public EnemyScriptableObject data;
     private Rigidbody2D rb;
+    [SerializeField]
+    private List<EnemyEffect> effects;
 
     [SerializeField] //TODO: usunac SerializeField
-    private float currentHealth;
+    private float health;
+    [SerializeField]
+    private float movementSpeed;
 
     private int currentWaypointId = -1;
     private Transform waypointTarget;
@@ -18,13 +23,13 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        effects = new List<EnemyEffect>();
     }
 
     void Start()
     {
-        SetNextWaypoint();
-
-        currentHealth = data.health;
+        health = data.health;
+        movementSpeed = data.movementSpeed;
 
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -37,6 +42,19 @@ public class Enemy : MonoBehaviour
             lightSource.color = spriteRenderer.material.color;
             lightSource.pointLightInnerRadius = data.lightSourceInnerRadius;
             lightSource.pointLightOuterRadius = data.lightSourceOuterRadius;
+        }
+
+        SetNextWaypoint();
+    }
+
+    private void Update()
+    {
+        for(int i = 0; i < effects.Count; i++)
+        {
+            if (effects[i] != null)
+            {
+                effects[i].EffectUpdate();
+            }
         }
     }
 
@@ -62,9 +80,9 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        currentHealth -= dmg;
+        health -= dmg;
 
-        if(currentHealth <= 0.0f)
+        if(health <= 0.0f)
         {
             Death();
         }
@@ -90,6 +108,34 @@ public class Enemy : MonoBehaviour
         float zRot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
 
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, zRot);
-        rb.velocity = direction * data.movementSpeed;
+        rb.velocity = direction * movementSpeed;
+    }
+
+    public void SetMovementSpeed(float movementSpeed)
+    {
+        this.movementSpeed = movementSpeed;
+        Debug.Log(this.movementSpeed);
+        Vector2 direction = (waypointTarget.position - transform.position).normalized;
+        rb.velocity = direction * movementSpeed;
+    }
+
+    public void ApplyEffect(EnemyEffect enemyEffect)
+    {
+        foreach (EnemyEffect enemy in effects)
+        {
+            if(enemy.CheckDuplicates(enemyEffect))
+            {
+                RemoveEffect(enemy);
+
+                break;
+            }
+        }
+
+        effects.Add(enemyEffect);
+    }
+
+    public void RemoveEffect(EnemyEffect enemyEffect)
+    {
+        effects.Remove(enemyEffect);
     }
 }

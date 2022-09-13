@@ -34,6 +34,10 @@ MonoBehaviour:
   auraSlowdown: 0
   _damage: 10
   damage: 10
+  _damageOverTimeDuration: 0
+  damageOverTimeDuration: 0
+  _damageOverTimeCooldown: 0
+  damageOverTimeCooldown: 0
   _damageOverTime: 0
   damageOverTime: 0
   _missilesPerSecond: 5
@@ -52,6 +56,8 @@ MonoBehaviour:
   laserActivationTime: 0
   _timeToDeactiveLaser: 0
   timeToDeactiveLaser: 0
+  _slowdownEffectDuration: 0
+  slowdownEffectDuration: 0
   _slowdownEffectiveness: 0
   slowdownEffectiveness: 0
   _auraDamage: 0

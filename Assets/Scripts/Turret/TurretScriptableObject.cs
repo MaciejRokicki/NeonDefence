@@ -17,13 +17,13 @@ public class TurretScriptableObject : ScriptableObject
     private bool _laser;
     public bool laser;
 
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private bool _dealDamageOverTime;
     public bool dealDamageOverTime;
     [SerializeField]    //TODO: todo
     private bool _explosiveMissile;
     public bool explosiveMissile;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private bool _slowdownOnMissileHit;
     public bool slowdownOnMissileHit;
     [SerializeField]    //TODO: todo
@@ -40,7 +40,13 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private float _damage;
     public float damage;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
+    private float _damageOverTimeDuration;
+    public float damageOverTimeDuration;
+    [SerializeField]
+    private float _damageOverTimeCooldown;
+    public float damageOverTimeCooldown;
+    [SerializeField]
     private float _damageOverTime;
     public float damageOverTime;
     [SerializeField]
@@ -67,7 +73,10 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private float _timeToDeactiveLaser;
     public float timeToDeactiveLaser;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
+    private float _slowdownEffectDuration;
+    public float slowdownEffectDuration;
+    [SerializeField]
     private float _slowdownEffectiveness;
     public float slowdownEffectiveness;
 
@@ -151,6 +160,8 @@ public class TurretScriptableObject : ScriptableObject
         auraSlowdown = _auraSlowdown;
 
         damage = _damage;
+        damageOverTimeDuration = _damageOverTimeDuration;
+        damageOverTimeCooldown = _damageOverTimeCooldown;
         damageOverTime = _damageOverTime;
         missilesPerSecond = _missilesPerSecond;
         missileSpeed = _missileSpeed;
@@ -160,6 +171,7 @@ public class TurretScriptableObject : ScriptableObject
         rotationSpeed = _rotationSpeed;
         laserActivationTime = _laserActivationTime;
         timeToDeactiveLaser = _timeToDeactiveLaser;
+        slowdownEffectDuration = _slowdownEffectDuration;
         slowdownEffectiveness = _slowdownEffectiveness;
 
         auraDamage = _auraDamage;
