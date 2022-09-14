@@ -26,7 +26,7 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private bool _slowdownOnMissileHit;
     public bool slowdownOnMissileHit;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private bool _penetrationMissile;
     public bool penetrationMissile;
     [SerializeField]
