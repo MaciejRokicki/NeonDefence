@@ -20,7 +20,7 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private bool _dealDamageOverTime;
     public bool dealDamageOverTime;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private bool _explosiveMissile;
     public bool explosiveMissile;
     [SerializeField]
@@ -61,7 +61,13 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private float _range;
     public float range;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
+    private bool _copyMissileEffects;
+    public bool copyMissileEffects;
+    [SerializeField]
+    private float _explosionDamage;
+    public float explosionDamage;
+    [SerializeField]
     private float _explosionRange;
     public float explosionRange;
     [SerializeField]
@@ -124,6 +130,15 @@ public class TurretScriptableObject : ScriptableObject
     private Material _missileMaterial;
     public Material missileMaterial;
     [SerializeField]
+    private GameObject _explosionPrefab;
+    public GameObject explosionPrefab;
+    [SerializeField]
+    private Sprite _explosionSprite;
+    public Sprite explosionSprite;
+    [SerializeField]
+    private Material _explosionMaterial;
+    public Material explosionMaterial;
+    [SerializeField]
     private GameObject _auraPrefab;
     public GameObject auraPrefab;
     [SerializeField]
@@ -167,6 +182,8 @@ public class TurretScriptableObject : ScriptableObject
         missileSpeed = _missileSpeed;
         laserHitsPerSecond = _laserHitsPerSecond;
         range = _range;
+        copyMissileEffects = _copyMissileEffects;
+        explosionDamage = _explosionDamage;
         explosionRange = _explosionRange;
         rotationSpeed = _rotationSpeed;
         laserActivationTime = _laserActivationTime;
@@ -189,6 +206,9 @@ public class TurretScriptableObject : ScriptableObject
         missileSpriteSize = _missileSpriteSize;
         missileSprite = _missileSprite;
         missileMaterial = _missileMaterial;
+        explosionPrefab = _explosionPrefab;
+        explosionSprite = _explosionSprite;
+        explosionMaterial = _explosionMaterial;
         auraPrefab = _auraPrefab;
         auraSprite = _auraSprite;
         auraMaterial = _auraMaterial;

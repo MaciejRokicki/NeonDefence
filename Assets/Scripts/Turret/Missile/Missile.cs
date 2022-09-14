@@ -11,23 +11,25 @@ public class Missile : MonoBehaviour
 
     private MissileShotEffectComponent missileComponent;
 
+    private bool hittedOnce = false;
+
     private void Start()
     {
         missileComponent = new BasicMissileShotEffectComponent();
 
         if (turret.data.dealDamageOverTime)
         {
-            missileComponent = new MissileShotDamageOverTimeEffectDecorator(turret, missileComponent);
-        }
-
-        if (turret.data.explosiveMissile)
-        {
-            missileComponent = new MissileShotExplosiveEffectDecorator(turret, missileComponent);
+            missileComponent = new MissileShotDamageOverTimeEffectDecorator(turret, gameObject, missileComponent);
         }
 
         if (turret.data.slowdownOnMissileHit)
         {
-            missileComponent = new MissileShotSlowdownEffectDecorator(turret, missileComponent);
+            missileComponent = new MissileShotSlowdownEffectDecorator(turret, gameObject, missileComponent);
+        }
+
+        if (turret.data.explosiveMissile)
+        {
+            missileComponent = new MissileShotExplosiveEffectDecorator(turret, gameObject, missileComponent);
         }
 
         if (turret.data.needTarget)
@@ -63,12 +65,22 @@ public class Missile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
-            target = null;
-
-            if (!turret.data.penetrationMissile && !turret.data.laser)
+            if(turret.data.penetrationMissile || turret.data.laser)
             {
-                Destroy(gameObject);
+                missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
+                target = null;
+            }
+            else
+            {
+                if (!hittedOnce)
+                {
+                    hittedOnce = true;
+
+                    missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
+                    target = null;
+
+                    Destroy(gameObject);
+                }
             }
         }
     }

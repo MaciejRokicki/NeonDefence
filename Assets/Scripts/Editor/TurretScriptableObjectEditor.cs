@@ -25,6 +25,8 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _missileSpeed;
     SerializedProperty _laserHitsPerSecond;
     SerializedProperty _range;
+    SerializedProperty _copyMissileEffects;
+    SerializedProperty _explosionDamage;
     SerializedProperty _explosionRange;
     SerializedProperty _rotationSpeed;
     SerializedProperty _laserActivationTime;
@@ -47,6 +49,9 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _missileSpriteSize;
     SerializedProperty _missileSprite;
     SerializedProperty _missileMaterial;
+    SerializedProperty _explosionPrefab;
+    SerializedProperty _explosionSprite;
+    SerializedProperty _explosionMaterial;
     SerializedProperty _auraPrefab;
     SerializedProperty _auraSprite;
     SerializedProperty _auraMaterial;
@@ -79,6 +84,8 @@ public class TurreteScriptableObjectEditor : Editor
         _missileSpeed = serializedObject.FindProperty("_missileSpeed");
         _laserHitsPerSecond = serializedObject.FindProperty("_laserHitsPerSecond");
         _range = serializedObject.FindProperty("_range");
+        _copyMissileEffects = serializedObject.FindProperty("_copyMissileEffects");
+        _explosionDamage = serializedObject.FindProperty("_explosionDamage");
         _explosionRange = serializedObject.FindProperty("_explosionRange");
         _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
         _laserActivationTime = serializedObject.FindProperty("_laserActivationTime");
@@ -101,6 +108,9 @@ public class TurreteScriptableObjectEditor : Editor
         _missileSpriteSize = serializedObject.FindProperty("_missileSpriteSize");
         _missileSprite = serializedObject.FindProperty("_missileSprite");
         _missileMaterial = serializedObject.FindProperty("_missileMaterial");
+        _explosionPrefab = serializedObject.FindProperty("_explosionPrefab");
+        _explosionSprite = serializedObject.FindProperty("_explosionSprite");
+        _explosionMaterial = serializedObject.FindProperty("_explosionMaterial");
         _auraPrefab = serializedObject.FindProperty("_auraPrefab");
         _auraSprite = serializedObject.FindProperty("_auraSprite");
         _auraMaterial = serializedObject.FindProperty("_auraMaterial");
@@ -180,6 +190,8 @@ public class TurreteScriptableObjectEditor : Editor
 
             if (_explosiveMissile.boolValue)
             {
+                EditorGUILayout.PropertyField(_copyMissileEffects);
+                EditorGUILayout.PropertyField(_explosionDamage);
                 EditorGUILayout.PropertyField(_explosionRange);
             }
 
@@ -233,6 +245,13 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.PropertyField(_cannonPrefab);
             EditorGUILayout.PropertyField(_cannonSprite);
             EditorGUILayout.PropertyField(_cannonMaterial);
+
+            if (_explosiveMissile.boolValue)
+            {
+                EditorGUILayout.PropertyField(_explosionPrefab);
+                EditorGUILayout.PropertyField(_explosionSprite);
+                EditorGUILayout.PropertyField(_explosionMaterial);
+            }
         }
 
         if (_aura.boolValue)

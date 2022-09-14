@@ -1,6 +1,8 @@
-﻿public class MissileShotDamageOverTimeEffectDecorator : MissileShotEffectBaseDecorator
+﻿using UnityEngine;
+
+public class MissileShotDamageOverTimeEffectDecorator : MissileShotEffectBaseDecorator
 {
-    public MissileShotDamageOverTimeEffectDecorator(Turret turret, MissileShotEffectComponent missileComponent) : base(turret, missileComponent) { }
+    public MissileShotDamageOverTimeEffectDecorator(Turret turret, GameObject missile, MissileShotEffectComponent missileComponent) : base(turret, missile, missileComponent) { }
 
     public override void OnHitEffect(Enemy enemy)
     {

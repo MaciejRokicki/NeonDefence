@@ -1,6 +1,8 @@
-﻿public class MissileShotSlowdownEffectDecorator : MissileShotEffectBaseDecorator
+﻿using UnityEngine;
+
+public class MissileShotSlowdownEffectDecorator : MissileShotEffectBaseDecorator
 {
-    public MissileShotSlowdownEffectDecorator(Turret turret, MissileShotEffectComponent missileComponent) : base(turret, missileComponent) { }  
+    public MissileShotSlowdownEffectDecorator(Turret turret,  GameObject missile, MissileShotEffectComponent missileComponent) : base(turret, missile, missileComponent) { }  
 
     public override void OnHitEffect(Enemy enemy)
     {

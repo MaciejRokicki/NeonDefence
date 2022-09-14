@@ -13,8 +13,6 @@ public class EnemyDamageOverTimeEffect : EnemyEffect
         this.effectDuration = effectDuration;
         this.damageCooldown = damageCooldown;
         this.damageOverTime = damageOverTime;
-
-        ApplyEffect();
     }
 
     public override void ApplyEffect()
@@ -30,7 +28,7 @@ public class EnemyDamageOverTimeEffect : EnemyEffect
         {
             if(enemyDamageOverTime.turret == turret)
             {
-                effectDuration = 0.0f;
+                effectTimer = 0.0f;
 
                 return true;
             }
