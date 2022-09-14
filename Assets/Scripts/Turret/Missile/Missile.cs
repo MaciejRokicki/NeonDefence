@@ -13,13 +13,33 @@ public class Missile : MonoBehaviour
 
     private void Start()
     {
-        if(turret.data.needTarget)
+        missileComponent = new BasicMissileShotEffectComponent();
+
+        if (turret.data.dealDamageOverTime)
         {
-            missileTypeStrategy = new MissileBasicTypeStrategy(gameObject, turret);
+            missileComponent = new MissileShotDamageOverTimeEffectDecorator(turret, missileComponent);
         }
-        else if(turret.data.laser)
+
+        if (turret.data.explosiveMissile)
         {
-            missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret);
+            missileComponent = new MissileShotExplosiveEffectDecorator(turret, missileComponent);
+        }
+
+        if (turret.data.slowdownOnMissileHit)
+        {
+            missileComponent = new MissileShotSlowdownEffectDecorator(turret, missileComponent);
+        }
+
+        if (turret.data.needTarget)
+        {
+            if (turret.data.laser)
+            {
+                missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret, missileComponent);
+            }
+            else
+            {
+                missileTypeStrategy = new MissileBasicTypeStrategy(gameObject, turret, missileComponent);
+            }
         }
 
         if(turret.data.trackingMissile)
@@ -29,23 +49,6 @@ public class Missile : MonoBehaviour
         else
         {
             trackingMissileStrategy = new BasicTrackingMissileStrategy(gameObject, turret);
-        }
-
-        missileComponent = new BasicMissileShotEffectComponent();
-
-        if(turret.data.dealDamageOverTime)
-        {
-            missileComponent = new MissileShotDamageOverTimeEffectDecorator(turret, missileComponent);
-        }
-
-        if(turret.data.explosiveMissile)
-        {
-            missileComponent = new MissileShotExplosiveEffectDecorator(turret, missileComponent);
-        }
-
-        if(turret.data.slowdownOnMissileHit)
-        {
-            missileComponent = new MissileShotSlowdownEffectDecorator(turret, missileComponent);
         }
 
         missileTypeStrategy.Start();
@@ -62,8 +65,6 @@ public class Missile : MonoBehaviour
         {
             missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
             target = null;
-
-            missileComponent.OnHitEffect(collision.GetComponent<Enemy>());
 
             if (!turret.data.penetrationMissile && !turret.data.laser)
             {
@@ -101,4 +102,6 @@ public class Missile : MonoBehaviour
 
         return this;
     }
+
+    public GameObject GetTarget() => target;
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
+    private CircleCollider2D cannonCollider;
+
     private Turret turret;
     [HideInInspector]
     public GameObject target;
@@ -14,10 +17,21 @@ public class Cannon : MonoBehaviour
     private List<GameObject> enemiesInRange;
     private float nearestDistance;
 
-    private void Start()
+    private void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        cannonCollider = GetComponent<CircleCollider2D>();
+
         enemiesInRange = new List<GameObject>();
         enemyLayerMask = LayerMask.GetMask("Enemy");
+    }
+
+    private void Start()
+    {
+        spriteRenderer.sprite = turret.data.cannonSprite;
+        spriteRenderer.material = turret.data.cannonMaterial;
+
+        cannonCollider.radius = turret.data.range + 0.5f;
 
         if(!turret.data.laser)
         {
@@ -70,6 +84,11 @@ public class Cannon : MonoBehaviour
         transform.rotation = rotation;
     }
 
+    public void SetTurret(Turret turret)
+    {
+        this.turret = turret;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
@@ -97,10 +116,5 @@ public class Cannon : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.rotation * Vector2.up * (turret.data.range + transform.localScale.x / 2), Color.red);
         }
-    }
-
-    public void SetTurret(Turret turret)
-    {
-        this.turret = turret;
     }
 }

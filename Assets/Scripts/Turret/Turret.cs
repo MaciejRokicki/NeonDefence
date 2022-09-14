@@ -6,33 +6,22 @@ public class Turret : MonoBehaviour
     public TurretScriptableObject data;
 
     private GameObject cannon;
-    private GameObject aura;
+    private GameObject aura; //TODO: todo
 
-    private SpriteRenderer turretSpriteRenderer;
-    private SpriteRenderer cannonSpriteRenderer;
-    private SpriteRenderer auraSpriteRenderer;
-
-    private CircleCollider2D cannonCollider;
-    private CircleCollider2D auraCollider;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        turretSpriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if(data.needTarget)
         {
             cannon = Instantiate(data.cannonPrefab, transform.position, Quaternion.identity, transform);
-
-            cannonSpriteRenderer = cannon.GetComponent<SpriteRenderer>();
-            cannonCollider = cannon.GetComponent<CircleCollider2D>();
         }
 
         if (data.aura)
         {
-            cannon = Instantiate(data.auraPrefab, transform.position, Quaternion.identity, transform);
-
-            auraSpriteRenderer = aura.GetComponent<SpriteRenderer>();
-            auraCollider = aura.GetComponent<CircleCollider2D>();
+            aura = Instantiate(data.auraPrefab, transform.position, Quaternion.identity, transform);
         }
 
         cannon.GetComponent<Cannon>().SetTurret(this);
@@ -40,23 +29,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        turretSpriteRenderer.sprite = data.turretSprite;
-        turretSpriteRenderer.material = data.turretMaterial;
-        
-        if(data.needTarget)
-        {
-            cannonSpriteRenderer.sprite = data.cannonSprite;
-            cannonSpriteRenderer.material = data.cannonMaterial;
-
-            cannonCollider.radius = data.range + 0.5f;
-        }
-
-        if (data.aura)
-        {
-            auraSpriteRenderer.sprite = data.cannonSprite;
-            auraSpriteRenderer.material = data.cannonMaterial;
-
-            auraCollider.radius = data.auraRange + 0.5f;
-        }
+        spriteRenderer.sprite = data.turretSprite;
+        spriteRenderer.material = data.turretMaterial;
     }
 }

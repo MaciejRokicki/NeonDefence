@@ -4,14 +4,19 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
 {
     private float timer = 0.0f;
 
-    public MissileLaserTypeStrategy(GameObject baseGameObject, Turret turret) : base(baseGameObject, turret) { }
+    private BoxCollider2D collider;
+
+    public MissileLaserTypeStrategy(GameObject baseGameObject, Turret turret, MissileShotEffectComponent missileComponent) : base(baseGameObject, turret, missileComponent) { }
 
     public override void Start()
     {
+        collider = baseGameObject.GetComponent<BoxCollider2D>();
+
         spriteRenderer.sprite = turret.data.missileSprite;
         spriteRenderer.material = turret.data.missileMaterial;
-        baseGameObject.GetComponent<BoxCollider2D>().offset = turret.data.missileColliderOffset;
-        spriteRenderer.size = baseGameObject.GetComponent<BoxCollider2D>().size = Vector2.zero;
+        spriteRenderer.size = Vector2.zero;
+        collider.offset = turret.data.missileColliderOffset;
+        collider.size = turret.data.missileColliderSize;
     }
 
     public override void OnEnemyTriggerStay2D(Collider2D collision)
@@ -20,7 +25,9 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
 
         if (timer > 1.0f / turret.data.laserHitsPerSecond)
         {
+            missileComponent.OnHitEffect(collision.GetComponent<Enemy>());
             collision.GetComponent<Enemy>().TakeDamage(turret.data.damage);
+
             timer = 0.0f;
         }
     }

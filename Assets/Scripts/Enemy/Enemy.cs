@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
     public void SetMovementSpeed(float movementSpeed)
     {
         this.movementSpeed = movementSpeed;
-        Debug.Log(this.movementSpeed);
+
         Vector2 direction = (waypointTarget.position - transform.position).normalized;
         rb.velocity = direction * movementSpeed;
     }
