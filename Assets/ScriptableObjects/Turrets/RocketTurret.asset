@@ -21,11 +21,11 @@ MonoBehaviour:
   _laser: 0
   laser: 0
   _dealDamageOverTime: 0
-  dealDamageOverTime: 0
+  dealDamageOverTime: 1
   _explosiveMissile: 0
   explosiveMissile: 0
   _slowdownOnMissileHit: 0
-  slowdownOnMissileHit: 0
+  slowdownOnMissileHit: 1
   _penetrationMissile: 0
   penetrationMissile: 0
   _trackingMissile: 1
@@ -33,9 +33,13 @@ MonoBehaviour:
   _auraSlowdown: 0
   auraSlowdown: 0
   _damage: 20
-  damage: 20
-  _damageOverTime: 0
-  damageOverTime: 0
+  damage: 1
+  _damageOverTimeDuration: 3
+  damageOverTimeDuration: 3
+  _damageOverTimeCooldown: 1
+  damageOverTimeCooldown: 1
+  _damageOverTime: 3
+  damageOverTime: 3
   _missilesPerSecond: 1
   missilesPerSecond: 1
   _missileSpeed: 10
@@ -52,8 +56,10 @@ MonoBehaviour:
   laserActivationTime: 0
   _timeToDeactiveLaser: 0
   timeToDeactiveLaser: 0
-  _slowdownEffectiveness: 0
-  slowdownEffectiveness: 0
+  _slowdownEffectDuration: 1
+  slowdownEffectDuration: 1
+  _slowdownEffectiveness: 0.5
+  slowdownEffectiveness: 0.5
   _auraDamage: 0
   auraDamage: 0
   _auraRange: 0

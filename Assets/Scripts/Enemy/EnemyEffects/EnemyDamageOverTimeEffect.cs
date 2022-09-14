@@ -8,7 +8,7 @@ public class EnemyDamageOverTimeEffect : EnemyEffect
     private float effectDuration;
     private float damageOverTime;
 
-    public EnemyDamageOverTimeEffect(Enemy enemy, float effectDuration, float damageCooldown, float damageOverTime) : base(enemy)
+    public EnemyDamageOverTimeEffect(Turret turret, Enemy enemy, float effectDuration, float damageCooldown, float damageOverTime) : base(turret, enemy)
     {
         this.effectDuration = effectDuration;
         this.damageCooldown = damageCooldown;
@@ -17,18 +17,23 @@ public class EnemyDamageOverTimeEffect : EnemyEffect
         ApplyEffect();
     }
 
-    protected override void ApplyEffect()
+    public override void ApplyEffect()
     {
         enemy.TakeDamage(damageOverTime);
     }
 
     public override bool CheckDuplicates(EnemyEffect enemyEffect)
     {
-        EnemyDamageOverTimeEffect enemySlowdownEffect = enemyEffect as EnemyDamageOverTimeEffect;
+        EnemyDamageOverTimeEffect enemyDamageOverTime = enemyEffect as EnemyDamageOverTimeEffect;
 
-        if (enemySlowdownEffect != null)
+        if (enemyDamageOverTime != null)
         {
-            return true;
+            if(enemyDamageOverTime.turret == turret)
+            {
+                effectDuration = 0.0f;
+
+                return true;
+            }
         }
 
         return false;

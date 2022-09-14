@@ -1,13 +1,15 @@
 ﻿public abstract class EnemyEffect
 {
+    protected Turret turret;
     protected Enemy enemy;
 
-    protected EnemyEffect(Enemy enemy)
+    protected EnemyEffect(Turret turret, Enemy enemy)
     {
+        this.turret = turret;
         this.enemy = enemy;
     }
 
-    protected abstract void ApplyEffect();
+    public abstract void ApplyEffect();
     protected virtual void RemoveEffect() {  }
     public abstract bool CheckDuplicates(EnemyEffect enemyEffect);
 

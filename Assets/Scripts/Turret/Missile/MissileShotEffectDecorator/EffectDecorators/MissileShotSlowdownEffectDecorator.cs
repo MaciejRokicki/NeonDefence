@@ -5,6 +5,6 @@
     public override void OnHitEffect(Enemy enemy)
     {
         missileComponent.OnHitEffect(enemy);
-        enemy.ApplyEffect(new EnemySlowdownEffect(enemy, turret.data.slowdownEffectDuration, turret.data.slowdownEffectiveness));
+        enemy.ApplyEffect(new EnemySlowdownEffect(turret, enemy, turret.data.slowdownEffectDuration, turret.data.slowdownEffectiveness));
     }
 }

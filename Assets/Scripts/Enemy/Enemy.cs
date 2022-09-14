@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] //TODO: usunac SerializeField
     private float health;
     [SerializeField]
-    private float movementSpeed;
+    public float movementSpeed;
 
     private int currentWaypointId = -1;
     private Transform waypointTarget;
@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     private void SetNextWaypoint()
@@ -121,17 +121,21 @@ public class Enemy : MonoBehaviour
 
     public void ApplyEffect(EnemyEffect enemyEffect)
     {
+        bool isEffectDuplicated = false;
+
         foreach (EnemyEffect enemy in effects)
         {
             if(enemy.CheckDuplicates(enemyEffect))
             {
-                RemoveEffect(enemy);
-
-                break;
+                isEffectDuplicated = true;
             }
         }
 
-        effects.Add(enemyEffect);
+        if(!isEffectDuplicated)
+        {
+            effects.Add(enemyEffect);
+            enemyEffect.ApplyEffect();
+        }
     }
 
     public void RemoveEffect(EnemyEffect enemyEffect)
