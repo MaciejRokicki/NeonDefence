@@ -2,7 +2,7 @@
 
 public class MissileBasicTypeStrategy : MissileTypeStrategy
 {
-    public MissileBasicTypeStrategy(GameObject baseGameObject, Turret turret, MissileShotEffectComponent missileComponent) : base(baseGameObject, turret, missileComponent) { }
+    public MissileBasicTypeStrategy(GameObject baseGameObject, Turret turret, EnemyHitEffectComponent enemyHitEffectComponent) : base(baseGameObject, turret, enemyHitEffectComponent) { }
 
     public override void Start()
     {
@@ -15,7 +15,7 @@ public class MissileBasicTypeStrategy : MissileTypeStrategy
 
     public override void OnEnemyTriggerEnter2D(Collider2D collision)
     {
-        missileComponent.OnHitEffect(collision.GetComponent<Enemy>());
+        enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
         collision.GetComponent<Enemy>().TakeDamage(turret.data.damage);
     }
 }

@@ -26,7 +26,7 @@ public class EnemyDamageOverTimeEffect : EnemyEffect
 
         if (enemyDamageOverTime != null)
         {
-            if(enemyDamageOverTime.turret == turret)
+            if (enemyDamageOverTime.turret.data == turret.data)
             {
                 effectTimer = 0.0f;
 

@@ -6,7 +6,7 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
 
     private BoxCollider2D collider;
 
-    public MissileLaserTypeStrategy(GameObject baseGameObject, Turret turret, MissileShotEffectComponent missileComponent) : base(baseGameObject, turret, missileComponent) { }
+    public MissileLaserTypeStrategy(GameObject baseGameObject, Turret turret, EnemyHitEffectComponent enemyHitEffectComponent) : base(baseGameObject, turret, enemyHitEffectComponent) { }
 
     public override void Start()
     {
@@ -25,7 +25,7 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
 
         if (timer > 1.0f / turret.data.laserHitsPerSecond)
         {
-            missileComponent.OnHitEffect(collision.GetComponent<Enemy>());
+            enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
             collision.GetComponent<Enemy>().TakeDamage(turret.data.damage);
 
             timer = 0.0f;

@@ -1,6 +1,6 @@
 ﻿public abstract class EnemyEffect
 {
-    protected Turret turret;
+    public Turret turret;
     protected Enemy enemy;
 
     protected EnemyEffect(Turret turret, Enemy enemy)
@@ -10,7 +10,7 @@
     }
 
     public abstract void ApplyEffect();
-    protected virtual void RemoveEffect() {  }
+    public virtual void RemoveEffect() { }
     public abstract bool CheckDuplicates(EnemyEffect enemyEffect);
 
     public abstract void EffectUpdate();

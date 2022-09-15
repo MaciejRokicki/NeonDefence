@@ -9,38 +9,51 @@ public class Missile : MonoBehaviour
     private MissileTypeStrategy missileTypeStrategy;
     private TrackingMissileStrategy trackingMissileStrategy;
 
-    private MissileShotEffectComponent missileComponent;
+    private EnemyHitEffectComponent enemyHitEffectComponent;
 
     private bool hittedOnce = false;
 
     private void Start()
     {
-        missileComponent = new BasicMissileShotEffectComponent();
+        enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
 
         if (turret.data.dealDamageOverTime)
         {
-            missileComponent = new MissileShotDamageOverTimeEffectDecorator(turret, gameObject, missileComponent);
+            enemyHitEffectComponent = new DamageOverTimeEffectDecorator(
+                turret, 
+                gameObject, 
+                enemyHitEffectComponent, 
+                turret.data.damageOverTimeDuration, 
+                turret.data.damageOverTimeCooldown, 
+                turret.data.damageOverTime
+            );
         }
 
         if (turret.data.slowdownOnMissileHit)
         {
-            missileComponent = new MissileShotSlowdownEffectDecorator(turret, gameObject, missileComponent);
+            enemyHitEffectComponent = new SlowdownEffectDecorator(
+                turret, 
+                gameObject, 
+                enemyHitEffectComponent, 
+                turret.data.slowdownEffectDuration, 
+                turret.data.slowdownEffectiveness
+            );
         }
 
         if (turret.data.explosiveMissile)
         {
-            missileComponent = new MissileShotExplosiveEffectDecorator(turret, gameObject, missileComponent);
+            enemyHitEffectComponent = new ExplosiveEffectDecorator(turret, gameObject, enemyHitEffectComponent);
         }
 
         if (turret.data.needTarget)
         {
             if (turret.data.laser)
             {
-                missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret, missileComponent);
+                missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret, enemyHitEffectComponent);
             }
             else
             {
-                missileTypeStrategy = new MissileBasicTypeStrategy(gameObject, turret, missileComponent);
+                missileTypeStrategy = new MissileBasicTypeStrategy(gameObject, turret, enemyHitEffectComponent);
             }
         }
 

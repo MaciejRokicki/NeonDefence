@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private List<EnemyEffect> effects;
 
-    [SerializeField] //TODO: usunac SerializeField
+    [SerializeField]
     private float health;
     [SerializeField]
     public float movementSpeed;
@@ -140,6 +140,18 @@ public class Enemy : MonoBehaviour
 
     public void RemoveEffect(EnemyEffect enemyEffect)
     {
+        enemyEffect.RemoveEffect();
         effects.Remove(enemyEffect);
+    }
+
+    public void RemoveEffects(Turret turret)
+    {
+        foreach (EnemyEffect enemy in effects)
+        {
+            if (enemy.turret == turret)
+            {
+                enemy.RemoveEffect();
+            }
+        }
     }
 }

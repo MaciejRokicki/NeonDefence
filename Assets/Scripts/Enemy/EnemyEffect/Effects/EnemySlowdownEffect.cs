@@ -17,7 +17,7 @@ public class EnemySlowdownEffect : EnemyEffect
         enemy.SetMovementSpeed(enemy.movementSpeed - slowdownEffectiveness);
     }
 
-    protected override void RemoveEffect()
+    public override void RemoveEffect()
     {
         enemy.SetMovementSpeed(enemy.movementSpeed + slowdownEffectiveness);
     }
@@ -28,7 +28,7 @@ public class EnemySlowdownEffect : EnemyEffect
 
         if(enemySlowdownEffect != null)
         {
-            if(enemySlowdownEffect.turret == turret)
+            if(enemySlowdownEffect.turret.data == turret.data)
             {
                 effectTimer = 0.0f;
 
@@ -45,7 +45,6 @@ public class EnemySlowdownEffect : EnemyEffect
 
         if(effectTimer > effectDuration)
         {
-            RemoveEffect();
             enemy.RemoveEffect(this);
         }
     }

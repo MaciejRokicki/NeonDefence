@@ -3,7 +3,7 @@ using UnityEngine;
 public class MissileExplosion : MonoBehaviour
 {
     private Turret turret;
-    private MissileShotEffectComponent missileShotEffectComponent;
+    private EnemyHitEffectComponent missileShotEffectComponent;
 
     private SpriteRenderer spriteRenderer;
 
@@ -28,7 +28,7 @@ public class MissileExplosion : MonoBehaviour
         {
             foreach (RaycastHit2D hit in hitAll)
             {
-                missileShotEffectComponent.OnHitEffect(hit.transform.gameObject.GetComponent<Enemy>());
+                missileShotEffectComponent.OnEnemyEnter(hit.transform.gameObject.GetComponent<Enemy>());
                 hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.data.explosionDamage);
             }
         }
@@ -72,7 +72,7 @@ public class MissileExplosion : MonoBehaviour
         return this;
     }
 
-    public MissileExplosion SetMissileShotEffectComponent(MissileShotEffectComponent missileShotEffectComponent)
+    public MissileExplosion SetMissileShotEffectComponent(EnemyHitEffectComponent missileShotEffectComponent)
     {
         this.missileShotEffectComponent = missileShotEffectComponent;
 

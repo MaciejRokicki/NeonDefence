@@ -4,14 +4,14 @@ public abstract class MissileTypeStrategy
 {
     protected GameObject baseGameObject;
     protected Turret turret;
-    protected MissileShotEffectComponent missileComponent;
+    protected EnemyHitEffectComponent enemyHitEffectComponent;
     protected SpriteRenderer spriteRenderer;
 
-    public MissileTypeStrategy(GameObject baseGameObject, Turret turret, MissileShotEffectComponent missileComponent)
+    public MissileTypeStrategy(GameObject baseGameObject, Turret turret, EnemyHitEffectComponent enemyHitEffectComponent)
     {
         this.baseGameObject = baseGameObject;
         this.turret = turret;
-        this.missileComponent = missileComponent;
+        this.enemyHitEffectComponent = enemyHitEffectComponent;
         spriteRenderer = baseGameObject.GetComponent<SpriteRenderer>();
     }
 

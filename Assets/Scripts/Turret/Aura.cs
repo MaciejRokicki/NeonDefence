@@ -7,6 +7,8 @@ public class Aura : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private CircleCollider2D circleCollider;
 
+    private EnemyHitEffectComponent enemyHitEffectComponent;
+
     private float pulseTimer = 0.0f;
     private float pulseAnimationTimer = 0.0f;
     [SerializeField]
@@ -24,6 +26,19 @@ public class Aura : MonoBehaviour
         spriteRenderer.material = turret.data.auraMaterial;
         spriteRenderer.size = new Vector2(turret.data.auraRange, turret.data.auraRange);
         circleCollider.radius = turret.data.auraRange / 2;
+
+        enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
+
+        if (turret.data.auraSlowdown)
+        {
+            enemyHitEffectComponent = new SlowdownEffectDecorator(
+                turret, 
+                gameObject, 
+                enemyHitEffectComponent,
+                float.PositiveInfinity,
+                turret.data.auraSlowdownEffectiveness
+            );
+        }
 
         enemies = new List<GameObject>();
     }
@@ -58,6 +73,7 @@ public class Aura : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
+            enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
             enemies.Add(collision.gameObject);
         }
     }
@@ -66,6 +82,7 @@ public class Aura : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            enemyHitEffectComponent.OnEnemyExit(collision.GetComponent<Enemy>());
             enemies.Remove(collision.gameObject);
         }
     }

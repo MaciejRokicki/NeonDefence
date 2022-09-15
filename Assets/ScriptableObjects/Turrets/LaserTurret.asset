@@ -26,8 +26,8 @@ MonoBehaviour:
   explosiveMissile: 0
   _slowdownOnMissileHit: 0
   slowdownOnMissileHit: 0
-  _penetrationMissile: 1
-  penetrationMissile: 1
+  _penetrationMissile: 0
+  penetrationMissile: 0
   _trackingMissile: 0
   trackingMissile: 0
   _auraSlowdown: 0
