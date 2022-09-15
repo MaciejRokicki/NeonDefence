@@ -6,7 +6,7 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField] 
     private bool _needTarget;
     public bool needTarget;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private bool _aura;
     public bool aura;
 
@@ -86,10 +86,10 @@ public class TurretScriptableObject : ScriptableObject
     private float _slowdownEffectiveness;
     public float slowdownEffectiveness;
 
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private float _auraDamage;
     public float auraDamage;
-    [SerializeField]    //TODO: todo
+    [SerializeField]
     private float _auraRange;
     public float auraRange;
     [SerializeField]    //TODO: todo

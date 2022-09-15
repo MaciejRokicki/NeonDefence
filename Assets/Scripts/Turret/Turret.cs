@@ -6,7 +6,7 @@ public class Turret : MonoBehaviour
     public TurretScriptableObject data;
 
     private GameObject cannon;
-    private GameObject aura; //TODO: todo
+    private GameObject aura;
 
     private SpriteRenderer spriteRenderer;
 
@@ -17,14 +17,14 @@ public class Turret : MonoBehaviour
         if(data.needTarget)
         {
             cannon = Instantiate(data.cannonPrefab, transform.position, Quaternion.identity, transform);
+            cannon.GetComponent<Cannon>().SetTurret(this);
         }
 
         if (data.aura)
         {
             aura = Instantiate(data.auraPrefab, transform.position, Quaternion.identity, transform);
+            aura.GetComponent<Aura>().SetTurret(this);
         }
-
-        cannon.GetComponent<Cannon>().SetTurret(this);
     }
 
     private void Start()

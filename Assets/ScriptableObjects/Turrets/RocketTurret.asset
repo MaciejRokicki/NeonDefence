@@ -21,7 +21,7 @@ MonoBehaviour:
   _laser: 0
   laser: 0
   _dealDamageOverTime: 0
-  dealDamageOverTime: 1
+  dealDamageOverTime: 0
   _explosiveMissile: 1
   explosiveMissile: 1
   _slowdownOnMissileHit: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
   _auraSlowdown: 0
   auraSlowdown: 0
   _damage: 20
-  damage: 0
+  damage: 20
   _damageOverTimeDuration: 3
   damageOverTimeDuration: 3
   _damageOverTimeCooldown: 1
@@ -41,7 +41,7 @@ MonoBehaviour:
   _damageOverTime: 3
   damageOverTime: 3
   _missilesPerSecond: 0.5
-  missilesPerSecond: 0.2
+  missilesPerSecond: 0.5
   _missileSpeed: 10
   missileSpeed: 10
   _laserHitsPerSecond: 0
@@ -49,9 +49,9 @@ MonoBehaviour:
   _range: 20
   range: 20
   _copyMissileEffects: 0
-  copyMissileEffects: 1
+  copyMissileEffects: 0
   _explosionDamage: 10
-  explosionDamage: 0
+  explosionDamage: 10
   _explosionRange: 3
   explosionRange: 3
   _rotationSpeed: 10
@@ -86,8 +86,8 @@ MonoBehaviour:
   missileColliderOffset: {x: 0, y: 0.07}
   _missileColliderSize: {x: 0.3, y: 0.7}
   missileColliderSize: {x: 0.3, y: 0.7}
-  _missileSpriteSize: {x: 1, y: 1}
-  missileSpriteSize: {x: 1, y: 1}
+  _missileSpriteSize: {x: 0.8, y: 0.8}
+  missileSpriteSize: {x: 0.8, y: 0.8}
   _missileSprite: {fileID: 21300000, guid: 7154774cf3172e2468c593dbef3eb999, type: 3}
   missileSprite: {fileID: 21300000, guid: 7154774cf3172e2468c593dbef3eb999, type: 3}
   _missileMaterial: {fileID: 2100000, guid: e715d7efa3276e141bd94f5e45dd234b, type: 2}
