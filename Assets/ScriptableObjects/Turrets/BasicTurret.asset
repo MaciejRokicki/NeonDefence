@@ -62,8 +62,8 @@ MonoBehaviour:
   timeToDeactiveLaser: 0
   _slowdownEffectDuration: 1
   slowdownEffectDuration: 1
-  _slowdownEffectiveness: 0.5
-  slowdownEffectiveness: 0.5
+  _slowdownEffectiveness: 0.8
+  slowdownEffectiveness: 0.8
   _auraDamage: 0
   auraDamage: 0
   _auraRange: 10
