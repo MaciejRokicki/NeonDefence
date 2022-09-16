@@ -2,27 +2,24 @@
 
 public class EnemySlowdownEffect : EnemyEffect
 {
-    private float effectTimer = 0.0f;
-    private float effectDuration;
     private float slowdownEffectiveness;
 
-    public EnemySlowdownEffect(Turret turret, Enemy enemy, float slowdownEffectDuration, float slowdownEffectiveness) : base(turret, enemy)
+    public EnemySlowdownEffect(Turret turret, Enemy enemy, float effectDuration, float slowdownEffectiveness) : base(turret, enemy, effectDuration)
     {
-        effectDuration = slowdownEffectDuration;
         this.slowdownEffectiveness = enemy.movementSpeed * slowdownEffectiveness;
     }
 
-    public override void ApplyEffect()
+    public override void OnEffectStart()
     {
         enemy.SetMovementSpeed(enemy.movementSpeed - slowdownEffectiveness);
     }
 
-    public override void RemoveEffect()
+    public override void OnEffectEnd()
     {
         enemy.SetMovementSpeed(enemy.movementSpeed + slowdownEffectiveness);
     }
 
-    public override void EffectUpdate()
+    public override void Update()
     {
         effectTimer += Time.deltaTime;
 
@@ -30,22 +27,5 @@ public class EnemySlowdownEffect : EnemyEffect
         {
             enemy.enemyEffectHandler.RemoveEffect(this);
         }
-    }
-
-    public override bool CheckDuplicates(EnemyEffect enemyEffect)
-    {
-        EnemySlowdownEffect enemySlowdownEffect = enemyEffect as EnemySlowdownEffect;
-
-        if(enemySlowdownEffect != null)
-        {
-            if(enemySlowdownEffect.turret.data == turret.data)
-            {
-                effectTimer = 0.0f;
-
-                return true;
-            }
-        }
-
-        return false;
     }
 }

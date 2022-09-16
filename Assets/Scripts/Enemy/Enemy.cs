@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        enemyEffectHandler = GetComponent<EnemyEffectHandler>().SetEnemy(this);
+        enemyEffectHandler = GetComponent<EnemyEffectHandler>();
     }
 
     void Start()

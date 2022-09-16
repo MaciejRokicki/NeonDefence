@@ -5,7 +5,6 @@ public class EnemyEffectHandler : MonoBehaviour
 {
     [SerializeField]
     private List<EnemyEffect> effects;
-    private Enemy enemy;
 
     private void Awake()
     {
@@ -18,50 +17,46 @@ public class EnemyEffectHandler : MonoBehaviour
         {
             if (effects[i] != null)
             {
-                effects[i].EffectUpdate();
+                effects[i].Update();
             }
         }
-    }
-
-    public EnemyEffectHandler SetEnemy(Enemy enemy)
-    {
-        this.enemy = enemy;
-
-        return this;
     }
 
     public void ApplyEffect(EnemyEffect enemyEffect)
     {
         bool isEffectDuplicated = false;
 
-        foreach (EnemyEffect enemy in effects)
+        foreach (EnemyEffect effect in effects)
         {
-            if (enemy.CheckDuplicates(enemyEffect))
+            if (effect.CheckDuplicates(enemyEffect))
             {
                 isEffectDuplicated = true;
+                break;
             }
         }
 
         if (!isEffectDuplicated)
         {
             effects.Add(enemyEffect);
-            enemyEffect.ApplyEffect();
+            enemyEffect.OnEffectStart();
         }
     }
 
     public void RemoveEffect(EnemyEffect enemyEffect)
     {
-        enemyEffect.RemoveEffect();
+        enemyEffect.OnEffectEnd();
         effects.Remove(enemyEffect);
     }
 
     public void RemoveEffects(Turret turret)
     {
-        foreach (EnemyEffect enemy in effects)
+        for (int i = 0; i < effects.Count; i++)
         {
-            if (enemy.turret == turret)
+            EnemyEffect enemyEffect = effects[i];
+
+            if (enemyEffect.turret == turret)
             {
-                enemy.RemoveEffect();
+                RemoveEffect(enemyEffect);
             }
         }
     }
