@@ -22,6 +22,16 @@ public class EnemySlowdownEffect : EnemyEffect
         enemy.SetMovementSpeed(enemy.movementSpeed + slowdownEffectiveness);
     }
 
+    public override void EffectUpdate()
+    {
+        effectTimer += Time.deltaTime;
+
+        if (effectTimer > effectDuration)
+        {
+            enemy.enemyEffectHandler.RemoveEffect(this);
+        }
+    }
+
     public override bool CheckDuplicates(EnemyEffect enemyEffect)
     {
         EnemySlowdownEffect enemySlowdownEffect = enemyEffect as EnemySlowdownEffect;
@@ -37,15 +47,5 @@ public class EnemySlowdownEffect : EnemyEffect
         }
 
         return false;
-    }
-
-    public override void EffectUpdate()
-    {
-        effectTimer += Time.deltaTime;
-
-        if(effectTimer > effectDuration)
-        {
-            enemy.RemoveEffect(this);
-        }
     }
 }

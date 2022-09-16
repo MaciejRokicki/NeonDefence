@@ -23,12 +23,12 @@ public class DamageOverTimeEffectDecorator : EnemyHitEffectBaseDecorator
     public override void OnEnemyEnter(Enemy enemy)
     {
         enemyHitEffectComponent.OnEnemyEnter(enemy);
-        enemy.ApplyEffect(new EnemyDamageOverTimeEffect(turret, enemy, effectDuration, effectCooldown, effectEffectiveness));
+        enemy.enemyEffectHandler.ApplyEffect(new EnemyDamageOverTimeEffect(turret, enemy, effectDuration, effectCooldown, effectEffectiveness));
     }
 
     public override void OnEnemyExit(Enemy enemy)
     {
         enemyHitEffectComponent.OnEnemyExit(enemy);
-        enemy.RemoveEffects(turret);
+        enemy.enemyEffectHandler.RemoveEffects(turret);
     }
 }

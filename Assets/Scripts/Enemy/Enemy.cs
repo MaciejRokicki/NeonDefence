@@ -1,20 +1,19 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteRenderer), typeof(EnemyEffectHandler))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
     public EnemyScriptableObject data;
     private Rigidbody2D rb;
-    [SerializeField]
-    private List<EnemyEffect> effects;
 
     [SerializeField]
     private float health;
     [SerializeField]
     public float movementSpeed;
+
+    public EnemyEffectHandler enemyEffectHandler;
 
     private int currentWaypointId = -1;
     private Transform waypointTarget;
@@ -23,7 +22,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        effects = new List<EnemyEffect>();
+        enemyEffectHandler = GetComponent<EnemyEffectHandler>().SetEnemy(this);
     }
 
     void Start()
@@ -45,17 +44,6 @@ public class Enemy : MonoBehaviour
         }
 
         SetNextWaypoint();
-    }
-
-    private void Update()
-    {
-        for(int i = 0; i < effects.Count; i++)
-        {
-            if (effects[i] != null)
-            {
-                effects[i].EffectUpdate();
-            }
-        }
     }
 
     private void FixedUpdate()
@@ -117,41 +105,5 @@ public class Enemy : MonoBehaviour
 
         Vector2 direction = (waypointTarget.position - transform.position).normalized;
         rb.velocity = direction * movementSpeed;
-    }
-
-    public void ApplyEffect(EnemyEffect enemyEffect)
-    {
-        bool isEffectDuplicated = false;
-
-        foreach (EnemyEffect enemy in effects)
-        {
-            if(enemy.CheckDuplicates(enemyEffect))
-            {
-                isEffectDuplicated = true;
-            }
-        }
-
-        if(!isEffectDuplicated)
-        {
-            effects.Add(enemyEffect);
-            enemyEffect.ApplyEffect();
-        }
-    }
-
-    public void RemoveEffect(EnemyEffect enemyEffect)
-    {
-        enemyEffect.RemoveEffect();
-        effects.Remove(enemyEffect);
-    }
-
-    public void RemoveEffects(Turret turret)
-    {
-        foreach (EnemyEffect enemy in effects)
-        {
-            if (enemy.turret == turret)
-            {
-                enemy.RemoveEffect();
-            }
-        }
     }
 }

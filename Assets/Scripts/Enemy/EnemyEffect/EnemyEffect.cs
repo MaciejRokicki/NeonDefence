@@ -11,7 +11,6 @@
 
     public abstract void ApplyEffect();
     public virtual void RemoveEffect() { }
-    public abstract bool CheckDuplicates(EnemyEffect enemyEffect);
-
     public abstract void EffectUpdate();
+    public abstract bool CheckDuplicates(EnemyEffect enemyEffect);
 }

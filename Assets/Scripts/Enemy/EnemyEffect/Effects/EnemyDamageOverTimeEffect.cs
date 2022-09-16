@@ -20,6 +20,23 @@ public class EnemyDamageOverTimeEffect : EnemyEffect
         enemy.TakeDamage(damageOverTime);
     }
 
+    public override void EffectUpdate()
+    {
+        effectTimer += Time.deltaTime;
+        damageCooldownTimer += Time.deltaTime;
+
+        if (damageCooldownTimer > damageCooldown)
+        {
+            ApplyEffect();
+            damageCooldownTimer = 0.0f;
+        }
+
+        if (effectTimer > effectDuration)
+        {
+            enemy.enemyEffectHandler.RemoveEffect(this);
+        }
+    }
+
     public override bool CheckDuplicates(EnemyEffect enemyEffect)
     {
         EnemyDamageOverTimeEffect enemyDamageOverTime = enemyEffect as EnemyDamageOverTimeEffect;
@@ -35,22 +52,5 @@ public class EnemyDamageOverTimeEffect : EnemyEffect
         }
 
         return false;
-    }
-
-    public override void EffectUpdate()
-    {
-        effectTimer += Time.deltaTime;
-        damageCooldownTimer += Time.deltaTime;
-
-        if(damageCooldownTimer > damageCooldown)
-        {
-            ApplyEffect();
-            damageCooldownTimer = 0.0f;
-        }
-
-        if (effectTimer > effectDuration)
-        {
-            enemy.RemoveEffect(this);
-        }
     }
 }

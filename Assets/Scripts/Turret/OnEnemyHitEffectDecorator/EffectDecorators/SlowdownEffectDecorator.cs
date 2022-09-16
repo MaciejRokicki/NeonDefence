@@ -19,12 +19,12 @@ public class SlowdownEffectDecorator : EnemyHitEffectBaseDecorator
     public override void OnEnemyEnter(Enemy enemy)
     {
         enemyHitEffectComponent.OnEnemyEnter(enemy);
-        enemy.ApplyEffect(new EnemySlowdownEffect(turret, enemy, effectDuration, effectEffectiveness));
+        enemy.enemyEffectHandler.ApplyEffect(new EnemySlowdownEffect(turret, enemy, effectDuration, effectEffectiveness));
     }
 
     public override void OnEnemyExit(Enemy enemy)
     {
         enemyHitEffectComponent.OnEnemyExit(enemy);
-        enemy.RemoveEffects(turret);
+        enemy.enemyEffectHandler.RemoveEffects(turret);
     }
 }
