@@ -6,16 +6,16 @@ public class MissileBasicTypeStrategy : MissileTypeStrategy
 
     public override void Start()
     {
-        spriteRenderer.sprite = turret.data.missileSprite;
-        spriteRenderer.material = turret.data.missileMaterial;
-        baseGameObject.GetComponent<BoxCollider2D>().offset = turret.data.missileColliderOffset;
-        baseGameObject.GetComponent<BoxCollider2D>().size = turret.data.missileColliderSize;
-        spriteRenderer.size = turret.data.missileSpriteSize;
+        spriteRenderer.sprite = turret.variant.missileSprite;
+        spriteRenderer.material = turret.variant.missileMaterial;
+        baseGameObject.GetComponent<BoxCollider2D>().offset = turret.variant.missileColliderOffset;
+        baseGameObject.GetComponent<BoxCollider2D>().size = turret.variant.missileColliderSize;
+        spriteRenderer.size = turret.variant.missileSpriteSize;
     }
 
     public override void OnEnemyTriggerEnter2D(Collider2D collision)
     {
         enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
-        collision.GetComponent<Enemy>().TakeDamage(turret.data.damage);
+        collision.GetComponent<Enemy>().TakeDamage(turret.damage);
     }
 }

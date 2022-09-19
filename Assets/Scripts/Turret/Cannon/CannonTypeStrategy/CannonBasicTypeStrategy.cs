@@ -15,7 +15,7 @@ public class CannonBasicTypeStrategy : CannonTypeStrategy
             RaycastHit2D hit = Physics2D.Raycast(
                 cannon.transform.position, 
                 cannon.transform.rotation * Vector2.up, 
-                turret.data.range + cannon.transform.localScale.x / 2,
+                turret.range + cannon.transform.localScale.x / 2,
                 cannon.enemyLayerMask);
 
             if (hit && hit.transform.tag == "Enemy")
@@ -33,9 +33,9 @@ public class CannonBasicTypeStrategy : CannonTypeStrategy
     {
         shootTimer += Time.deltaTime;
 
-        if (shootTimer > 1.0f / turret.data.missilesPerSecond)
+        if (shootTimer > 1.0f / turret.missilesPerSecond)
         {
-            GameObject missile = Object.Instantiate(turret.data.missilePrefab, cannon.transform.position, cannon.transform.rotation, cannon.transform.parent);
+            GameObject missile = Object.Instantiate(turret.variant.missilePrefab, cannon.transform.position, cannon.transform.rotation, cannon.transform.parent);
             missile.GetComponent<Missile>()
                 .SetTurret(turret)
                 .SetTarget(cannon.target);

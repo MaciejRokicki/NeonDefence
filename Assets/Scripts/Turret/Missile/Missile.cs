@@ -17,37 +17,37 @@ public class Missile : MonoBehaviour
     {
         enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
 
-        if (turret.data.dealDamageOverTime)
+        if (turret.variant.dealDamageOverTime)
         {
             enemyHitEffectComponent = new DamageOverTimeEffectDecorator(
                 turret, 
                 gameObject, 
                 enemyHitEffectComponent, 
-                turret.data.damageOverTimeDuration, 
-                turret.data.damageOverTimeCooldown, 
-                turret.data.damageOverTime
+                turret.damageOverTimeDuration, 
+                turret.damageOverTimeCooldown, 
+                turret.damageOverTime
             );
         }
 
-        if (turret.data.slowdownOnMissileHit)
+        if (turret.variant.slowdownOnMissileHit)
         {
             enemyHitEffectComponent = new SlowdownEffectDecorator(
                 turret, 
                 gameObject, 
                 enemyHitEffectComponent, 
-                turret.data.slowdownEffectDuration, 
-                turret.data.slowdownEffectiveness
+                turret.slowdownEffectDuration, 
+                turret.slowdownEffectiveness
             );
         }
 
-        if (turret.data.explosiveMissile)
+        if (turret.variant.explosiveMissile)
         {
             enemyHitEffectComponent = new ExplosiveEffectDecorator(turret, gameObject, enemyHitEffectComponent);
         }
 
-        if (turret.data.needTarget)
+        if (turret.variant.needTarget)
         {
-            if (turret.data.laser)
+            if (turret.variant.laser)
             {
                 missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret, enemyHitEffectComponent);
             }
@@ -57,7 +57,7 @@ public class Missile : MonoBehaviour
             }
         }
 
-        if(turret.data.trackingMissile)
+        if(turret.variant.trackingMissile)
         {
             trackingMissileStrategy = new AutoTrackingMissileStrategy(gameObject, turret, target);
         }
@@ -78,7 +78,7 @@ public class Missile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            if(turret.data.penetrationMissile || turret.data.laser)
+            if(turret.variant.penetrationMissile || turret.variant.laser)
             {
                 missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
                 target = null;

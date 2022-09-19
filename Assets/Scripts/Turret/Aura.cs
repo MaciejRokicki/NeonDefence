@@ -22,21 +22,21 @@ public class Aura : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer.sprite = turret.data.auraSprite;
-        spriteRenderer.material = turret.data.auraMaterial;
-        spriteRenderer.size = new Vector2(turret.data.auraRange, turret.data.auraRange);
-        circleCollider.radius = turret.data.auraRange / 2;
+        spriteRenderer.sprite = turret.variant.auraSprite;
+        spriteRenderer.material = turret.variant.auraMaterial;
+        spriteRenderer.size = new Vector2(turret.auraRange, turret.auraRange);
+        circleCollider.radius = turret.auraRange / 2;
 
         enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
 
-        if (turret.data.auraSlowdown)
+        if (turret.variant.auraSlowdown)
         {
             enemyHitEffectComponent = new SlowdownEffectDecorator(
                 turret, 
                 gameObject, 
                 enemyHitEffectComponent,
                 float.PositiveInfinity,
-                turret.data.auraSlowdownEffectiveness
+                turret.auraSlowdownEffectiveness
             );
         }
 
@@ -61,7 +61,7 @@ public class Aura : MonoBehaviour
             {
                 if (enemies[i])
                 {
-                    enemies[i].GetComponent<Enemy>().TakeDamage(turret.data.auraDamage);
+                    enemies[i].GetComponent<Enemy>().TakeDamage(turret.auraDamage);
                 }
             }
 

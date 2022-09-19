@@ -28,18 +28,18 @@ public class Cannon : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer.sprite = turret.data.cannonSprite;
-        spriteRenderer.material = turret.data.cannonMaterial;
+        spriteRenderer.sprite = turret.variant.cannonSprite;
+        spriteRenderer.material = turret.variant.cannonMaterial;
 
-        cannonCollider.radius = turret.data.range + 0.5f;
+        cannonCollider.radius = turret.range + 0.5f;
 
-        if(!turret.data.laser)
+        if(!turret.variant.laser)
         {
             cannonTypeStrategy = new CannonBasicTypeStrategy(this, turret);
         }
         else
         {
-            GameObject laser = Instantiate(turret.data.missilePrefab, transform.parent.position, transform.rotation, transform);
+            GameObject laser = Instantiate(turret.variant.missilePrefab, transform.parent.position, transform.rotation, transform);
             cannonTypeStrategy = new CannonLaserTypeStrategy(this, turret, laser);
         }
 
@@ -53,7 +53,7 @@ public class Cannon : MonoBehaviour
 
     public void FindTarget()
     {
-        nearestDistance = turret.data.range;
+        nearestDistance = turret.range;
         GameObject targetTmp = null;
 
         foreach(GameObject enemy in enemiesInRange)
@@ -80,7 +80,7 @@ public class Cannon : MonoBehaviour
         Vector2 dir = target.transform.position - turret.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f;
 
-        Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, angle), Time.deltaTime * turret.data.rotationSpeed);
+        Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, angle), Time.deltaTime * turret.rotationSpeed);
         transform.rotation = rotation;
     }
 
@@ -114,7 +114,7 @@ public class Cannon : MonoBehaviour
     {
         if(target != null)
         {
-            Debug.DrawRay(transform.position, transform.rotation * Vector2.up * (turret.data.range + transform.localScale.x / 2), Color.red);
+            Debug.DrawRay(transform.position, transform.rotation * Vector2.up * (turret.range + transform.localScale.x / 2), Color.red);
         }
     }
 }

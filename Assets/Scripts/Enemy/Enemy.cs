@@ -1,17 +1,18 @@
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(EnemyEffectHandler))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    public EnemyScriptableObject data;
+    public EnemyScriptableObject variant;
     private Rigidbody2D rb;
 
     [SerializeField]
     private float health;
     [SerializeField]
     public float movementSpeed;
+    [SerializeField]
+    public float damage;
 
     public EnemyEffectHandler enemyEffectHandler;
 
@@ -27,21 +28,14 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        health = data.health;
-        movementSpeed = data.movementSpeed;
+        health = variant.health;
+        movementSpeed = variant.movementSpeed;
+        damage = variant.damage;
 
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-        spriteRenderer.sprite = data.sprite;
-        spriteRenderer.material = data.material;
-
-        if (data.lightSource)
-        {
-            Light2D lightSource = gameObject.AddComponent<Light2D>();
-            lightSource.color = spriteRenderer.material.color;
-            lightSource.pointLightInnerRadius = data.lightSourceInnerRadius;
-            lightSource.pointLightOuterRadius = data.lightSourceOuterRadius;
-        }
+        spriteRenderer.sprite = variant.sprite;
+        spriteRenderer.material = variant.material;
 
         SetNextWaypoint();
     }
@@ -58,12 +52,12 @@ public class Enemy : MonoBehaviour
 
     public void SetVariant(EnemyScriptableObject variant)
     {
-        data = variant;
+        this.variant = variant;
     }
 
     public float DealDamage()
     {
-        return data.damage;
+        return variant.damage;
     }
 
     public void TakeDamage(float dmg)

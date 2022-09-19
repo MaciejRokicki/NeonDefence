@@ -16,7 +16,7 @@ public class AutoTrackingMissileStrategy : TrackingMissileStrategy
             direction = (target.transform.position - baseGameObject.transform.position).normalized;
         }
 
-        baseGameObject.transform.position += direction * turret.data.missileSpeed * Time.deltaTime;
+        baseGameObject.transform.position += direction * turret.missileSpeed * Time.deltaTime;
         baseGameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f);
     }
 }

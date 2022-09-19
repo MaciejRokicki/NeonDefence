@@ -3,38 +3,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/TurretScriptableObject", order = 3)]
 public class TurretScriptableObject : ScriptableObject
 {
-    [SerializeField] 
-    private bool _needTarget;
     public bool needTarget;
-    [SerializeField]
-    private bool _aura;
     public bool aura;
 
-    [SerializeField]
-    private bool _missile;
     public bool missile;
-    [SerializeField]
-    private bool _laser;
     public bool laser;
 
-    [SerializeField]
-    private bool _dealDamageOverTime;
     public bool dealDamageOverTime;
-    [SerializeField]
-    private bool _explosiveMissile;
     public bool explosiveMissile;
-    [SerializeField]
-    private bool _slowdownOnMissileHit;
     public bool slowdownOnMissileHit;
-    [SerializeField]
-    private bool _penetrationMissile;
     public bool penetrationMissile;
-    [SerializeField]
-    private bool _trackingMissile;
     public bool trackingMissile;
 
-    [SerializeField]
-    private bool _auraSlowdown;
     public bool auraSlowdown;
 
     [SerializeField]
@@ -96,84 +76,27 @@ public class TurretScriptableObject : ScriptableObject
     private float _auraSlowdownEffectiveness;
     public float auraSlowdownEffectiveness;
 
-    [SerializeField]
-    private Sprite _turretSprite;
-    public Sprite turretSprite;
-    [SerializeField]
-    private Material _turretMaterial;
-    public Material turretMaterial;
-    [SerializeField]
-    private GameObject _cannonPrefab;
-    public GameObject cannonPrefab;
-    [SerializeField]
-    private Sprite _cannonSprite;
-    public Sprite cannonSprite;
-    [SerializeField]
-    private Material _cannonMaterial;
-    public Material cannonMaterial;
-    [SerializeField]
-    private GameObject _missilePrefab;
-    public GameObject missilePrefab;
-    [SerializeField]
-    private Vector2 _missileColliderOffset;
-    public Vector2 missileColliderOffset;
-    [SerializeField]
-    private Vector2 _missileColliderSize;
-    public Vector2 missileColliderSize;
-    [SerializeField]
-    private Vector2 _missileSpriteSize;
-    public Vector2 missileSpriteSize;
-    [SerializeField]
-    private Sprite _missileSprite;
-    public Sprite missileSprite;
-    [SerializeField]
-    private Material _missileMaterial;
-    public Material missileMaterial;
-    [SerializeField]
-    private GameObject _explosionPrefab;
-    public GameObject explosionPrefab;
-    [SerializeField]
-    private Sprite _explosionSprite;
-    public Sprite explosionSprite;
-    [SerializeField]
-    private Material _explosionMaterial;
-    public Material explosionMaterial;
-    [SerializeField]
-    private GameObject _auraPrefab;
-    public GameObject auraPrefab;
-    [SerializeField]
-    private Sprite _auraSprite;
-    public Sprite auraSprite;
-    [SerializeField]
-    private Material _auraMaterial;
-    public Material auraMaterial;
 
-    [SerializeField]
-    private bool _lightSource;
-    public bool lightSource;
-    [SerializeField]
-    private float _lightSourceInnerRadius;
-    public float lightSourceInnerRadius;
-    [SerializeField]
-    private float _lightSourceOuterRadius;
-    public float lightSourceOuterRadius;
+    public Sprite turretSprite;
+    public Material turretMaterial;
+    public GameObject cannonPrefab;
+    public Sprite cannonSprite;
+    public Material cannonMaterial;
+    public GameObject missilePrefab;
+    public Vector2 missileColliderOffset;
+    public Vector2 missileColliderSize;
+    public Vector2 missileSpriteSize;
+    public Sprite missileSprite;
+    public Material missileMaterial;
+    public GameObject explosionPrefab;
+    public Sprite explosionSprite;
+    public Material explosionMaterial;
+    public GameObject auraPrefab;
+    public Sprite auraSprite;
+    public Material auraMaterial;
 
     private void OnEnable()
     {
-        needTarget = _needTarget;
-        aura = _aura;
-
-        missile = _missile;
-        laser = _laser;
-
-        dealDamageOverTime = _dealDamageOverTime;
-        explosiveMissile = _explosiveMissile;
-        slowdownOnMissileHit = _slowdownOnMissileHit;
-        penetrationMissile = _penetrationMissile;
-        trackingMissile = _trackingMissile;
-
-        auraSlowdown = _auraSlowdown;
-
         damage = _damage;
         damageOverTimeDuration = _damageOverTimeDuration;
         damageOverTimeCooldown = _damageOverTimeCooldown;
@@ -194,27 +117,5 @@ public class TurretScriptableObject : ScriptableObject
         auraDamage = _auraDamage;
         auraRange = _auraRange;
         auraSlowdownEffectiveness = _auraSlowdownEffectiveness;
-
-        turretSprite = _turretSprite;
-        turretMaterial = _turretMaterial;
-        cannonPrefab = _cannonPrefab;
-        cannonSprite = _cannonSprite;
-        cannonMaterial = _cannonMaterial;
-        missilePrefab = _missilePrefab;
-        missileColliderOffset = _missileColliderOffset;
-        missileColliderSize = _missileColliderSize;
-        missileSpriteSize = _missileSpriteSize;
-        missileSprite = _missileSprite;
-        missileMaterial = _missileMaterial;
-        explosionPrefab = _explosionPrefab;
-        explosionSprite = _explosionSprite;
-        explosionMaterial = _explosionMaterial;
-        auraPrefab = _auraPrefab;
-        auraSprite = _auraSprite;
-        auraMaterial = _auraMaterial;
-
-        lightSource = _lightSource;
-        lightSourceInnerRadius = _lightSourceInnerRadius;
-        lightSourceOuterRadius = _lightSourceOuterRadius;
     }
 }

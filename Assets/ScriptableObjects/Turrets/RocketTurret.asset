@@ -12,25 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
   m_Name: RocketTurret
   m_EditorClassIdentifier: 
-  _needTarget: 1
   needTarget: 1
-  _aura: 0
   aura: 0
-  _missile: 1
   missile: 1
-  _laser: 0
   laser: 0
-  _dealDamageOverTime: 0
   dealDamageOverTime: 0
-  _explosiveMissile: 1
   explosiveMissile: 1
-  _slowdownOnMissileHit: 0
   slowdownOnMissileHit: 0
-  _penetrationMissile: 0
   penetrationMissile: 0
-  _trackingMissile: 1
   trackingMissile: 1
-  _auraSlowdown: 0
   auraSlowdown: 0
   _damage: 20
   damage: 20
@@ -70,43 +60,20 @@ MonoBehaviour:
   auraRange: 0
   _auraSlowdownEffectiveness: 0
   auraSlowdownEffectiveness: 0
-  _turretSprite: {fileID: 21300000, guid: 25e3c60383c78794594ae36417b6fcd4, type: 3}
   turretSprite: {fileID: 21300000, guid: 25e3c60383c78794594ae36417b6fcd4, type: 3}
-  _turretMaterial: {fileID: 2100000, guid: 79f09fbbe8c8bf14ebb0b73e3077f415, type: 2}
   turretMaterial: {fileID: 2100000, guid: 79f09fbbe8c8bf14ebb0b73e3077f415, type: 2}
-  _cannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
   cannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
-  _cannonSprite: {fileID: 21300000, guid: e406185c4ba359649bba30249f67cbf5, type: 3}
   cannonSprite: {fileID: 21300000, guid: e406185c4ba359649bba30249f67cbf5, type: 3}
-  _cannonMaterial: {fileID: 2100000, guid: db09603f6d4f51142b9d5197b2155219, type: 2}
   cannonMaterial: {fileID: 2100000, guid: db09603f6d4f51142b9d5197b2155219, type: 2}
-  _missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
   missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
-  _missileColliderOffset: {x: 0, y: 0.07}
   missileColliderOffset: {x: 0, y: 0.07}
-  _missileColliderSize: {x: 0.3, y: 0.7}
   missileColliderSize: {x: 0.3, y: 0.7}
-  _missileSpriteSize: {x: 0.8, y: 0.8}
   missileSpriteSize: {x: 0.8, y: 0.8}
-  _missileSprite: {fileID: 21300000, guid: 7154774cf3172e2468c593dbef3eb999, type: 3}
   missileSprite: {fileID: 21300000, guid: 7154774cf3172e2468c593dbef3eb999, type: 3}
-  _missileMaterial: {fileID: 2100000, guid: e715d7efa3276e141bd94f5e45dd234b, type: 2}
   missileMaterial: {fileID: 2100000, guid: e715d7efa3276e141bd94f5e45dd234b, type: 2}
-  _explosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
   explosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
-  _explosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
   explosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
-  _explosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
   explosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
-  _auraPrefab: {fileID: 0}
   auraPrefab: {fileID: 0}
-  _auraSprite: {fileID: 0}
   auraSprite: {fileID: 0}
-  _auraMaterial: {fileID: 0}
   auraMaterial: {fileID: 0}
-  _lightSource: 0
-  lightSource: 0
-  _lightSourceInnerRadius: 0
-  lightSourceInnerRadius: 0
-  _lightSourceOuterRadius: 0
-  lightSourceOuterRadius: 0

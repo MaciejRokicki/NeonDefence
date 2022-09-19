@@ -10,7 +10,7 @@ public class ExplosiveEffectDecorator : EnemyHitEffectBaseDecorator
     public override void OnEnemyEnter(Enemy enemy)
     {
         enemyHitEffectComponent.OnEnemyEnter(enemy);
-        GameObject explosion = Object.Instantiate(turret.data.explosionPrefab, enemy.transform.position, missile.transform.rotation, turret.transform) ;
+        GameObject explosion = Object.Instantiate(turret.variant.explosionPrefab, enemy.transform.position, missile.transform.rotation, turret.transform) ;
 
         explosion.GetComponent<MissileExplosion>()
             .SetTurret(turret)

@@ -6,6 +6,6 @@ public class BasicTrackingMissileStrategy : TrackingMissileStrategy
 
     public override void Update()
     {
-        baseGameObject.transform.position += baseGameObject.transform.rotation * direction * turret.data.missileSpeed * Time.deltaTime;
+        baseGameObject.transform.position += baseGameObject.transform.rotation * direction * turret.missileSpeed * Time.deltaTime;
     }
 }

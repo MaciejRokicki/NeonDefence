@@ -19,24 +19,24 @@ public class MissileExplosion : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer.sprite = turret.data.explosionSprite;
-        spriteRenderer.material = turret.data.explosionMaterial;
+        spriteRenderer.sprite = turret.variant.explosionSprite;
+        spriteRenderer.material = turret.variant.explosionMaterial;
 
-        RaycastHit2D[] hitAll = Physics2D.CircleCastAll(transform.position, turret.data.explosionRange, Vector2.zero, 0.0f, LayerMask.GetMask("Enemy"));
+        RaycastHit2D[] hitAll = Physics2D.CircleCastAll(transform.position, turret.explosionRange, Vector2.zero, 0.0f, LayerMask.GetMask("Enemy"));
 
-        if(turret.data.copyMissileEffects)
+        if(turret.variant.copyMissileEffects)
         {
             foreach (RaycastHit2D hit in hitAll)
             {
                 missileShotEffectComponent.OnEnemyEnter(hit.transform.gameObject.GetComponent<Enemy>());
-                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.data.explosionDamage);
+                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.explosionDamage);
             }
         }
         else
         {
             foreach (RaycastHit2D hit in hitAll)
             {
-                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.data.explosionDamage);
+                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.explosionDamage);
             }
         }
 
@@ -50,7 +50,7 @@ public class MissileExplosion : MonoBehaviour
 
         if(timer < growingTime)
         {
-            float size = turret.data.explosionRange * 1 / growingTime * timer;
+            float size = turret.explosionRange * 1 / growingTime * timer;
             spriteRenderer.size = new Vector2(size, size);
         }
         else    
@@ -59,7 +59,7 @@ public class MissileExplosion : MonoBehaviour
 
             if(destroyTimer < reductionTime)
             {
-                float size = turret.data.explosionRange * (reductionTime - destroyTimer);
+                float size = turret.explosionRange * (reductionTime - destroyTimer);
                 spriteRenderer.size = new Vector2(size, size);
             }
         }

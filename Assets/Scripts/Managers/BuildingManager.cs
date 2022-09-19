@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -63,6 +63,6 @@ public class BuildingManager : MonoBehaviour
     {
         GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
 
-        turret.GetComponent<Turret>().data = turretVariant;
+        turret.GetComponent<Turret>().variant = turretVariant;
     }
 }
