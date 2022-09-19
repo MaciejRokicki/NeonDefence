@@ -57,8 +57,8 @@ public class TurretScriptableObject : ScriptableObject
     private float _laserActivationTime;
     public float laserActivationTime;
     [SerializeField]
-    private float _timeToDeactiveLaser;
-    public float timeToDeactiveLaser;
+    private float _laserDeactivationTime;
+    public float laserDeactivationTime;
     [SerializeField]
     private float _slowdownEffectDuration;
     public float slowdownEffectDuration;
@@ -110,7 +110,7 @@ public class TurretScriptableObject : ScriptableObject
         explosionRange = _explosionRange;
         rotationSpeed = _rotationSpeed;
         laserActivationTime = _laserActivationTime;
-        timeToDeactiveLaser = _timeToDeactiveLaser;
+        laserDeactivationTime = _laserDeactivationTime;
         slowdownEffectDuration = _slowdownEffectDuration;
         slowdownEffectiveness = _slowdownEffectiveness;
 

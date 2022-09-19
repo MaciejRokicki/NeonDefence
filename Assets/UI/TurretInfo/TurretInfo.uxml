@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/TurretInfo/TurretInfo.uss?fileID=7433441132597879392&amp;guid=f2af3417e0f308141bff1e14e43d0570&amp;type=3#TurretInfo" />
+    <ui:VisualElement name="container" class="container">
+        <ui:VisualElement name="left-section" class="section">
+            <ui:Label text="Damage: 0" display-tooltip-when-elided="true" name="damage-label" style="display: flex; visibility: visible; overflow: visible;" />
+            <ui:Label text="Damge over time duration:" display-tooltip-when-elided="true" name="damage-over-time-duration-label" />
+            <ui:Label text="Damge over time fire rate:" display-tooltip-when-elided="true" name="damage-over-time-cooldown-label" />
+            <ui:Label text="Damge over time:" display-tooltip-when-elided="true" name="damage-over-time-label" />
+            <ui:Label text="Missiles per second:" display-tooltip-when-elided="true" name="missiles-per-second-label" />
+            <ui:Label text="Missile speed:" display-tooltip-when-elided="true" name="missile-speed-label" />
+            <ui:Label text="Laser hits per second:" display-tooltip-when-elided="true" name="laser-hits-per-second-label" />
+            <ui:Label text="Range:" display-tooltip-when-elided="true" name="range-label" />
+            <ui:Label text="Explosion damage:" display-tooltip-when-elided="true" name="explosion-damage-label" />
+            <ui:Label text="Explosion range:" display-tooltip-when-elided="true" name="explosion-range-label" />
+            <ui:Label text="Rotation speed:" display-tooltip-when-elided="true" name="rotation-speed-label" />
+            <ui:Label text="Laser activation time:" display-tooltip-when-elided="true" name="laser-activation-time-label" />
+            <ui:Label text="Laser deactivation time:" display-tooltip-when-elided="true" name="laser-deactivation-time-label" />
+            <ui:Label text="Slowdoown effect duration:" display-tooltip-when-elided="true" name="slowdown-effect-duration-label" />
+            <ui:Label text="Slowdown effectiiveness:" display-tooltip-when-elided="true" name="slowdown-effectiveness-label" />
+            <ui:Label text="Aura damage:" display-tooltip-when-elided="true" name="aura-damage-label" />
+            <ui:Label text="Aura range:" display-tooltip-when-elided="true" name="aura-range-label" />
+            <ui:Label text="Aura slowdown efectiveness:" display-tooltip-when-elided="true" name="aura-slowdown-effectiveness-label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="right-section" class="section" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Turret : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Turret : MonoBehaviour
     public float explosionRange;
     public float rotationSpeed;
     public float laserActivationTime;
-    public float timeToDeactiveLaser;
+    public float laserDeactivationTime;
     public float slowdownEffectDuration;
     public float slowdownEffectiveness;
 
@@ -65,12 +66,17 @@ public class Turret : MonoBehaviour
         explosionRange = variant.explosionRange;
         rotationSpeed = variant.rotationSpeed;
         laserActivationTime = variant.laserActivationTime;
-        timeToDeactiveLaser = variant.timeToDeactiveLaser;
+        laserDeactivationTime = variant.laserDeactivationTime;
         slowdownEffectDuration = variant.slowdownEffectDuration;
         slowdownEffectiveness = variant.slowdownEffectiveness;
 
         auraDamage = variant.auraDamage;
         auraRange = variant.auraRange;
         auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;
+    }
+
+    public void Test(InputAction.CallbackContext ctxt)
+    {
+        Debug.Log(this.transform.position);
     }
 }

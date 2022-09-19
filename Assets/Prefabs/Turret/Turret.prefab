@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8489162483580287005}
   m_Layer: 7
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2de88fa092de34588d0e4479f33512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
+  variant: {fileID: 0}
+  damage: 0
+  damageOverTimeDuration: 0
+  damageOverTimeCooldown: 0
+  damageOverTime: 0
+  missilesPerSecond: 0
+  missileSpeed: 0
+  laserHitsPerSecond: 0
+  range: 0
+  explosionDamage: 0
+  explosionRange: 0
+  rotationSpeed: 0
+  laserActivationTime: 0
+  timeToDeactiveLaser: 0
+  slowdownEffectDuration: 0
+  slowdownEffectiveness: 0
+  auraDamage: 0
+  auraRange: 0
+  auraSlowdownEffectiveness: 0
 --- !u!61 &-8489162483580287005
 BoxCollider2D:
   m_ObjectHideFlags: 0

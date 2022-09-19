@@ -3,8 +3,7 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    [SerializeField]
+    private InputManager playerInputManager;
     private GameManager gameManager;
     [SerializeField]
     private Vector2 cameraViewSize;
@@ -32,7 +31,7 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        playerInputManager = InputManager.instance;
         gameManager = GameManager.instance;
     }
 
@@ -46,9 +45,9 @@ public class CameraController : MonoBehaviour
         Move();
     }
 
-    private void Move()
+    public void Move()
     {
-        Vector2 mousePosition = playerInput.actions["Look"].ReadValue<Vector2>();
+        Vector2 mousePosition = playerInputManager.playerInput.actions["Look"].ReadValue<Vector2>();
         Vector3 pos = transform.position;
 
         if (mousePosition.x <= spaceOffset.x)

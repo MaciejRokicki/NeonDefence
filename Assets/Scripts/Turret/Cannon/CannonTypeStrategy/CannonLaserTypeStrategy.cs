@@ -89,7 +89,7 @@ public class CannonLaserTypeStrategy : CannonTypeStrategy
     {
         deactiveLaserTimer += Time.deltaTime;
 
-        if (deactiveLaserTimer > turret.timeToDeactiveLaser)
+        if (deactiveLaserTimer > turret.laserDeactivationTime)
         {
             isLaserActive = false;
             laser.GetComponent<SpriteRenderer>().size = laser.GetComponent<BoxCollider2D>().size = Vector2.zero;

@@ -30,7 +30,7 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _explosionRange;
     SerializedProperty _rotationSpeed;
     SerializedProperty _laserActivationTime;
-    SerializedProperty _timeToDeactiveLaser;
+    SerializedProperty _laserDeactivationTime;
     SerializedProperty _slowdownEffectDuration;
     SerializedProperty _slowdownEffectiveness;
 
@@ -85,7 +85,7 @@ public class TurreteScriptableObjectEditor : Editor
         _explosionRange = serializedObject.FindProperty("_explosionRange");
         _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
         _laserActivationTime = serializedObject.FindProperty("_laserActivationTime");
-        _timeToDeactiveLaser = serializedObject.FindProperty("_timeToDeactiveLaser");
+        _laserDeactivationTime = serializedObject.FindProperty("_laserDeactivationTime");
         _slowdownEffectDuration = serializedObject.FindProperty("_slowdownEffectDuration");
         _slowdownEffectiveness = serializedObject.FindProperty("_slowdownEffectiveness");
 
@@ -195,7 +195,7 @@ public class TurreteScriptableObjectEditor : Editor
             if(_laser.boolValue)
             {
                 EditorGUILayout.PropertyField(_laserActivationTime);
-                EditorGUILayout.PropertyField(_timeToDeactiveLaser);
+                EditorGUILayout.PropertyField(_laserDeactivationTime);
             }
 
             if (_slowdownOnMissileHit.boolValue)

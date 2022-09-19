@@ -8,6 +8,8 @@ public class BuildingManager : MonoBehaviour
     private static BuildingManager _instance;
     public static BuildingManager instance { get { return _instance; } }
 
+    private UIManager uiManager;
+
     [SerializeField]
     private Tilemap backgroundTilemap;
 
@@ -17,6 +19,8 @@ public class BuildingManager : MonoBehaviour
     [SerializeField]
     private TurretScriptableObject[] turretVariants;
     public List<TurretScriptableObject> availableTurrets;
+
+    private bool isTurretInfoVisible = false;
 
     private void Awake()
     {
@@ -28,6 +32,8 @@ public class BuildingManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        uiManager = UIManager.instance;
     }
 
     private void Start()
@@ -42,24 +48,45 @@ public class BuildingManager : MonoBehaviour
 
     public void GetTile(InputAction.CallbackContext ctxt)
     {
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        Vector3Int tilePosition = backgroundTilemap.WorldToCell(worldPoint);
-
-        TileBase tile = backgroundTilemap.GetTile(tilePosition);
-
-        if (tile)
+        if(ctxt.performed)
         {
-            Vector2 worldPosition = new Vector2(tilePosition.x + 1.0f, tilePosition.y + 1.0f);
-            RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector3Int tilePosition = backgroundTilemap.WorldToCell(worldPoint);
 
-            if (!hit)
+            TileBase tile = backgroundTilemap.GetTile(tilePosition);
+
+            if (tile)
             {
-                BuildTurret(availableTurrets[0], worldPosition);
+                Vector2 worldPosition = new Vector2(tilePosition.x + 1.0f, tilePosition.y + 1.0f);
+                RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+
+                if (!hit)
+                {
+                    if(!isTurretInfoVisible)
+                    {
+                        BuildTurret(availableTurrets[0], worldPosition);
+                    }
+                    else
+                    {
+                        isTurretInfoVisible = false;
+                        uiManager.HideTurretInfo();
+                    }
+                }
+                else if (hit.collider.tag == "Turret")
+                {
+                    isTurretInfoVisible = true;
+                    uiManager.ShowTurretInfo(hit.collider.GetComponent<Turret>());
+                }
+            }
+            else if(isTurretInfoVisible)
+            {
+                isTurretInfoVisible = false;
+                uiManager.HideTurretInfo();
             }
         }
     }
 
-    public void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
+    private void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
     {
         GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
 
