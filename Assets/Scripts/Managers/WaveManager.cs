@@ -17,7 +17,7 @@ public class WaveManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject enemiesParent;
     [SerializeField]
-    private EnemyScriptableObject[] enemiesVariants;
+    private EnemyScriptableObject[] enemyVariants;
     public List<EnemyScriptableObject> availableVariants; //TODO: HideInInspector
     private EnemySpawner[] enemySpawners;
 
@@ -25,7 +25,7 @@ public class WaveManager : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -98,7 +98,7 @@ public class WaveManager : MonoBehaviour
     {
         availableVariants.Clear();
 
-        foreach (EnemyScriptableObject enemy in enemiesVariants)
+        foreach (EnemyScriptableObject enemy in enemyVariants)
         {
             if (currentWave >= enemy.minWave)
             {
