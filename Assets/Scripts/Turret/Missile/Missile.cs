@@ -24,7 +24,7 @@ public class Missile : MonoBehaviour
                 gameObject, 
                 enemyHitEffectComponent, 
                 turret.damageOverTimeDuration, 
-                turret.damageOverTimeCooldown, 
+                turret.damageOverTimeHitCooldown, 
                 turret.damageOverTime
             );
         }

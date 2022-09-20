@@ -17,6 +17,7 @@ public class CannonLaserTypeStrategy : CannonTypeStrategy
     public override void Start()
     {
         laser.GetComponent<Missile>().SetTurret(turret);
+        cannon.GetComponent<SpriteRenderer>().sortingOrder = 4;
     }
 
     public override void Update()

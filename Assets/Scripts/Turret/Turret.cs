@@ -13,23 +13,28 @@ public class Turret : MonoBehaviour
 
     //TODO: hide in inspector
     public float damage;
-    public float damageOverTimeDuration;
-    public float damageOverTimeCooldown;
-    public float damageOverTime;
+    public float range;
+    public float rotationSpeed;
     public float missilesPerSecond;
     public float missileSpeed;
+
     public float laserHitsPerSecond;
-    public float range;
-    public float explosionDamage;
-    public float explosionRange;
-    public float rotationSpeed;
     public float laserActivationTime;
     public float laserDeactivationTime;
-    public float slowdownEffectDuration;
+
     public float slowdownEffectiveness;
+    public float slowdownEffectDuration;
+
+    public float damageOverTime;
+    public float damageOverTimeHitCooldown;
+    public float damageOverTimeDuration;
+
+    public float explosionDamage;
+    public float explosionRange;
 
     public float auraDamage;
     public float auraRange;
+
     public float auraSlowdownEffectiveness;
 
     private void Awake()
@@ -55,23 +60,28 @@ public class Turret : MonoBehaviour
         spriteRenderer.material = variant.turretMaterial;
 
         damage = variant.damage;
-        damageOverTimeDuration = variant.damageOverTimeDuration;
-        damageOverTimeCooldown = variant.damageOverTimeCooldown;
-        damageOverTime = variant.damageOverTime;
+        range = variant.range;
+        rotationSpeed = variant.rotationSpeed;
         missilesPerSecond = variant.missilesPerSecond;
         missileSpeed = variant.missileSpeed;
+
         laserHitsPerSecond = variant.laserHitsPerSecond;
-        range = variant.range;
-        explosionDamage = variant.explosionDamage;
-        explosionRange = variant.explosionRange;
-        rotationSpeed = variant.rotationSpeed;
         laserActivationTime = variant.laserActivationTime;
         laserDeactivationTime = variant.laserDeactivationTime;
-        slowdownEffectDuration = variant.slowdownEffectDuration;
+
         slowdownEffectiveness = variant.slowdownEffectiveness;
+        slowdownEffectDuration = variant.slowdownEffectDuration;
+
+        damageOverTime = variant.damageOverTime;
+        damageOverTimeHitCooldown = variant.damageOverTimeHitCooldown;
+        damageOverTimeDuration = variant.damageOverTimeDuration;
+
+        explosionDamage = variant.explosionDamage;
+        explosionRange = variant.explosionRange;
 
         auraDamage = variant.auraDamage;
         auraRange = variant.auraRange;
+
         auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;
     }
 

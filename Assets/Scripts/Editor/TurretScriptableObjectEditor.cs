@@ -11,32 +11,40 @@ public class TurreteScriptableObjectEditor : Editor
 
     SerializedProperty _dealDamageOverTime;
     SerializedProperty _explosiveMissile;
-    SerializedProperty _copyMissileEffects;
     SerializedProperty _slowdownOnMissileHit;
+
     SerializedProperty _penetrationMissile;
     SerializedProperty _trackingMissile;
+    SerializedProperty _copyMissileEffects;
 
     SerializedProperty _auraSlowdown;
 
+
     SerializedProperty _damage;
-    SerializedProperty _damageOverTimeDuration;
-    SerializedProperty _damageOverTimeCooldown;
-    SerializedProperty _damageOverTime;
+    SerializedProperty _range;
+    SerializedProperty _rotationSpeed;
     SerializedProperty _missilesPerSecond;
     SerializedProperty _missileSpeed;
+
     SerializedProperty _laserHitsPerSecond;
-    SerializedProperty _range;
-    SerializedProperty _explosionDamage;
-    SerializedProperty _explosionRange;
-    SerializedProperty _rotationSpeed;
     SerializedProperty _laserActivationTime;
     SerializedProperty _laserDeactivationTime;
-    SerializedProperty _slowdownEffectDuration;
+
     SerializedProperty _slowdownEffectiveness;
+    SerializedProperty _slowdownEffectDuration;
+
+    SerializedProperty _damageOverTime;
+    SerializedProperty _damageOverTimeHitCooldown;
+    SerializedProperty _damageOverTimeDuration;
+
+    SerializedProperty _explosionDamage;
+    SerializedProperty _explosionRange;
 
     SerializedProperty _auraDamage;
     SerializedProperty _auraRange;
+
     SerializedProperty _auraSlowdownEffectiveness;
+
 
     SerializedProperty _turretSprite;
     SerializedProperty _turretMaterial;
@@ -73,25 +81,32 @@ public class TurreteScriptableObjectEditor : Editor
 
         _auraSlowdown = serializedObject.FindProperty("auraSlowdown");
 
+
         _damage = serializedObject.FindProperty("_damage");
-        _damageOverTimeDuration = serializedObject.FindProperty("_damageOverTimeDuration");
-        _damageOverTimeCooldown = serializedObject.FindProperty("_damageOverTimeCooldown");
-        _damageOverTime = serializedObject.FindProperty("_damageOverTime");
+        _range = serializedObject.FindProperty("_range");
+        _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
         _missilesPerSecond = serializedObject.FindProperty("_missilesPerSecond");
         _missileSpeed = serializedObject.FindProperty("_missileSpeed");
+
         _laserHitsPerSecond = serializedObject.FindProperty("_laserHitsPerSecond");
-        _range = serializedObject.FindProperty("_range");
-        _explosionDamage = serializedObject.FindProperty("_explosionDamage");
-        _explosionRange = serializedObject.FindProperty("_explosionRange");
-        _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
         _laserActivationTime = serializedObject.FindProperty("_laserActivationTime");
         _laserDeactivationTime = serializedObject.FindProperty("_laserDeactivationTime");
-        _slowdownEffectDuration = serializedObject.FindProperty("_slowdownEffectDuration");
+
         _slowdownEffectiveness = serializedObject.FindProperty("_slowdownEffectiveness");
+        _slowdownEffectDuration = serializedObject.FindProperty("_slowdownEffectDuration");
+
+        _damageOverTime = serializedObject.FindProperty("_damageOverTime");
+        _damageOverTimeHitCooldown = serializedObject.FindProperty("_damageOverTimeHitCooldown");
+        _damageOverTimeDuration = serializedObject.FindProperty("_damageOverTimeDuration");
+
+        _explosionDamage = serializedObject.FindProperty("_explosionDamage");
+        _explosionRange = serializedObject.FindProperty("_explosionRange");
 
         _auraDamage = serializedObject.FindProperty("_auraDamage");
         _auraRange = serializedObject.FindProperty("_auraRange");
+
         _auraSlowdownEffectiveness = serializedObject.FindProperty("_auraSlowdownEffectiveness");
+
 
         _turretSprite = serializedObject.FindProperty("turretSprite");
         _turretMaterial = serializedObject.FindProperty("turretMaterial");
@@ -163,8 +178,10 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Missile Statistics", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_damage);
+            EditorGUILayout.PropertyField(_range);
+            EditorGUILayout.PropertyField(_rotationSpeed);
 
-            if(_missile.boolValue)
+            if (_missile.boolValue)
             {
                 EditorGUILayout.PropertyField(_missilesPerSecond);
                 EditorGUILayout.PropertyField(_missileSpeed);
@@ -173,35 +190,27 @@ public class TurreteScriptableObjectEditor : Editor
             if (_laser.boolValue)
             {
                 EditorGUILayout.PropertyField(_laserHitsPerSecond);
-            }
-
-            if (_dealDamageOverTime.boolValue)
-            {
-                EditorGUILayout.PropertyField(_damageOverTimeDuration);
-                EditorGUILayout.PropertyField(_damageOverTimeCooldown);
-                EditorGUILayout.PropertyField(_damageOverTime);
-            }
-
-            EditorGUILayout.PropertyField(_range);
-
-            if (_explosiveMissile.boolValue)
-            {
-                EditorGUILayout.PropertyField(_explosionDamage);
-                EditorGUILayout.PropertyField(_explosionRange);
-            }
-
-            EditorGUILayout.PropertyField(_rotationSpeed);
-
-            if(_laser.boolValue)
-            {
                 EditorGUILayout.PropertyField(_laserActivationTime);
                 EditorGUILayout.PropertyField(_laserDeactivationTime);
             }
 
             if (_slowdownOnMissileHit.boolValue)
             {
-                EditorGUILayout.PropertyField(_slowdownEffectDuration);
                 EditorGUILayout.PropertyField(_slowdownEffectiveness);
+                EditorGUILayout.PropertyField(_slowdownEffectDuration);
+            }
+
+            if (_dealDamageOverTime.boolValue)
+            {
+                EditorGUILayout.PropertyField(_damageOverTime);
+                EditorGUILayout.PropertyField(_damageOverTimeHitCooldown);
+                EditorGUILayout.PropertyField(_damageOverTimeDuration);
+            }
+
+            if (_explosiveMissile.boolValue)
+            {
+                EditorGUILayout.PropertyField(_explosionDamage);
+                EditorGUILayout.PropertyField(_explosionRange);
             }
         }
 

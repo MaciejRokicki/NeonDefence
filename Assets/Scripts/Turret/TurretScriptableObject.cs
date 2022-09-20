@@ -12,8 +12,10 @@ public class TurretScriptableObject : ScriptableObject
     public bool dealDamageOverTime;
     public bool explosiveMissile;
     public bool slowdownOnMissileHit;
+
     public bool penetrationMissile;
     public bool trackingMissile;
+    public bool copyMissileEffects;
 
     public bool auraSlowdown;
 
@@ -21,50 +23,51 @@ public class TurretScriptableObject : ScriptableObject
     private float _damage;
     public float damage;
     [SerializeField]
-    private float _damageOverTimeDuration;
-    public float damageOverTimeDuration;
+    private float _range;
+    public float range;
     [SerializeField]
-    private float _damageOverTimeCooldown;
-    public float damageOverTimeCooldown;
-    [SerializeField]
-    private float _damageOverTime;
-    public float damageOverTime;
+    private float _rotationSpeed;
+    public float rotationSpeed;
     [SerializeField]
     private float _missilesPerSecond;
     public float missilesPerSecond;
     [SerializeField]
     private float _missileSpeed;
     public float missileSpeed;
+
     [SerializeField]
     private float _laserHitsPerSecond;
     public float laserHitsPerSecond;
-    [SerializeField]
-    private float _range;
-    public float range;
-    [SerializeField]
-    private bool _copyMissileEffects;
-    public bool copyMissileEffects;
-    [SerializeField]
-    private float _explosionDamage;
-    public float explosionDamage;
-    [SerializeField]
-    private float _explosionRange;
-    public float explosionRange;
-    [SerializeField]
-    private float _rotationSpeed;
-    public float rotationSpeed;
     [SerializeField]
     private float _laserActivationTime;
     public float laserActivationTime;
     [SerializeField]
     private float _laserDeactivationTime;
     public float laserDeactivationTime;
-    [SerializeField]
-    private float _slowdownEffectDuration;
-    public float slowdownEffectDuration;
+
     [SerializeField]
     private float _slowdownEffectiveness;
     public float slowdownEffectiveness;
+    [SerializeField]
+    private float _slowdownEffectDuration;
+    public float slowdownEffectDuration;
+
+    [SerializeField]
+    private float _damageOverTime;
+    public float damageOverTime;
+    [SerializeField]
+    private float _damageOverTimeHitCooldown;
+    public float damageOverTimeHitCooldown;
+    [SerializeField]
+    private float _damageOverTimeDuration;
+    public float damageOverTimeDuration;
+
+    [SerializeField]
+    private float _explosionDamage;
+    public float explosionDamage;
+    [SerializeField]
+    private float _explosionRange;
+    public float explosionRange;
 
     [SerializeField]
     private float _auraDamage;
@@ -72,10 +75,10 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private float _auraRange;
     public float auraRange;
+
     [SerializeField]
     private float _auraSlowdownEffectiveness;
     public float auraSlowdownEffectiveness;
-
 
     public Sprite turretSprite;
     public Material turretMaterial;
@@ -98,24 +101,28 @@ public class TurretScriptableObject : ScriptableObject
     private void OnEnable()
     {
         damage = _damage;
-        damageOverTimeDuration = _damageOverTimeDuration;
-        damageOverTimeCooldown = _damageOverTimeCooldown;
-        damageOverTime = _damageOverTime;
+        range = _range;
+        rotationSpeed = _rotationSpeed;
         missilesPerSecond = _missilesPerSecond;
         missileSpeed = _missileSpeed;
+
         laserHitsPerSecond = _laserHitsPerSecond;
-        range = _range;
-        copyMissileEffects = _copyMissileEffects;
-        explosionDamage = _explosionDamage;
-        explosionRange = _explosionRange;
-        rotationSpeed = _rotationSpeed;
         laserActivationTime = _laserActivationTime;
         laserDeactivationTime = _laserDeactivationTime;
-        slowdownEffectDuration = _slowdownEffectDuration;
+
         slowdownEffectiveness = _slowdownEffectiveness;
+        slowdownEffectDuration = _slowdownEffectDuration;
+
+        damageOverTime = _damageOverTime;
+        damageOverTimeHitCooldown = _damageOverTimeHitCooldown;
+        damageOverTimeDuration = _damageOverTimeDuration;
+
+        explosionDamage = _explosionDamage;
+        explosionRange = _explosionRange;
 
         auraDamage = _auraDamage;
         auraRange = _auraRange;
+
         auraSlowdownEffectiveness = _auraSlowdownEffectiveness;
     }
 }
