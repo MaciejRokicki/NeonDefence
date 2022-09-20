@@ -4,9 +4,14 @@ using UnityEngine.UIElements;
 public class TurretInfoUI : MonoBehaviour
 {
     [SerializeField]
-    private LineRenderer cannonLineRenderer;
+    private GameObject cannonRangeInfo;
     [SerializeField]
+    private GameObject auraRangeInfo;
+
+    private LineRenderer cannonLineRenderer;
+    private SpriteRenderer cannonSriteRenderer;
     private LineRenderer auraLineRenderer;
+    private SpriteRenderer auraSpriteRenderer;
 
     private Label damageLabel;
     private Label damageOverTimeDurationLabel;
@@ -55,16 +60,26 @@ public class TurretInfoUI : MonoBehaviour
     {
         gameObject.SetActive(true);
 
+        cannonLineRenderer = cannonRangeInfo.GetComponent<LineRenderer>();
+        cannonSriteRenderer = cannonRangeInfo.GetComponent<SpriteRenderer>();
+        auraLineRenderer = auraRangeInfo.GetComponent<LineRenderer>();
+        auraSpriteRenderer = auraRangeInfo.GetComponent<SpriteRenderer>();
+
         cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
+        cannonSriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
+
+        transform.position = turret.transform.position;
 
         if (turret.variant.needTarget)
         {
             DrawCircle(cannonLineRenderer, turret.transform.position, turret.range + 0.5f);
+            cannonSriteRenderer.size = new Vector2(turret.range + 0.5f, turret.range + 0.5f) * 2;
         }
 
         if(turret.variant.aura)
         {
             DrawCircle(auraLineRenderer, turret.transform.position, turret.auraRange / 2);
+            auraSpriteRenderer.size = new Vector2(turret.auraRange, turret.auraRange);
         }
         
         damageLabel.text = $"Damage: {turret.damage}";
@@ -90,6 +105,7 @@ public class TurretInfoUI : MonoBehaviour
     public void Hide()
     {
         cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
+        cannonSriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
         gameObject.SetActive(false);
     }
 
