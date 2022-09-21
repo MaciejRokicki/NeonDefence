@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get { return _instance; } }
 
     [SerializeField]
-    private TurretInfoUI turretInfo;
+    private GameUI gameUI;
 
     private void Awake()
     {
@@ -23,11 +24,11 @@ public class UIManager : MonoBehaviour
 
     public void ShowTurretInfo(Turret turret)
     {
-        turretInfo.Show(turret);
+        gameUI.ShowTurretInfo(turret);
     }
 
     public void HideTurretInfo()
     {
-        turretInfo.Hide();
+        gameUI.HideTurretInfo();
     }
 }

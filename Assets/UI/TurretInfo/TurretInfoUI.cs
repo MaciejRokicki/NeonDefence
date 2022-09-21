@@ -11,7 +11,7 @@ public class TurretInfoUI : MonoBehaviour
     private GameObject auraRangeInfo;
 
     private LineRenderer cannonLineRenderer;
-    private SpriteRenderer cannonSriteRenderer;
+    private SpriteRenderer cannonSpriteRenderer;
     private LineRenderer auraLineRenderer;
     private SpriteRenderer auraSpriteRenderer;
 
@@ -36,9 +36,9 @@ public class TurretInfoUI : MonoBehaviour
     private Label auraRangeLabel;
     private Label auraSlowdownEffectivenessLabel;
 
-    private void OnEnable()
+    private void Init()
     {
-        rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
+        rootVisualElement = transform.parent.GetComponent<UIDocument>().rootVisualElement;
 
         damageLabel = rootVisualElement.Q<Label>("damage-label");
         rangeLabel = rootVisualElement.Q<Label>("range-label");
@@ -67,21 +67,18 @@ public class TurretInfoUI : MonoBehaviour
 
     public void Show(Turret turret)
     {
-        gameObject.SetActive(true);
+        Init();
 
-        if(Camera.main.transform.position.x < 0)
-        {
-            Debug.Log("TEST");
-            rootVisualElement.style.right = new StyleLength(new Length(-100, LengthUnit.Percent));
-        }
+        cannonRangeInfo.SetActive(true);
+        auraRangeInfo.SetActive(true);
 
         cannonLineRenderer = cannonRangeInfo.GetComponent<LineRenderer>();
-        cannonSriteRenderer = cannonRangeInfo.GetComponent<SpriteRenderer>();
+        cannonSpriteRenderer = cannonRangeInfo.GetComponent<SpriteRenderer>();
         auraLineRenderer = auraRangeInfo.GetComponent<LineRenderer>();
         auraSpriteRenderer = auraRangeInfo.GetComponent<SpriteRenderer>();
 
         cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
-        cannonSriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
+        cannonSpriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
 
         transform.position = turret.transform.position;
 
@@ -133,7 +130,7 @@ public class TurretInfoUI : MonoBehaviour
             rootVisualElement.Q<VisualElement>("aura-section").style.display = DisplayStyle.None;
 
             DrawCircle(cannonLineRenderer, turret.transform.position, turret.range + 0.5f);
-            cannonSriteRenderer.size = new Vector2(turret.range + 0.5f, turret.range + 0.5f) * 2;
+            cannonSpriteRenderer.size = new Vector2(turret.range + 0.5f, turret.range + 0.5f) * 2;
         }
 
         if(turret.variant.aura)
@@ -176,8 +173,10 @@ public class TurretInfoUI : MonoBehaviour
     public void Hide()
     {
         cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
-        cannonSriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
-        gameObject.SetActive(false);
+        cannonSpriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
+
+        cannonRangeInfo.SetActive(false);
+        auraRangeInfo.SetActive(false);
     }
 
     private void DrawCircle(LineRenderer lineRenderer, Vector3 origin, float radius)

@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="TurretInfo" src="project://database/Assets/UI/TurretInfo/TurretInfo.uxml?fileID=9197481963319205126&amp;guid=1059b0a9f70c76847918ba51821ca594&amp;type=3#TurretInfo" />
+    <Style src="project://database/Assets/UI/Game%20UI/GameUI.uss?fileID=7433441132597879392&amp;guid=dfde74cb8dca6494bab08ab4ec796275&amp;type=3#GameUI" />
+    <ui:VisualElement name="container" class="container">
+        <ui:Button display-tooltip-when-elided="true" name="back-button" class="back-button">
+            <ui:Label text="&gt;" display-tooltip-when-elided="true" name="back-button-label" class="back-button-label" style="transition-property: scale;" />
+        </ui:Button>
+        <ui:VisualElement name="content" class="content" style="color: rgb(210, 210, 210);">
+            <ui:Instance template="TurretInfo" name="TurretInfo" style="display: none; color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1592,7 +1592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &39445536
 Transform:
   m_ObjectHideFlags: 0
@@ -5728,6 +5728,8 @@ GameObject:
   - component: {fileID: 131824078}
   - component: {fileID: 131824079}
   - component: {fileID: 131824080}
+  - component: {fileID: 131824082}
+  - component: {fileID: 131824081}
   m_Layer: 0
   m_Name: PlayerInputManager
   m_TagString: Untagged
@@ -5764,7 +5766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 131824081}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5869,6 +5871,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 0}
+--- !u!114 &131824081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131824077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_PointAction: {fileID: 5162043787311151676, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_MoveAction: {fileID: 5303280891837872537, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_SubmitAction: {fileID: -2749718616219531192, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_CancelAction: {fileID: 8239417030389358699, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_LeftClickAction: {fileID: 8945224508760846210, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_MiddleClickAction: {fileID: -5326796488165308438, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_RightClickAction: {fileID: -4994009727408586440, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_ScrollWheelAction: {fileID: 6898195835744445213, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6277760593583456115, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -449594789112978372, guid: 81b12362f259c7b4babf7b708550c693, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+--- !u!114 &131824082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131824077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!4 &151242554 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7108911683671076369, guid: abc31823093d39844ad6b6c1b348fccc, type: 3}
@@ -6318,7 +6364,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 352229074}
-  - component: {fileID: 352229076}
   - component: {fileID: 352229075}
   m_Layer: 0
   m_Name: TurretInfo
@@ -6326,7 +6371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &352229074
 Transform:
   m_ObjectHideFlags: 0
@@ -6358,22 +6403,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonRangeInfo: {fileID: 1803635852}
   auraRangeInfo: {fileID: 39445535}
---- !u!114 &352229076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352229073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 5621cef1288739f45a481ca4520af46f, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 1059b0a9f70c76847918ba51821ca594, type: 3}
-  m_SortingOrder: 0
 --- !u!1001 &353786158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8445,6 +8474,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 658061498}
+  - component: {fileID: 658061499}
+  - component: {fileID: 658061500}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -8468,6 +8499,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &658061499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658061497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 5621cef1288739f45a481ca4520af46f, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 910c7b0c7bf921340a01587ed785bfb7, type: 3}
+  m_SortingOrder: 0
+--- !u!114 &658061500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658061497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd020dc6a30e034f8ec3908a5074084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretInfo: {fileID: 352229075}
 --- !u!4 &658374083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7108911683671076369, guid: abc31823093d39844ad6b6c1b348fccc, type: 3}
@@ -10452,7 +10512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81785735a99aa3419d1ddd87a8d8bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretInfo: {fileID: 352229075}
+  gameUI: {fileID: 658061500}
 --- !u!1001 &1397769465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16678,7 +16738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1803635853
 Transform:
   m_ObjectHideFlags: 0
