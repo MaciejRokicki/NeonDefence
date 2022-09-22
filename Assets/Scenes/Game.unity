@@ -5726,12 +5726,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 131824078}
-  - component: {fileID: 131824079}
   - component: {fileID: 131824080}
-  - component: {fileID: 131824082}
+  - component: {fileID: 131824079}
   - component: {fileID: 131824081}
+  - component: {fileID: 131824082}
   m_Layer: 0
-  m_Name: PlayerInputManager
+  m_Name: InputManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5838,19 +5838,7 @@ MonoBehaviour:
     m_ActionId: d1eb6aa7-da43-4274-a5f4-3254a25450f1
     m_ActionName: Player/Zoom[/Mouse/scroll]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2044912558}
-        m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
-        m_MethodName: GetTile
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: a3118cda-c89d-4e72-9971-55cbf390a8cc
     m_ActionName: Player/Click[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0

@@ -5,6 +5,10 @@ public class CameraController : MonoBehaviour
 {
     private InputManager playerInputManager;
     private GameManager gameManager;
+    private UIManager uiManager;
+
+    private bool isLeftSideMenu = true;
+
     [SerializeField]
     private Vector2 cameraViewSize;
 
@@ -33,6 +37,7 @@ public class CameraController : MonoBehaviour
     {
         playerInputManager = InputManager.instance;
         gameManager = GameManager.instance;
+        uiManager = UIManager.instance;
     }
 
     private void Start()
@@ -43,6 +48,20 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+
+    private void LateUpdate()
+    {
+        if (!isLeftSideMenu && transform.position.x >= 0.0f)
+        {
+            uiManager.ToggleMenuSide();
+            isLeftSideMenu = true;
+        }
+        else if(isLeftSideMenu && transform.position.x < 0.0f)
+        {
+            uiManager.ToggleMenuSide();
+            isLeftSideMenu = false; 
+        }
     }
 
     public void Move()

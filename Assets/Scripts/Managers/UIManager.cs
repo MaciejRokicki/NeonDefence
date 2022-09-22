@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,6 +18,11 @@ public class UIManager : MonoBehaviour
         {
             _instance = this;
         }
+    }
+
+    public void ToggleMenuSide()
+    {
+        gameUI.ToggleMenuSide();
     }
 
     public void ShowTurretInfo(Turret turret)
