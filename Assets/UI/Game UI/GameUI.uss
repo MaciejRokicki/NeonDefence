@@ -1,59 +1,108 @@
 .container {
-    background-color: rgb(79, 79, 79);
+    background-color: rgb(87, 112, 112);
     width: 25%;
     height: 100%;
     transition-property: translate;
-    transition-duration: 1s;
-    right: auto;
-    left: auto;
+    transition-duration: 0.5s;
+    translate: 0 0;
+    transition-delay: 0s;
+    rotate: 0;
+    scale: 1 1;
+    border-left-width: 0;
+    border-right-width: 10px;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgba(154, 197, 197, 255);
+    border-right-color: rgba(154, 197, 197, 255);
+    border-top-color: rgba(154, 197, 197, 255);
+    border-bottom-color: rgba(154, 197, 197, 255);
+}
+
+.container-hide {
+    translate: -100% 0;
 }
 
 .container-right-side {
     right: -75%;
+    border-left-color: rgba(154, 197, 197, 255);
+    border-right-color: rgba(154, 197, 197, 255);
+    border-top-color: rgba(154, 197, 197, 255);
+    border-bottom-color: rgba(154, 197, 197, 255);
+    border-left-width: 10px;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
 }
 
-.container-hide {
-    translate: 0 0;
+.container-right-side-hide {
+    translate: 100% 0;
 }
 
-.back-button {
+.hide-menu-button {
     position: absolute;
     left: auto;
-    height: 80px;
-    width: 50px;
-    bottom: 2px;
-    background-color: rgb(79, 79, 79);
+    height: 60px;
+    width: 60px;
+    bottom: 5px;
+    background-color: rgb(87, 112, 112);
     border-left-width: 3px;
     border-right-width: 3px;
     border-top-width: 3px;
     border-bottom-width: 3px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-left-color: rgb(65, 65, 65);
-    border-right-color: rgb(65, 65, 65);
-    border-top-color: rgb(65, 65, 65);
-    border-bottom-color: rgb(65, 65, 65);
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-left-color: rgba(154, 197, 197, 255);
+    border-right-color: rgba(154, 197, 197, 255);
+    border-top-color: rgba(154, 197, 197, 255);
+    border-bottom-color: rgba(154, 197, 197, 255);
     justify-content: center;
     align-items: center;
-    right: -65px;
-}
-
-.back-button-label {
-    width: 100%;
-    height: 100%;
+    right: -80px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    transition-property: rotate;
+    transition-property: background-color;
+    transition-duration: 0.25s;
+}
+
+.hide-menu-button-right-side {
+    left: -80px;
+    bottom: 5px;
+}
+
+.hide-menu-button:hover {
+    background-color: rgb(58, 98, 98);
+}
+
+.hide-menu-button-label {
+    width: 100%;
+    height: 100%;
+    transition-property: scale;
     transition-duration: 1s;
-    margin-bottom: 8px;
-    margin-left: 5px;
-    margin-right: 5px;
     font-size: 36px;
     -unity-font-style: bold;
     color: rgb(255, 255, 255);
     scale: -1 1;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    -unity-text-align: middle-center;
+    white-space: normal;
+    padding-left: 5px;
+    padding-top: 0;
+    padding-bottom: 6px;
+}
+
+.hide-menu-button-label-right-side {
+    scale: 1 1;
 }
 
 .content {
@@ -66,9 +115,6 @@
     color: rgb(255, 255, 255);
 }
 
-.back-button-right-side {
-    left: -65px;
-}
-
-.back-button-hide {
+.no-transition {
+    transition-property: none;
 }

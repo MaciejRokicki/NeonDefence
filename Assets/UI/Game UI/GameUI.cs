@@ -3,14 +3,28 @@ using UnityEngine.UIElements;
 
 public class GameUI : MonoBehaviour
 {
+    private const string ELEMENT_CONTAINER = "container";
+    private const string ELEMENT_HIDE_MENU_BUTTON = "hide-menu-button";
+    private const string ELEMENT_HIDE_MENU_BUTTON_LABEL = "hide-menu-button-label";
+
+    private const string STYLE_CONTAINER_RIGHT_SIDE = "container-right-side";
+    private const string STYLE_HIDE_MENU_BUTTON_RIGHT_SIDE = "hide-menu-button-right-side";
+
+    private const string STYLE_HIDE_MENU_BUTTON_LABEL_RIGHT_SIDE = "hide-menu-button-label-right-side";
+
+    private const string STYLE_NO_TRANSITION = "no-transition";
+
+    private const string STYLE_CONTAINER_HIDE = "container-hide";
+    private const string STYLE_CONTAINER_RIGHT_SIDE_HIDE = "container-right-side-hide";
+
     private VisualElement root;
     [SerializeField]
     private TurretInfoUI turretInfo;
 
     private VisualElement container;
-    private Button backButton;
+    private Button hideButton;
+    private Label hideButtonLabel;
 
-    private float menuContainerWidthPercentage = 0.75f;
     private bool isLeftSideMenu = true;
     private bool isMenuOpen = true;
 
@@ -18,93 +32,43 @@ public class GameUI : MonoBehaviour
     {
         root = GetComponent<UIDocument>().rootVisualElement;
 
-        container = root.Q<VisualElement>("container");
-        backButton = root.Q<Button>("back-button");
+        container = root.Q<VisualElement>(ELEMENT_CONTAINER);
+        hideButton = root.Q<Button>(ELEMENT_HIDE_MENU_BUTTON);
+        hideButtonLabel = root.Q<Label>(ELEMENT_HIDE_MENU_BUTTON_LABEL);
 
-        backButton.RegisterCallback<ClickEvent>(ce => ToggleUI());
+        hideButton.RegisterCallback<ClickEvent>(ce => ToggleUI());
     }
 
     public void ToggleUI()
     {
-        if(isMenuOpen)
-        {
-            HideSideMenu();
-        }
-        else
-        {
-            ShowSideMenu();
-        }
+        container.RemoveFromClassList(STYLE_NO_TRANSITION);
+        hideButtonLabel.RemoveFromClassList(STYLE_NO_TRANSITION);
+
+        string containerStyle = isLeftSideMenu ? STYLE_CONTAINER_HIDE : STYLE_CONTAINER_RIGHT_SIDE_HIDE;
+
+        container.ToggleInClassList(containerStyle);
+        hideButtonLabel.EnableInClassList(STYLE_HIDE_MENU_BUTTON_LABEL_RIGHT_SIDE, !isLeftSideMenu && !isMenuOpen || isLeftSideMenu && isMenuOpen);
 
         isMenuOpen = !isMenuOpen;
     }
 
-    private void HideSideMenu()
-    {
-        container.ToggleInClassList("container-hide");
-        //float containerWidth = container.resolvedStyle.width;
-
-        //if(isLeftSideMenu)
-        //{
-        //    container.style.translate = new StyleTranslate(new Translate(containerWidth, 0.0f, 0.0f));
-        //    //backButton.style.scale = new StyleScale(new Scale(new Vector3(-1.0f, 1.0f, 0.0f)));
-        //}
-        //else
-        //{
-        //    container.style.translate = new StyleTranslate(new Translate(-containerWidth, 0.0f, 0.0f));
-        //    //backButton.style.scale = new StyleScale(new Scale(new Vector3(-1.0f, 1.0f, 0.0f)));
-        //}
-    }
-
-    private void ShowSideMenu()
-    {
-        container.ToggleInClassList("container-hide");
-        //container.style.translate = new StyleTranslate(new Translate(0, 0.0f, 0.0f));
-        //backButton.style.scale = new StyleScale(new Scale(new Vector3(1.0f, 1.0f, 0.0f)));
-    }
-
     public void ToggleMenuSide()
     {
-        container.ToggleInClassList("container-right-side");
-        backButton.ToggleInClassList("back-button-right-side");
+        isLeftSideMenu = !isLeftSideMenu;
 
-        //if (isLeftSideMenu)
-        //{
-        //    if (isMenuOpen)
-        //    {
-        //        container.style.left = new StyleLength(StyleKeyword.Auto);
-        //    }
-        //    else
-        //    {
-        //        container.style.left = Screen.width * -menuContainerWidthPercentage;
-        //    }
+        container.EnableInClassList(STYLE_CONTAINER_RIGHT_SIDE, !isLeftSideMenu);
+        hideButton.EnableInClassList(STYLE_HIDE_MENU_BUTTON_RIGHT_SIDE, !isLeftSideMenu);
+        hideButtonLabel.AddToClassList(STYLE_NO_TRANSITION);
 
-        //    container.style.right = new StyleLength(StyleKeyword.Auto);
-        //    backButton.style.left = new StyleLength(StyleKeyword.Auto);
-        //    backButton.style.right = -65.0f;
+        if (!isMenuOpen)
+        {
+            container.AddToClassList(STYLE_NO_TRANSITION);
 
-        //    backButton.style.scale = new StyleScale(new Scale(new Vector3(1.0f, 1.0f, 0.0f)));
+            container.EnableInClassList(STYLE_CONTAINER_HIDE, isLeftSideMenu);
+            container.EnableInClassList(STYLE_CONTAINER_RIGHT_SIDE_HIDE, !isLeftSideMenu);
+        }
 
-        //    isLeftSideMenu = false;
-        //}
-        //else
-        //{
-
-        //    if (isMenuOpen)
-        //    {
-        //        container.style.right = Screen.width * -menuContainerWidthPercentage;
-        //    }
-        //    else
-        //    {
-        //        container.style.right = -Screen.width;
-        //    }
-
-        //    container.style.left = new StyleLength(StyleKeyword.Auto);
-        //    backButton.style.right = new StyleLength(StyleKeyword.Auto);
-        //    backButton.style.left = -65.0f;
-        //    backButton.style.scale = new StyleScale(new Scale(new Vector3(-1.0f, 1.0f, 0.0f)));
-
-        //    isLeftSideMenu = true;
-        //}
+        hideButtonLabel.EnableInClassList(STYLE_HIDE_MENU_BUTTON_LABEL_RIGHT_SIDE, isLeftSideMenu && !isMenuOpen || !isLeftSideMenu && isMenuOpen);
     }
 
     public void ShowTurretInfo(Turret turret)
