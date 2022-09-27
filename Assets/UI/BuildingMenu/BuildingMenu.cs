@@ -11,6 +11,8 @@ public class BuildingMenu : MonoBehaviour
     private VisualTreeAsset turretVariantDocument;
     private VisualElement content;
 
+    [SerializeField]
+    private GameObject turretPlaceholder;
     private TurretScriptableObject selectedVariant;
 
     private BuildingManager buildingManager;
@@ -44,12 +46,18 @@ public class BuildingMenu : MonoBehaviour
     {
         if(selectedVariant)
         {
-            Debug.Log("TESt");
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector3Int tilePosition;
+
+            buildingManager.GetTurretBuildingTile(worldPoint, out tilePosition);
+
+            turretPlaceholder.transform.position = tilePosition;
         }
     }
 
     private void SelectVariant(MouseDownEvent e, TurretScriptableObject variant)
     {
+        PrepareTurretPlaceholder(variant);
         selectedVariant = variant;
         gameUI.ToggleUI();
     }
@@ -61,14 +69,25 @@ public class BuildingMenu : MonoBehaviour
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             Vector3Int tilePosition;
 
-            buildingManager.GetTurretBuildingTile(worldPoint, out tilePosition);
-            tilePosition += Vector3Int.one;
+            UnityEngine.Tilemaps.TileBase tile = buildingManager.GetTurretBuildingTile(worldPoint, out tilePosition);
 
-            buildingManager.BuildTurret(selectedVariant, tilePosition);
+            if(tile)
+            {
+                buildingManager.BuildTurret(selectedVariant, tilePosition);
+            }
 
+            turretPlaceholder.SetActive(false);
             selectedVariant = null;
             gameUI.ToggleUI();
         }
+    }
+
+    private void PrepareTurretPlaceholder(TurretScriptableObject variant)
+    {
+        turretPlaceholder.SetActive(true);
+        turretPlaceholder.GetComponent<TurretPlaceholder>().SetTurretVariant(variant);
+        turretPlaceholder.GetComponent<SpriteRenderer>().sprite = variant.turretSprite;
+        turretPlaceholder.GetComponent<SpriteMask>().sprite = variant.turretSprite;
     }
 
     public void Show()

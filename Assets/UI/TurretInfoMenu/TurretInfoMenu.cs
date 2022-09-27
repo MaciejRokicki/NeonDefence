@@ -72,9 +72,6 @@ public class TurretInfoMenu : MonoBehaviour
 
     public void Show(Turret turret)
     {
-        cannonRangeInfo.SetActive(true);
-        auraRangeInfo.SetActive(true);
-
         cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
         cannonSpriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
 
@@ -127,8 +124,9 @@ public class TurretInfoMenu : MonoBehaviour
 
             root.Q<VisualElement>("aura-section").style.display = DisplayStyle.None;
 
-            DrawCircle(cannonLineRenderer, turret.transform.position, turret.range + 0.5f);
-            cannonSpriteRenderer.size = new Vector2(turret.range + 0.5f, turret.range + 0.5f) * 2;
+            //DrawCircle(cannonLineRenderer, turret.transform.position, turret.range + 0.5f);
+            //cannonSpriteRenderer.size = new Vector2(turret.range + 0.5f, turret.range + 0.5f) * 2;
+            ShowCannonRange(turret.transform.position, turret.range);
         }
 
         if(turret.variant.aura)
@@ -138,8 +136,9 @@ public class TurretInfoMenu : MonoBehaviour
             root.Q<VisualElement>("aura-section").style.display = DisplayStyle.Flex;
             root.Q<VisualElement>("aura-slowdown-effect-info").style.display = turret.variant.auraSlowdown ? DisplayStyle.Flex : DisplayStyle.None;
 
-            DrawCircle(auraLineRenderer, turret.transform.position, turret.auraRange / 2);
-            auraSpriteRenderer.size = new Vector2(turret.auraRange, turret.auraRange);
+            //DrawCircle(auraLineRenderer, turret.transform.position, turret.auraRange / 2);
+            //auraSpriteRenderer.size = new Vector2(turret.auraRange, turret.auraRange);
+            ShowAuraRange(turret.transform.position, turret.auraRange);
         }
 
         damageLabel.text = $"Damage: {turret.damage}";
@@ -174,9 +173,29 @@ public class TurretInfoMenu : MonoBehaviour
     {
         root.Q<VisualElement>("TurretInfo").style.display = DisplayStyle.None;
 
-        cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
-        cannonSpriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
+        HideTurretRange();
+    }
 
+    public void ShowCannonRange(Vector2 position, float range)
+    {
+        cannonRangeInfo.SetActive(true);
+
+        transform.position = position;
+        DrawCircle(cannonLineRenderer, position, range + 0.5f);
+        cannonSpriteRenderer.size = new Vector2(range + 0.5f, range + 0.5f) * 2;
+    }
+
+    public void ShowAuraRange(Vector2 position, float range)
+    {
+        auraRangeInfo.SetActive(true);
+
+        transform.position = position;
+        DrawCircle(auraLineRenderer, position, range / 2);
+        auraSpriteRenderer.size = new Vector2(range, range);
+    }
+
+    public void HideTurretRange()
+    {
         cannonRangeInfo.SetActive(false);
         auraRangeInfo.SetActive(false);
     }

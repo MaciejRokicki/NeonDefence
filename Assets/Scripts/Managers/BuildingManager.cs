@@ -50,32 +50,27 @@ public class BuildingManager : MonoBehaviour
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             Vector3Int tilePosition;
-            TileBase tile = GetTurretBuildingTile(worldPoint, out tilePosition);
+            TileBase tile = GetTurretBuildingTile(worldPoint, out tilePosition, true);
 
             if (tile)
             {
-                Turret selectedTurret = GetTurret((Vector2Int)tilePosition);
+                Turret selectedTurret = GetTurret(tilePosition);
 
                 if(selectedTurret)
                 {
                     uiManager.ShowTurretInfo(selectedTurret);
-                }
-                else
-                {
-                    uiManager.HideTurretInfo();
+
+                    return;
                 }
             }
-            else
-            {
-                uiManager.HideTurretInfo();
-            }
+            
+            uiManager.HideTurretInfo();
         }
     }
 
-    private Turret GetTurret(Vector2 tilePosition)
+    private Turret GetTurret(Vector3 tilePosition)
     {
-        Vector2 worldPosition = tilePosition + Vector2.one;
-        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+        RaycastHit2D hit = Physics2D.Raycast(tilePosition, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
 
         if(hit && hit.collider.tag == "Turret")
         {
@@ -87,47 +82,22 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    public TileBase GetTurretBuildingTile(Vector3 worldPoint, out Vector3Int tilePosition)
+    public TileBase GetTurretBuildingTile(Vector3 worldPoint, out Vector3Int tilePosition, bool ignoreNonBuildableLayer = false)
     {
-        //if(ctxt.performed)
-        //{
-        //    Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        //    Vector3Int tilePosition = backgroundTilemap.WorldToCell(worldPoint);
-
-        //    TileBase tile = backgroundTilemap.GetTile(tilePosition);
-
-        //    if (tile)
-        //    {
-        //        Vector2 worldPosition = new Vector2(tilePosition.x + 1.0f, tilePosition.y + 1.0f);
-        //        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
-
-        //        if (!hit)
-        //        {
-        //            if(!isTurretInfoVisible)
-        //            {
-        //                BuildTurret(availableTurrets[0], worldPosition);
-        //            }
-        //            else
-        //            {
-        //                isTurretInfoVisible = false;
-        //                uiManager.HideTurretInfo();
-        //            }
-        //        }
-        //        else if (hit.collider.tag == "Turret")
-        //        {
-        //            isTurretInfoVisible = true;
-        //            uiManager.ShowTurretInfo(hit.collider.GetComponent<Turret>());
-        //        }
-        //    }
-        //    else if(isTurretInfoVisible)
-        //    {
-        //        isTurretInfoVisible = false;
-        //        uiManager.HideTurretInfo();
-        //    }
-        //}
-
         tilePosition = backgroundTilemap.WorldToCell(worldPoint);
         TileBase tile = backgroundTilemap.GetTile(tilePosition);
+
+        if(!ignoreNonBuildableLayer && tile)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+
+            if(hit)
+            {
+                tile = null;
+            }
+        }
+
+        tilePosition += Vector3Int.one;
 
         return tile;
     }
