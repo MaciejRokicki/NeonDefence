@@ -132,7 +132,7 @@ public class BuildingManager : MonoBehaviour
         return tile;
     }
 
-    private void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
+    public void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
     {
         GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
 

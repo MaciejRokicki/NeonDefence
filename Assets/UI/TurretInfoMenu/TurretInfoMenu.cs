@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class TurretInfoUI : MonoBehaviour
+public class TurretInfoMenu : MonoBehaviour
 {
-    private VisualElement rootVisualElement;
+    private VisualElement root;
 
     [SerializeField]
     private GameObject cannonRangeInfo;
@@ -36,46 +36,44 @@ public class TurretInfoUI : MonoBehaviour
     private Label auraRangeLabel;
     private Label auraSlowdownEffectivenessLabel;
 
-    private void Init()
+    private void Awake()
     {
-        rootVisualElement = transform.parent.GetComponent<UIDocument>().rootVisualElement;
-
-        damageLabel = rootVisualElement.Q<Label>("damage-label");
-        rangeLabel = rootVisualElement.Q<Label>("range-label");
-        rotationSpeedLabel = rootVisualElement.Q<Label>("rotation-speed-label");
-        missilesPerSecondLabel = rootVisualElement.Q<Label>("missiles-per-second-label");
-        missileSpeedLabel = rootVisualElement.Q<Label>("missile-speed-label");
-
-        laserHitsPerSecondLabel = rootVisualElement.Q<Label>("laser-hits-per-second-label");
-        laserActivationTimeLabel = rootVisualElement.Q<Label>("laser-activation-time-label");
-        laserDeactivationTimeLabel = rootVisualElement.Q<Label>("laser-deactivation-time-label");
-
-        slowdownEffectivenessLabel = rootVisualElement.Q<Label>("slowdown-effectiveness-label");
-        slowdownEffectDurationLabel = rootVisualElement.Q<Label>("slowdown-effect-duration-label");
-
-        damageOverTimeLabel = rootVisualElement.Q<Label>("damage-over-time-label");
-        damageOverTimeCooldownLabel = rootVisualElement.Q<Label>("damage-over-time-hit-cooldown-label");
-        damageOverTimeDurationLabel = rootVisualElement.Q<Label>("damage-over-time-duration-label");
-
-        explosionDamageLabel = rootVisualElement.Q<Label>("explosion-damage-label");
-        explosionRangeLabel = rootVisualElement.Q<Label>("explosion-range-label");
-
-        auraDamageLabel = rootVisualElement.Q<Label>("aura-damage-label");
-        auraRangeLabel = rootVisualElement.Q<Label>("aura-range-label");
-        auraSlowdownEffectivenessLabel = rootVisualElement.Q<Label>("aura-slowdown-effectiveness-label");
-    }
-
-    public void Show(Turret turret)
-    {
-        Init();
-
-        cannonRangeInfo.SetActive(true);
-        auraRangeInfo.SetActive(true);
-
         cannonLineRenderer = cannonRangeInfo.GetComponent<LineRenderer>();
         cannonSpriteRenderer = cannonRangeInfo.GetComponent<SpriteRenderer>();
         auraLineRenderer = auraRangeInfo.GetComponent<LineRenderer>();
         auraSpriteRenderer = auraRangeInfo.GetComponent<SpriteRenderer>();
+
+        root = transform.parent.GetComponent<UIDocument>().rootVisualElement;
+
+        damageLabel = root.Q<Label>("damage-label");
+        rangeLabel = root.Q<Label>("range-label");
+        rotationSpeedLabel = root.Q<Label>("rotation-speed-label");
+        missilesPerSecondLabel = root.Q<Label>("missiles-per-second-label");
+        missileSpeedLabel = root.Q<Label>("missile-speed-label");
+
+        laserHitsPerSecondLabel = root.Q<Label>("laser-hits-per-second-label");
+        laserActivationTimeLabel = root.Q<Label>("laser-activation-time-label");
+        laserDeactivationTimeLabel = root.Q<Label>("laser-deactivation-time-label");
+
+        slowdownEffectivenessLabel = root.Q<Label>("slowdown-effectiveness-label");
+        slowdownEffectDurationLabel = root.Q<Label>("slowdown-effect-duration-label");
+
+        damageOverTimeLabel = root.Q<Label>("damage-over-time-label");
+        damageOverTimeCooldownLabel = root.Q<Label>("damage-over-time-hit-cooldown-label");
+        damageOverTimeDurationLabel = root.Q<Label>("damage-over-time-duration-label");
+
+        explosionDamageLabel = root.Q<Label>("explosion-damage-label");
+        explosionRangeLabel = root.Q<Label>("explosion-range-label");
+
+        auraDamageLabel = root.Q<Label>("aura-damage-label");
+        auraRangeLabel = root.Q<Label>("aura-range-label");
+        auraSlowdownEffectivenessLabel = root.Q<Label>("aura-slowdown-effectiveness-label");
+    }
+
+    public void Show(Turret turret)
+    {
+        cannonRangeInfo.SetActive(true);
+        auraRangeInfo.SetActive(true);
 
         cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
         cannonSpriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
@@ -84,50 +82,50 @@ public class TurretInfoUI : MonoBehaviour
 
         if (turret.variant.needTarget)
         {
-            rootVisualElement.Q<VisualElement>("cannon-section").style.display = DisplayStyle.Flex;
+            root.Q<VisualElement>("cannon-section").style.display = DisplayStyle.Flex;
 
-            rootVisualElement.Q<VisualElement>("laser-info").style.display = turret.variant.laser ? DisplayStyle.Flex : DisplayStyle.None;
+            root.Q<VisualElement>("laser-info").style.display = turret.variant.laser ? DisplayStyle.Flex : DisplayStyle.None;
             missilesPerSecondLabel.style.display = missileSpeedLabel.style.display = turret.variant.laser ? DisplayStyle.None : DisplayStyle.Flex;
 
-            rootVisualElement.Q<VisualElement>("slowdown-effect-info").style.display = turret.variant.slowdownOnMissileHit ? DisplayStyle.Flex : DisplayStyle.None;
-            rootVisualElement.Q<VisualElement>("damage-over-time-effect-info").style.display = turret.variant.dealDamageOverTime ? DisplayStyle.Flex : DisplayStyle.None;
-            rootVisualElement.Q<VisualElement>("explosion-effect-info").style.display = turret.variant.explosiveMissile ? DisplayStyle.Flex : DisplayStyle.None;
+            root.Q<VisualElement>("slowdown-effect-info").style.display = turret.variant.slowdownOnMissileHit ? DisplayStyle.Flex : DisplayStyle.None;
+            root.Q<VisualElement>("damage-over-time-effect-info").style.display = turret.variant.dealDamageOverTime ? DisplayStyle.Flex : DisplayStyle.None;
+            root.Q<VisualElement>("explosion-effect-info").style.display = turret.variant.explosiveMissile ? DisplayStyle.Flex : DisplayStyle.None;
 
             showExtraEffects = false;
 
             if(turret.variant.penetrationMissile)
             {
-                rootVisualElement.Q<VisualElement>("penetration-missile-label").style.display = DisplayStyle.Flex;
+                root.Q<VisualElement>("penetration-missile-label").style.display = DisplayStyle.Flex;
                 showExtraEffects = true;
             }
             else
             {
-                rootVisualElement.Q<VisualElement>("penetration-missile-label").style.display = DisplayStyle.None;
+                root.Q<VisualElement>("penetration-missile-label").style.display = DisplayStyle.None;
             }
 
             if(turret.variant.trackingMissile)
             {
-                rootVisualElement.Q<VisualElement>("tracking-missile-label").style.display = DisplayStyle.Flex;
+                root.Q<VisualElement>("tracking-missile-label").style.display = DisplayStyle.Flex;
                 showExtraEffects = true;
             }
             else
             {
-                rootVisualElement.Q<VisualElement>("tracking-missile-label").style.display = DisplayStyle.None;
+                root.Q<VisualElement>("tracking-missile-label").style.display = DisplayStyle.None;
             }
 
             if(turret.variant.copyMissileEffects)
             {
-                rootVisualElement.Q<VisualElement>("copy-missile-effects-label").style.display = DisplayStyle.Flex;
+                root.Q<VisualElement>("copy-missile-effects-label").style.display = DisplayStyle.Flex;
                 showExtraEffects = true;
             }
             else
             {
-                rootVisualElement.Q<VisualElement>("copy-missile-effects-label").style.display = DisplayStyle.None;
+                root.Q<VisualElement>("copy-missile-effects-label").style.display = DisplayStyle.None;
             }
 
-            rootVisualElement.Q<VisualElement>("extra-effects-info").style.display = showExtraEffects ? DisplayStyle.Flex : DisplayStyle.None;
+            root.Q<VisualElement>("extra-effects-info").style.display = showExtraEffects ? DisplayStyle.Flex : DisplayStyle.None;
 
-            rootVisualElement.Q<VisualElement>("aura-section").style.display = DisplayStyle.None;
+            root.Q<VisualElement>("aura-section").style.display = DisplayStyle.None;
 
             DrawCircle(cannonLineRenderer, turret.transform.position, turret.range + 0.5f);
             cannonSpriteRenderer.size = new Vector2(turret.range + 0.5f, turret.range + 0.5f) * 2;
@@ -135,10 +133,10 @@ public class TurretInfoUI : MonoBehaviour
 
         if(turret.variant.aura)
         {
-            rootVisualElement.Q<VisualElement>("cannon-section").style.display = DisplayStyle.None;
+            root.Q<VisualElement>("cannon-section").style.display = DisplayStyle.None;
 
-            rootVisualElement.Q<VisualElement>("aura-section").style.display = DisplayStyle.Flex;
-            rootVisualElement.Q<VisualElement>("aura-slowdown-effect-info").style.display = turret.variant.auraSlowdown ? DisplayStyle.Flex : DisplayStyle.None;
+            root.Q<VisualElement>("aura-section").style.display = DisplayStyle.Flex;
+            root.Q<VisualElement>("aura-slowdown-effect-info").style.display = turret.variant.auraSlowdown ? DisplayStyle.Flex : DisplayStyle.None;
 
             DrawCircle(auraLineRenderer, turret.transform.position, turret.auraRange / 2);
             auraSpriteRenderer.size = new Vector2(turret.auraRange, turret.auraRange);
@@ -168,10 +166,14 @@ public class TurretInfoUI : MonoBehaviour
         auraRangeLabel.text = $"Aura range: {(turret.auraRange - 1) / 2}";
 
         auraSlowdownEffectivenessLabel.text = $"Aura slowdown effectiveness: {turret.auraSlowdownEffectiveness * 100.0f}%";
+
+        root.Q<VisualElement>("TurretInfo").style.display = DisplayStyle.Flex;
     }
 
     public void Hide()
     {
+        root.Q<VisualElement>("TurretInfo").style.display = DisplayStyle.None;
+
         cannonLineRenderer.positionCount = auraLineRenderer.positionCount = 0;
         cannonSpriteRenderer.size = auraSpriteRenderer.size = Vector2.zero;
 

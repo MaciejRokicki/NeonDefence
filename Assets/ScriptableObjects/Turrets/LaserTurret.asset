@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
   m_Name: LaserTurret
   m_EditorClassIdentifier: 
+  _cost: 20
+  cost: 20
   needTarget: 1
   aura: 0
   missile: 0

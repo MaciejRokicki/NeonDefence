@@ -1,0 +1,32 @@
+#turret-variant-container {
+    width: 70px;
+    height: 70px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#turret-variant-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.16);
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#turret-variant-image {
+    width: 80%;
+    height: 80%;
+}
+
+#turret-variant-label {
+    -unity-text-align: lower-center;
+    position: absolute;
+    bottom: -1px;
+    left: 1px;
+}

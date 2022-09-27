@@ -18,8 +18,9 @@ public class GameUI : MonoBehaviour
     private const string STYLE_CONTAINER_RIGHT_SIDE_HIDE = "container-right-side-hide";
 
     private VisualElement root;
+    private BuildingMenu buildingMenu;
     [SerializeField]
-    private TurretInfoUI turretInfo;
+    private TurretInfoMenu turretInfoMenu;
 
     private VisualElement container;
     private Button hideButton;
@@ -28,10 +29,14 @@ public class GameUI : MonoBehaviour
     private bool isLeftSideMenu = true;
     private bool isMenuOpen = true;
 
-    private void Start()
+    private void Awake()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
+        buildingMenu = GetComponent<BuildingMenu>();
+    }
 
+    private void Start()
+    {
         container = root.Q<VisualElement>(ELEMENT_CONTAINER);
         hideButton = root.Q<Button>(ELEMENT_HIDE_MENU_BUTTON);
         hideButtonLabel = root.Q<Label>(ELEMENT_HIDE_MENU_BUTTON_LABEL);
@@ -73,13 +78,13 @@ public class GameUI : MonoBehaviour
 
     public void ShowTurretInfo(Turret turret)
     {
-        turretInfo.Show(turret);
-        root.Q<VisualElement>("TurretInfo").style.display = DisplayStyle.Flex;
+        turretInfoMenu.Show(turret);
+        buildingMenu.Hide();
     }
 
     public void HideTurretInfo()
     {
-        turretInfo.Hide();
-        root.Q<VisualElement>("TurretInfo").style.display = DisplayStyle.None;
+        buildingMenu.Show();
+        turretInfoMenu.Hide();
     }
 }

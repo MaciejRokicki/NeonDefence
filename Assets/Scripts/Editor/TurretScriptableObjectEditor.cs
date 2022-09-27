@@ -3,6 +3,8 @@ using UnityEditor;
 [CustomEditor(typeof(TurretScriptableObject))]
 public class TurreteScriptableObjectEditor : Editor
 {
+    SerializedProperty _cost;
+
     SerializedProperty _needTarget;
     SerializedProperty _aura;
 
@@ -66,6 +68,8 @@ public class TurreteScriptableObjectEditor : Editor
 
     private void OnEnable()
     {
+        _cost = serializedObject.FindProperty("_cost");
+
         _needTarget = serializedObject.FindProperty("needTarget");
         _aura = serializedObject.FindProperty("aura");
 
@@ -74,7 +78,7 @@ public class TurreteScriptableObjectEditor : Editor
 
         _dealDamageOverTime = serializedObject.FindProperty("dealDamageOverTime");
         _explosiveMissile = serializedObject.FindProperty("explosiveMissile");
-        _copyMissileEffects = serializedObject.FindProperty("_copyMissileEffects");
+        _copyMissileEffects = serializedObject.FindProperty("copyMissileEffects");
         _slowdownOnMissileHit = serializedObject.FindProperty("slowdownOnMissileHit");
         _penetrationMissile = serializedObject.FindProperty("penetrationMissile");
         _trackingMissile = serializedObject.FindProperty("trackingMissile");
@@ -130,6 +134,8 @@ public class TurreteScriptableObjectEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+
+        EditorGUILayout.PropertyField(_cost);
 
         EditorGUILayout.LabelField("Turret Options", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(_needTarget);

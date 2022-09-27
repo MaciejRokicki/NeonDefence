@@ -3,6 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/TurretScriptableObject", order = 3)]
 public class TurretScriptableObject : ScriptableObject
 {
+    [SerializeField]
+    private float _cost;
+    public float cost;
+
     public bool needTarget;
     public bool aura;
 
@@ -100,6 +104,8 @@ public class TurretScriptableObject : ScriptableObject
 
     private void OnEnable()
     {
+        cost = _cost;
+
         damage = _damage;
         range = _range;
         rotationSpeed = _rotationSpeed;

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
   m_Name: RocketTurret
   m_EditorClassIdentifier: 
+  _cost: 30
+  cost: 30
   needTarget: 1
   aura: 0
   missile: 1
@@ -21,39 +23,38 @@ MonoBehaviour:
   slowdownOnMissileHit: 0
   penetrationMissile: 0
   trackingMissile: 1
+  copyMissileEffects: 0
   auraSlowdown: 0
   _damage: 20
   damage: 20
-  _damageOverTimeDuration: 3
-  damageOverTimeDuration: 3
-  _damageOverTimeCooldown: 1
-  damageOverTimeCooldown: 1
-  _damageOverTime: 3
-  damageOverTime: 3
+  _range: 20
+  range: 20
+  _rotationSpeed: 10
+  rotationSpeed: 10
   _missilesPerSecond: 0.5
   missilesPerSecond: 0.5
   _missileSpeed: 10
   missileSpeed: 10
   _laserHitsPerSecond: 0
   laserHitsPerSecond: 0
-  _range: 20
-  range: 20
-  _copyMissileEffects: 0
-  copyMissileEffects: 0
+  _laserActivationTime: 0
+  laserActivationTime: 0
+  _laserDeactivationTime: 0
+  laserDeactivationTime: 0
+  _slowdownEffectiveness: 0.5
+  slowdownEffectiveness: 0.5
+  _slowdownEffectDuration: 1
+  slowdownEffectDuration: 1
+  _damageOverTime: 3
+  damageOverTime: 3
+  _damageOverTimeHitCooldown: 0
+  damageOverTimeHitCooldown: 0
+  _damageOverTimeDuration: 3
+  damageOverTimeDuration: 3
   _explosionDamage: 10
   explosionDamage: 10
   _explosionRange: 3
   explosionRange: 3
-  _rotationSpeed: 10
-  rotationSpeed: 10
-  _laserActivationTime: 0
-  laserActivationTime: 0
-  _timeToDeactiveLaser: 0
-  timeToDeactiveLaser: 0
-  _slowdownEffectDuration: 1
-  slowdownEffectDuration: 1
-  _slowdownEffectiveness: 0.5
-  slowdownEffectiveness: 0.5
   _auraDamage: 0
   auraDamage: 0
   _auraRange: 0
