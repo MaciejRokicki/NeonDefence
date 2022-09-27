@@ -4,18 +4,16 @@
     height: 100%;
     transition-property: translate;
     transition-duration: 0.5s;
-    translate: 0 0;
     transition-delay: 0s;
-    rotate: 0;
-    scale: 1 1;
     border-left-width: 0;
     border-right-width: 10px;
     border-top-width: 0;
     border-bottom-width: 0;
-    border-left-color: rgba(154, 197, 197, 255);
-    border-right-color: rgba(154, 197, 197, 255);
-    border-top-color: rgba(154, 197, 197, 255);
-    border-bottom-color: rgba(154, 197, 197, 255);
+    border-left-color: rgb(154, 197, 197);
+    border-right-color: rgb(154, 197, 197);
+    border-top-color: rgb(154, 197, 197);
+    border-bottom-color: rgb(154, 197, 197);
+    translate: 0 0;
 }
 
 .container-hide {
@@ -24,10 +22,10 @@
 
 .container-right-side {
     right: -75%;
-    border-left-color: rgba(154, 197, 197, 255);
-    border-right-color: rgba(154, 197, 197, 255);
-    border-top-color: rgba(154, 197, 197, 255);
-    border-bottom-color: rgba(154, 197, 197, 255);
+    border-left-color: rgb(154, 197, 197);
+    border-right-color: rgb(154, 197, 197);
+    border-top-color: rgb(154, 197, 197);
+    border-bottom-color: rgb(154, 197, 197);
     border-left-width: 10px;
     border-right-width: 0;
     border-top-width: 0;
@@ -51,10 +49,10 @@
     border-bottom-width: 3px;
     border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
-    border-left-color: rgba(154, 197, 197, 255);
-    border-right-color: rgba(154, 197, 197, 255);
-    border-top-color: rgba(154, 197, 197, 255);
-    border-bottom-color: rgba(154, 197, 197, 255);
+    border-left-color: rgb(154, 197, 197);
+    border-right-color: rgb(154, 197, 197);
+    border-top-color: rgb(154, 197, 197);
+    border-bottom-color: rgb(154, 197, 197);
     justify-content: center;
     align-items: center;
     right: -80px;
@@ -72,13 +70,13 @@
     transition-duration: 0.25s;
 }
 
+.hide-menu-button:hover {
+    background-color: rgb(58, 98, 98);
+}
+
 .hide-menu-button-right-side {
     left: -80px;
     bottom: 5px;
-}
-
-.hide-menu-button:hover {
-    background-color: rgb(58, 98, 98);
 }
 
 .hide-menu-button-label {
