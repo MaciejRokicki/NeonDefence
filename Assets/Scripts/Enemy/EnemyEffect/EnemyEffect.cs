@@ -18,7 +18,7 @@
     public abstract void Update();
     public bool CheckDuplicates<T>(T enemyEffect) where T : EnemyEffect
     {
-        if(GetType() != enemyEffect.GetType() || enemyEffect.turret != turret)
+        if(GetType() != enemyEffect.GetType() || enemyEffect.turret.variant != turret.variant)
             return false;
 
         effectTimer = 0.0f;

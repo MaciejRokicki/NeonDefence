@@ -26,7 +26,7 @@ MonoBehaviour:
   copyMissileEffects: 0
   auraSlowdown: 0
   _damage: 20
-  damage: 20
+  damage: 0
   _range: 20
   range: 20
   _rotationSpeed: 10
@@ -45,11 +45,11 @@ MonoBehaviour:
   slowdownEffectiveness: 0.5
   _slowdownEffectDuration: 1
   slowdownEffectDuration: 1
-  _damageOverTime: 3
-  damageOverTime: 3
+  _damageOverTime: 0
+  damageOverTime: 1
   _damageOverTimeHitCooldown: 0
-  damageOverTimeHitCooldown: 0
-  _damageOverTimeDuration: 3
+  damageOverTimeHitCooldown: 1
+  _damageOverTimeDuration: 0
   damageOverTimeDuration: 3
   _explosionDamage: 10
   explosionDamage: 10
