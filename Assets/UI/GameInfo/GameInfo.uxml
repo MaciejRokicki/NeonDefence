@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/GameInfo/GameInfo.uss?fileID=7433441132597879392&amp;guid=4e62c2afc38832c4b88c4e787165514f&amp;type=3#GameInfo" />
+    <ui:VisualElement name="game-info-container" class="game-info-container">
+        <ui:VisualElement name="game-info-wave-content" class="game-info-wave-content">
+            <ui:Label text="Wave: 1" display-tooltip-when-elided="true" name="game-info-wave-label" class="game-info-wave-label" />
+            <ui:Label text="Next wave: 12.34" display-tooltip-when-elided="true" name="game-info-wave-time-label" class="game-info-wave-time-label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="game-info-base-content" class="game-info-base-content">
+            <ui:Label text="Health" display-tooltip-when-elided="true" name="game-info-base-label" class="game-info-base-label" />
+            <ui:ProgressBar title="100/100" name="game-info-base-health-progress-bar" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

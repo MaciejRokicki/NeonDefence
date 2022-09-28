@@ -7,6 +7,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private GameUI gameUI;
+    [SerializeField]
+    private CameraController cameraController;
+
+    public Vector2 currentResolution;
+    public int menuWidth;
 
     private void Awake()
     {
@@ -20,9 +25,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ToggleMenuSide()
+    private void Start()
     {
-        gameUI.ToggleMenuSide();
+        OnScreenResize();
+    }
+
+    private void Update()
+    {
+        if(currentResolution.x != Screen.width || currentResolution.y != Screen.height)
+        {
+            OnScreenResize();
+            cameraController.CalculatePositionLimits();
+        }
     }
 
     public void ShowTurretInfo(Turret turret)
@@ -33,5 +47,11 @@ public class UIManager : MonoBehaviour
     public void HideTurretInfo()
     {
         gameUI.HideTurretInfo();
+    }
+
+    private void OnScreenResize()
+    {
+        currentResolution = new Vector2(Screen.width, Screen.height);
+        menuWidth = (int)(0.25f * currentResolution.x);
     }
 }

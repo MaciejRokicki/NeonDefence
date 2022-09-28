@@ -59,7 +59,6 @@ public class BuildingMenu : MonoBehaviour
     {
         PrepareTurretPlaceholder(variant);
         selectedVariant = variant;
-        gameUI.ToggleUI();
     }
 
     public void BuildTurret(InputAction.CallbackContext ctxt)
@@ -78,7 +77,6 @@ public class BuildingMenu : MonoBehaviour
 
             turretPlaceholder.SetActive(false);
             selectedVariant = null;
-            gameUI.ToggleUI();
         }
     }
 

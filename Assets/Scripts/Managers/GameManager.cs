@@ -5,9 +5,11 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager instance { get { return _instance; } }
 
-    [SerializeField]
-    private SpriteRenderer background;
     public Vector2 mapSize = new Vector2(50.0f, 30.0f);
+    public float health = 100.0f;
+
+    public delegate void HealthChangeCallback(float health);
+    public event HealthChangeCallback OnHealthChange;
 
     private void Awake()
     {
@@ -21,8 +23,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void TakeDamage(float damage)
     {
-        background.size = mapSize;
+        health -= damage;
+
+        if (health < 0)
+        {
+            //TODO: GameOver
+        }
+
+        OnHealthChange(health);
     }
 }

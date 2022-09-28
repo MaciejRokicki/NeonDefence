@@ -6,6 +6,12 @@ public class WaveManager : MonoBehaviour
     private static WaveManager _instance;
     public static WaveManager instance { get { return _instance; } }
 
+    public delegate void WaveChangeCallback(int wave);
+    public event WaveChangeCallback OnWaveChange;
+
+    public delegate void NextWaveTimeCallback(float time);
+    public event NextWaveTimeCallback OnNextWaveTimeChange;
+
     public int currentWave = 0;
     public float currentWaveTime = 0.0f;
     public float nextWaveRefresh = 15.0f;
@@ -46,6 +52,8 @@ public class WaveManager : MonoBehaviour
         {
             currentWaveTime += Time.deltaTime;
 
+            OnNextWaveTimeChange(nextWaveRefresh - currentWaveTime);
+
             if (currentWaveTime > nextWaveRefresh)
             {
                 NextWave();
@@ -57,6 +65,8 @@ public class WaveManager : MonoBehaviour
     private void NextWave()
     {
         currentWave++;
+
+        OnWaveChange(currentWave);
 
         SetAvailableEnemyVariants();
 

@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    [SerializeField]
-    private float health = 100.0f;
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.instance;
+    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -11,18 +15,8 @@ public class Base : MonoBehaviour
         {
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
 
-            TakeDamage(enemy.DealDamage());
+            gameManager.TakeDamage(enemy.DealDamage());
             enemy.Death();
-        }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-
-        if(health < 0)
-        {
-            //TODO: GameOver
         }
     }
 }

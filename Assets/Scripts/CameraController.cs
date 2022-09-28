@@ -7,8 +7,6 @@ public class CameraController : MonoBehaviour
     private GameManager gameManager;
     private UIManager uiManager;
 
-    private bool isLeftSideMenu = true;
-
     [SerializeField]
     private Vector2 cameraViewSize;
 
@@ -48,20 +46,6 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         Move();
-    }
-
-    private void LateUpdate()
-    {
-        if (!isLeftSideMenu && transform.position.x >= 0.0f)
-        {
-            uiManager.ToggleMenuSide();
-            isLeftSideMenu = true;
-        }
-        else if(isLeftSideMenu && transform.position.x < 0.0f)
-        {
-            uiManager.ToggleMenuSide();
-            isLeftSideMenu = false; 
-        }
     }
 
     public void Move()
@@ -123,13 +107,15 @@ public class CameraController : MonoBehaviour
         CalculatePositionLimits();
     }
 
-    private void CalculatePositionLimits()
+    public void CalculatePositionLimits()
     {
+        float worldMenuWidth = Camera.main.ScreenToWorldPoint(new Vector3(uiManager.menuWidth, 0.0f)).x - Camera.main.ScreenToWorldPoint(Vector3.zero).x;
+
         cameraViewSize.x = Camera.main.orthographicSize * Screen.width / Screen.height;
         cameraViewSize.y = Camera.main.orthographicSize;
 
         minX = cameraViewSize.x - gameManager.mapSize.x / 2;
-        maxX = gameManager.mapSize.x / 2 - cameraViewSize.x;
+        maxX = gameManager.mapSize.x / 2 - cameraViewSize.x + worldMenuWidth;
         minY = cameraViewSize.y - gameManager.mapSize.y / 2;
         maxY = gameManager.mapSize.y / 2 - cameraViewSize.y;
     }
