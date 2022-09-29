@@ -61,6 +61,7 @@ MonoBehaviour:
   auraRange: 5
   _auraSlowdownEffectiveness: 0.5
   auraSlowdownEffectiveness: 0.5
+  turretIcon: {fileID: 21300000, guid: d23e67c85b0b3324e944790b222888cd, type: 3}
   turretSprite: {fileID: 21300000, guid: a6ee1e52e8c0d3242a42979a62f615a8, type: 3}
   turretMaterial: {fileID: 2100000, guid: 75bd8cb92c8a4cf47a751e0a5e6b116f, type: 2}
   cannonPrefab: {fileID: 0}

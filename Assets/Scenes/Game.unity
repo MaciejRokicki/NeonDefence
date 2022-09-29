@@ -8404,7 +8404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 658061498}
   - component: {fileID: 658061499}
-  - component: {fileID: 658061500}
+  - component: {fileID: 658061503}
   - component: {fileID: 658061501}
   - component: {fileID: 658061502}
   m_Layer: 0
@@ -8447,19 +8447,6 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 910c7b0c7bf921340a01587ed785bfb7, type: 3}
   m_SortingOrder: 0
---- !u!114 &658061500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658061497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd020dc6a30e034f8ec3908a5074084, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretInfoMenu: {fileID: 352229075}
 --- !u!114 &658061501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8486,6 +8473,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9edb9cd8ad14614290f4d1b2f5bbcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &658061503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658061497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd020dc6a30e034f8ec3908a5074084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretInfoMenu: {fileID: 352229075}
 --- !u!4 &658374083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7108911683671076369, guid: abc31823093d39844ad6b6c1b348fccc, type: 3}
@@ -10416,7 +10416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81785735a99aa3419d1ddd87a8d8bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameUI: {fileID: 658061500}
+  sideMenu: {fileID: 658061503}
   cameraController: {fileID: 519420033}
   currentResolution: {x: 0, y: 0}
   menuWidth: 0

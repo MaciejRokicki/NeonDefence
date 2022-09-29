@@ -6,7 +6,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get { return _instance; } }
 
     [SerializeField]
-    private GameUI gameUI;
+    private SideMenu sideMenu;
     [SerializeField]
     private CameraController cameraController;
 
@@ -41,12 +41,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowTurretInfo(Turret turret)
     {
-        gameUI.ShowTurretInfo(turret);
+        sideMenu.ShowTurretInfo(turret);
     }
 
     public void HideTurretInfo()
     {
-        gameUI.HideTurretInfo();
+        sideMenu.HideTurretInfo();
     }
 
     private void OnScreenResize()

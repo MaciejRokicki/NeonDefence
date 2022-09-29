@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI/GameInfo/GameInfo.uss?fileID=7433441132597879392&amp;guid=4e62c2afc38832c4b88c4e787165514f&amp;type=3#GameInfo" />
     <ui:VisualElement name="game-info-container" class="game-info-container">
         <ui:VisualElement name="game-info-wave-content" class="game-info-wave-content">
-            <ui:Label text="Wave: 1" display-tooltip-when-elided="true" name="game-info-wave-label" class="game-info-wave-label" />
+            <ui:Label text="Wave: 1" display-tooltip-when-elided="true" name="game-info-wave-label" class="game-info-wave-label" style="-unity-font: none; -unity-font-style: bold;" />
             <ui:Label text="Next wave: 12.34" display-tooltip-when-elided="true" name="game-info-wave-time-label" class="game-info-wave-time-label" />
         </ui:VisualElement>
         <ui:VisualElement name="game-info-base-content" class="game-info-base-content">

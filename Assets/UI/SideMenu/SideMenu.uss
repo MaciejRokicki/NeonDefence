@@ -1,0 +1,14 @@
+.container {
+    background-color: rgb(7, 42, 32);
+    width: 25%;
+    height: 100%;
+    right: -75%;
+    -unity-font-definition: url('project://database/Assets/Fonts/Roboto/Roboto.asset?fileID=11400000&guid=6ffedb75066175446a7a04d3c99eef99&type=2#Roboto');
+}
+
+.content {
+    width: auto;
+    height: 100%;
+    color: rgb(255, 255, 255);
+    justify-content: flex-start;
+}

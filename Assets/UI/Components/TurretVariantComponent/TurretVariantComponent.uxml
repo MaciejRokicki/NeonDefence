@@ -3,7 +3,9 @@
     <ui:VisualElement name="turret-variant-container">
         <ui:VisualElement name="turret-variant-content">
             <ui:VisualElement name="turret-variant-image" />
-            <ui:Label text="Label" display-tooltip-when-elided="true" name="turret-variant-label" />
+            <ui:VisualElement name="turret-variant-background">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="turret-variant-label" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

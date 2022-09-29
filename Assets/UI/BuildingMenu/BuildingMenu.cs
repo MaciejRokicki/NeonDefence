@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public class BuildingMenu : MonoBehaviour
 {
-    private GameUI gameUI;
+    private SideMenu gameUI;
 
     private VisualElement root;
     [SerializeField]
@@ -19,7 +19,7 @@ public class BuildingMenu : MonoBehaviour
 
     private void Awake()
     {
-        gameUI = GetComponent<GameUI>();
+        gameUI = GetComponent<SideMenu>();
 
         root = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("BuildingMenu");
         content = root.Q<VisualElement>("building-menu-content");
@@ -33,7 +33,7 @@ public class BuildingMenu : MonoBehaviour
         {
             TemplateContainer templateContainer = turretVariantDocument.Instantiate();
 
-            templateContainer.Q<VisualElement>("turret-variant-image").style.backgroundImage = new StyleBackground(variant.turretSprite);
+            templateContainer.Q<VisualElement>("turret-variant-image").style.backgroundImage = new StyleBackground(variant.turretIcon);
             templateContainer.RegisterCallback<MouseDownEvent, TurretScriptableObject>(SelectVariant, variant);
 
             templateContainer.Q<Label>("turret-variant-label").text = variant.cost.ToString();

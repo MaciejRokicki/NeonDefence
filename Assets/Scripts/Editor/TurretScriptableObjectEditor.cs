@@ -48,6 +48,8 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _auraSlowdownEffectiveness;
 
 
+    SerializedProperty _turretIcon;
+
     SerializedProperty _turretSprite;
     SerializedProperty _turretMaterial;
     SerializedProperty _cannonPrefab;
@@ -111,6 +113,8 @@ public class TurreteScriptableObjectEditor : Editor
 
         _auraSlowdownEffectiveness = serializedObject.FindProperty("_auraSlowdownEffectiveness");
 
+
+        _turretIcon = serializedObject.FindProperty("turretIcon");
 
         _turretSprite = serializedObject.FindProperty("turretSprite");
         _turretMaterial = serializedObject.FindProperty("turretMaterial");
@@ -247,6 +251,7 @@ public class TurreteScriptableObjectEditor : Editor
 
         EditorGUILayout.Separator();
         EditorGUILayout.LabelField("Appearance", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(_turretIcon);
         EditorGUILayout.PropertyField(_turretSprite);
         EditorGUILayout.PropertyField(_turretMaterial);
 

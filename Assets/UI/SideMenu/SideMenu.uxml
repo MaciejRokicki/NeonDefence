@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GameInfo" src="project://database/Assets/UI/GameInfo/GameInfo.uxml?fileID=9197481963319205126&amp;guid=e683c4860a9ec8f428ae028833152afe&amp;type=3#GameInfo" />
     <ui:Template name="TurretInfo" src="project://database/Assets/UI/TurretInfoMenu/TurretInfoMenu.uxml?fileID=9197481963319205126&amp;guid=1059b0a9f70c76847918ba51821ca594&amp;type=3#TurretInfoMenu" />
     <ui:Template name="BuildingMenu" src="project://database/Assets/UI/BuildingMenu/BuildingMenu.uxml?fileID=9197481963319205126&amp;guid=2010ceb457ac13e49b3926284a661463&amp;type=3#BuildingMenu" />
-    <ui:Template name="GameInfo" src="project://database/Assets/UI/GameInfo/GameInfo.uxml?fileID=9197481963319205126&amp;guid=e683c4860a9ec8f428ae028833152afe&amp;type=3#GameInfo" />
-    <Style src="project://database/Assets/UI/GameUI/GameUI.uss?fileID=7433441132597879392&amp;guid=dfde74cb8dca6494bab08ab4ec796275&amp;type=3#GameUI" />
+    <Style src="project://database/Assets/UI/SideMenu/SideMenu.uss?fileID=7433441132597879392&amp;guid=dfde74cb8dca6494bab08ab4ec796275&amp;type=3#SideMenu" />
     <ui:VisualElement name="container" class="container">
         <ui:VisualElement name="content" class="content">
             <ui:Instance template="GameInfo" name="GameInfo" />

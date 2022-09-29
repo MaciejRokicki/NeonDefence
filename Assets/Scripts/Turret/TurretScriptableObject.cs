@@ -84,6 +84,8 @@ public class TurretScriptableObject : ScriptableObject
     private float _auraSlowdownEffectiveness;
     public float auraSlowdownEffectiveness;
 
+    public Sprite turretIcon;
+
     public Sprite turretSprite;
     public Material turretMaterial;
     public GameObject cannonPrefab;
