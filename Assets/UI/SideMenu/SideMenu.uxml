@@ -7,7 +7,7 @@
         <ui:VisualElement name="content" class="content">
             <ui:Instance template="GameInfo" name="GameInfo" />
             <ui:Instance template="TurretInfo" name="TurretInfo" style="display: none; color: rgb(255, 255, 255);" />
-            <ui:Instance template="BuildingMenu" name="BuildingMenu" />
+            <ui:Instance template="BuildingMenu" name="BuildingMenu" style="display: none;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

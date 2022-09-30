@@ -1,69 +1,344 @@
 .game-info-container {
     width: 100%;
+    height: 100%;
 }
 
-.game-info-wave-content {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    rotate: 1deg;
+.game-info-content {
+    align-items: center;
+    width: 100%;
 }
 
-.game-info-wave-label {
-    font-size: 24px;
+.game-info-wave-icon {
+    width: 105px;
+    align-items: center;
+    height: 105px;
+    position: absolute;
+}
+
+.game-info-wave-icon-background {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    background-color: rgb(255, 255, 255);
+    rotate: 45deg;
+    top: 15px;
+}
+
+.game-info-wave-icon-label {
+    color: rgb(56, 56, 56);
     -unity-font-style: bold;
-    color: rgb(37, 84, 147);
+    font-size: 13px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Quantico/Quantico.asset?fileID=11400000&guid=53656fdf8e16d9445b9d45d642372ede&type=2#Quantico');
+    width: 105px;
+    height: auto;
+    position: absolute;
+    top: 17px;
+    -unity-text-align: upper-center;
+    -unity-font: url('project://database/Assets/Fonts/Quantico/TTF/Quantico-Regular.ttf?fileID=12800000&guid=876d3455ad073384abcf3a266a8d49ba&type=3#Quantico-Regular');
 }
 
-.game-info-wave-time-label {
-    font-size: 18px;
+.game-info-wave-icon-value {
+    position: absolute;
+    top: 15px;
+    color: rgb(98, 68, 161);
+    font-size: 55px;
     -unity-font-style: bold;
-    color: rgba(59, 123, 206, 255);
+    -unity-font-definition: url('project://database/Assets/Fonts/Quantico/Quantico.asset?fileID=11400000&guid=53656fdf8e16d9445b9d45d642372ede&type=2#Quantico');
+    -unity-text-align: middle-center;
+    width: 130px;
 }
 
-.game-info-base-content {
-    background-color: rgb(26, 29, 26);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+.game-info-health {
+    width: 100%;
+    height: 53px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+}
+
+#game-info-health-bar {
+    height: 100%;
+    width: 100%;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    margin-bottom: 10px;
-    rotate: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-.game-info-base-label {
-    color: rgb(73, 94, 107);
-    font-size: 24px;
+#game-info-health-bar .unity-progress-bar__container {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    max-height: 100%;
+}
+
+#game-info-health-bar .unity-progress-bar__background {
+    background-color: rgb(26, 29, 26);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+#game-info-health-bar .unity-progress-bar__progress {
+    background-color: rgb(126, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
     margin-left: 0;
-    margin-bottom: 5px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 72%;
 }
 
-#game-info-base-health-progress-bar {
+#game-info-health-bar .unity-progress-bar__title-container {
+    justify-content: flex-start;
 }
 
-#game-info-base-health-progress-bar .unity-progress-bar__background {
-    background-color: rgb(37, 84, 147);
-    height: 30px;
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
-}
-
-#game-info-base-health-progress-bar .unity-progress-bar__progress {
-    background-color: rgba(59, 123, 206, 255);
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
-}
-
-#game-info-base-health-progress-bar .unity-progress-bar__container .unity-progress-bar__title {
-    font-size: 16px;
+#game-info-health-bar .unity-progress-bar__container .unity-progress-bar__title {
+    font-size: 17px;
     color: rgb(255, 255, 255);
+    -unity-text-align: middle-left;
+    -unity-font-definition: url('project://database/Assets/Fonts/Quantico/Quantico.asset?fileID=11400000&guid=53656fdf8e16d9445b9d45d642372ede&type=2#Quantico');
+    margin-left: 15px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-style: bold;
+}
+
+.game-info-details-content {
+    width: 100%;
+    align-items: center;
+}
+
+.game-info-property-content {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: auto;
+    justify-content: center;
+    height: auto;
+    margin-top: 10px;
+}
+
+.game-info-property-icon-container {
+    width: 42px;
+    height: 42px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    margin-right: 10px;
+    top: 17px;
+}
+
+.game-info-next-wave-icon {
+    position: absolute;
+    background-image: url('project://database/Assets/UI/GameInfo/Icons/WaveIcon.png?fileID=2800000&guid=de42afa8611c84b4b82c12ed01eb20ce&type=3#WaveIcon');
+    width: 38px;
+    height: 23px;
+    left: 1px;
+    top: 12px;
+    display: flex;
+}
+
+.game-info-property-icon-background {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(99, 22, 147, 0.25);
+}
+
+.game-info-property-bar-container {
+    height: 42px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.game-info-property-label {
+    -unity-font-definition: url('project://database/Assets/Fonts/Quantico/Quantico.asset?fileID=11400000&guid=53656fdf8e16d9445b9d45d642372ede&type=2#Quantico');
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+}
+
+#game-info-next-wave-bar {
+    height: 20px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#game-info-next-wave-bar .unity-progress-bar__container {
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    height: 18px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+#game-info-next-wave-bar .unity-progress-bar__background {
+    background-color: rgb(26, 29, 26);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+#game-info-next-wave-bar .unity-progress-bar__progress {
+    background-color: rgb(142, 0, 229);
+    width: 50%;
+    height: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#game-info-next-wave-bar .unity-progress-bar__title-container {
+    justify-content: flex-start;
+}
+
+#game-info-next-wave-bar .unity-progress-bar__container .unity-progress-bar__title {
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-left;
+    -unity-font-definition: url('project://database/Assets/Fonts/Quantico/Quantico.asset?fileID=11400000&guid=53656fdf8e16d9445b9d45d642372ede&type=2#Quantico');
+    margin-left: 15px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-style: bold;
+}
+
+.game-info-enemies-left-icon {
+    position: absolute;
+    background-image: url('project://database/Assets/UI/GameInfo/Icons/EnemiesLeftIcon.png?fileID=2800000&guid=0285a048420c1ca49959bb0a571b3566&type=3#EnemiesLeftIcon');
+    width: 32px;
+    height: 23px;
+    left: 5px;
+    top: 10px;
+    display: flex;
+}
+
+#game-info-enemies-left-bar {
+    height: 20px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#game-info-enemies-left-bar .unity-progress-bar__container {
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    height: 100%;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+#game-info-enemies-left-bar .unity-progress-bar__background {
+    background-color: rgb(26, 29, 26);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+#game-info-enemies-left-bar .unity-progress-bar__progress {
+    background-color: rgb(142, 0, 229);
+    width: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#game-info-enemies-left-bar .unity-progress-bar__title-container {
+    justify-content: flex-start;
+}
+
+#game-info-enemies-left-bar .unity-progress-bar__container .unity-progress-bar__title {
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-left;
+    -unity-font-definition: url('project://database/Assets/Fonts/Quantico/Quantico.asset?fileID=11400000&guid=53656fdf8e16d9445b9d45d642372ede&type=2#Quantico');
+    margin-left: 15px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-style: bold;
 }
