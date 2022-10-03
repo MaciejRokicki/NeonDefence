@@ -1,4 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Components/DividerComponent/HeaderComponent.uss?fileID=7433441132597879392&amp;guid=5c9dfbcba1c55be4ebe5f47b92639af1&amp;type=3#HeaderComponent" />
-    <ui:VisualElement name="header" class="header-container" />
-</ui:UXML>
