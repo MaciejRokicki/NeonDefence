@@ -1,81 +1,97 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class BuildingMenu : MonoBehaviour
 {
+    GameManager gameManager;
     BuildingManager buildingManager;
 
     [SerializeField]
-    private GameObject buildingTurretUIPrefab;
+    private TextMeshProUGUI neonBlocksLabel;
+
     [SerializeField]
-    private GameObject turretPlaceholder;
-    private TurretScriptableObject selectedVariant;
+    private GameObject buildingTurretUIPrefab;
+
+    private List<BuildingTurretUI> buildingTurretsUI;
+
+    [SerializeField]
+    private Vector2 buildingTurretSize = new Vector2(60.0f, 60.0f);
+    [SerializeField]
+    private float containerMargin = 20;
+    [SerializeField]
+    private float buildingTurretMargin = 10;
+    [SerializeField]
+    private int buildingTurretsInRow = 3;
+
+    private void Awake()
+    {
+        gameManager = GameManager.instance;
+        buildingManager = BuildingManager.instance;
+
+        gameManager.OnNeonBlockChange += OnNeonBlocksChange;
+    }
 
     private void Start()
     {
-        buildingManager = BuildingManager.instance;
+        buildingTurretsUI = new List<BuildingTurretUI>();
 
-        buildingManager.OnAvailableTurrestLoad += PrepareTurretsMenu;
+        PrepareTurretsMenu();
+
+        OnNeonBlocksChange(gameManager.GetNeonBlocks());
     }
 
     private void PrepareTurretsMenu()
     {
-        for (int i = 0; i < buildingManager.availableTurrets.Count; i++)
+        Vector2 containerSize = Vector2.zero;
+
+        int turretsInRow = buildingTurretsInRow < buildingManager.availableTurrets.Count ? buildingTurretsInRow : buildingManager.availableTurrets.Count;
+        int rows = Mathf.CeilToInt((float)buildingManager.availableTurrets.Count / buildingTurretsInRow);
+
+        containerSize.x += 2 * containerMargin + turretsInRow * buildingTurretSize.x + (turretsInRow - 1) * buildingTurretMargin;
+        containerSize.y += 2 * containerMargin + rows * buildingTurretSize.y + (rows - 1) * buildingTurretMargin;
+
+        GetComponent<RectTransform>().sizeDelta = containerSize;
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(-containerSize.x / 2 - 10.0f, containerSize.y / 2 + 10.0f);
+
+        for (int i = 0, j = 0, k = 0; i < buildingManager.availableTurrets.Count; i++, k++)
         {
+            if(k > buildingTurretsInRow - 1)
+            {
+                j++;
+                k = 0;
+            }
+
             TurretScriptableObject variant = buildingManager.availableTurrets[i];
             GameObject buildingTurret = Instantiate(buildingTurretUIPrefab, transform);
 
-            buildingTurret.GetComponent<RectTransform>().anchoredPosition = new Vector2(-150.0f + (100.0f * i - 1), 0.0f);
+            buildingTurret.GetComponent<RectTransform>().sizeDelta = buildingTurretSize;
+            buildingTurret.GetComponent<RectTransform>().anchoredPosition = new Vector2(
+                    -containerSize.x / 2 + buildingTurretSize.x / 2 + containerMargin + (i % buildingTurretsInRow) * (buildingTurretSize.x + buildingTurretMargin),
+                    containerSize.y / 2 - containerMargin - buildingTurretSize.y / 2 - j * (buildingTurretSize.y + buildingTurretMargin)
+                );
+
             buildingTurret.GetComponent<BuildingTurretUI>().variant = variant;
-            buildingTurret.GetComponent<Image>().sprite = variant.turretIcon;
-            buildingTurret.GetComponent<Image>().material = variant.turretIconMaterial;
-        }
-    }    
 
-    private void Update()
-    {
-        if (selectedVariant)
-        {
-            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector3Int tilePosition;
-
-            buildingManager.GetTurretBuildingTile(worldPoint, out tilePosition);
-
-            turretPlaceholder.transform.position = tilePosition;
+            buildingTurretsUI.Add(buildingTurret.GetComponent<BuildingTurretUI>());
         }
     }
-
-    public void SelectVariant(TurretScriptableObject variant)
+    
+    private void OnNeonBlocksChange(int neonBlocks)
     {
-        PrepareTurretPlaceholder(variant);
-        selectedVariant = variant;
-    }
-
-    public void BuildTurret(InputAction.CallbackContext ctxt)
-    {
-        if (selectedVariant && ctxt.canceled)
+        foreach(BuildingTurretUI buildingTurretUI in buildingTurretsUI)
         {
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector3Int tilePosition;
-
-            UnityEngine.Tilemaps.TileBase tile = buildingManager.GetTurretBuildingTile(worldPoint, out tilePosition);
-
-            if (tile)
+            if(neonBlocks >= buildingTurretUI.variant.cost)
             {
-                buildingManager.BuildTurret(selectedVariant, tilePosition);
+                buildingTurretUI.SetAvailableToPurchase();
             }
-
-            turretPlaceholder.SetActive(false);
-            selectedVariant = null;
+            else
+            {
+                buildingTurretUI.SetUnavailableToPurchase();
+            }
         }
-    }
 
-    private void PrepareTurretPlaceholder(TurretScriptableObject variant)
-    {
-        turretPlaceholder.SetActive(true);
-        turretPlaceholder.GetComponent<TurretPlaceholder>().SetTurretVariant(variant);
-        turretPlaceholder.GetComponent<SpriteRenderer>().sprite = variant.turretSprite;
-        turretPlaceholder.GetComponent<SpriteMask>().sprite = variant.turretSprite;
+        neonBlocksLabel.text = neonBlocks.ToString();
     }
 }

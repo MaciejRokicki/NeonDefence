@@ -18,14 +18,14 @@ public class WaveManager : MonoBehaviour
     public int spawnedEnemies = 0;
     public int enemiesPerSpawner = 0;
     public float enemySpawnTime = 1.0f;
-    [SerializeField]
-    private int currentEnemiesCount = 0;
+    public int currentEnemiesCount = 0;
     public GameObject enemyPrefab;
     public GameObject enemiesParent;
     [SerializeField]
     private EnemyScriptableObject[] enemyVariants;
     public List<EnemyScriptableObject> availableVariants; //TODO: HideInInspector
-    private EnemySpawner[] enemySpawners;
+    [HideInInspector]
+    public EnemySpawner[] enemySpawners;
 
     private void Awake()
     {

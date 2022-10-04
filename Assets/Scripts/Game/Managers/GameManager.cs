@@ -7,9 +7,14 @@ public class GameManager : MonoBehaviour
 
     public Vector2 mapSize = new Vector2(50.0f, 30.0f);
     public float health = 100.0f;
+    [SerializeField]
+    private int neonBlocks;
 
     public delegate void HealthChangeCallback(float health);
     public event HealthChangeCallback OnHealthChange;
+
+    public delegate void NeonBlockChangeCallback(int neonBlocks);
+    public event NeonBlockChangeCallback OnNeonBlockChange;
 
     private void Awake()
     {
@@ -33,5 +38,19 @@ public class GameManager : MonoBehaviour
         }
 
         OnHealthChange(health);
+    }
+
+    public int GetNeonBlocks() => neonBlocks;
+
+    public void AddNeonBlocks(int amount)
+    {
+        neonBlocks += amount;
+        OnNeonBlockChange(neonBlocks);
+    }
+
+    public void RemoveNeonBlocks(int amount)
+    {
+        neonBlocks -= amount;
+        OnNeonBlockChange(neonBlocks);
     }
 }

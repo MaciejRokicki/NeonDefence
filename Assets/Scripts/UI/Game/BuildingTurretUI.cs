@@ -1,19 +1,53 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class BuildingTurretUI : MonoBehaviour, IPointerDownHandler
 {
-    private BuildingMenu buildingMenu;
+    private BuildingManager buildingManager;
+
+    [SerializeField]
+    private GameObject priceLabelUI;
+
     [HideInInspector]
     public TurretScriptableObject variant;
 
+    private bool availableToPurchase;
+
+    private Color availableBackgroundColor = new Color(1.0f, 1.0f, 1.0f, 0.75f);
+    private Color unavailableBackgroundColor = new Color(1.0f, 1.0f, 1.0f, 0.25f);
+
     private void Awake()
     {
-        buildingMenu = transform.parent.GetComponent<BuildingMenu>();
+        buildingManager = BuildingManager.instance;
+    }
+
+    private void Start()
+    {
+        GetComponent<Image>().sprite = variant.turretIcon;
+        GetComponent<Image>().material = variant.turretIconMaterial;
+
+        priceLabelUI.GetComponent<TextMeshProUGUI>().text = variant.cost.ToString();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        buildingMenu.SelectVariant(variant);
+        if(availableToPurchase)
+        {
+            buildingManager.SelectVariant(variant);
+        }
+    }
+
+    public void SetAvailableToPurchase()
+    {
+        GetComponent<Image>().color = availableBackgroundColor;
+        availableToPurchase = true;
+    }
+
+    public void SetUnavailableToPurchase()
+    {
+        GetComponent<Image>().color = unavailableBackgroundColor;
+        availableToPurchase = false;
     }
 }

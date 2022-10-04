@@ -1,12 +1,12 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer), typeof(SpriteMask))]
 public class TurretPlaceholder : MonoBehaviour
 {
-    //[SerializeField]
-    //private TurretInfoMenu turretInfoMenu;
-
     [SerializeField]
     private SpriteRenderer turretAccessibility;
+    [SerializeField]
+    private TurretRange turretRange;
 
     private BuildingManager buildingManager;
 
@@ -35,27 +35,32 @@ public class TurretPlaceholder : MonoBehaviour
         }
     }
 
+    public void ShowPlaceholder(TurretScriptableObject variant)
+    {
+        cannonRange = variant.needTarget ? variant.range : 0.0f;
+        auraRange = variant.aura ? variant.auraRange : 0.0f;
+
+        GetComponent<SpriteRenderer>().sprite = variant.turretSprite;
+        GetComponent<SpriteMask>().sprite = variant.turretSprite;
+    }
+
+    public void HidePlaceholder() => gameObject.SetActive(false);
+
     private void Available()
     {
         turretAccessibility.color = availableColor;
-        //turretInfoMenu.ShowCannonRange(transform.position, cannonRange);
-        //turretInfoMenu.ShowAuraRange(transform.position, auraRange);
+        turretRange.ShowCannonRange(transform.position, cannonRange);
+        turretRange.ShowAuraRange(transform.position, auraRange);
     }
 
     private void Unavailable()
     {
         turretAccessibility.color = unavailableColor;
-        //turretInfoMenu.HideTurretRange();
-    }
-
-    public void SetTurretVariant(TurretScriptableObject turretVariant)
-    {
-        cannonRange = turretVariant.needTarget ? turretVariant.range : 0.0f;
-        auraRange = turretVariant.aura ? turretVariant.auraRange : 0.0f;
+        turretRange.HideTurretRange();
     }
 
     private void OnDisable()
     {
-        //turretInfoMenu.HideTurretRange();
+        turretRange.HideTurretRange();
     }
 }

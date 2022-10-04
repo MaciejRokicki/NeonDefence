@@ -8,7 +8,7 @@ public class BuildingManager : MonoBehaviour
     private static BuildingManager _instance;
     public static BuildingManager instance { get { return _instance; } }
 
-    private UIManager uiManager;
+    private GameManager gameManager;
 
     [SerializeField]
     private Tilemap backgroundTilemap;
@@ -20,8 +20,9 @@ public class BuildingManager : MonoBehaviour
     private TurretScriptableObject[] turretVariants;
     public List<TurretScriptableObject> availableTurrets;
 
-    public delegate void AvailableTurretsLoadCallback();
-    public event AvailableTurretsLoadCallback OnAvailableTurrestLoad;
+    [SerializeField]
+    private TurretPlaceholder turretPlaceholder;
+    private TurretScriptableObject selectedVariant;
 
     private void Awake()
     {
@@ -34,7 +35,7 @@ public class BuildingManager : MonoBehaviour
             _instance = this;
         }
 
-        uiManager = UIManager.instance;
+        gameManager = GameManager.instance;
     }
 
     private void Start()
@@ -45,8 +46,19 @@ public class BuildingManager : MonoBehaviour
         {
             availableTurrets.Add(turretVariants[i]);
         }
+    }
 
-        OnAvailableTurrestLoad();
+    private void Update()
+    {
+        if (selectedVariant)
+        {
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector3Int tilePosition;
+
+            GetTurretBuildingTile(worldPoint, out tilePosition);
+
+            turretPlaceholder.transform.position = tilePosition;
+        }
     }
 
     public void OnBackgroundTileClick(InputAction.CallbackContext ctxt)
@@ -70,6 +82,25 @@ public class BuildingManager : MonoBehaviour
             }
             
             //uiManager.HideTurretInfo();
+        }
+    }
+
+    public void OnTurretDrop(InputAction.CallbackContext ctxt)
+    {
+        if (selectedVariant && ctxt.canceled)
+        {
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector3Int tilePosition;
+
+            TileBase tile = GetTurretBuildingTile(worldPoint, out tilePosition);
+
+            if (tile)
+            {
+                BuildTurret(selectedVariant, tilePosition);
+            }
+
+            turretPlaceholder.HidePlaceholder();
+            selectedVariant = null;
         }
     }
 
@@ -107,10 +138,19 @@ public class BuildingManager : MonoBehaviour
         return tile;
     }
 
+    public void SelectVariant(TurretScriptableObject variant)
+    {
+        selectedVariant = variant;
+        turretPlaceholder.gameObject.SetActive(true);
+        turretPlaceholder.ShowPlaceholder(variant);
+    }
+
     public void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
     {
         GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
 
         turret.GetComponent<Turret>().variant = turretVariant;
+
+        gameManager.RemoveNeonBlocks(turretVariant.cost);
     }
 }

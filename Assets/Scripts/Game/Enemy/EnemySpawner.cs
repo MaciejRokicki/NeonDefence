@@ -13,6 +13,9 @@ public class EnemySpawner : MonoBehaviour
     private float spawnTime = 0.0f;
     public Transform[] waypoints;
 
+    public delegate void EnemySpawnedCallback();
+    public event EnemySpawnedCallback OnEnemySpawn;
+
     private void Awake()
     {
         waveManager = WaveManager.instance;
@@ -47,6 +50,8 @@ public class EnemySpawner : MonoBehaviour
 
         waveManager.spawnedEnemies++;
         spawnedEnemies++;
+
+        OnEnemySpawn();
     }
 
     public void ResetEnemies()

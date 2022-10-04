@@ -4,8 +4,8 @@ using UnityEngine;
 public class TurretScriptableObject : ScriptableObject
 {
     [SerializeField]
-    private float _cost;
-    public float cost;
+    private int _cost;
+    public int cost;
 
     public bool needTarget;
     public bool aura;

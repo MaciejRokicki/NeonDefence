@@ -25,6 +25,11 @@ public class WaveBarUI : MonoBehaviour
         waveManager.OnNextWaveTimerChange += OnNextWaveTimer;
         waveManager.OnWaveChange += OnNextWave;
 
+        foreach(EnemySpawner enemySpawner in waveManager.enemySpawners)
+        {
+            enemySpawner.OnEnemySpawn += OnEnemySpawn;
+        }
+
         waveTimeSpan = new TimeSpan();
 
         OnNextWave(0);
@@ -46,6 +51,11 @@ public class WaveBarUI : MonoBehaviour
 
         waveTimerLabelValue.text = waveTimeSpan.ToString(@"ss\.ff\s");
         waveTimerFillBar.offsetMax = new Vector2(-(400.0f - 400.0f * time / 15.0f), waveTimerFillBar.offsetMax.y);
+    }
+
+    private void OnEnemySpawn()
+    {
+        waveTimerFillBar.offsetMax = new Vector2(-(400.0f - 400.0f * waveManager.spawnedEnemies / waveManager.currentEnemiesCount), waveTimerFillBar.offsetMax.y);
     }
 
     private void OnNextWave(int wave)
