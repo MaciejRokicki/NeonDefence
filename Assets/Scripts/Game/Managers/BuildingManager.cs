@@ -9,6 +9,8 @@ public class BuildingManager : MonoBehaviour
     public static BuildingManager instance { get { return _instance; } }
 
     private GameManager gameManager;
+    [SerializeField]
+    private BuildingMenu buildingMenu;
 
     [SerializeField]
     private Tilemap backgroundTilemap;
@@ -101,6 +103,7 @@ public class BuildingManager : MonoBehaviour
 
             turretPlaceholder.HidePlaceholder();
             selectedVariant = null;
+            buildingMenu.ToggleMenu();
         }
     }
 
@@ -143,6 +146,7 @@ public class BuildingManager : MonoBehaviour
         selectedVariant = variant;
         turretPlaceholder.gameObject.SetActive(true);
         turretPlaceholder.ShowPlaceholder(variant);
+        buildingMenu.ToggleMenu();
     }
 
     public void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
