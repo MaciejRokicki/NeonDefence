@@ -72,9 +72,9 @@ public class Turret : MonoBehaviour
         slowdownEffectiveness = variant.slowdownEffectiveness;
         slowdownEffectDuration = variant.slowdownEffectDuration;
 
-        damageOverTime = variant.damageOverTime;
-        damageOverTimeHitCooldown = variant.damageOverTimeHitCooldown;
-        damageOverTimeDuration = variant.damageOverTimeDuration;
+        damageOverTime = variant.poisonDamage;
+        damageOverTimeHitCooldown = variant.poisonHitRate;
+        damageOverTimeDuration = variant.poisonDuration;
 
         explosionDamage = variant.explosionDamage;
         explosionRange = variant.explosionRange;
@@ -83,10 +83,5 @@ public class Turret : MonoBehaviour
         auraRange = variant.auraRange;
 
         auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;
-    }
-
-    public void Test(InputAction.CallbackContext ctxt)
-    {
-        Debug.Log(this.transform.position);
     }
 }

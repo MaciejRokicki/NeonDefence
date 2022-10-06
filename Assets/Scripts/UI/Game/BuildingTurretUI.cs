@@ -7,6 +7,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     private GameManager gameManager;
     private BuildingManager buildingManager;
+    private TurretDetails turretDetails;
 
     public TurretScriptableObject variant;
 
@@ -23,14 +24,12 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private Color availableBackgroundColor = new Color(1.0f, 1.0f, 1.0f, 0.75f);
     private Color unavailableBackgroundColor = new Color(1.0f, 1.0f, 1.0f, 0.25f);
 
-    private void Awake()
+    private void Start()
     {
         gameManager = GameManager.instance;
         buildingManager = BuildingManager.instance;
-    }
+        turretDetails = TurretDetails.instance;
 
-    private void Start()
-    {
         GetComponent<Image>().sprite = variant.turretIcon;
         GetComponent<Image>().material = variant.turretIconMaterial;
 
@@ -68,6 +67,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if(availableToPurchase)
         {
             buildingManager.SelectVariant(variant);
+            turretDetails.Show(variant);
         }
     }
 

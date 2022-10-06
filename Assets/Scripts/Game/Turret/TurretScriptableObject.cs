@@ -57,14 +57,14 @@ public class TurretScriptableObject : ScriptableObject
     public float slowdownEffectDuration;
 
     [SerializeField]
-    private float _damageOverTime;
-    public float damageOverTime;
+    private float _poisonDamage;
+    public float poisonDamage;
     [SerializeField]
-    private float _damageOverTimeHitCooldown;
-    public float damageOverTimeHitCooldown;
+    private float _poisonHitRate;
+    public float poisonHitRate;
     [SerializeField]
-    private float _damageOverTimeDuration;
-    public float damageOverTimeDuration;
+    private float _poisonDuration;
+    public float poisonDuration;
 
     [SerializeField]
     private float _explosionDamage;
@@ -122,9 +122,9 @@ public class TurretScriptableObject : ScriptableObject
         slowdownEffectiveness = _slowdownEffectiveness;
         slowdownEffectDuration = _slowdownEffectDuration;
 
-        damageOverTime = _damageOverTime;
-        damageOverTimeHitCooldown = _damageOverTimeHitCooldown;
-        damageOverTimeDuration = _damageOverTimeDuration;
+        poisonDamage = _poisonDamage;
+        poisonHitRate = _poisonHitRate;
+        poisonDuration = _poisonDuration;
 
         explosionDamage = _explosionDamage;
         explosionRange = _explosionRange;

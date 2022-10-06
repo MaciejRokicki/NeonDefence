@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class TurretRange : MonoBehaviour
 {
+    private static TurretRange _instance;
+    public static TurretRange instance { get { return _instance; } }
+
     [SerializeField]
     private GameObject cannonRange;
     [SerializeField]
@@ -14,6 +17,15 @@ public class TurretRange : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         cannonLineRenderer = cannonRange.GetComponent<LineRenderer>();
         cannonSpriteRenderer = cannonRange.GetComponent<SpriteRenderer>();
         auraLineRenderer = auraRange.GetComponent<LineRenderer>();

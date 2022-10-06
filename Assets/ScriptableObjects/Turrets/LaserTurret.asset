@@ -41,16 +41,16 @@ MonoBehaviour:
   laserActivationTime: 0.75
   _laserDeactivationTime: 0
   laserDeactivationTime: 0
-  _slowdownEffectiveness: 0.5
+  _slowdownEffectiveness: 0
   slowdownEffectiveness: 0.5
-  _slowdownEffectDuration: 1
+  _slowdownEffectDuration: 0
   slowdownEffectDuration: 1
-  _damageOverTime: 0
-  damageOverTime: 0
-  _damageOverTimeHitCooldown: 0
-  damageOverTimeHitCooldown: 0
-  _damageOverTimeDuration: 0
-  damageOverTimeDuration: 0
+  _poisonDamage: 0
+  poisonDamage: 0
+  _poisonHitRate: 0
+  poisonHitRate: 0
+  _poisonDuration: 0
+  poisonDuration: 0
   _explosionDamage: 0
   explosionDamage: 0
   _explosionRange: 0

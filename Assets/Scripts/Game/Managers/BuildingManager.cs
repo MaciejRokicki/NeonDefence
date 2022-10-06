@@ -9,8 +9,8 @@ public class BuildingManager : MonoBehaviour
     public static BuildingManager instance { get { return _instance; } }
 
     private GameManager gameManager;
-    [SerializeField]
     private BuildingMenu buildingMenu;
+    private TurretDetails turretDetails;
 
     [SerializeField]
     private Tilemap backgroundTilemap;
@@ -18,12 +18,13 @@ public class BuildingManager : MonoBehaviour
     [SerializeField]
     private GameObject turretPrefab;
 
-    [SerializeField]
-    private TurretScriptableObject[] turretVariants;
+    public TurretScriptableObject[] turretVariants;
     public List<TurretScriptableObject> availableTurrets;
 
-    [SerializeField]
     private TurretPlaceholder turretPlaceholder;
+    private TurretRange turretRange;
+
+    private Turret selectedTurret;
     private TurretScriptableObject selectedVariant;
 
     private void Awake()
@@ -36,12 +37,16 @@ public class BuildingManager : MonoBehaviour
         {
             _instance = this;
         }
-
-        gameManager = GameManager.instance;
     }
 
     private void Start()
     {
+        gameManager = GameManager.instance;
+        buildingMenu = BuildingMenu.instance;
+        turretDetails = TurretDetails.instance;
+        turretPlaceholder = TurretPlaceholder.instance;
+        turretRange = TurretRange.instance;
+
         availableTurrets = new List<TurretScriptableObject>();
 
         for(int i = 0; i < turretVariants.Length; i++)
@@ -71,19 +76,40 @@ public class BuildingManager : MonoBehaviour
             Vector3Int tilePosition;
             TileBase tile = GetTurretBuildingTile(worldPoint, out tilePosition, true);
 
+            if (selectedTurret)
+            {
+                buildingMenu.Show();
+                turretRange.HideTurretRange();
+                selectedTurret = null;
+            }
+
             if (tile)
             {
-                Turret selectedTurret = GetTurret(tilePosition);
+                selectedTurret = GetTurret(tilePosition);
 
                 if(selectedTurret)
                 {
-                    //uiManager.ShowTurretInfo(selectedTurret);
+                    TurretScriptableObject variant = selectedTurret.variant;
+                    turretDetails.Show(variant, true);
+                    
+                    if(variant.needTarget)
+                    {
+                        turretRange.ShowCannonRange(selectedTurret.transform.position, variant.range);
+                    }
+
+                    if(variant.aura)
+                    {
+                        turretRange.ShowAuraRange(selectedTurret.transform.position, variant.auraRange);
+                    }
+
+                    buildingMenu.Hide();
 
                     return;
                 }
             }
-            
-            //uiManager.HideTurretInfo();
+
+            turretDetails.Hide();
+            turretRange.HideTurretRange();
         }
     }
 
@@ -103,7 +129,8 @@ public class BuildingManager : MonoBehaviour
 
             turretPlaceholder.HidePlaceholder();
             selectedVariant = null;
-            buildingMenu.ToggleMenu();
+            buildingMenu.Show();
+            turretDetails.Hide();
         }
     }
 
@@ -146,7 +173,7 @@ public class BuildingManager : MonoBehaviour
         selectedVariant = variant;
         turretPlaceholder.gameObject.SetActive(true);
         turretPlaceholder.ShowPlaceholder(variant);
-        buildingMenu.ToggleMenu();
+        buildingMenu.Hide();
     }
 
     public void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
@@ -156,5 +183,14 @@ public class BuildingManager : MonoBehaviour
         turret.GetComponent<Turret>().variant = turretVariant;
 
         gameManager.RemoveNeonBlocks(turretVariant.cost);
+    }
+
+    public void SellTurret()
+    {
+        if(selectedTurret)
+        {
+            gameManager.AddNeonBlocks((int)(selectedTurret.variant.cost * 0.9f));
+            Destroy(selectedTurret.gameObject);
+        }
     }
 }

@@ -3,9 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer), typeof(SpriteMask))]
 public class TurretPlaceholder : MonoBehaviour
 {
+    private static TurretPlaceholder _instance;
+    public static TurretPlaceholder instance { get { return _instance; } }
+
     [SerializeField]
     private SpriteRenderer turretAccessibility;
-    [SerializeField]
     private TurretRange turretRange;
 
     private BuildingManager buildingManager;
@@ -15,6 +17,20 @@ public class TurretPlaceholder : MonoBehaviour
 
     private float cannonRange = 0.0f;
     private float auraRange = 0.0f;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
+        turretRange = TurretRange.instance;
+    }
 
     private void Start()
     {

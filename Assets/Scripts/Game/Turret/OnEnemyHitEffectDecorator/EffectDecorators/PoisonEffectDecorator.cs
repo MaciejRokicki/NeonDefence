@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-public class DamageOverTimeEffectDecorator : EnemyHitEffectBaseDecorator
+public class PoisonEffectDecorator : EnemyHitEffectBaseDecorator
 {
     private readonly float effectDuration;
     private readonly float effectCooldown;
     private readonly float effectEffectiveness;
 
-    public DamageOverTimeEffectDecorator(
+    public PoisonEffectDecorator(
         Turret turret,
         GameObject missile, 
         EnemyHitEffectComponent 
@@ -23,7 +23,7 @@ public class DamageOverTimeEffectDecorator : EnemyHitEffectBaseDecorator
     public override void OnEnemyEnter(Enemy enemy)
     {
         enemyHitEffectComponent.OnEnemyEnter(enemy);
-        enemy.enemyEffectHandler.ApplyEffect(new EnemyDamageOverTimeEffect(turret, enemy, effectDuration, effectCooldown, effectEffectiveness));
+        enemy.enemyEffectHandler.ApplyEffect(new PoisonEffect(turret, enemy, effectDuration, effectCooldown, effectEffectiveness));
     }
 
     public override void OnEnemyExit(Enemy enemy)

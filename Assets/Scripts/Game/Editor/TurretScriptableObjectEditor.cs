@@ -11,7 +11,7 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _missile;
     SerializedProperty _laser;
 
-    SerializedProperty _dealDamageOverTime;
+    SerializedProperty _poison;
     SerializedProperty _explosiveMissile;
     SerializedProperty _slowdownOnMissileHit;
 
@@ -35,9 +35,9 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _slowdownEffectiveness;
     SerializedProperty _slowdownEffectDuration;
 
-    SerializedProperty _damageOverTime;
-    SerializedProperty _damageOverTimeHitCooldown;
-    SerializedProperty _damageOverTimeDuration;
+    SerializedProperty _poisonDamage;
+    SerializedProperty _poisonHitRate;
+    SerializedProperty _poisonDuration;
 
     SerializedProperty _explosionDamage;
     SerializedProperty _explosionRange;
@@ -79,7 +79,7 @@ public class TurreteScriptableObjectEditor : Editor
         _missile = serializedObject.FindProperty("missile");
         _laser = serializedObject.FindProperty("laser");
 
-        _dealDamageOverTime = serializedObject.FindProperty("dealDamageOverTime");
+        _poison = serializedObject.FindProperty("dealDamageOverTime");
         _explosiveMissile = serializedObject.FindProperty("explosiveMissile");
         _copyMissileEffects = serializedObject.FindProperty("copyMissileEffects");
         _slowdownOnMissileHit = serializedObject.FindProperty("slowdownOnMissileHit");
@@ -102,9 +102,9 @@ public class TurreteScriptableObjectEditor : Editor
         _slowdownEffectiveness = serializedObject.FindProperty("_slowdownEffectiveness");
         _slowdownEffectDuration = serializedObject.FindProperty("_slowdownEffectDuration");
 
-        _damageOverTime = serializedObject.FindProperty("_damageOverTime");
-        _damageOverTimeHitCooldown = serializedObject.FindProperty("_damageOverTimeHitCooldown");
-        _damageOverTimeDuration = serializedObject.FindProperty("_damageOverTimeDuration");
+        _poisonDamage = serializedObject.FindProperty("_poisonDamage");
+        _poisonHitRate = serializedObject.FindProperty("_poisonHitRate");
+        _poisonDuration = serializedObject.FindProperty("_poisonDuration");
 
         _explosionDamage = serializedObject.FindProperty("_explosionDamage");
         _explosionRange = serializedObject.FindProperty("_explosionRange");
@@ -162,7 +162,7 @@ public class TurreteScriptableObjectEditor : Editor
 
             if (_missile.boolValue)
             {
-                EditorGUILayout.PropertyField(_dealDamageOverTime);
+                EditorGUILayout.PropertyField(_poison);
                 EditorGUILayout.PropertyField(_explosiveMissile);
                 if (_explosiveMissile.boolValue)
                 {
@@ -212,11 +212,11 @@ public class TurreteScriptableObjectEditor : Editor
                 EditorGUILayout.PropertyField(_slowdownEffectDuration);
             }
 
-            if (_dealDamageOverTime.boolValue)
+            if (_poison.boolValue)
             {
-                EditorGUILayout.PropertyField(_damageOverTime);
-                EditorGUILayout.PropertyField(_damageOverTimeHitCooldown);
-                EditorGUILayout.PropertyField(_damageOverTimeDuration);
+                EditorGUILayout.PropertyField(_poisonDamage);
+                EditorGUILayout.PropertyField(_poisonHitRate);
+                EditorGUILayout.PropertyField(_poisonDuration);
             }
 
             if (_explosiveMissile.boolValue)

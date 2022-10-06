@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class BuildingMenu : MonoBehaviour
 {
+    private static BuildingMenu _instance;
+    public static BuildingMenu instance { get { return _instance; } }
+
     private GameManager gameManager;
     private Animator animator;
 
@@ -14,6 +17,15 @@ public class BuildingMenu : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         gameManager = GameManager.instance;
         animator = GetComponent<Animator>();
 
@@ -33,5 +45,15 @@ public class BuildingMenu : MonoBehaviour
     public void ToggleMenu()
     {
         animator.SetBool("isOpen", !animator.GetBool("isOpen"));
+    }
+
+    public void Show()
+    {
+        animator.SetBool("isOpen", true);
+    }
+
+    public void Hide()
+    {
+        animator.SetBool("isOpen", false);
     }
 }

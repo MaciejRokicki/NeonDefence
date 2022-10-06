@@ -19,7 +19,7 @@ public class Missile : MonoBehaviour
 
         if (turret.variant.dealDamageOverTime)
         {
-            enemyHitEffectComponent = new DamageOverTimeEffectDecorator(
+            enemyHitEffectComponent = new PoisonEffectDecorator(
                 turret, 
                 gameObject, 
                 enemyHitEffectComponent, 
