@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private GameManager gameManager;
     private BuildingManager buildingManager;
@@ -63,7 +63,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         GetComponent<Image>().color = defaultColor;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnClickDown()
     {
         if(availableToPurchase)
         {
