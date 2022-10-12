@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private GameManager gameManager;
-    private BuildingManager buildingManager;
+    private TurretManager buildingManager;
     private TurretDetails turretDetails;
 
     public TurretScriptableObject variant;
@@ -27,7 +27,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private void Start()
     {
         gameManager = GameManager.instance;
-        buildingManager = BuildingManager.instance;
+        buildingManager = TurretManager.instance;
         turretDetails = TurretDetails.instance;
 
         GetComponent<Image>().sprite = variant.turretIcon;

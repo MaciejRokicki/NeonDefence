@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
@@ -8,6 +11,15 @@ public class InputManager : MonoBehaviour
 
     [HideInInspector]
     public PlayerInput playerInput;
+
+    [SerializeField]
+    private GraphicRaycaster graphicRaycaster;
+
+    private PointerEventData pointerEventData;
+    private List<RaycastResult> raycastResults;
+
+    [HideInInspector]
+    public GameObject pressedUiButton;
 
     private void Awake()
     {
@@ -21,5 +33,34 @@ public class InputManager : MonoBehaviour
         }
 
         playerInput = GetComponent<PlayerInput>();
+
+        pointerEventData = new PointerEventData(EventSystem.current);
+        raycastResults = new List<RaycastResult>();
+    }
+
+    public void ClickHandler(InputAction.CallbackContext ctxt)
+    {
+        if(ctxt.started)
+        {
+            pointerEventData.position = Mouse.current.position.ReadValue();
+            raycastResults.Clear();
+
+            graphicRaycaster.Raycast(pointerEventData, raycastResults);
+
+            foreach (RaycastResult result in raycastResults)
+            {
+                if (result.gameObject.GetComponent<Button>())
+                {
+                    pressedUiButton = result.gameObject;
+
+                    break;
+                }
+            }
+        }
+
+        if(ctxt.canceled)
+        {
+            pressedUiButton = null;
+        }
     }
 }

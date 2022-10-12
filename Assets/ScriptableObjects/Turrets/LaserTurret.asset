@@ -29,10 +29,10 @@ MonoBehaviour:
   damage: 10
   _range: 7
   range: 7
-  _rotationSpeed: 2
-  rotationSpeed: 2
-  _missilesPerSecond: 0.25
-  missilesPerSecond: 0.25
+  _rotationSpeed: 5
+  rotationSpeed: 5
+  _missilesPerSecond: 0
+  missilesPerSecond: 0
   _missileSpeed: 0
   missileSpeed: 0
   _laserHitsPerSecond: 4
@@ -42,9 +42,9 @@ MonoBehaviour:
   _laserDeactivationTime: 0
   laserDeactivationTime: 0
   _slowdownEffectiveness: 0
-  slowdownEffectiveness: 0.5
+  slowdownEffectiveness: 0
   _slowdownEffectDuration: 0
-  slowdownEffectDuration: 1
+  slowdownEffectDuration: 0
   _poisonDamage: 0
   poisonDamage: 0
   _poisonHitRate: 0

@@ -7,6 +7,7 @@ public class BuildingMenu : MonoBehaviour
     public static BuildingMenu instance { get { return _instance; } }
 
     private GameManager gameManager;
+
     private Animator animator;
 
     [SerializeField]
@@ -27,6 +28,7 @@ public class BuildingMenu : MonoBehaviour
         }
 
         gameManager = GameManager.instance;
+
         animator = GetComponent<Animator>();
 
         gameManager.OnNeonBlockChange += OnNeonBlocksChange;

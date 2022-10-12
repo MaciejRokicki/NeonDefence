@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
 
-public class BuildingManager : MonoBehaviour
+public class TurretManager : MonoBehaviour
 {
-    private static BuildingManager _instance;
-    public static BuildingManager instance { get { return _instance; } }
+    private static TurretManager _instance;
+    public static TurretManager instance { get { return _instance; } }
 
     private GameManager gameManager;
+    private InputManager inputManager;
+
     private BuildingMenu buildingMenu;
     private TurretDetails turretDetails;
 
@@ -42,8 +44,11 @@ public class BuildingManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
+        inputManager = InputManager.instance;
+
         buildingMenu = BuildingMenu.instance;
         turretDetails = TurretDetails.instance;
+
         turretPlaceholder = TurretPlaceholder.instance;
         turretRange = TurretRange.instance;
 
@@ -68,49 +73,70 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    public void OnBackgroundTileClick(InputAction.CallbackContext ctxt)
+    public void SelectVariant(TurretScriptableObject variant)
     {
-        if(ctxt.performed)
+        selectedVariant = variant;
+        turretPlaceholder.gameObject.SetActive(true);
+        turretPlaceholder.ShowPlaceholder(variant);
+        buildingMenu.Hide();
+    }
+
+    public void BuildingManagerClickHandler(InputAction.CallbackContext ctxt)
+    {
+        if (ctxt.started)
         {
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector3Int tilePosition;
-            TileBase tile = GetTurretBuildingTile(worldPoint, out tilePosition, true);
+            RaycastHit2D hit = Physics2D.Raycast(
+                Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
 
-            if (selectedTurret)
+            turretRange.HideTurretRange();
+
+            if (hit)
             {
-                buildingMenu.Show();
-                turretRange.HideTurretRange();
-                selectedTurret = null;
-            }
-
-            if (tile)
-            {
-                selectedTurret = GetTurret(tilePosition);
-
-                if(selectedTurret)
+                if(hit.collider.CompareTag("Turret"))
                 {
-                    TurretScriptableObject variant = selectedTurret.variant;
-                    turretDetails.Show(variant, true);
-                    
-                    if(variant.needTarget)
+                    selectedTurret = hit.collider.GetComponent<Turret>();
+
+                    if (selectedTurret)
                     {
-                        turretRange.ShowCannonRange(selectedTurret.transform.position, variant.range);
+                        ShowTurretDetails(selectedTurret.variant);
+                        buildingMenu.Hide();
+
+                        return;
                     }
-
-                    if(variant.aura)
-                    {
-                        turretRange.ShowAuraRange(selectedTurret.transform.position, variant.auraRange);
-                    }
-
-                    buildingMenu.Hide();
-
-                    return;
                 }
             }
 
-            turretDetails.Hide();
-            turretRange.HideTurretRange();
+            if (!inputManager.pressedUiButton)
+            {
+                selectedTurret = null;
+                buildingMenu.Show();
+            }
+            
+            if(!inputManager.pressedUiButton || (inputManager.pressedUiButton && inputManager.pressedUiButton.name == "ToggleMenuButton"))
+            {
+                turretDetails.Hide();
+            }
         }
+    }
+
+    public TileBase GetTurretBuildingTile(Vector3 worldPoint, out Vector3Int tilePosition, bool ignoreNonBuildableLayer = false)
+    {
+        tilePosition = backgroundTilemap.WorldToCell(worldPoint);
+        TileBase tile = backgroundTilemap.GetTile(tilePosition);
+
+        if (!ignoreNonBuildableLayer && tile)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+
+            if (hit)
+            {
+                tile = null;
+            }
+        }
+
+        tilePosition += Vector3Int.one;
+
+        return tile;
     }
 
     public void OnTurretDrop(InputAction.CallbackContext ctxt)
@@ -134,48 +160,6 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    private Turret GetTurret(Vector3 tilePosition)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(tilePosition, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
-
-        if(hit && hit.collider.tag == "Turret")
-        {
-            return hit.collider.GetComponent<Turret>();
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public TileBase GetTurretBuildingTile(Vector3 worldPoint, out Vector3Int tilePosition, bool ignoreNonBuildableLayer = false)
-    {
-        tilePosition = backgroundTilemap.WorldToCell(worldPoint);
-        TileBase tile = backgroundTilemap.GetTile(tilePosition);
-
-        if(!ignoreNonBuildableLayer && tile)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
-
-            if(hit)
-            {
-                tile = null;
-            }
-        }
-
-        tilePosition += Vector3Int.one;
-
-        return tile;
-    }
-
-    public void SelectVariant(TurretScriptableObject variant)
-    {
-        selectedVariant = variant;
-        turretPlaceholder.gameObject.SetActive(true);
-        turretPlaceholder.ShowPlaceholder(variant);
-        buildingMenu.Hide();
-    }
-
     public void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
     {
         GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
@@ -187,10 +171,23 @@ public class BuildingManager : MonoBehaviour
 
     public void SellTurret()
     {
-        if(selectedTurret)
+        if (selectedTurret)
         {
             gameManager.AddNeonBlocks((int)(selectedTurret.variant.cost * 0.9f));
             Destroy(selectedTurret.gameObject);
+
+            selectedTurret = null;
+
+            turretDetails.Hide();
+            turretRange.HideTurretRange();
+
+            buildingMenu.Show();
         }
+    }
+
+    private void ShowTurretDetails(TurretScriptableObject variant)
+    {
+        turretDetails.Show(variant, true);
+        turretRange.ShowTurretRange(selectedTurret.transform.position, variant);
     }
 }

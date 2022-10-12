@@ -16,7 +16,7 @@ public class TurretDetails : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI sellButtonValue;
 
-    private BuildingManager buildingManager;
+    private TurretManager buildingManager;
     private Animator animator;
     private StringBuilder stringBuilder;
 
@@ -39,7 +39,7 @@ public class TurretDetails : MonoBehaviour
             _instance = this;
         }
 
-        buildingManager = BuildingManager.instance;
+        buildingManager = TurretManager.instance;
         animator = GetComponent<Animator>();
         stringBuilder = new StringBuilder();
     }
@@ -111,6 +111,8 @@ public class TurretDetails : MonoBehaviour
 
     public void Show(TurretScriptableObject variant, bool showSellButton = false)
     {
+        sellButton.SetActive(false);
+
         activeProperties = 0;
 
         properties[0].SetValue(variant.damage, propertiesMaxValues[0]);
@@ -150,7 +152,7 @@ public class TurretDetails : MonoBehaviour
         float containerHeight = padding + activeProperties * cellSize.y + (activeProperties - 1) * spacing;
 
         GetComponent<RectTransform>().sizeDelta = new Vector2(450.0f, containerHeight);
-        GetComponent<RectTransform>().anchoredPosition = new Vector2(225.0f, containerHeight / 2 + 105.0f);
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(225.0f, containerHeight / 2 + 70.0f);
 
         if (showSellButton)
         {
@@ -171,6 +173,5 @@ public class TurretDetails : MonoBehaviour
     public void Hide()
     {
         animator.SetBool("isOpen", false);
-        sellButton.SetActive(false);
     }
 }

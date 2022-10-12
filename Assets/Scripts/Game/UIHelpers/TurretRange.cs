@@ -6,9 +6,9 @@ public class TurretRange : MonoBehaviour
     public static TurretRange instance { get { return _instance; } }
 
     [SerializeField]
-    private GameObject cannonRange;
+    private GameObject cannonRangeObject;
     [SerializeField]
-    private GameObject auraRange;
+    private GameObject auraRangeObject;
 
     private LineRenderer cannonLineRenderer;
     private SpriteRenderer cannonSpriteRenderer;
@@ -26,34 +26,37 @@ public class TurretRange : MonoBehaviour
             _instance = this;
         }
 
-        cannonLineRenderer = cannonRange.GetComponent<LineRenderer>();
-        cannonSpriteRenderer = cannonRange.GetComponent<SpriteRenderer>();
-        auraLineRenderer = auraRange.GetComponent<LineRenderer>();
-        auraSpriteRenderer = auraRange.GetComponent<SpriteRenderer>();
+        cannonLineRenderer = cannonRangeObject.GetComponent<LineRenderer>();
+        cannonSpriteRenderer = cannonRangeObject.GetComponent<SpriteRenderer>();
+        auraLineRenderer = auraRangeObject.GetComponent<LineRenderer>();
+        auraSpriteRenderer = auraRangeObject.GetComponent<SpriteRenderer>();
     }
 
-    public void ShowCannonRange(Vector2 position, float range)
+    public void ShowTurretRange(Vector2 position, TurretScriptableObject variant)
     {
-        cannonRange.SetActive(true);
+        if(variant.needTarget)
+        {
+            cannonRangeObject.SetActive(true);
 
-        transform.position = position;
-        DrawCircle(cannonLineRenderer, position, range + 0.5f);
-        cannonSpriteRenderer.size = new Vector2(range + 0.5f, range + 0.5f) * 2;
-    }
+            transform.position = position;
+            DrawCircle(cannonLineRenderer, position, variant.range + 0.5f);
+            cannonSpriteRenderer.size = new Vector2(variant.range + 0.5f, variant.range + 0.5f) * 2;
+        }
 
-    public void ShowAuraRange(Vector2 position, float range)
-    {
-        auraRange.SetActive(true);
+        if(variant.aura)
+        {
+            auraRangeObject.SetActive(true);
 
-        transform.position = position;
-        DrawCircle(auraLineRenderer, position, range / 2);
-        auraSpriteRenderer.size = new Vector2(range, range);
+            transform.position = position;
+            DrawCircle(auraLineRenderer, position, variant.auraRange / 2);
+            auraSpriteRenderer.size = new Vector2(variant.auraRange, variant.auraRange);
+        }
     }
 
     public void HideTurretRange()
     {
-        cannonRange.SetActive(false);
-        auraRange.SetActive(false);
+        cannonRangeObject.SetActive(false);
+        auraRangeObject.SetActive(false);
     }
 
     private void DrawCircle(LineRenderer lineRenderer, Vector3 origin, float radius)

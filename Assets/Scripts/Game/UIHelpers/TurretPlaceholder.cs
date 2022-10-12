@@ -10,13 +10,12 @@ public class TurretPlaceholder : MonoBehaviour
     private SpriteRenderer turretAccessibility;
     private TurretRange turretRange;
 
-    private BuildingManager buildingManager;
+    private TurretManager buildingManager;
+
+    private TurretScriptableObject variant;
 
     private Color availableColor = new Color(0.0f, 1.0f, 0.0f, 0.6f);
     private Color unavailableColor = new Color(1.0f, 0.0f, 0.0f, 0.6f);
-
-    private float cannonRange = 0.0f;
-    private float auraRange = 0.0f;
 
     private void Awake()
     {
@@ -34,7 +33,7 @@ public class TurretPlaceholder : MonoBehaviour
 
     private void Start()
     {
-        buildingManager = BuildingManager.instance;
+        buildingManager = TurretManager.instance;
     }
 
     private void Update()
@@ -53,8 +52,7 @@ public class TurretPlaceholder : MonoBehaviour
 
     public void ShowPlaceholder(TurretScriptableObject variant)
     {
-        cannonRange = variant.needTarget ? variant.range : 0.0f;
-        auraRange = variant.aura ? variant.auraRange : 0.0f;
+        this.variant = variant;
 
         GetComponent<SpriteRenderer>().sprite = variant.turretSprite;
         GetComponent<SpriteMask>().sprite = variant.turretSprite;
@@ -65,8 +63,7 @@ public class TurretPlaceholder : MonoBehaviour
     private void Available()
     {
         turretAccessibility.color = availableColor;
-        turretRange.ShowCannonRange(transform.position, cannonRange);
-        turretRange.ShowAuraRange(transform.position, auraRange);
+        turretRange.ShowTurretRange(transform.position, variant);
     }
 
     private void Unavailable()
