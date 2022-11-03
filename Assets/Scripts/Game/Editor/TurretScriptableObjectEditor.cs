@@ -11,9 +11,9 @@ public class TurreteScriptableObjectEditor : Editor
     SerializedProperty _missile;
     SerializedProperty _laser;
 
-    SerializedProperty _poison;
+    SerializedProperty _poisonMissile;
     SerializedProperty _explosiveMissile;
-    SerializedProperty _slowdownOnMissileHit;
+    SerializedProperty _slowdownMissile;
 
     SerializedProperty _penetrationMissile;
     SerializedProperty _trackingMissile;
@@ -79,10 +79,10 @@ public class TurreteScriptableObjectEditor : Editor
         _missile = serializedObject.FindProperty("missile");
         _laser = serializedObject.FindProperty("laser");
 
-        _poison = serializedObject.FindProperty("dealDamageOverTime");
+        _poisonMissile = serializedObject.FindProperty("poisonMissile");
         _explosiveMissile = serializedObject.FindProperty("explosiveMissile");
         _copyMissileEffects = serializedObject.FindProperty("copyMissileEffects");
-        _slowdownOnMissileHit = serializedObject.FindProperty("slowdownOnMissileHit");
+        _slowdownMissile = serializedObject.FindProperty("slowdownMissile");
         _penetrationMissile = serializedObject.FindProperty("penetrationMissile");
         _trackingMissile = serializedObject.FindProperty("trackingMissile");
 
@@ -162,7 +162,7 @@ public class TurreteScriptableObjectEditor : Editor
 
             if (_missile.boolValue)
             {
-                EditorGUILayout.PropertyField(_poison);
+                EditorGUILayout.PropertyField(_poisonMissile);
                 EditorGUILayout.PropertyField(_explosiveMissile);
                 if (_explosiveMissile.boolValue)
                 {
@@ -173,7 +173,7 @@ public class TurreteScriptableObjectEditor : Editor
 
             if(_missile.boolValue || _laser.boolValue)
             {
-                EditorGUILayout.PropertyField(_slowdownOnMissileHit);
+                EditorGUILayout.PropertyField(_slowdownMissile);
                 EditorGUILayout.PropertyField(_penetrationMissile);
             }
         }
@@ -206,13 +206,13 @@ public class TurreteScriptableObjectEditor : Editor
                 EditorGUILayout.PropertyField(_laserDeactivationTime);
             }
 
-            if (_slowdownOnMissileHit.boolValue)
+            if (_slowdownMissile.boolValue)
             {
                 EditorGUILayout.PropertyField(_slowdownEffectiveness);
                 EditorGUILayout.PropertyField(_slowdownEffectDuration);
             }
 
-            if (_poison.boolValue)
+            if (_poisonMissile.boolValue)
             {
                 EditorGUILayout.PropertyField(_poisonDamage);
                 EditorGUILayout.PropertyField(_poisonHitRate);

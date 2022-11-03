@@ -18,9 +18,9 @@ MonoBehaviour:
   aura: 0
   missile: 1
   laser: 0
-  dealDamageOverTime: 0
+  poisonMissile: 0
   explosiveMissile: 0
-  slowdownOnMissileHit: 0
+  slowdownMissile: 0
   penetrationMissile: 0
   trackingMissile: 0
   copyMissileEffects: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   _auraDamage: 0
   auraDamage: 0
   _auraRange: 0
-  auraRange: 10
+  auraRange: 0
   _auraSlowdownEffectiveness: 0
   auraSlowdownEffectiveness: 0
   turretIcon: {fileID: 21300000, guid: 5e3100f3cd93c884d95a1893a7156501, type: 3}

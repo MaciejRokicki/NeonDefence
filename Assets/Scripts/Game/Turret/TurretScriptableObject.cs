@@ -13,9 +13,9 @@ public class TurretScriptableObject : ScriptableObject
     public bool missile;
     public bool laser;
 
-    public bool dealDamageOverTime;
+    public bool poisonMissile;
     public bool explosiveMissile;
-    public bool slowdownOnMissileHit;
+    public bool slowdownMissile;
 
     public bool penetrationMissile;
     public bool trackingMissile;

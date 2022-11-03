@@ -17,7 +17,7 @@ public class Missile : MonoBehaviour
     {
         enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
 
-        if (turret.variant.dealDamageOverTime)
+        if (turret.variant.poisonMissile)
         {
             enemyHitEffectComponent = new PoisonEffectDecorator(
                 turret, 
@@ -29,7 +29,7 @@ public class Missile : MonoBehaviour
             );
         }
 
-        if (turret.variant.slowdownOnMissileHit)
+        if (turret.variant.slowdownMissile)
         {
             enemyHitEffectComponent = new SlowdownEffectDecorator(
                 turret, 
