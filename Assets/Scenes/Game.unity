@@ -6110,7 +6110,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420033}
         m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: Zoom
+        m_MethodName: ZoomHandler
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8880,7 +8880,7 @@ MonoBehaviour:
   cameraViewSize: {x: 0, y: 0}
   minZoom: 2.5
   maxZoom: 10
-  speed: 0.06
+  speed: 0.05
   spaceOffset: {x: 20, y: 10}
 --- !u!114 &519420035
 MonoBehaviour:
@@ -11755,7 +11755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 224.99994, y: 360}
+  m_AnchoredPosition: {x: 224.99988, y: 360}
   m_SizeDelta: {x: 450, y: 580}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080598159
@@ -33775,6 +33775,10 @@ PrefabInstance:
     - target: {fileID: 1150905939789782171, guid: 528829cda82935d43b8cfbc1605ac356, type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150905939789782171, guid: 528829cda82935d43b8cfbc1605ac356, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1150905939789782172, guid: 528829cda82935d43b8cfbc1605ac356, type: 3}
       propertyPath: m_Size.x

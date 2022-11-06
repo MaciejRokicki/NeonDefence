@@ -42,7 +42,8 @@ public class InputManager : MonoBehaviour
     {
         if(ctxt.started)
         {
-            pointerEventData.position = Mouse.current.position.ReadValue();
+            //pointerEventData.position = Mouse.current.position.ReadValue();
+            pointerEventData.position = Touchscreen.current.position.ReadValue();
             raycastResults.Clear();
 
             graphicRaycaster.Raycast(pointerEventData, raycastResults);
