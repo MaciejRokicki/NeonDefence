@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class TurretManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class TurretManager : MonoBehaviour
     private TurretRange turretRange;
 
     private Turret selectedTurret;
-    private TurretScriptableObject selectedVariant;
+    public TurretScriptableObject selectedVariant;
 
     private void Awake()
     {
@@ -64,12 +65,23 @@ public class TurretManager : MonoBehaviour
     {
         if (selectedVariant)
         {
-            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector3Int tilePosition;
+            //Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            //Vector3Int tilePosition;
 
-            GetTurretBuildingTile(worldPoint, out tilePosition);
+            //GetTurretBuildingTile(worldPoint, out tilePosition);
 
-            turretPlaceholder.transform.position = tilePosition;
+            //turretPlaceholder.transform.position = tilePosition;
+
+            //TODO: Mobile
+            if (Touch.activeFingers.Count == 1)
+            {
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition);
+                Vector3Int tilePosition;
+
+                GetTurretBuildingTile(worldPoint, out tilePosition);
+
+                turretPlaceholder.transform.position = tilePosition;
+            }
         }
     }
 
@@ -83,40 +95,48 @@ public class TurretManager : MonoBehaviour
 
     public void BuildingManagerClickHandler(InputAction.CallbackContext ctxt)
     {
-        if (ctxt.started)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(
-                Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+        //TODO: Mobile
+        //if (ctxt.started)
+        //{
+            //RaycastHit2D hit = Physics2D.Raycast(
+            //    Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
 
-            turretRange.HideTurretRange();
-
-            if (hit)
+            if (Touch.activeFingers.Count == 1)
             {
-                if(hit.collider.CompareTag("Turret"))
+                RaycastHit2D hit = Physics2D.Raycast(
+                    Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+
+
+                turretRange.HideTurretRange();
+
+                if (hit)
                 {
-                    selectedTurret = hit.collider.GetComponent<Turret>();
-
-                    if (selectedTurret)
+                    if (hit.collider.CompareTag("Turret"))
                     {
-                        ShowTurretDetails(selectedTurret.variant);
-                        buildingMenu.Hide();
+                        selectedTurret = hit.collider.GetComponent<Turret>();
 
-                        return;
+                        if (selectedTurret)
+                        {
+                            ShowTurretDetails(selectedTurret.variant);
+                            buildingMenu.Hide();
+
+                            return;
+                        }
                     }
                 }
-            }
 
-            if (!inputManager.pressedUiButton)
-            {
-                selectedTurret = null;
-                buildingMenu.Show();
+                if (!inputManager.pressedUiButton)
+                {
+                    selectedTurret = null;
+                    buildingMenu.Show();
+                }
+
+                if (!inputManager.pressedUiButton || (inputManager.pressedUiButton && inputManager.pressedUiButton.name == "ToggleMenuButton"))
+                {
+                    turretDetails.Hide();
+                }
             }
-            
-            if(!inputManager.pressedUiButton || (inputManager.pressedUiButton && inputManager.pressedUiButton.name == "ToggleMenuButton"))
-            {
-                turretDetails.Hide();
-            }
-        }
+        //}
     }
 
     public TileBase GetTurretBuildingTile(Vector3 worldPoint, out Vector3Int tilePosition, bool ignoreNonBuildableLayer = false)
@@ -143,7 +163,9 @@ public class TurretManager : MonoBehaviour
     {
         if (selectedVariant && ctxt.canceled)
         {
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            //TODO: Mobile
+            //Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition);
             Vector3Int tilePosition;
 
             TileBase tile = GetTurretBuildingTile(worldPoint, out tilePosition);

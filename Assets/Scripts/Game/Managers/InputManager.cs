@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class InputManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class InputManager : MonoBehaviour
     private PointerEventData pointerEventData;
     private List<RaycastResult> raycastResults;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject pressedUiButton;
 
     private void Awake()
@@ -40,8 +41,9 @@ public class InputManager : MonoBehaviour
 
     public void ClickHandler(InputAction.CallbackContext ctxt)
     {
-        if(ctxt.started)
-        {
+        //TODO: Mobile
+        //if(ctxt.started)
+        //{
             //pointerEventData.position = Mouse.current.position.ReadValue();
             pointerEventData.position = Touchscreen.current.position.ReadValue();
             raycastResults.Clear();
@@ -57,9 +59,9 @@ public class InputManager : MonoBehaviour
                     break;
                 }
             }
-        }
+        //}
 
-        if(ctxt.canceled)
+        if (ctxt.canceled)
         {
             pressedUiButton = null;
         }

@@ -6110,7 +6110,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420033}
         m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: ZoomHandler
+        m_MethodName: Zoom
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6124,9 +6124,9 @@ MonoBehaviour:
     m_ActionName: Player/Zoom[/Mouse/scroll]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 131824080}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: ClickHandler
+      - m_Target: {fileID: 2044912558}
+        m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
+        m_MethodName: BuildingManagerClickHandler
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6136,9 +6136,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2044912558}
-        m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
-        m_MethodName: BuildingManagerClickHandler
+      - m_Target: {fileID: 131824080}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: ClickHandler
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33109,6 +33109,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8f0ea6934c57774faa49e5525e95d20, type: 2}
   - {fileID: 11400000, guid: aa26c76351413a5439036407b572706e, type: 2}
   availableTurrets: []
+  selectedVariant: {fileID: 0}
 --- !u!1001 &2051949933
 PrefabInstance:
   m_ObjectHideFlags: 0
