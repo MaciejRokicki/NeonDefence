@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CameraController : MonoBehaviour
 {
@@ -17,8 +18,13 @@ public class CameraController : MonoBehaviour
     private float minY;
     private float maxY;
 
-    private float xVelocity = 0.0f;
-    private float yVelocity = 0.0f;
+    private Vector3 moveVectorVelocity = Vector3.zero;
+
+    [SerializeField]
+    [Range(0.01f, 0.1f)]
+    private float speed = 0.05f;
+    [SerializeField]
+    private Vector2Int spaceOffset = new Vector2Int(20, 10);
 
     [SerializeField]
     private float minZoom = 2.5f;
@@ -27,14 +33,9 @@ public class CameraController : MonoBehaviour
 
     private float zoomVelocity = 0.0f;
 
-    [SerializeField]
-    [Range(0.01f, 0.1f)]
-    private float speed = 0.05f;
-    [SerializeField]
-    private Vector2Int spaceOffset = new Vector2Int(20, 10);
-
     private Vector3? initialTouchPosition = null;
     private float previousTouchZoomDistance = 0.0f;
+    private Vector3 zoomCenterPosition;
 
     private void Awake()
     {
@@ -62,8 +63,10 @@ public class CameraController : MonoBehaviour
         if (mousePosition.x <= spaceOffset.x || mousePosition.x >= Screen.width - spaceOffset.x || 
             mousePosition.y <= spaceOffset.y || mousePosition.y >= Screen.height - spaceOffset.y)
         {
-            Vector3 pos = (Camera.main.ScreenToWorldPoint(mousePosition) - transform.position).normalized;
-            MoveHandler(pos);
+            Vector3 direction = (Camera.main.ScreenToWorldPoint(mousePosition) - transform.position).normalized;
+            Vector3 targetPosition = transform.position + direction;
+
+            MoveHandler(targetPosition, speed);
         }
     }
 
@@ -79,19 +82,22 @@ public class CameraController : MonoBehaviour
                 }
                 else
                 {
-                    if (Touch.activeFingers[0].currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Moved)
+                    switch(Touch.activeFingers[0].currentTouch.phase)
                     {
-                        Vector3 deltaPosition = (Vector3)initialTouchPosition - Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition);
+                        case TouchPhase.Moved:
+                            Vector3 deltaPosition = (Vector3)initialTouchPosition - Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition);
 
-                        if (deltaPosition.sqrMagnitude > 0.4f)
-                        {
-                            MoveHandler(deltaPosition, 1.0f);
-                        }
-                    }
+                            if (deltaPosition.sqrMagnitude > 0.4f)
+                            {
+                                Vector3 targetPosition = transform.position + deltaPosition;
 
-                    if (Touch.activeFingers[0].currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
-                    {
-                        initialTouchPosition = null;
+                                MoveHandler(targetPosition, 0.075f);
+                            }
+                            break;
+
+                        case TouchPhase.Ended:
+                            initialTouchPosition = null;
+                            break;
                     }
                 }
             }
@@ -103,8 +109,10 @@ public class CameraController : MonoBehaviour
                 if (touchPosition.x <= test.x || touchPosition.x >= Screen.width - test.x ||
                     touchPosition.y <= test.y || touchPosition.y >= Screen.height - test.y)
                 {
-                    Vector3 pos = (Camera.main.ScreenToWorldPoint(touchPosition) - transform.position).normalized;
-                    MoveHandler(pos, 0.5f);
+                    Vector3 direction = (Camera.main.ScreenToWorldPoint(touchPosition) - transform.position).normalized;
+                    Vector3 targetPosition = transform.position + direction;
+
+                    MoveHandler(targetPosition, 0.15f);
                 }
             }
         }
@@ -134,11 +142,13 @@ public class CameraController : MonoBehaviour
             if (previousTouchZoomDistance == 0.0f)
             {
                 previousTouchZoomDistance = (Touch.activeFingers[0].screenPosition - Touch.activeFingers[1].screenPosition).magnitude;
+                zoomCenterPosition = (Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition) + Camera.main.ScreenToWorldPoint(Touch.activeFingers[1].screenPosition)) / 2.0f;
+                zoomCenterPosition.z = -10.0f;
             }
             else
             {
-                if (Touch.activeFingers[0].currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Moved && 
-                    Touch.activeFingers[1].currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Moved)
+                if (Touch.activeFingers[0].currentTouch.phase == TouchPhase.Moved && 
+                    Touch.activeFingers[1].currentTouch.phase == TouchPhase.Moved)
                 {
                     float currentDistance = (Touch.activeFingers[0].screenPosition - Touch.activeFingers[1].screenPosition).magnitude;
                     float deltaDistance = (previousTouchZoomDistance - currentDistance) / 10.0f;
@@ -157,13 +167,14 @@ public class CameraController : MonoBehaviour
                         }
 
                         ZoomHandler(scrollValue);
+                        MoveHandler(zoomCenterPosition, 0.075f);
                     }
 
                     previousTouchZoomDistance = currentDistance;
                 }
 
-                if (Touch.activeFingers[0].currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Ended || 
-                    Touch.activeFingers[1].currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
+                if (Touch.activeFingers[0].currentTouch.phase == TouchPhase.Ended || 
+                    Touch.activeFingers[1].currentTouch.phase == TouchPhase.Ended)
                 {
                     previousTouchZoomDistance = 0.0f;
                     initialTouchPosition = null;
@@ -172,18 +183,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void MoveHandler(Vector2 direction, float velocity = 1.0f)
+    private void MoveHandler(Vector3 targetPosition, float smoothTime = 0.05f)
     {
-        velocity = Mathf.Clamp(velocity, 1.0f, 3.0f);
-        direction.x *= velocity;
-        direction.y *= velocity;
-
-        Vector2 targetPosition = transform.position + (Vector3)direction;
-        Vector3 newPosition;
-
-        newPosition.x = Mathf.SmoothDamp(transform.position.x, targetPosition.x, ref xVelocity, speed);
-        newPosition.y = Mathf.SmoothDamp(transform.position.y, targetPosition.y, ref yVelocity, speed);
-        newPosition.z = -10.0f;
+        Vector3 newPosition = Vector3.SmoothDamp(transform.position, targetPosition, ref moveVectorVelocity, smoothTime);
 
         newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
         newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
@@ -208,13 +210,11 @@ public class CameraController : MonoBehaviour
 
     public void CalculatePositionLimits()
     {
-        //float worldMenuWidth = Camera.main.ScreenToWorldPoint(new Vector3(uiManager.menuWidth, 0.0f)).x - Camera.main.ScreenToWorldPoint(Vector3.zero).x;
-
         cameraViewSize.x = Camera.main.orthographicSize * Screen.width / Screen.height;
         cameraViewSize.y = Camera.main.orthographicSize;
 
         minX = cameraViewSize.x - gameManager.mapSize.x / 2;
-        maxX = gameManager.mapSize.x / 2 - cameraViewSize.x/* + worldMenuWidth*/;
+        maxX = gameManager.mapSize.x / 2 - cameraViewSize.x;
         minY = cameraViewSize.y - gameManager.mapSize.y / 2;
         maxY = gameManager.mapSize.y / 2 - cameraViewSize.y;
     }

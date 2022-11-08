@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        if(SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            Application.targetFrameRate = 30;
+        }
     }
 
     public void TakeDamage(float damage)
