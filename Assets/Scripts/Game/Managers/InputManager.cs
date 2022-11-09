@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class InputManager : MonoBehaviour
 {
@@ -22,6 +25,9 @@ public class InputManager : MonoBehaviour
     //[HideInInspector]
     public GameObject pressedUiButton;
 
+    Vector2 lastTouchPosition;
+    public Func<Vector2> GetClickPosition;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -37,15 +43,30 @@ public class InputManager : MonoBehaviour
 
         pointerEventData = new PointerEventData(EventSystem.current);
         raycastResults = new List<RaycastResult>();
+
+        if (SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            GetClickPosition = () => Mouse.current.position.ReadValue();
+        }
+        else if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            GetClickPosition = delegate ()
+            {
+                if (Touch.activeFingers.Count == 1)
+                {
+                    lastTouchPosition = Touch.activeFingers[0].screenPosition;
+                }
+
+                return lastTouchPosition;
+            };
+        }
     }
 
     public void ClickHandler(InputAction.CallbackContext ctxt)
     {
-        //TODO: Mobile
-        //if(ctxt.started)
-        //{
-            //pointerEventData.position = Mouse.current.position.ReadValue();
-            pointerEventData.position = Touchscreen.current.position.ReadValue();
+        if (ctxt.started)
+        {
+            pointerEventData.position = GetClickPosition();
             raycastResults.Clear();
 
             graphicRaycaster.Raycast(pointerEventData, raycastResults);
@@ -59,7 +80,7 @@ public class InputManager : MonoBehaviour
                     break;
                 }
             }
-        //}
+        }
 
         if (ctxt.canceled)
         {

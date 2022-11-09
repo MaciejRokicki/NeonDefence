@@ -6107,47 +6107,11 @@ MonoBehaviour:
     m_ActionId: ef265e8b-ed25-47a1-8af6-6bea80bd6892
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420033}
-        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: Zoom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: d1eb6aa7-da43-4274-a5f4-3254a25450f1
     m_ActionName: Player/Zoom[/Mouse/scroll]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2044912558}
-        m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
-        m_MethodName: BuildingManagerClickHandler
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 131824080}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: ClickHandler
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2044912558}
         m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
         m_MethodName: OnTurretDrop
@@ -6161,6 +6125,34 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: a3118cda-c89d-4e72-9971-55cbf390a8cc
+    m_ActionName: Player/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 131824080}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: ClickHandler
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2044912558}
+        m_TargetAssemblyTypeName: TurretManager, Assembly-CSharp
+        m_MethodName: BuildingManagerClickHandler
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9d003507-3cf8-4441-b8f6-a15e870d5f05
     m_ActionName: Player/Click[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
@@ -8878,10 +8870,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraViewSize: {x: 0, y: 0}
-  minZoom: 2.5
-  maxZoom: 10
   speed: 0.05
   spaceOffset: {x: 20, y: 10}
+  minZoom: 2.5
+  maxZoom: 10
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14100,8 +14092,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 519420033}
-  currentResolution: {x: 0, y: 0}
-  menuWidth: 300
 --- !u!114 &1381012928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14115,7 +14105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 655182623}
-  refreshRate: 0.5
+  refreshRate: 0.1
 --- !u!1001 &1397769465
 PrefabInstance:
   m_ObjectHideFlags: 0

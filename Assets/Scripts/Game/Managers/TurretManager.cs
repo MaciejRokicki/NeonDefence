@@ -65,23 +65,12 @@ public class TurretManager : MonoBehaviour
     {
         if (selectedVariant)
         {
-            //Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            //Vector3Int tilePosition;
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(inputManager.GetClickPosition());
+            Vector3Int tilePosition;
 
-            //GetTurretBuildingTile(worldPoint, out tilePosition);
+            GetTurretBuildingTile(worldPoint, out tilePosition);
 
-            //turretPlaceholder.transform.position = tilePosition;
-
-            //TODO: Mobile
-            if (Touch.activeFingers.Count == 1)
-            {
-                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition);
-                Vector3Int tilePosition;
-
-                GetTurretBuildingTile(worldPoint, out tilePosition);
-
-                turretPlaceholder.transform.position = tilePosition;
-            }
+            turretPlaceholder.transform.position = tilePosition;
         }
     }
 
@@ -95,48 +84,40 @@ public class TurretManager : MonoBehaviour
 
     public void BuildingManagerClickHandler(InputAction.CallbackContext ctxt)
     {
-        //TODO: Mobile
-        //if (ctxt.started)
-        //{
-            //RaycastHit2D hit = Physics2D.Raycast(
-            //    Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
+        if (ctxt.started)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(
+                Camera.main.ScreenToWorldPoint(inputManager.GetClickPosition()), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
 
-            if (Touch.activeFingers.Count == 1)
+            turretRange.HideTurretRange();
+
+            if (hit)
             {
-                RaycastHit2D hit = Physics2D.Raycast(
-                    Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));
-
-
-                turretRange.HideTurretRange();
-
-                if (hit)
+                if (hit.collider.CompareTag("Turret"))
                 {
-                    if (hit.collider.CompareTag("Turret"))
+                    selectedTurret = hit.collider.GetComponent<Turret>();
+
+                    if (selectedTurret)
                     {
-                        selectedTurret = hit.collider.GetComponent<Turret>();
+                        ShowTurretDetails(selectedTurret.variant);
+                        buildingMenu.Hide();
 
-                        if (selectedTurret)
-                        {
-                            ShowTurretDetails(selectedTurret.variant);
-                            buildingMenu.Hide();
-
-                            return;
-                        }
+                        return;
                     }
                 }
-
-                if (!inputManager.pressedUiButton)
-                {
-                    selectedTurret = null;
-                    buildingMenu.Show();
-                }
-
-                if (!inputManager.pressedUiButton || (inputManager.pressedUiButton && inputManager.pressedUiButton.name == "ToggleMenuButton"))
-                {
-                    turretDetails.Hide();
-                }
             }
-        //}
+
+            if (!inputManager.pressedUiButton)
+            {
+                selectedTurret = null;
+                buildingMenu.Show();
+            }
+
+            if (!inputManager.pressedUiButton || (inputManager.pressedUiButton && inputManager.pressedUiButton.name == "ToggleMenuButton"))
+            {
+                turretDetails.Hide();
+            }
+        }
     }
 
     public TileBase GetTurretBuildingTile(Vector3 worldPoint, out Vector3Int tilePosition, bool ignoreNonBuildableLayer = false)
@@ -163,9 +144,7 @@ public class TurretManager : MonoBehaviour
     {
         if (selectedVariant && ctxt.canceled)
         {
-            //TODO: Mobile
-            //Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Touch.activeFingers[0].screenPosition);
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(inputManager.GetClickPosition());
             Vector3Int tilePosition;
 
             TileBase tile = GetTurretBuildingTile(worldPoint, out tilePosition);

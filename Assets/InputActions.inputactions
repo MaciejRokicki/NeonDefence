@@ -24,9 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Click",
+                    "name": "Press",
                     "type": "Button",
                     "id": "a3118cda-c89d-4e72-9971-55cbf390a8cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "9d003507-3cf8-4441-b8f6-a15e870d5f05",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -70,6 +79,28 @@
                 {
                     "name": "",
                     "id": "e705c53e-5e7b-477b-83aa-8abc88bea7f0",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "299e74af-9b79-4c72-854f-e234d538ba91",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "606c9287-3925-4998-a78d-3a49f69f762d",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
@@ -80,8 +111,8 @@
                 },
                 {
                     "name": "",
-                    "id": "299e74af-9b79-4c72-854f-e234d538ba91",
-                    "path": "<Touchscreen>/primaryTouch/press",
+                    "id": "c2f8fcd6-1f54-4605-b0d4-6cfc77366033",
+                    "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
