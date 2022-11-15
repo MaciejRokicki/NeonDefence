@@ -1,9 +1,14 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CameraController : MonoBehaviour
 {
     private GameManager gameManager;
+    private TurretManager turretManager;
 
     private CameraControllerStrategy cameraControllerStrategy;
 
@@ -33,12 +38,13 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         gameManager = GameManager.instance;
+        turretManager = TurretManager.instance;
 
-        if(SystemInfo.deviceType == DeviceType.Desktop)
+        if (SystemInfo.deviceType == DeviceType.Desktop)
         {
             cameraControllerStrategy = new DesktopCameraControllerStrategy(transform, this, spaceOffset, speed);
         }
-        else if(SystemInfo.deviceType == DeviceType.Handheld)
+        else if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             cameraControllerStrategy = new HandheldCameraControllerStrategy(transform, this);
         }

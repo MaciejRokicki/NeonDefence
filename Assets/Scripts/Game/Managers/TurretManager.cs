@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class TurretManager : MonoBehaviour
 {
