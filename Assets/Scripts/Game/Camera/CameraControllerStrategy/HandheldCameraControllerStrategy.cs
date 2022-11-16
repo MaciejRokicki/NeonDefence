@@ -38,7 +38,7 @@ public class HandheldCameraControllerStrategy : CameraControllerStrategy
                         {
                             Vector3 targetPosition = cameraTransform.position + deltaPosition;
 
-                            cameraController.MoveHandler(targetPosition, 0.075f);
+                            cameraController.MoveHandler(targetPosition, 0.09f);
                         }
                     }
                     else
@@ -90,15 +90,15 @@ public class HandheldCameraControllerStrategy : CameraControllerStrategy
 
                     if (deltaDistance < 0.0f)
                     {
-                        scrollValue -= 0.5f;
+                        scrollValue -= 0.4f;
                     }
                     else if (deltaDistance > 0.0f)
                     {
-                        scrollValue += 0.5f;
+                        scrollValue += 0.4f;
                     }
 
                     cameraController.ZoomHandler(scrollValue);
-                    cameraController.MoveHandler(zoomCenterPosition, 0.075f);
+                    cameraController.MoveHandler(zoomCenterPosition, 0.2f);
                 }
 
                 previousTouchZoomDistance = currentDistance;

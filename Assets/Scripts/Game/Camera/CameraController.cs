@@ -1,14 +1,9 @@
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CameraController : MonoBehaviour
 {
     private GameManager gameManager;
-    private TurretManager turretManager;
 
     private CameraControllerStrategy cameraControllerStrategy;
 
@@ -23,7 +18,7 @@ public class CameraController : MonoBehaviour
     private Vector3 moveVectorVelocity = Vector3.zero;
 
     [SerializeField]
-    [Range(0.01f, 0.1f)]
+    [Range(0.01f, 0.5f)]
     private float speed = 0.05f;
     [SerializeField]
     private Vector2Int spaceOffset = new Vector2Int(20, 10);
@@ -38,7 +33,6 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         gameManager = GameManager.instance;
-        turretManager = TurretManager.instance;
 
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
