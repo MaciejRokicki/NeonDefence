@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
         if(SystemInfo.deviceType == DeviceType.Handheld)
         {
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
         }
     }
 

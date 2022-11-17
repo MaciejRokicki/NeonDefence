@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "LMG710EM9621def7",
     "m_SelectedPackage": {
-        "deviceId": "LMG710EM9621def7",
-        "name": "com.mkr.neon",
-        "processId": 16702,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -16,39 +16,27 @@
         },
         {
             "deviceId": "LMG710EM9621def7",
-            "name": "com.unity3d.mobileremote",
-            "processId": 8593,
-            "exited": false
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
-            "processId": 14990,
+            "processId": 5066,
             "exited": true
         },
         {
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
-            "processId": 15343,
+            "processId": 5344,
             "exited": true
         },
         {
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
-            "processId": 15635,
+            "processId": 7823,
             "exited": true
         },
         {
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
-            "processId": 16316,
+            "processId": 8432,
             "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 16702,
-            "exited": false
         }
     ],
     "m_Tags": {
