@@ -21,7 +21,7 @@ public class HealthBarUI : MonoBehaviour
 
     private void Start()
     {
-        maxHealth = gameManager.health;
+        maxHealth = gameManager.GetMaxHealth();
         healthTextBuilder = new StringBuilder();
 
         gameManager.OnHealthChange += OnHealthChange;
@@ -31,6 +31,8 @@ public class HealthBarUI : MonoBehaviour
 
     private void OnHealthChange(float health)
     {
+        maxHealth = gameManager.GetMaxHealth();
+
         healthTextBuilder.Append(health);
         healthTextBuilder.Append(@"\");
         healthTextBuilder.Append(maxHealth);

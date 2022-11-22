@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "LMG710EM9621def7",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "LMG710EM9621def7",
+        "name": "com.mkr.neon",
+        "processId": 9573,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -37,6 +37,18 @@
             "name": "com.mkr.neon",
             "processId": 8432,
             "exited": true
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 9275,
+            "exited": false
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 9573,
+            "exited": false
         }
     ],
     "m_Tags": {

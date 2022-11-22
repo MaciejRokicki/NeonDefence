@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get { return _instance; } }
 
     public Vector2 mapSize = new Vector2(50.0f, 30.0f);
-    public float health = 100.0f;
+    private float health;
+    [SerializeField]
+    private float maxHealth = 100.0f;
     [SerializeField]
     private int neonBlocks;
 
@@ -33,6 +35,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        health = maxHealth;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -44,6 +51,32 @@ public class GameManager : MonoBehaviour
 
         OnHealthChange(health);
     }
+
+    public void IncreaseHealth(float health)
+    {
+        this.health += health;
+
+        if(this.health > maxHealth)
+        {
+            this.health = maxHealth;
+        }
+
+        OnHealthChange(this.health);
+    }
+
+    public void IncreaseMaxHealth(float health, bool addHealth)
+    {
+        maxHealth += health;
+
+        if(addHealth)
+        {
+            this.health += health;
+        }
+
+        OnHealthChange(this.health);
+    }
+
+    public float GetMaxHealth() => maxHealth;
 
     public int GetNeonBlocks() => neonBlocks;
 

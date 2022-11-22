@@ -6154,6 +6154,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9d003507-3cf8-4441-b8f6-a15e870d5f05
     m_ActionName: Player/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1239934345}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: Test
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1f2aa4fc-aaf4-4ca9-9835-519366c8c5a4
+    m_ActionName: Player/TestUpgrades[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -10779,7 +10795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: {x: 50, y: 30}
-  health: 100
+  maxHealth: 100
   neonBlocks: 10000
 --- !u!1001 &836097669
 PrefabInstance:
@@ -12960,6 +12976,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc31823093d39844ad6b6c1b348fccc, type: 3}
+--- !u!1 &1239934343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1239934344}
+  - component: {fileID: 1239934345}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1239934344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239934343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364120533}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1239934345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239934343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553916130ea6d9a4fbae1ecb59d51c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGameUpgrades:
+  - {fileID: 11400000, guid: 87f298dabf2a0074aa04ff08dea89575, type: 2}
+  - {fileID: 11400000, guid: 3f06dc9242c9ee146b9674c5fa28082d, type: 2}
+  - {fileID: 11400000, guid: 766d5c1a24d294e4aacdd214e54c0a37, type: 2}
+  - {fileID: 11400000, guid: a5760eb7bc18e2c428329943c0fbe8f3, type: 2}
 --- !u!1001 &1245464120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13882,6 +13947,7 @@ Transform:
   - {fileID: 1381012926}
   - {fileID: 131824078}
   - {fileID: 802126230}
+  - {fileID: 1239934344}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
