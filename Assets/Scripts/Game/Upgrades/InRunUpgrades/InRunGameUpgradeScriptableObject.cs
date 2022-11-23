@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Game.Upgrades.InGameUpgrades
 {
-    [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/InRunGameUpgrade", order = 4)]
+    [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/InRunGameUpgrade", order = 5)]
     public class InRunGameUpgradeScriptableObject : InRunUpgrade
     {
         private GameManager gameManager;

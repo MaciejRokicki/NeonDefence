@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247de4cb971407347b008dab0038c5de, type: 3}
-  m_Name: BasicIncreaseHealthInRunUpgrade
+  m_Name: BasicExtraNeonBlocksInRunUpgrade
   m_EditorClassIdentifier: 
-  tier: 0
-  health: 10
+  tier: {fileID: 11400000, guid: 19cb0744d0832e942a504e8952d5e6ad, type: 2}
+  health: 0
   maxHealth: 0
   increaseHealthToo: 0
-  neonBlocks: 0
+  neonBlocks: 25

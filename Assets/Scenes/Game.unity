@@ -13020,6 +13020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553916130ea6d9a4fbae1ecb59d51c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiers: []
   inGameUpgrades:
   - {fileID: 11400000, guid: 87f298dabf2a0074aa04ff08dea89575, type: 2}
   - {fileID: 11400000, guid: 3f06dc9242c9ee146b9674c5fa28082d, type: 2}

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247de4cb971407347b008dab0038c5de, type: 3}
-  m_Name: BasicExtraNeonBlocksInRunUpgrade
+  m_Script: {fileID: 11500000, guid: f976131e0f337c84c8a9b3581a1d0414, type: 3}
+  m_Name: FineTier
   m_EditorClassIdentifier: 
-  baseHealth: 0
-  neonBlocks: 25
+  Name: Fine
+  MinChance: 60
+  MaxChance: 80

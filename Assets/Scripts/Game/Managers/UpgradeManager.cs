@@ -1,6 +1,10 @@
-using Assets.Scripts.Game.Upgrades.InGameUpgrades;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Assets.Scripts.Game.Upgrades.InGameUpgrades;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -9,8 +13,11 @@ public class UpgradeManager : MonoBehaviour
 
     private TurretManager turretManager;
 
+    public TierScriptableObject[] tiers;
     [SerializeField]
     private InRunUpgrade[] inGameUpgrades;
+
+    private Dictionary<string, List<InRunUpgrade>> inGameUpgradesToRand;
 
     private void Awake()
     {
@@ -24,6 +31,29 @@ public class UpgradeManager : MonoBehaviour
         }
 
         turretManager = TurretManager.instance;
+        inGameUpgradesToRand = new Dictionary<string, List<InRunUpgrade>>();
+
+        string[] files = Directory.GetFiles("Assets/ScriptableObjects/Upgrades/Tiers", "*.asset");
+        tiers = new TierScriptableObject[files.Length];
+
+        for (int i = 0; i < files.Length; i++)
+        {
+            TierScriptableObject tier = AssetDatabase.LoadAssetAtPath(files[i], typeof(TierScriptableObject)) as TierScriptableObject;
+            tiers[i] = tier;
+        }
+
+        foreach (TierScriptableObject tier in tiers)
+        {
+            inGameUpgradesToRand[tier.Name] = new List<InRunUpgrade>();
+        }
+    }
+
+    private void Start()
+    {
+        foreach (InRunUpgrade upgrade in inGameUpgrades)
+        {
+            inGameUpgradesToRand[upgrade.tier.Name].Add(upgrade);
+        }
     }
 
     public void Test(InputAction.CallbackContext ctxt)
@@ -32,30 +62,17 @@ public class UpgradeManager : MonoBehaviour
         {
             float tierChance = Random.Range(0.0f, 100.0f);
 
-            if(tierChance > 0.0f && tierChance <= 60.0f)
+            foreach(TierScriptableObject tier in tiers)
             {
-                Debug.Log("Basic");
-            }
-            else if (tierChance > 60.0f && tierChance <= 80.0f)
-            {
-                Debug.Log("Fine");
-            }
-            else if(tierChance > 80.0f && tierChance <= 90.0f)
-            {
-                Debug.Log("Superior");
-            }
-            else if(tierChance > 90.0f && tierChance <= 98.0f)
-            {
-                Debug.Log("Epic");
-            }
-            else if(tierChance > 98.0f && tierChance <= 100.0f)
-            {
-                Debug.Log("Legendary");
-            }
+                if(tierChance > tier.MinChance && tierChance <= tier.MaxChance)
+                {
+                    InRunUpgrade iru = inGameUpgradesToRand[tier.Name][Random.Range(0, inGameUpgradesToRand[tier.Name].Count())];
+                    Debug.Log(iru.name);
+                    iru.Apply();
 
-            InRunUpgrade iru = inGameUpgrades[Random.Range(0, inGameUpgrades.Length)];
-            Debug.Log(iru.name);
-            iru.Apply();
+                    break;
+                }
+            }
         }
     }
 }
