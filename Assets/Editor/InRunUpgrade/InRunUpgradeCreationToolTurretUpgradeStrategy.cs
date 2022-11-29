@@ -11,7 +11,7 @@ namespace Assets.Scripts.InRunUpgradre
         {
         }
 
-        public override void Create(string upgradeName, TierScriptableObject tier)
+        public override void Create(string upgradeName, bool unique, TierScriptableObject tier)
         {
             StringBuilder pathStringBuilder = new StringBuilder("Assets/ScriptableObjects/Upgrades/InRunUpgrades/");
             pathStringBuilder.Append(upgradeName);

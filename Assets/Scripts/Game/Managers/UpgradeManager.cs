@@ -14,6 +14,7 @@ public class UpgradeManager : MonoBehaviour
     private TurretManager turretManager;
 
     public TierScriptableObject[] tiers;
+    public float tierMaxChance = 0;
     [SerializeField]
     private InRunUpgrade[] inGameUpgrades;
 
@@ -40,6 +41,8 @@ public class UpgradeManager : MonoBehaviour
         {
             TierScriptableObject tier = AssetDatabase.LoadAssetAtPath(files[i], typeof(TierScriptableObject)) as TierScriptableObject;
             tiers[i] = tier;
+
+            tierMaxChance = tier.MaxChance > tierMaxChance ? tier.MaxChance : tierMaxChance;
         }
 
         foreach (TierScriptableObject tier in tiers)
@@ -52,23 +55,33 @@ public class UpgradeManager : MonoBehaviour
     {
         foreach (InRunUpgrade upgrade in inGameUpgrades)
         {
-            inGameUpgradesToRand[upgrade.tier.Name].Add(upgrade);
+            inGameUpgradesToRand[upgrade.Tier.Name].Add(upgrade);
         }
     }
 
-    public void Test(InputAction.CallbackContext ctxt)
+    public void RandomizeInRunUpgrade(InputAction.CallbackContext ctxt)
     {
         if(ctxt.performed)
         {
-            float tierChance = Random.Range(0.0f, 100.0f);
+            float tierChance = Random.Range(0.0f, tierMaxChance);
 
             foreach(TierScriptableObject tier in tiers)
             {
                 if(tierChance > tier.MinChance && tierChance <= tier.MaxChance)
                 {
-                    InRunUpgrade iru = inGameUpgradesToRand[tier.Name][Random.Range(0, inGameUpgradesToRand[tier.Name].Count())];
-                    Debug.Log(iru.name);
-                    iru.Apply();
+                    //TODO: po uzupelnieniu upgrade'ow usunac
+                    if (inGameUpgradesToRand[tier.Name].Count() == 0)
+                        continue;
+
+                    InRunUpgrade inRunUpgrade = inGameUpgradesToRand[tier.Name][Random.Range(0, inGameUpgradesToRand[tier.Name].Count())];
+
+                    if(inRunUpgrade.Unique)
+                    {
+                        inGameUpgradesToRand[tier.Name].Remove(inRunUpgrade);
+                    }
+
+                    Debug.Log($"{inRunUpgrade.Tier.name} {inRunUpgrade.name} {inGameUpgradesToRand[tier.Name].Count()}");
+                    inRunUpgrade.Apply();
 
                     break;
                 }

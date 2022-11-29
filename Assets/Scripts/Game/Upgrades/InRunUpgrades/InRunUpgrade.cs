@@ -4,7 +4,8 @@ namespace Assets.Scripts.Game.Upgrades.InGameUpgrades
 {
     public abstract class InRunUpgrade : ScriptableObject
     {
-        public TierScriptableObject tier;
+        public TierScriptableObject Tier;
+        public bool Unique;
 
         public abstract void Apply();
     }

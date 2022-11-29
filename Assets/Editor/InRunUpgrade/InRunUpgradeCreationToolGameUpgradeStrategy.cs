@@ -20,7 +20,7 @@ namespace Assets.Scripts.InRunUpgradre
             neonBlocks = EditorGUILayout.IntField("Neon blocks", neonBlocks);
         }
 
-        public override void Create(string upgradeName, TierScriptableObject tier)
+        public override void Create(string upgradeName, bool unique, TierScriptableObject tier)
         {
             StringBuilder pathStringBuilder = new StringBuilder("Assets/ScriptableObjects/Upgrades/InRunUpgrades/");
             pathStringBuilder.Append(tier.Name);
@@ -30,7 +30,8 @@ namespace Assets.Scripts.InRunUpgradre
 
             InRunGameUpgradeScriptableObject gameUpgradeScriptablejObject = ScriptableObject.CreateInstance<InRunGameUpgradeScriptableObject>();
 
-            gameUpgradeScriptablejObject.tier = tier;
+            gameUpgradeScriptablejObject.Tier = tier;
+            gameUpgradeScriptablejObject.Unique = unique;
 
             gameUpgradeScriptablejObject.health = health;
             gameUpgradeScriptablejObject.maxHealth = maxHealth;

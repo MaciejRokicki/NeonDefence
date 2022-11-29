@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Assets.Scripts.InRunUpgradre
 
         private string upgradeName;
         private int selectedTierId = 0;
+        private bool unique;
         private string[] tiersNames;
         private TierScriptableObject[] tiers;
         private bool isGameUpgrade = true;
@@ -34,6 +36,17 @@ namespace Assets.Scripts.InRunUpgradre
             for(int i = 0; i < files.Length; i++)
             {
                 TierScriptableObject tier = AssetDatabase.LoadAssetAtPath(files[i], typeof(TierScriptableObject)) as TierScriptableObject;
+
+                tiers[i] = tier;
+            }
+
+
+            tiers = tiers.OrderBy(x => x.MinChance).ToArray();
+
+            for (int i = 0; i < tiers.Length; i++)
+            {
+                TierScriptableObject tier = tiers[i];
+
                 tierNameBuilder.Append(tier.Name);
                 tierNameBuilder.Append(" ");
                 tierNameBuilder.Append(tier.MinChance);
@@ -42,7 +55,6 @@ namespace Assets.Scripts.InRunUpgradre
                 tierNameBuilder.Append("%");
 
                 tiersNames[i] = tierNameBuilder.ToString();
-                tiers[i] = tier;
 
                 tierNameBuilder.Clear();
             }
@@ -59,6 +71,7 @@ namespace Assets.Scripts.InRunUpgradre
             GUILayout.Label("New upgrade", EditorStyles.boldLabel);
             upgradeName = EditorGUILayout.TextField("Name", upgradeName);
             selectedTierId = EditorGUILayout.Popup("Tier", selectedTierId, tiersNames);
+            unique = EditorGUILayout.Toggle("Is unique", unique);
             isGameUpgrade = EditorGUILayout.Toggle("Is game upgrade", isGameUpgrade);
 
             selectedStrategy = isGameUpgrade ? gameUpgradeStrategy : turretUpgradeStrategy;
@@ -67,7 +80,7 @@ namespace Assets.Scripts.InRunUpgradre
 
             if (GUILayout.Button("Create"))
             {
-                selectedStrategy.Create(upgradeName, tiers[selectedTierId]);
+                selectedStrategy.Create(upgradeName, unique, tiers[selectedTierId]);
             }
         }
     }
