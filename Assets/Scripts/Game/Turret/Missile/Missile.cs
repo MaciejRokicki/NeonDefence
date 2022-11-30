@@ -23,9 +23,9 @@ public class Missile : MonoBehaviour
                 turret, 
                 gameObject, 
                 enemyHitEffectComponent, 
-                turret.damageOverTimeDuration, 
-                turret.damageOverTimeHitCooldown, 
-                turret.damageOverTime
+                turret.poisonDuration, 
+                turret.poisonHitRate, 
+                turret.poisonDamage
             );
         }
 

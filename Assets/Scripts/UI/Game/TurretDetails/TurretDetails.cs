@@ -111,6 +111,8 @@ public class TurretDetails : MonoBehaviour
 
     public void Show(TurretScriptableObject variant, bool showSellButton = false)
     {
+        SetMaxValues();
+
         sellButton.SetActive(false);
 
         activeProperties = 0;

@@ -19,6 +19,8 @@ public class TurretManager : MonoBehaviour
 
     [SerializeField]
     private GameObject turretPrefab;
+    [SerializeField]
+    private Transform turretParent;
 
     public TurretScriptableObject[] turretVariants;
     public List<TurretScriptableObject> availableTurrets;
@@ -162,7 +164,7 @@ public class TurretManager : MonoBehaviour
 
     public void BuildTurret(TurretScriptableObject turretVariant, Vector3 position)
     {
-        GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity);
+        GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity, turretParent);
 
         turret.GetComponent<Turret>().variant = turretVariant;
 

@@ -4,7 +4,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.InRunUpgradre
+namespace Assets.Scripts.InRunUpgrade
 {
     public class InRunUpgradeCreationTool : EditorWindow
     {
@@ -19,13 +19,47 @@ namespace Assets.Scripts.InRunUpgradre
         private TierScriptableObject[] tiers;
         private bool isGameUpgrade = true;
 
+        internal TurretScriptableObject[] turrets;
+        internal string[] turretNames;
+
         private void Awake()
         {
             gameUpgradeStrategy = new InRunUpgradeCreationToolGameUpgradeStrategy();
-            turretUpgradeStrategy = new InRunUpgradeCreationToolTurretUpgradeStrategy();
+            turretUpgradeStrategy = new InRunUpgradeCreationToolTurretUpgradeStrategy(this);
         }
 
         private void OnEnable()
+        {
+            InitTiers();
+            InitTurrets();
+        }
+
+        [MenuItem("Tools/InRunUpgrade Creation tool")]
+        public static void ShowWindow()
+        {
+            GetWindow<InRunUpgradeCreationTool>("InRunUpgrade Creation tool");
+        }
+
+        private void OnGUI()
+        {
+            GUILayout.Label("New upgrade", EditorStyles.boldLabel);
+            upgradeName = EditorGUILayout.TextField("Name", upgradeName);
+            EditorGUILayout.LabelField(upgradeName);
+            selectedTierId = EditorGUILayout.Popup("Tier", selectedTierId, tiersNames);
+            unique = EditorGUILayout.Toggle("Is unique", unique);
+            isGameUpgrade = EditorGUILayout.Toggle("Is game upgrade", isGameUpgrade);
+
+            selectedStrategy = isGameUpgrade ? gameUpgradeStrategy : turretUpgradeStrategy;
+
+            selectedStrategy.OnGui();
+
+            if (GUILayout.Button("Create"))
+            {
+                selectedStrategy.Create(upgradeName, unique, tiers[selectedTierId]);
+            }
+        }
+
+        private void InitTiers()
         {
             string[] files = Directory.GetFiles("Assets/ScriptableObjects/Upgrades/Tiers", "*.asset");
             tiersNames = new string[files.Length];
@@ -33,7 +67,7 @@ namespace Assets.Scripts.InRunUpgradre
 
             StringBuilder tierNameBuilder = new StringBuilder();
 
-            for(int i = 0; i < files.Length; i++)
+            for (int i = 0; i < files.Length; i++)
             {
                 TierScriptableObject tier = AssetDatabase.LoadAssetAtPath(files[i], typeof(TierScriptableObject)) as TierScriptableObject;
 
@@ -60,28 +94,21 @@ namespace Assets.Scripts.InRunUpgradre
             }
         }
 
-        [MenuItem("Tools/InRunUpgrade Creation tool")]
-        public static void ShowWindow()
+        private void InitTurrets()
         {
-            GetWindow<InRunUpgradeCreationTool>();
-        }
+            string[] files = Directory.GetFiles("Assets/ScriptableObjects/Turrets", "*.asset");
+            turretNames = new string[files.Length + 1];
+            turrets = new TurretScriptableObject[files.Length + 1];
 
-        private void OnGUI()
-        {
-            GUILayout.Label("New upgrade", EditorStyles.boldLabel);
-            upgradeName = EditorGUILayout.TextField("Name", upgradeName);
-            selectedTierId = EditorGUILayout.Popup("Tier", selectedTierId, tiersNames);
-            unique = EditorGUILayout.Toggle("Is unique", unique);
-            isGameUpgrade = EditorGUILayout.Toggle("Is game upgrade", isGameUpgrade);
-
-            selectedStrategy = isGameUpgrade ? gameUpgradeStrategy : turretUpgradeStrategy;
-
-            selectedStrategy.OnGui();
-
-            if (GUILayout.Button("Create"))
+            for (int i = 0; i < files.Length; i++)
             {
-                selectedStrategy.Create(upgradeName, unique, tiers[selectedTierId]);
+                TurretScriptableObject turret = AssetDatabase.LoadAssetAtPath(files[i], typeof(TurretScriptableObject)) as TurretScriptableObject;
+
+                turrets[i] = turret;
+                turretNames[i] = turret.name;
             }
+
+            turretNames[files.Length] = "All";
         }
     }
 

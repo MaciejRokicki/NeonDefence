@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247de4cb971407347b008dab0038c5de, type: 3}
-  m_Name: BasicIncreaseHealthInRunUpgrade
+  m_Script: {fileID: 11500000, guid: 6ce6c598ef27c5541890af07caeb318e, type: 3}
+  m_Name: BasicBasicTurretExtraDamageInRunUpgrade
   m_EditorClassIdentifier: 
   Tier: {fileID: 11400000, guid: 19cb0744d0832e942a504e8952d5e6ad, type: 2}
   Unique: 0
-  health: 10
-  maxHealth: 0
-  increaseHealthToo: 0
-  neonBlocks: 0
+  turret: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
+  damage: 5

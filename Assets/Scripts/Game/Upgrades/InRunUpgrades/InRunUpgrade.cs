@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Game.Upgrades.InGameUpgrades
+namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
 {
     public abstract class InRunUpgrade : ScriptableObject
     {

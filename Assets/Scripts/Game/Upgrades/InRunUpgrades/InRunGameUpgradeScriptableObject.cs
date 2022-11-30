@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Game.Upgrades.InGameUpgrades
+namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/InRunGameUpgrade", order = 5)]
     public class InRunGameUpgradeScriptableObject : InRunUpgrade

@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.InRunUpgradre
+﻿namespace Assets.Scripts.InRunUpgrade
 {
     public abstract class InRunUpgradeCreationToolStrategy
     {

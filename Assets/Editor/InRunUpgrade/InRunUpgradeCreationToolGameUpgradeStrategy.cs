@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using UnityEditor;
 using UnityEngine;
-using Assets.Scripts.Game.Upgrades.InGameUpgrades;
+using Assets.Scripts.Game.Upgrades.InRunUpgrades;
 
-namespace Assets.Scripts.InRunUpgradre
+namespace Assets.Scripts.InRunUpgrade
 {
     public class InRunUpgradeCreationToolGameUpgradeStrategy : InRunUpgradeCreationToolStrategy
     {

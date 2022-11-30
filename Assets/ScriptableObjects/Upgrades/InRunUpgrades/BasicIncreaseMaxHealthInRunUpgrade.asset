@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247de4cb971407347b008dab0038c5de, type: 3}
   m_Name: BasicIncreaseMaxHealthInRunUpgrade
   m_EditorClassIdentifier: 
-  tier: {fileID: 11400000, guid: 19cb0744d0832e942a504e8952d5e6ad, type: 2}
+  Tier: {fileID: 11400000, guid: 19cb0744d0832e942a504e8952d5e6ad, type: 2}
+  Unique: 0
   health: 0
   maxHealth: 5
   increaseHealthToo: 0

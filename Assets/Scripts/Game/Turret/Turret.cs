@@ -25,9 +25,9 @@ public class Turret : MonoBehaviour
     public float slowdownEffectiveness;
     public float slowdownEffectDuration;
 
-    public float damageOverTime;
-    public float damageOverTimeHitCooldown;
-    public float damageOverTimeDuration;
+    public float poisonDamage;
+    public float poisonHitRate;
+    public float poisonDuration;
 
     public float explosionDamage;
     public float explosionRange;
@@ -56,6 +56,11 @@ public class Turret : MonoBehaviour
             aura.GetComponent<Aura>().SetTurret(this);
         }
 
+        SetProperites();
+    }
+
+    public void SetProperites()
+    {
         spriteRenderer.sprite = variant.turretSprite;
         spriteRenderer.material = variant.turretMaterial;
 
@@ -72,9 +77,9 @@ public class Turret : MonoBehaviour
         slowdownEffectiveness = variant.slowdownEffectiveness;
         slowdownEffectDuration = variant.slowdownEffectDuration;
 
-        damageOverTime = variant.poisonDamage;
-        damageOverTimeHitCooldown = variant.poisonHitRate;
-        damageOverTimeDuration = variant.poisonDuration;
+        poisonDamage = variant.poisonDamage;
+        poisonHitRate = variant.poisonHitRate;
+        poisonDuration = variant.poisonDuration;
 
         explosionDamage = variant.explosionDamage;
         explosionRange = variant.explosionRange;
