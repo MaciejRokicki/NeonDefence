@@ -13,13 +13,25 @@ public class TurretScriptableObject : ScriptableObject
     public bool missile;
     public bool laser;
 
+    [SerializeField]
+    private bool _poisonMissile;
     public bool poisonMissile;
-    public bool explosiveMissile;
+    [SerializeField]
+    private bool _slowdownMissile;
     public bool slowdownMissile;
-
-    public bool penetrationMissile;
-    public bool trackingMissile;
+    [SerializeField]
+    private bool _explosiveMissile;
+    public bool explosiveMissile;
+    [SerializeField]
+    private bool _copyMissileEffects;
     public bool copyMissileEffects;
+
+    [SerializeField]
+    private bool _penetrationMissile;
+    public bool penetrationMissile;
+    [SerializeField]
+    private bool _trackingMissile;
+    public bool trackingMissile;
 
     public bool auraSlowdown;
 
@@ -50,13 +62,6 @@ public class TurretScriptableObject : ScriptableObject
     public float laserDeactivationTime;
 
     [SerializeField]
-    private float _slowdownEffectiveness;
-    public float slowdownEffectiveness;
-    [SerializeField]
-    private float _slowdownEffectDuration;
-    public float slowdownEffectDuration;
-
-    [SerializeField]
     private float _poisonDamage;
     public float poisonDamage;
     [SerializeField]
@@ -72,6 +77,13 @@ public class TurretScriptableObject : ScriptableObject
     [SerializeField]
     private float _explosionRange;
     public float explosionRange;
+
+    [SerializeField]
+    private float _slowdownEffectiveness;
+    public float slowdownEffectiveness;
+    [SerializeField]
+    private float _slowdownEffectDuration;
+    public float slowdownEffectDuration;
 
     [SerializeField]
     private float _auraDamage;
@@ -107,7 +119,24 @@ public class TurretScriptableObject : ScriptableObject
 
     private void OnEnable()
     {
+        SetProperties();
+    }
+
+    private void OnDisable()
+    {
+        SetProperties();
+    }
+
+    private void SetProperties()
+    {
         cost = _cost;
+
+        poisonMissile = _poisonMissile;
+        slowdownMissile = _slowdownMissile;
+        explosiveMissile = _explosiveMissile;
+
+        penetrationMissile = _penetrationMissile;
+        trackingMissile = _trackingMissile;
 
         damage = _damage;
         range = _range;

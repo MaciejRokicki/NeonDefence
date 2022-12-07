@@ -8,6 +8,13 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
         #nullable enable
         public TurretScriptableObject? turret;
         #nullable disable
+
+        public bool poisonMissile;
+        public bool explosiveMissile;
+        public bool slowdownMissile;
+        public bool trackingMissile;
+        public bool penetrationMissile;
+
         public float damage;
         public float range;
         public float rotationSpeed;
@@ -25,15 +32,18 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
         public float poisonHitRate;
         public float poisonDuration;
 
+        public GameObject explosionPrefab;
+        public Sprite explosionSprite;
+        public Material explosionMaterial;
         public float explosionDamage;
         public float explosionRange;
+        public bool explosionCopyMissileEffects;
 
         public float auraDamage;
         public float auraRange;
 
         public float auraSlowdownEffectiveness;
 
-        //TODO: Add effects
         public override void Apply()
         {
             if(turret)
@@ -68,6 +78,12 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
             }
             else
             {
+                turret.poisonMissile = turret.poisonMissile || poisonMissile;
+                turret.explosiveMissile = turret.explosiveMissile || explosiveMissile;
+                turret.slowdownMissile = turret.slowdownMissile || slowdownMissile;
+                turret.trackingMissile = turret.trackingMissile || trackingMissile;
+                turret.penetrationMissile = turret.penetrationMissile || penetrationMissile;
+
                 turret.damage += damage;
                 turret.range += range;
                 turret.rotationSpeed += rotationSpeed;
@@ -85,23 +101,35 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
                     turret.laserDeactivationTime -= laserDeactivationTime;
                 }
 
-                if (turret.slowdownMissile)
-                {
-                    turret.slowdownEffectiveness += slowdownEffectiveness;
-                    turret.slowdownEffectDuration += slowdownEffectDuration;
-                }
-
                 if (turret.poisonMissile)
                 {
                     turret.poisonDamage += poisonDamage;
-                    turret.poisonHitRate -= poisonHitRate;
+                    if(poisonMissile)
+                    {
+                        turret.poisonHitRate = poisonHitRate;
+                    }
+                    else
+                    {
+                        turret.poisonHitRate -= poisonHitRate;
+                    }
                     turret.poisonDuration += poisonDuration;
+                }
+
+                if (turret.slowdownMissile)
+                {
+                    turret.slowdownEffectiveness += slowdownEffectiveness;
+                    turret.slowdownEffectiveness = turret.slowdownEffectiveness > 90.0f ? 90.0f : turret.slowdownEffectiveness;
+                    turret.slowdownEffectDuration += slowdownEffectDuration;
                 }
 
                 if (turret.explosiveMissile)
                 {
+                    turret.explosionPrefab = explosionPrefab;
+                    turret.explosionSprite = explosionSprite;
+                    turret.explosionMaterial = explosionMaterial;
                     turret.explosionDamage += explosionDamage;
                     turret.explosionRange += explosionRange;
+                    turret.copyMissileEffects = explosionCopyMissileEffects;
                 }
             }
         }

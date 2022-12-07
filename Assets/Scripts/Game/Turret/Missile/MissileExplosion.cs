@@ -19,12 +19,12 @@ public class MissileExplosion : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer.sprite = turret.variant.explosionSprite;
-        spriteRenderer.material = turret.variant.explosionMaterial;
+        spriteRenderer.sprite = turret.explosionSprite;
+        spriteRenderer.material = turret.explosionMaterial;
 
         RaycastHit2D[] hitAll = Physics2D.CircleCastAll(transform.position, turret.explosionRange, Vector2.zero, 0.0f, LayerMask.GetMask("Enemy"));
 
-        if(turret.variant.copyMissileEffects)
+        if(turret.explosionCopyMissileEffects)
         {
             foreach (RaycastHit2D hit in hitAll)
             {

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Turret : MonoBehaviour
 {
@@ -11,7 +10,12 @@ public class Turret : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    //TODO: hide in inspector
+    public bool poisonMissile;
+    public bool explosiveMissile;
+    public bool slowdownMissile;
+    public bool trackingMissile;
+    public bool penetrationMissile;
+
     public float damage;
     public float range;
     public float rotationSpeed;
@@ -29,8 +33,12 @@ public class Turret : MonoBehaviour
     public float poisonHitRate;
     public float poisonDuration;
 
+    public GameObject explosionPrefab;
+    public Sprite explosionSprite;
+    public Material explosionMaterial;
     public float explosionDamage;
     public float explosionRange;
+    public bool explosionCopyMissileEffects;
 
     public float auraDamage;
     public float auraRange;
@@ -64,6 +72,12 @@ public class Turret : MonoBehaviour
         spriteRenderer.sprite = variant.turretSprite;
         spriteRenderer.material = variant.turretMaterial;
 
+        poisonMissile = variant.poisonMissile;
+        slowdownMissile = variant.slowdownMissile;
+        explosiveMissile = variant.explosiveMissile;
+        trackingMissile = variant.trackingMissile;
+        penetrationMissile = variant.penetrationMissile;
+
         damage = variant.damage;
         range = variant.range;
         rotationSpeed = variant.rotationSpeed;
@@ -81,12 +95,16 @@ public class Turret : MonoBehaviour
         poisonHitRate = variant.poisonHitRate;
         poisonDuration = variant.poisonDuration;
 
+        explosionPrefab = variant.explosionPrefab;
+        explosionSprite = variant.explosionSprite;
+        explosionMaterial = variant.explosionMaterial;
         explosionDamage = variant.explosionDamage;
         explosionRange = variant.explosionRange;
+        explosionCopyMissileEffects = variant.copyMissileEffects;
 
         auraDamage = variant.auraDamage;
         auraRange = variant.auraRange;
 
-        auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;
+        auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;  
     }
 }
