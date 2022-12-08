@@ -11,7 +11,14 @@ public class UpgradeManager : MonoBehaviour
     private static UpgradeManager _instance;
     public static UpgradeManager instance { get { return _instance; } }
 
-    private TurretManager turretManager;
+    //TODO: usunac
+    [SerializeField]
+    private int currentExperience = 0;
+    [SerializeField]
+    private int experienceToNextRoll = 2;
+
+    public delegate void ExperienceChangeCallback(int experience, int experienceToNextRoll);
+    public event ExperienceChangeCallback OnExperienceChange;
 
     public TierScriptableObject[] tiers;
     public float tierMaxChance = 0;
@@ -19,6 +26,10 @@ public class UpgradeManager : MonoBehaviour
     private InRunUpgrade[] inRunUpgrades;
 
     private Dictionary<string, List<InRunUpgrade>> inGameUpgradesToRand;
+
+    //TODO: usunac
+    [SerializeField]
+    private InRunUpgrade[] inRunUpgradesInRoll;
 
     private void Awake()
     {
@@ -31,7 +42,6 @@ public class UpgradeManager : MonoBehaviour
             _instance = this;
         }
 
-        turretManager = TurretManager.instance;
         inGameUpgradesToRand = new Dictionary<string, List<InRunUpgrade>>();
 
         GetTiers();
@@ -43,35 +53,68 @@ public class UpgradeManager : MonoBehaviour
 
     }
 
-    public void RandomizeInRunUpgrade(InputAction.CallbackContext ctxt)
+    public void IncreaseExperience(int experience = 1)
     {
-        if(ctxt.performed)
+        currentExperience += experience;
+
+        if(currentExperience >= experienceToNextRoll)
         {
-            float tierChance = Random.Range(0.0f, tierMaxChance);
+            currentExperience = currentExperience % experienceToNextRoll;
+            experienceToNextRoll += 1;
 
-            foreach(TierScriptableObject tier in tiers)
-            {
-                if(tierChance > tier.MinChance && tierChance <= tier.MaxChance)
-                {
-                    //TODO: po uzupelnieniu upgrade'ow usunac
-                    if (inGameUpgradesToRand[tier.Name].Count() == 0)
-                        continue;
+            InRunUpgradeRoll();
+        }
 
-                    InRunUpgrade inRunUpgrade = inGameUpgradesToRand[tier.Name][Random.Range(0, inGameUpgradesToRand[tier.Name].Count())];
+        OnExperienceChange(currentExperience, experienceToNextRoll);
+    }
 
-                    if(inRunUpgrade.Unique)
-                    {
-                        inGameUpgradesToRand[tier.Name].Remove(inRunUpgrade);
-                    }
+    private void InRunUpgradeRoll()
+    {
+        Debug.Log("ROLL");
+        inRunUpgradesInRoll = new InRunUpgrade[3];
 
-                    Debug.Log($"{inRunUpgrade.Tier.name} {inRunUpgrade.name} {inGameUpgradesToRand[tier.Name].Count()}");
-                    inRunUpgrade.Apply();
+        for (int i = 0; i < 3; i ++)
+        {
+            //InRunUpgrade inRunUpgrade = RandomizeInRunUpgrade();
+            //inRunUpgradesInRoll[i] = inRunUpgrade;
 
-                    break;
-                }
-            }
+            //if(inRunUpgrade.Unique)
+            //{
+            //    inGameUpgradesToRand[inRunUpgrade.Tier.Name].Remove(inRunUpgrade);
+            //}
         }
     }
+
+    public void PickInRunUpgrade(InputAction.CallbackContext ctxt)
+    {
+        //if (inRunUpgrade.Unique)
+        //{
+        //    inGameUpgradesToRand[inRunUpgrade.Tier.Name].Remove(inRunUpgrade);
+        //}
+
+        //Debug.Log($"{inRunUpgrade.Tier.name} {inRunUpgrade.name} {inGameUpgradesToRand[inRunUpgrade.Tier.Name].Count()}");
+        //inRunUpgrade.Apply();
+    }
+
+    #nullable enable
+    public InRunUpgrade? RandomizeInRunUpgrade()
+    {
+        InRunUpgrade? inRunUpgrade = null;
+        float tierChance = Random.Range(0.0f, tierMaxChance);
+
+        foreach(TierScriptableObject tier in tiers)
+        {
+            if(tierChance > tier.MinChance && tierChance <= tier.MaxChance)
+            {
+                inRunUpgrade = inGameUpgradesToRand[tier.Name][Random.Range(0, inGameUpgradesToRand[tier.Name].Count())];
+
+                break;
+            }
+        }
+
+        return inRunUpgrade;
+    }
+    #nullable disable
 
     private void GetTiers()
     {

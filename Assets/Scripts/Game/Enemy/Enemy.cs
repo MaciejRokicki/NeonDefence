@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer), typeof(EnemyEffectHandler))]
 public class Enemy : MonoBehaviour
 {
+    private UpgradeManager upgradeManager;
+
     [SerializeField]
     public EnemyScriptableObject variant;
     private Rigidbody2D rb;
@@ -22,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        upgradeManager = UpgradeManager.instance;
+
         rb = GetComponent<Rigidbody2D>();
         enemyEffectHandler = GetComponent<EnemyEffectHandler>();
     }
@@ -72,6 +76,8 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
+        Debug.Log("TEST");
+        upgradeManager.IncreaseExperience();
         Destroy(gameObject);
     }
 
