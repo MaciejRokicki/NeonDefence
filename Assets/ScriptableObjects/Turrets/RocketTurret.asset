@@ -18,12 +18,18 @@ MonoBehaviour:
   aura: 0
   missile: 1
   laser: 0
-  dealDamageOverTime: 0
+  _poisonMissile: 0
+  poisonMissile: 0
+  _slowdownMissile: 0
+  slowdownMissile: 0
+  _explosiveMissile: 1
   explosiveMissile: 1
-  slowdownOnMissileHit: 0
-  penetrationMissile: 0
-  trackingMissile: 1
+  _copyMissileEffects: 0
   copyMissileEffects: 0
+  _penetrationMissile: 0
+  penetrationMissile: 0
+  _trackingMissile: 1
+  trackingMissile: 1
   auraSlowdown: 1
   _damage: 20
   damage: 20
@@ -41,10 +47,6 @@ MonoBehaviour:
   laserActivationTime: 0
   _laserDeactivationTime: 0
   laserDeactivationTime: 0
-  _slowdownEffectiveness: 0
-  slowdownEffectiveness: 0.5
-  _slowdownEffectDuration: 0
-  slowdownEffectDuration: 1
   _poisonDamage: 0
   poisonDamage: 0
   _poisonHitRate: 0
@@ -55,6 +57,10 @@ MonoBehaviour:
   explosionDamage: 10
   _explosionRange: 3
   explosionRange: 3
+  _slowdownEffectiveness: 0
+  slowdownEffectiveness: 0
+  _slowdownEffectDuration: 0
+  slowdownEffectDuration: 0
   _auraDamage: 0
   auraDamage: 0
   _auraRange: 0
@@ -74,8 +80,11 @@ MonoBehaviour:
   missileSpriteSize: {x: 0.8, y: 0.8}
   missileSprite: {fileID: 21300000, guid: 7154774cf3172e2468c593dbef3eb999, type: 3}
   missileMaterial: {fileID: 2100000, guid: e715d7efa3276e141bd94f5e45dd234b, type: 2}
+  _explosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
   explosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
+  _explosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
   explosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
+  _explosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
   explosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
   auraPrefab: {fileID: 0}
   auraSprite: {fileID: 0}

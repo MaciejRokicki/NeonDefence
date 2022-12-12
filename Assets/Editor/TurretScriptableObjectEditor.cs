@@ -79,12 +79,12 @@ public class TurreteScriptableObjectEditor : Editor
         _missile = serializedObject.FindProperty("missile");
         _laser = serializedObject.FindProperty("laser");
 
-        _poisonMissile = serializedObject.FindProperty("poisonMissile");
-        _explosiveMissile = serializedObject.FindProperty("explosiveMissile");
-        _copyMissileEffects = serializedObject.FindProperty("copyMissileEffects");
-        _slowdownMissile = serializedObject.FindProperty("slowdownMissile");
-        _penetrationMissile = serializedObject.FindProperty("penetrationMissile");
-        _trackingMissile = serializedObject.FindProperty("trackingMissile");
+        _poisonMissile = serializedObject.FindProperty("_poisonMissile");
+        _explosiveMissile = serializedObject.FindProperty("_explosiveMissile");
+        _copyMissileEffects = serializedObject.FindProperty("_copyMissileEffects");
+        _slowdownMissile = serializedObject.FindProperty("_slowdownMissile");
+        _penetrationMissile = serializedObject.FindProperty("_penetrationMissile");
+        _trackingMissile = serializedObject.FindProperty("_trackingMissile");
 
         _auraSlowdown = serializedObject.FindProperty("auraSlowdown");
 
@@ -129,9 +129,11 @@ public class TurreteScriptableObjectEditor : Editor
         _missileSpriteSize = serializedObject.FindProperty("missileSpriteSize");
         _missileSprite = serializedObject.FindProperty("missileSprite");
         _missileMaterial = serializedObject.FindProperty("missileMaterial");
-        _explosionPrefab = serializedObject.FindProperty("explosionPrefab");
-        _explosionSprite = serializedObject.FindProperty("explosionSprite");
-        _explosionMaterial = serializedObject.FindProperty("explosionMaterial");
+
+        _explosionPrefab = serializedObject.FindProperty("_explosionPrefab");
+        _explosionSprite = serializedObject.FindProperty("_explosionSprite");
+        _explosionMaterial = serializedObject.FindProperty("_explosionMaterial");
+
         _auraPrefab = serializedObject.FindProperty("auraPrefab");
         _auraSprite = serializedObject.FindProperty("auraSprite");
         _auraMaterial = serializedObject.FindProperty("auraMaterial");

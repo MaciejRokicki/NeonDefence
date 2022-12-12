@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LegendaryTier
   m_EditorClassIdentifier: 
   Name: Legendary
-  MinChance: 98
+  MinChance: 90
   MaxChance: 100

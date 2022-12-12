@@ -110,9 +110,17 @@ public class TurretScriptableObject : ScriptableObject
     public Vector2 missileSpriteSize;
     public Sprite missileSprite;
     public Material missileMaterial;
+
+    [SerializeField]
+    private GameObject _explosionPrefab;
     public GameObject explosionPrefab;
+    [SerializeField]
+    private Sprite _explosionSprite;
     public Sprite explosionSprite;
+    [SerializeField]
+    private Material _explosionMaterial;
     public Material explosionMaterial;
+
     public GameObject auraPrefab;
     public Sprite auraSprite;
     public Material auraMaterial;
@@ -162,5 +170,9 @@ public class TurretScriptableObject : ScriptableObject
         auraRange = _auraRange;
 
         auraSlowdownEffectiveness = _auraSlowdownEffectiveness;
+
+        explosionPrefab = _explosionPrefab;
+        explosionSprite = _explosionSprite;
+        explosionMaterial = _explosionMaterial;
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SuperiorTier
   m_EditorClassIdentifier: 
   Name: Superior
-  MinChance: 80
+  MinChance: 60
   MaxChance: 90

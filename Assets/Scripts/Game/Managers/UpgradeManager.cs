@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Assets.Scripts.Game.Upgrades.InRunUpgrades;
 
 public class UpgradeManager : MonoBehaviour
@@ -20,8 +19,13 @@ public class UpgradeManager : MonoBehaviour
     public delegate void ExperienceChangeCallback(int experience, int experienceToNextRoll);
     public event ExperienceChangeCallback OnExperienceChange;
 
+    [SerializeField]
+    private GameObject rollUpgrades;
+    [SerializeField]
+    private RollUpgradeUI[] rollUpgradeUI;
+    private int rollUpgradesCount = 3;
     public TierScriptableObject[] tiers;
-    public float tierMaxChance = 0;
+    public float tierMaxChance = 0.0f;
     [SerializeField]
     private InRunUpgrade[] inRunUpgrades;
 
@@ -29,7 +33,7 @@ public class UpgradeManager : MonoBehaviour
 
     //TODO: usunac
     [SerializeField]
-    private InRunUpgrade[] inRunUpgradesInRoll;
+    private InRunUpgrade[] rollUpgradesCollection;
 
     private void Awake()
     {
@@ -46,11 +50,6 @@ public class UpgradeManager : MonoBehaviour
 
         GetTiers();
         GetUpgrades();
-    }
-
-    private void Start()
-    {
-
     }
 
     public void IncreaseExperience(int experience = 1)
@@ -70,45 +69,73 @@ public class UpgradeManager : MonoBehaviour
 
     private void InRunUpgradeRoll()
     {
-        Debug.Log("ROLL");
-        inRunUpgradesInRoll = new InRunUpgrade[3];
+        rollUpgradesCollection = new InRunUpgrade[rollUpgradesCount];
 
-        for (int i = 0; i < 3; i ++)
+        for (int i = 0; i < rollUpgradesCount; i ++)
         {
-            //InRunUpgrade inRunUpgrade = RandomizeInRunUpgrade();
-            //inRunUpgradesInRoll[i] = inRunUpgrade;
+            InRunUpgrade inRunUpgrade = RandomizeInRunUpgrade();
+            rollUpgradesCollection[i] = inRunUpgrade;
 
-            //if(inRunUpgrade.Unique)
-            //{
-            //    inGameUpgradesToRand[inRunUpgrade.Tier.Name].Remove(inRunUpgrade);
-            //}
+            if (inRunUpgrade.Unique)
+            {
+                inGameUpgradesToRand[inRunUpgrade.Tier.Name].Remove(inRunUpgrade);
+            }
+
+            rollUpgradeUI[i].inRunUpgrade = inRunUpgrade;
         }
+
+        rollUpgrades.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
-    public void PickInRunUpgrade(InputAction.CallbackContext ctxt)
+    public void PickInRunUpgrade(int rollUpgradeId)
     {
-        //if (inRunUpgrade.Unique)
-        //{
-        //    inGameUpgradesToRand[inRunUpgrade.Tier.Name].Remove(inRunUpgrade);
-        //}
+        InRunUpgrade inRunUpgrade = rollUpgradesCollection[rollUpgradeId];
 
-        //Debug.Log($"{inRunUpgrade.Tier.name} {inRunUpgrade.name} {inGameUpgradesToRand[inRunUpgrade.Tier.Name].Count()}");
-        //inRunUpgrade.Apply();
+        if (inRunUpgrade.Unique)
+        {
+            inGameUpgradesToRand[inRunUpgrade.Tier.Name].Remove(inRunUpgrade);
+        }
+
+        inRunUpgrade.Apply();
+
+        rollUpgrades.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
+    //TODO: ogarnac duplikaty
     #nullable enable
-    public InRunUpgrade? RandomizeInRunUpgrade()
+    public InRunUpgrade RandomizeInRunUpgrade()
     {
         InRunUpgrade? inRunUpgrade = null;
-        float tierChance = Random.Range(0.0f, tierMaxChance);
 
-        foreach(TierScriptableObject tier in tiers)
+        InRunUpgrade randomizeInTier(TierScriptableObject tier)
         {
-            if(tierChance > tier.MinChance && tierChance <= tier.MaxChance)
-            {
-                inRunUpgrade = inGameUpgradesToRand[tier.Name][Random.Range(0, inGameUpgradesToRand[tier.Name].Count())];
+            int upgradeId = UnityEngine.Random.Range(0, inGameUpgradesToRand[tier.Name].Count());
+            inRunUpgrade = inGameUpgradesToRand[tier.Name][upgradeId];
 
-                break;
+            return inRunUpgrade;
+        }
+
+        while(inRunUpgrade == null)
+        {
+            float tierChance = UnityEngine.Random.Range(0.0f, tierMaxChance);
+
+            foreach (TierScriptableObject tier in tiers)
+            {
+                if(inGameUpgradesToRand[tier.Name].Count() == 0)
+                {
+                    tierChance = UnityEngine.Random.Range(0.0f, tierMaxChance);
+
+                    break;
+                }
+
+                if (tierChance > tier.MinChance && tierChance <= tier.MaxChance)
+                {
+                    inRunUpgrade = randomizeInTier(tier);
+
+                    break;
+                }
             }
         }
 

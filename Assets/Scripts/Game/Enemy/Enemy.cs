@@ -76,7 +76,6 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-        Debug.Log("TEST");
         upgradeManager.IncreaseExperience();
         Destroy(gameObject);
     }
