@@ -10,6 +10,8 @@ public class UpgradeManager : MonoBehaviour
     private static UpgradeManager _instance;
     public static UpgradeManager instance { get { return _instance; } }
 
+    private UIManager uIManager;
+
     //TODO: usunac
     [SerializeField]
     private int currentExperience = 0;
@@ -52,6 +54,11 @@ public class UpgradeManager : MonoBehaviour
         GetUpgrades();
     }
 
+    private void Start()
+    {
+        uIManager = UIManager.instance;
+    }
+
     public void IncreaseExperience(int experience = 1)
     {
         currentExperience += experience;
@@ -69,6 +76,8 @@ public class UpgradeManager : MonoBehaviour
 
     private void InRunUpgradeRoll()
     {
+        uIManager.blockGameInteraction = true;
+
         rollUpgradesCollection = new InRunUpgrade[rollUpgradesCount];
 
         for (int i = 0; i < rollUpgradesCount; i ++)
@@ -101,9 +110,9 @@ public class UpgradeManager : MonoBehaviour
 
         rollUpgrades.SetActive(false);
         Time.timeScale = 1.0f;
+        uIManager.blockGameInteraction = false;
     }
 
-    //TODO: ogarnac duplikaty
     #nullable enable
     public InRunUpgrade RandomizeInRunUpgrade()
     {
@@ -111,21 +120,21 @@ public class UpgradeManager : MonoBehaviour
 
         InRunUpgrade randomizeInTier(TierScriptableObject tier)
         {
-            int upgradeId = UnityEngine.Random.Range(0, inGameUpgradesToRand[tier.Name].Count());
+            int upgradeId = Random.Range(0, inGameUpgradesToRand[tier.Name].Count());
             inRunUpgrade = inGameUpgradesToRand[tier.Name][upgradeId];
 
             return inRunUpgrade;
         }
 
-        while(inRunUpgrade == null)
+        while(inRunUpgrade == null || rollUpgradesCollection.Contains(inRunUpgrade))
         {
-            float tierChance = UnityEngine.Random.Range(0.0f, tierMaxChance);
+            float tierChance = Random.Range(0.0f, tierMaxChance);
 
             foreach (TierScriptableObject tier in tiers)
             {
                 if(inGameUpgradesToRand[tier.Name].Count() == 0)
                 {
-                    tierChance = UnityEngine.Random.Range(0.0f, tierMaxChance);
+                    tierChance = Random.Range(0.0f, tierMaxChance);
 
                     break;
                 }
@@ -143,6 +152,7 @@ public class UpgradeManager : MonoBehaviour
     }
     #nullable disable
 
+    //TODO: AssetDatabase nie dziala na deploy'u (android)
     private void GetTiers()
     {
         string[] files = Directory.GetFiles("Assets/ScriptableObjects/Upgrades/Tiers", "*.asset");

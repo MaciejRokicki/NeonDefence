@@ -10,6 +10,7 @@ public class TurretManager : MonoBehaviour
 
     private GameManager gameManager;
     private InputManager inputManager;
+    private UIManager uiManager;
 
     private BuildingMenu buildingMenu;
     private TurretDetails turretDetails;
@@ -47,6 +48,7 @@ public class TurretManager : MonoBehaviour
     {
         gameManager = GameManager.instance;
         inputManager = InputManager.instance;
+        uiManager = UIManager.instance;
 
         buildingMenu = BuildingMenu.instance;
         turretDetails = TurretDetails.instance;
@@ -85,7 +87,7 @@ public class TurretManager : MonoBehaviour
 
     public void BuildingManagerClickHandler(InputAction.CallbackContext ctxt)
     {
-        if (ctxt.started)
+        if (!uiManager.blockGameInteraction && ctxt.started)
         {
             RaycastHit2D hit = Physics2D.Raycast(
                 Camera.main.ScreenToWorldPoint(inputManager.GetClickPosition()), Vector2.zero, 0.0f, LayerMask.GetMask("NonBuildable"));

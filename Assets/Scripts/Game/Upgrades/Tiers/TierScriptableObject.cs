@@ -4,6 +4,8 @@
 public class TierScriptableObject : ScriptableObject
 {
     public string Name;
+    public Color color;
+    public Material material;
     public float MinChance;
     public float MaxChance;
 }

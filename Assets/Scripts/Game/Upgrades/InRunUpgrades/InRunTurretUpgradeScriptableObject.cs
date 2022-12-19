@@ -64,6 +64,7 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
             }
         }
 
+        //TODO: dodac ograniczenia wartosci
         private void UpdateTurretProperties(TurretScriptableObject turret)
         {
             if (turret.aura)
@@ -124,12 +125,16 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
 
                 if (turret.explosiveMissile)
                 {
-                    turret.explosionPrefab = explosionPrefab;
-                    turret.explosionSprite = explosionSprite;
-                    turret.explosionMaterial = explosionMaterial;
+                    if(turret.explosionPrefab == null)
+                    {
+                        turret.explosionPrefab = explosionPrefab;
+                        turret.explosionSprite = explosionSprite;
+                        turret.explosionMaterial = explosionMaterial;
+                    }
+
                     turret.explosionDamage += explosionDamage;
                     turret.explosionRange += explosionRange;
-                    turret.copyMissileEffects = explosionCopyMissileEffects;
+                    turret.copyMissileEffects = turret.copyMissileEffects || explosionCopyMissileEffects;
                 }
             }
         }

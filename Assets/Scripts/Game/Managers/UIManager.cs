@@ -5,8 +5,7 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance;
     public static UIManager instance { get { return _instance; } }
 
-    [SerializeField]
-    private CameraController cameraController;
+    public bool blockGameInteraction = false; 
 
     private void Awake()
     {

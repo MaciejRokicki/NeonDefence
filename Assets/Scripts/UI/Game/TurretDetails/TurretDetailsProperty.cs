@@ -24,6 +24,8 @@ public class TurretDetailsProperty : MonoBehaviour
     private bool secondSuffix;
     [SerializeField]
     private bool convertDiameterToRadius;
+    [SerializeField]
+    private bool boolValue;
 
     private void Start()
     {
@@ -51,21 +53,21 @@ public class TurretDetailsProperty : MonoBehaviour
         propertyBar.GetComponent<Image>().material = barMaterial;
         propertyBar.offsetMax = new Vector2(-(propertyBarSize.x - propertyBarSize.x * value / maxValue), 0.0f);
 
-        if(maxValue != 1.0f)
+        if (!boolValue)
         {
-            if(isPercentageValue)
+            if (isPercentageValue)
             {
                 stringBuilder
                     .Append(value * 100.0f)
                     .Append("%");
             }
-            else if(secondSuffix)
+            else if (secondSuffix)
             {
                 stringBuilder
                     .Append(value)
                     .Append("s");
             }
-            else if(convertDiameterToRadius)
+            else if (convertDiameterToRadius)
             {
                 stringBuilder
                     .Append((value - 1) / 2);

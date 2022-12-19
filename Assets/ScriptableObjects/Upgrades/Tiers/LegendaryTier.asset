@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: LegendaryTier
   m_EditorClassIdentifier: 
   Name: Legendary
+  color: {r: 1, g: 0.9972987, b: 0.68235296, a: 0.43137255}
+  material: {fileID: 2100000, guid: 530062d05104cd04485792f78772a4ce, type: 2}
   MinChance: 90
   MaxChance: 100

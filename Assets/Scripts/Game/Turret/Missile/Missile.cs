@@ -15,58 +15,7 @@ public class Missile : MonoBehaviour
 
     private void Start()
     {
-        enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
-
-        if (turret.poisonMissile)
-        {
-            enemyHitEffectComponent = new PoisonEffectDecorator(
-                turret, 
-                gameObject, 
-                enemyHitEffectComponent, 
-                turret.poisonDuration, 
-                turret.poisonHitRate, 
-                turret.poisonDamage
-            );
-        }
-
-        if (turret.slowdownMissile)
-        {
-            enemyHitEffectComponent = new SlowdownEffectDecorator(
-                turret, 
-                gameObject, 
-                enemyHitEffectComponent, 
-                turret.slowdownEffectDuration, 
-                turret.slowdownEffectiveness
-            );
-        }
-
-        if (turret.explosiveMissile)
-        {
-            enemyHitEffectComponent = new ExplosiveEffectDecorator(turret, gameObject, enemyHitEffectComponent);
-        }
-
-        if (turret.variant.needTarget)
-        {
-            if (turret.variant.laser)
-            {
-                missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret, enemyHitEffectComponent);
-            }
-            else
-            {
-                missileTypeStrategy = new MissileBasicTypeStrategy(gameObject, turret, enemyHitEffectComponent);
-            }
-        }
-
-        if(turret.trackingMissile)
-        {
-            trackingMissileStrategy = new AutoTrackingMissileStrategy(gameObject, turret, target);
-        }
-        else
-        {
-            trackingMissileStrategy = new BasicTrackingMissileStrategy(gameObject, turret);
-        }
-
-        missileTypeStrategy.Start();
+        PrepareMissile();
     }
 
     private void Update()
@@ -112,6 +61,62 @@ public class Missile : MonoBehaviour
         {
             missileTypeStrategy.OnEnemyTriggerExit2D(collision);
         }
+    }
+
+    public void PrepareMissile()
+    {
+        enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
+
+        if (turret.poisonMissile)
+        {
+            enemyHitEffectComponent = new PoisonEffectDecorator(
+                turret,
+                gameObject,
+                enemyHitEffectComponent,
+                turret.poisonDuration,
+                turret.poisonHitRate,
+                turret.poisonDamage
+            );
+        }
+
+        if (turret.slowdownMissile)
+        {
+            enemyHitEffectComponent = new SlowdownEffectDecorator(
+                turret,
+                gameObject,
+                enemyHitEffectComponent,
+                turret.slowdownEffectDuration,
+                turret.slowdownEffectiveness
+            );
+        }
+
+        if (turret.explosiveMissile)
+        {
+            enemyHitEffectComponent = new ExplosiveEffectDecorator(turret, gameObject, enemyHitEffectComponent);
+        }
+
+        if (turret.variant.needTarget)
+        {
+            if (turret.variant.laser)
+            {
+                missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret, enemyHitEffectComponent);
+            }
+            else
+            {
+                missileTypeStrategy = new MissileBasicTypeStrategy(gameObject, turret, enemyHitEffectComponent);
+            }
+        }
+
+        if (turret.trackingMissile)
+        {
+            trackingMissileStrategy = new AutoTrackingMissileStrategy(gameObject, turret, target);
+        }
+        else
+        {
+            trackingMissileStrategy = new BasicTrackingMissileStrategy(gameObject, turret);
+        }
+
+        missileTypeStrategy.Start();
     }
 
     public Missile SetTurret(Turret turret)

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: BasicTier
   m_EditorClassIdentifier: 
   Name: Basic
+  color: {r: 1, g: 1, b: 1, a: 0.4}
+  material: {fileID: 2100000, guid: c560f0e3a62bac149ad622f90649958b, type: 2}
   MinChance: 0
   MaxChance: 60

@@ -7,6 +7,9 @@ public class Cannon : MonoBehaviour
     private CircleCollider2D cannonCollider;
 
     private Turret turret;
+    #nullable enable
+    private GameObject? laser;
+    #nullable disable
     [HideInInspector]
     public GameObject target;
 
@@ -39,7 +42,7 @@ public class Cannon : MonoBehaviour
         }
         else
         {
-            GameObject laser = Instantiate(turret.variant.missilePrefab, transform.parent.position, transform.rotation, transform);
+            laser = Instantiate(turret.variant.missilePrefab, transform.parent.position, transform.rotation, transform);
             cannonTypeStrategy = new CannonLaserTypeStrategy(this, turret, laser);
         }
 
@@ -87,6 +90,14 @@ public class Cannon : MonoBehaviour
     public void SetTurret(Turret turret)
     {
         this.turret = turret;
+    }
+
+    public void UpdateLaserMissileEffects()
+    {
+        if(turret.variant.laser && laser)
+        {
+            laser.GetComponent<Missile>().PrepareMissile();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

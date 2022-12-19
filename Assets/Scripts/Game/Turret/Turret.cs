@@ -105,6 +105,11 @@ public class Turret : MonoBehaviour
         auraDamage = variant.auraDamage;
         auraRange = variant.auraRange;
 
-        auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;  
+        auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;
+
+        if(cannon)
+        {
+            cannon.GetComponent<Cannon>().UpdateLaserMissileEffects();
+        }
     }
 }
