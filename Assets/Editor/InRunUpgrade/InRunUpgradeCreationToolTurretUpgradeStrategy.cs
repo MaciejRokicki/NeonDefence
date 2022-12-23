@@ -45,7 +45,7 @@ namespace Assets.Scripts.InRunUpgrade
 
         private float auraSlowdownEffectiveness;
 
-        public InRunUpgradeCreationToolTurretUpgradeStrategy(InRunUpgradeCreationTool inRunUpgradeCreationTool)
+        public InRunUpgradeCreationToolTurretUpgradeStrategy(InRunUpgradeCreationTool inRunUpgradeCreationTool, UpgradeManager upgradeManager) : base(upgradeManager)
         {
             this.inRunUpgradeCreationTool = inRunUpgradeCreationTool;
         }
@@ -240,6 +240,8 @@ namespace Assets.Scripts.InRunUpgrade
             AssetDatabase.CreateAsset(turretUpgradeScriptableObject, pathStringBuilder.ToString());
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+
+            upgradeManager.AddUpgrade(turretUpgradeScriptableObject);
         }
     }
 }

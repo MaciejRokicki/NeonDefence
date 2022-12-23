@@ -12,6 +12,10 @@ namespace Assets.Scripts.InRunUpgrade
         private bool increaseHealthToo;
         private int neonBlocks;
 
+        public InRunUpgradeCreationToolGameUpgradeStrategy(UpgradeManager upgradeManager) : base(upgradeManager)
+        {
+        }
+
         public override void OnGui()
         {
             health = EditorGUILayout.FloatField("Health", health);
@@ -41,6 +45,8 @@ namespace Assets.Scripts.InRunUpgrade
             AssetDatabase.CreateAsset(gameUpgradeScriptablejObject, pathStringBuilder.ToString());
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+
+            upgradeManager.AddUpgrade(gameUpgradeScriptablejObject);
         }
     }
 }

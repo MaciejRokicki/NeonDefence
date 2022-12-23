@@ -29,7 +29,7 @@ public class UpgradeManager : MonoBehaviour
     public TierScriptableObject[] tiers;
     public float tierMaxChance = 0.0f;
     [SerializeField]
-    private InRunUpgrade[] inRunUpgrades;
+    private List<InRunUpgrade> inRunUpgrades;
 
     private Dictionary<string, List<InRunUpgrade>> inGameUpgradesToRand;
 
@@ -150,39 +150,19 @@ public class UpgradeManager : MonoBehaviour
 
         return inRunUpgrade;
     }
-    #nullable disable
+#nullable disable
 
-    //TODO: AssetDatabase nie dziala na deploy'u (android)
     private void GetTiers()
     {
-        string[] files = Directory.GetFiles("Assets/ScriptableObjects/Upgrades/Tiers", "*.asset");
-        tiers = new TierScriptableObject[files.Length];
-
-        for (int i = 0; i < files.Length; i++)
+        foreach(TierScriptableObject tier in tiers)
         {
-            TierScriptableObject tier = AssetDatabase.LoadAssetAtPath(files[i], typeof(TierScriptableObject)) as TierScriptableObject;
-            tiers[i] = tier;
-
             tierMaxChance = tier.MaxChance > tierMaxChance ? tier.MaxChance : tierMaxChance;
-        }
-
-        foreach (TierScriptableObject tier in tiers)
-        {
             inGameUpgradesToRand[tier.Name] = new List<InRunUpgrade>();
         }
     }
 
     private void GetUpgrades()
     {
-        string[] files = Directory.GetFiles("Assets/ScriptableObjects/Upgrades/InRunUpgrades", "*.asset");
-        inRunUpgrades = new InRunUpgrade[files.Length];
-
-        for (int i = 0; i < files.Length; i++)
-        {
-            InRunUpgrade inRunUpgrade = AssetDatabase.LoadAssetAtPath(files[i], typeof(InRunUpgrade)) as InRunUpgrade;
-            inRunUpgrades[i] = inRunUpgrade;
-        }
-
         foreach (TierScriptableObject tier in tiers)
         {
             inGameUpgradesToRand[tier.Name] = new List<InRunUpgrade>();
@@ -192,5 +172,10 @@ public class UpgradeManager : MonoBehaviour
         {
             inGameUpgradesToRand[upgrade.Tier.Name].Add(upgrade);
         }
+    }
+
+    public void AddUpgrade(InRunUpgrade inRunUpgrade)
+    {
+        inRunUpgrades.Add(inRunUpgrade);
     }
 }

@@ -8,6 +8,8 @@ namespace Assets.Scripts.InRunUpgrade
 {
     public class InRunUpgradeCreationTool : EditorWindow
     {
+        private UpgradeManager upgradeManager;
+
         private InRunUpgradeCreationToolStrategy selectedStrategy;
         private InRunUpgradeCreationToolStrategy gameUpgradeStrategy;
         private InRunUpgradeCreationToolStrategy turretUpgradeStrategy;
@@ -24,8 +26,10 @@ namespace Assets.Scripts.InRunUpgrade
 
         private void Awake()
         {
-            gameUpgradeStrategy = new InRunUpgradeCreationToolGameUpgradeStrategy();
-            turretUpgradeStrategy = new InRunUpgradeCreationToolTurretUpgradeStrategy(this);
+            upgradeManager = GameObject.Find("UpgradeManager").GetComponent<UpgradeManager>();
+
+            gameUpgradeStrategy = new InRunUpgradeCreationToolGameUpgradeStrategy(upgradeManager);
+            turretUpgradeStrategy = new InRunUpgradeCreationToolTurretUpgradeStrategy(this, upgradeManager);
         }
 
         private void OnEnable()
