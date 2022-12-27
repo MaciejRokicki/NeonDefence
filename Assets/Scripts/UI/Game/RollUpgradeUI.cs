@@ -68,34 +68,7 @@ public class RollUpgradeUI : MonoBehaviour
 
         stringBuilder.Clear();
 
-        FieldInfo[] properties = inRunUpgrade.GetType().GetFields();
-
-        foreach (FieldInfo property in properties)
-        {
-            if (property.FieldType == typeof(int) && (int)property.GetValue(inRunUpgrade) != default)
-            {
-                stringBuilder.Append(property.Name);
-                stringBuilder.Append(": ");
-                stringBuilder.Append(property.GetValue(inRunUpgrade));
-                stringBuilder.Append("\n");
-            }
-
-            if (property.FieldType == typeof(float) && (float)property.GetValue(inRunUpgrade) != default)
-            {
-                stringBuilder.Append(property.Name);
-                stringBuilder.Append(": ");
-                stringBuilder.Append(property.GetValue(inRunUpgrade));
-                stringBuilder.Append("\n");
-            }
-
-            if (property.FieldType == typeof(bool) && (bool)property.GetValue(inRunUpgrade) != default)
-            {
-                stringBuilder.Append(property.Name);
-                stringBuilder.Append("\n");
-            }
-        }
-
-        description.text = stringBuilder.ToString();
+        description.text = inRunUpgrade.Description;
     }
 
     private void OnDisable()

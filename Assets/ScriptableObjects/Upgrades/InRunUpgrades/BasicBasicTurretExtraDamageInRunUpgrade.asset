@@ -14,5 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tier: {fileID: 11400000, guid: 19cb0744d0832e942a504e8952d5e6ad, type: 2}
   Unique: 0
+  Description: +5 Damage\nTEST
   turret: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
+  poisonMissile: 0
+  explosiveMissile: 0
+  slowdownMissile: 0
+  trackingMissile: 0
+  penetrationMissile: 0
   damage: 5
+  range: 0
+  rotationSpeed: 0
+  missilesPerSecond: 0
+  missileSpeed: 0
+  laserHitsPerSecond: 0
+  laserActivationTime: 0
+  laserDeactivationTime: 0
+  slowdownEffectiveness: 0
+  slowdownEffectDuration: 0
+  poisonDamage: 0
+  poisonHitRate: 0
+  poisonDuration: 0
+  explosionPrefab: {fileID: 0}
+  explosionSprite: {fileID: 0}
+  explosionMaterial: {fileID: 0}
+  explosionDamage: 0
+  explosionRange: 0
+  explosionCopyMissileEffects: 0
+  auraDamage: 0
+  auraRange: 0
+  auraSlowdownEffectiveness: 0

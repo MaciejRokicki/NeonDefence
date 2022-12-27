@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using Assets.Scripts.Game.Upgrades.InRunUpgrades;
+using Assets.Extensions;
 
 namespace Assets.Scripts.InRunUpgrade
 {
@@ -16,6 +17,7 @@ namespace Assets.Scripts.InRunUpgrade
         private bool penetrationMissile;
 
         private int selectedTurretId;
+        [Min(0.0f)]
         private float damage;
         private float range;
         private float rotationSpeed;
@@ -59,34 +61,34 @@ namespace Assets.Scripts.InRunUpgrade
             {
                 if (turret.aura)
                 {            
-                    auraDamage = EditorGUILayout.FloatField("Aura damage", auraDamage);
-                    auraRange = EditorGUILayout.FloatField("Aura range", auraRange);
+                    auraDamage = EditorGUILayoutExtension.FloatField("Aura damage", auraDamage, 0.0f);
+                    auraRange = EditorGUILayoutExtension.FloatField("Aura range", auraRange, 0.0f);
                     EditorGUILayout.Separator();
 
                     if (turret.auraSlowdown)
                     {
-                        auraSlowdownEffectiveness = EditorGUILayout.FloatField("Aura slowdown effectiveness", auraSlowdownEffectiveness);
+                        auraSlowdownEffectiveness = EditorGUILayoutExtension.FloatField("Aura slowdown effectiveness", auraSlowdownEffectiveness, 0.0f, 0.8f);
                     }
                 }
                 else
                 {
-                    damage = EditorGUILayout.FloatField("Damage", damage);
-                    range = EditorGUILayout.FloatField("Range", range);
-                    rotationSpeed = EditorGUILayout.FloatField("Rotation speed", rotationSpeed);
+                    damage = EditorGUILayoutExtension.FloatField("Damage", damage, 0.0f);
+                    range = EditorGUILayoutExtension.FloatField("Range", range, 0.0f);
+                    rotationSpeed = EditorGUILayoutExtension.FloatField("Rotation speed", rotationSpeed, 0.0f);
 
                     if (turret.missile)
                     {
-                        missilesPerSecond = EditorGUILayout.FloatField("Missiles per second", missilesPerSecond);
-                        missileSpeed = EditorGUILayout.FloatField("Missile speed", missileSpeed);
+                        missilesPerSecond = EditorGUILayoutExtension.FloatField("Missiles per second", missilesPerSecond, 0.0f);
+                        missileSpeed = EditorGUILayoutExtension.FloatField("Missile speed", missileSpeed, 0.0f);
                     }
 
                     EditorGUILayout.Separator();
 
                     if (turret.laser)
                     {                   
-                        laserHitsPerSecond = EditorGUILayout.FloatField("Laser hits per second", laserHitsPerSecond);
-                        laserActivationTime = EditorGUILayout.FloatField("Laser activation time", laserActivationTime);
-                        laserDeactivationTime = EditorGUILayout.FloatField("Laser deactivation time", laserDeactivationTime);
+                        laserHitsPerSecond = EditorGUILayoutExtension.FloatField("Laser hits per second", laserHitsPerSecond, 0.0f);
+                        laserActivationTime = EditorGUILayoutExtension.FloatField("Laser activation time", laserActivationTime, 0.0f);
+                        laserDeactivationTime = EditorGUILayoutExtension.FloatField("Laser deactivation time", laserDeactivationTime, 0.0f);
                         EditorGUILayout.Separator();
                     }
 
@@ -94,9 +96,9 @@ namespace Assets.Scripts.InRunUpgrade
 
                     if (turret.poisonMissile || poisonMissile)
                     {
-                        poisonDamage = EditorGUILayout.FloatField("Poison damage", poisonDamage);
-                        poisonHitRate = EditorGUILayout.FloatField("Poison hit rate", poisonHitRate);
-                        poisonDuration = EditorGUILayout.FloatField("Poison duration", poisonDuration);
+                        poisonDamage = EditorGUILayoutExtension.FloatField("Poison damage", poisonDamage, 0.0f);
+                        poisonHitRate = EditorGUILayoutExtension.FloatField("Poison hit rate", poisonHitRate, 0.0f);
+                        poisonDuration = EditorGUILayoutExtension.FloatField("Poison duration", poisonDuration, 0.0f);
                         EditorGUILayout.Separator();
                     }
 
@@ -108,7 +110,7 @@ namespace Assets.Scripts.InRunUpgrade
                         EditorGUILayout.PrefixLabel("Slowdown effectiveness");
                         slowdownEffectiveness = EditorGUILayout.Slider(slowdownEffectiveness, 0.0f, 1.0f);
                         EditorGUILayout.EndHorizontal();
-                        slowdownEffectDuration = EditorGUILayout.FloatField("Slowdown effect duration", slowdownEffectDuration);
+                        slowdownEffectDuration = EditorGUILayoutExtension.FloatField("Slowdown effect duration", slowdownEffectDuration, 0.0f);
                         EditorGUILayout.Separator();
                     }
 
@@ -128,8 +130,8 @@ namespace Assets.Scripts.InRunUpgrade
                         EditorGUILayout.PrefixLabel("Explosion material");
                         explosionMaterial = EditorGUILayout.ObjectField(explosionMaterial, typeof(Material), false) as Material;
                         EditorGUILayout.EndHorizontal();
-                        explosionDamage = EditorGUILayout.FloatField("Explosion damage", explosionDamage);
-                        explosionRange = EditorGUILayout.FloatField("Explosion range", explosionRange);
+                        explosionDamage = EditorGUILayoutExtension.FloatField("Explosion damage", explosionDamage, 0.0f);
+                        explosionRange = EditorGUILayoutExtension.FloatField("Explosion range", explosionRange, 0.0f);
                         explosionCopyMissileEffects = EditorGUILayout.Toggle("Copy missile effects on explosion", explosionCopyMissileEffects);
                         EditorGUILayout.Separator();
 
@@ -141,24 +143,24 @@ namespace Assets.Scripts.InRunUpgrade
             }
             else
             {
-                damage = EditorGUILayout.FloatField("Damage", damage);
-                range = EditorGUILayout.FloatField("Range", range);
-                rotationSpeed = EditorGUILayout.FloatField("Rotation speed", rotationSpeed);
-                missilesPerSecond = EditorGUILayout.FloatField("Missiles per second", missilesPerSecond);
-                missileSpeed = EditorGUILayout.FloatField("Missile speed", missileSpeed);
+                damage = EditorGUILayoutExtension.FloatField("Damage", damage, 0.0f);
+                range = EditorGUILayoutExtension.FloatField("Range", range, 0.0f);
+                rotationSpeed = EditorGUILayoutExtension.FloatField("Rotation speed", rotationSpeed, 0.0f);
+                missilesPerSecond = EditorGUILayoutExtension.FloatField("Missiles per second", missilesPerSecond, 0.0f);
+                missileSpeed = EditorGUILayoutExtension.FloatField("Missile speed", missileSpeed, 0.0f);
                 EditorGUILayout.Separator();
-                laserHitsPerSecond = EditorGUILayout.FloatField("Laser hits per second", laserHitsPerSecond);
-                laserActivationTime = EditorGUILayout.FloatField("Laser activation time", laserActivationTime);
-                laserDeactivationTime = EditorGUILayout.FloatField("Laser deactivation time", laserDeactivationTime);
+                laserHitsPerSecond = EditorGUILayoutExtension.FloatField("Laser hits per second", laserHitsPerSecond, 0.0f);
+                laserActivationTime = EditorGUILayoutExtension.FloatField("Laser activation time", laserActivationTime, 0.0f);
+                laserDeactivationTime = EditorGUILayoutExtension.FloatField("Laser deactivation time", laserDeactivationTime, 0.0f);
                 EditorGUILayout.Separator();
                 poisonMissile = EditorGUILayout.Toggle("Missile poison effect", poisonMissile);
-                poisonDamage = EditorGUILayout.FloatField("Poison damage", poisonDamage);
-                poisonHitRate = EditorGUILayout.FloatField("Poison hit rate", poisonHitRate);
-                poisonDuration = EditorGUILayout.FloatField("Poison duration", poisonDuration);
+                poisonDamage = EditorGUILayoutExtension.FloatField("Poison damage", poisonDamage, 0.0f);
+                poisonHitRate = EditorGUILayoutExtension.FloatField("Poison hit rate", poisonHitRate, 0.0f);
+                poisonDuration = EditorGUILayoutExtension.FloatField("Poison duration", poisonDuration, 0.0f);
                 EditorGUILayout.Separator();
                 slowdownMissile = EditorGUILayout.Toggle("Missile slowdown effect", slowdownMissile);
-                slowdownEffectiveness = EditorGUILayout.FloatField("Slowdown effectiveness", slowdownEffectiveness);
-                slowdownEffectDuration = EditorGUILayout.FloatField("Slowdown effect duration", slowdownEffectDuration);
+                slowdownEffectiveness = EditorGUILayoutExtension.FloatField("Slowdown effectiveness", slowdownEffectiveness, 0.0f, 0.8f);
+                slowdownEffectDuration = EditorGUILayoutExtension.FloatField("Slowdown effect duration", slowdownEffectDuration, 0.0f);
                 EditorGUILayout.Separator();
                 explosiveMissile = EditorGUILayout.Toggle("Explosive missile effect", explosiveMissile);
                 EditorGUILayout.BeginHorizontal();
@@ -173,26 +175,24 @@ namespace Assets.Scripts.InRunUpgrade
                 EditorGUILayout.PrefixLabel("Explosion material");
                 explosionMaterial = EditorGUILayout.ObjectField(explosionMaterial, typeof(Material), false) as Material;
                 EditorGUILayout.EndHorizontal();
-                explosionDamage = EditorGUILayout.FloatField("Explosion damage", explosionDamage);
-                explosionRange = EditorGUILayout.FloatField("Explosion range", explosionRange);
+                explosionDamage = EditorGUILayoutExtension.FloatField("Explosion damage", explosionDamage, 0.0f);
+                explosionRange = EditorGUILayoutExtension.FloatField("Explosion range", explosionRange, 0.0f);
                 explosionCopyMissileEffects = EditorGUILayout.Toggle("Copy missile effects on explosion", explosionCopyMissileEffects);
                 EditorGUILayout.Separator();
                 trackingMissile = EditorGUILayout.Toggle("Tracking missile", trackingMissile);
                 penetrationMissile = EditorGUILayout.Toggle("Penetration missile", penetrationMissile);
                 EditorGUILayout.Separator();
-                auraDamage = EditorGUILayout.FloatField("Aura damage", auraDamage);
-                auraRange = EditorGUILayout.FloatField("Aura range", auraRange);
+                auraDamage = EditorGUILayoutExtension.FloatField("Aura damage", auraDamage, 0.0f);
+                auraRange = EditorGUILayoutExtension.FloatField("Aura range", auraRange, 0.0f);
                 EditorGUILayout.Separator();
-                auraSlowdownEffectiveness = EditorGUILayout.FloatField("Aura slowdown effectiveness", auraSlowdownEffectiveness);
+                auraSlowdownEffectiveness = EditorGUILayoutExtension.FloatField("Aura slowdown effectiveness", auraSlowdownEffectiveness, 0.0f, 0.8f);
             }
         }
 
-        public override void Create(string upgradeName, bool unique, TierScriptableObject tier)
+        public override void Create(string upgradeName, bool unique, TierScriptableObject tier, string description)
         {
             StringBuilder pathStringBuilder = new StringBuilder("Assets/ScriptableObjects/Upgrades/InRunUpgrades/");
-            pathStringBuilder.Append(tier.Name);
             pathStringBuilder.Append(upgradeName);
-            pathStringBuilder.Append("InRunUpgrade");
             pathStringBuilder.Append(".asset");
 
             InRunTurretUpgradeScriptableObject turretUpgradeScriptableObject = ScriptableObject.CreateInstance<InRunTurretUpgradeScriptableObject>();
@@ -236,6 +236,8 @@ namespace Assets.Scripts.InRunUpgrade
             turretUpgradeScriptableObject.auraRange = auraRange;
 
             turretUpgradeScriptableObject.auraSlowdownEffectiveness = auraSlowdownEffectiveness;
+
+            turretUpgradeScriptableObject.Description = description;
 
             AssetDatabase.CreateAsset(turretUpgradeScriptableObject, pathStringBuilder.ToString());
             AssetDatabase.SaveAssets();

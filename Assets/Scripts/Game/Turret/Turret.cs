@@ -78,22 +78,22 @@ public class Turret : MonoBehaviour
         trackingMissile = variant.trackingMissile;
         penetrationMissile = variant.penetrationMissile;
 
-        damage = variant.damage;
-        range = variant.range;
-        rotationSpeed = variant.rotationSpeed;
-        missilesPerSecond = variant.missilesPerSecond;
-        missileSpeed = variant.missileSpeed;
+        damage = variant.damage < 0.0f ? 0.0f : variant.damage;
+        range = variant.range < 0.0f ? 0.0f : variant.range;
+        rotationSpeed = variant.rotationSpeed < 0.0f ? 0.0f : variant.rotationSpeed;
+        missilesPerSecond = variant.missilesPerSecond < 0.0f ? 0.0f : variant.missilesPerSecond;
+        missileSpeed = variant.missileSpeed < 0.0f ? 0.0f : variant.missileSpeed;
 
-        laserHitsPerSecond = variant.laserHitsPerSecond;
-        laserActivationTime = variant.laserActivationTime;
-        laserDeactivationTime = variant.laserDeactivationTime;
+        laserHitsPerSecond = variant.laserHitsPerSecond < 0.0f ? 0.0f : variant.laserHitsPerSecond;
+        laserActivationTime = variant.laserActivationTime < 0.0f ? 0.0f : variant.laserActivationTime;
+        laserDeactivationTime = variant.laserDeactivationTime < 0.0f ? 0.0f : variant.laserDeactivationTime;
 
-        slowdownEffectiveness = variant.slowdownEffectiveness;
-        slowdownEffectDuration = variant.slowdownEffectDuration;
+        slowdownEffectiveness = (variant.slowdownEffectiveness < 0.0f ? 0.0f : variant.slowdownEffectiveness = variant.slowdownEffectiveness > 0.8f ? 0.8f : variant.slowdownEffectiveness);
+        slowdownEffectDuration = variant.slowdownEffectDuration < 0.0f ? 0.0f : variant.slowdownEffectDuration;
 
-        poisonDamage = variant.poisonDamage;
-        poisonHitRate = variant.poisonHitRate;
-        poisonDuration = variant.poisonDuration;
+        poisonDamage = variant.poisonDamage < 0.0f ? 0.0f : variant.poisonDamage;
+        poisonHitRate = variant.poisonHitRate < 0.0f ? 0.0f : variant.poisonHitRate;
+        poisonDuration = variant.poisonDuration < 0.0f ? 0.0f : variant.poisonDuration;
 
         explosionPrefab = variant.explosionPrefab;
         explosionSprite = variant.explosionSprite;

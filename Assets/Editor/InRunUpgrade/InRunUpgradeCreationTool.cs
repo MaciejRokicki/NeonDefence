@@ -14,12 +14,16 @@ namespace Assets.Scripts.InRunUpgrade
         private InRunUpgradeCreationToolStrategy gameUpgradeStrategy;
         private InRunUpgradeCreationToolStrategy turretUpgradeStrategy;
 
+        private Vector2 windowScroll;
+
+        private StringBuilder upgradeNameStringBuilder;
         private string upgradeName;
         private int selectedTierId = 0;
         private bool unique;
         private string[] tiersNames;
         private TierScriptableObject[] tiers;
         private bool isGameUpgrade = true;
+        private string description;
 
         internal TurretScriptableObject[] turrets;
         internal string[] turretNames;
@@ -36,19 +40,29 @@ namespace Assets.Scripts.InRunUpgrade
         {
             InitTiers();
             InitTurrets();
+
+            upgradeNameStringBuilder = new();
         }
 
         [MenuItem("Tools/InRunUpgrade Creation tool")]
         public static void ShowWindow()
         {
-            GetWindow<InRunUpgradeCreationTool>("InRunUpgrade Creation tool");
+            InRunUpgradeCreationTool window = GetWindow<InRunUpgradeCreationTool>("InRunUpgrade Creation tool");
+
+            window.minSize = new Vector2(400.0f, 100.0f);
         }
 
         private void OnGUI()
         {
+            upgradeNameStringBuilder.Append(tiersNames[selectedTierId].Split(" ")[0]);
+            upgradeNameStringBuilder.Append(upgradeName);
+            upgradeNameStringBuilder.Append("InRunUpgrade");
+
+            windowScroll = EditorGUILayout.BeginScrollView(windowScroll);
+
             GUILayout.Label("New upgrade", EditorStyles.boldLabel);
             upgradeName = EditorGUILayout.TextField("Name", upgradeName);
-            EditorGUILayout.LabelField(upgradeName);
+            EditorGUILayout.LabelField(upgradeNameStringBuilder.ToString());
             selectedTierId = EditorGUILayout.Popup("Tier", selectedTierId, tiersNames);
             unique = EditorGUILayout.Toggle("Is unique", unique);
             isGameUpgrade = EditorGUILayout.Toggle("Is game upgrade", isGameUpgrade);
@@ -57,10 +71,21 @@ namespace Assets.Scripts.InRunUpgrade
 
             selectedStrategy.OnGui();
 
+            EditorGUILayout.PrefixLabel("Description");
+            description = EditorGUILayout.TextArea(description, GUILayout.Height(80.0f));
+
+            EditorGUI.BeginDisabledGroup(string.IsNullOrEmpty(upgradeName));
+
             if (GUILayout.Button("Create"))
             {
-                selectedStrategy.Create(upgradeName, unique, tiers[selectedTierId]);
+                selectedStrategy.Create(upgradeName, unique, tiers[selectedTierId], description);
             }
+
+            EditorGUI.EndDisabledGroup();
+
+            EditorGUILayout.EndScrollView();
+
+            upgradeNameStringBuilder.Clear();
         }
 
         private void InitTiers()

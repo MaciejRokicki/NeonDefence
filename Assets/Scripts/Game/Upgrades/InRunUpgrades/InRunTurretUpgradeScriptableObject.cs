@@ -64,7 +64,6 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
             }
         }
 
-        //TODO: dodac ograniczenia wartosci
         private void UpdateTurretProperties(TurretScriptableObject turret)
         {
             if (turret.aura)
@@ -119,7 +118,6 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
                 if (turret.slowdownMissile)
                 {
                     turret.slowdownEffectiveness += slowdownEffectiveness;
-                    turret.slowdownEffectiveness = turret.slowdownEffectiveness > 90.0f ? 90.0f : turret.slowdownEffectiveness;
                     turret.slowdownEffectDuration += slowdownEffectDuration;
                 }
 

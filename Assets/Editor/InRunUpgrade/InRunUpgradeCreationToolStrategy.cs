@@ -10,6 +10,6 @@
         }
 
         public abstract void OnGui();
-        public abstract void Create(string upgradeName, bool unique, TierScriptableObject tier);
+        public abstract void Create(string upgradeName, bool unique, TierScriptableObject tier, string description);
     }
 }

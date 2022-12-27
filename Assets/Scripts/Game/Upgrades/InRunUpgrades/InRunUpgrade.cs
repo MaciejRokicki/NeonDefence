@@ -6,6 +6,8 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
     {
         public TierScriptableObject Tier;
         public bool Unique;
+        [TextArea]
+        public string Description;
 
         public abstract void Apply();
     }
