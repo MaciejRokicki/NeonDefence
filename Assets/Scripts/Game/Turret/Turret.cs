@@ -64,11 +64,13 @@ public class Turret : MonoBehaviour
             aura.GetComponent<Aura>().SetTurret(this);
         }
 
-        SetProperites();
+        UpdateProperties();
     }
 
-    public void SetProperites()
+    public void UpdateProperties()
     {
+        ClampProperties();
+
         spriteRenderer.sprite = variant.turretSprite;
         spriteRenderer.material = variant.turretMaterial;
 
@@ -78,22 +80,22 @@ public class Turret : MonoBehaviour
         trackingMissile = variant.trackingMissile;
         penetrationMissile = variant.penetrationMissile;
 
-        damage = variant.damage < 0.0f ? 0.0f : variant.damage;
-        range = variant.range < 0.0f ? 0.0f : variant.range;
-        rotationSpeed = variant.rotationSpeed < 0.0f ? 0.0f : variant.rotationSpeed;
-        missilesPerSecond = variant.missilesPerSecond < 0.0f ? 0.0f : variant.missilesPerSecond;
-        missileSpeed = variant.missileSpeed < 0.0f ? 0.0f : variant.missileSpeed;
+        damage = variant.damage;
+        range = variant.range;
+        rotationSpeed = variant.rotationSpeed;
+        missilesPerSecond = variant.missilesPerSecond;
+        missileSpeed = variant.missileSpeed;
 
-        laserHitsPerSecond = variant.laserHitsPerSecond < 0.0f ? 0.0f : variant.laserHitsPerSecond;
-        laserActivationTime = variant.laserActivationTime < 0.0f ? 0.0f : variant.laserActivationTime;
-        laserDeactivationTime = variant.laserDeactivationTime < 0.0f ? 0.0f : variant.laserDeactivationTime;
+        laserHitsPerSecond = variant.laserHitsPerSecond;
+        laserActivationTime = variant.laserActivationTime;
+        laserDeactivationTime = variant.laserDeactivationTime;
 
-        slowdownEffectiveness = (variant.slowdownEffectiveness < 0.0f ? 0.0f : variant.slowdownEffectiveness = variant.slowdownEffectiveness > 0.8f ? 0.8f : variant.slowdownEffectiveness);
-        slowdownEffectDuration = variant.slowdownEffectDuration < 0.0f ? 0.0f : variant.slowdownEffectDuration;
+        slowdownEffectiveness = variant.slowdownEffectiveness;
+        slowdownEffectDuration = variant.slowdownEffectDuration;
 
-        poisonDamage = variant.poisonDamage < 0.0f ? 0.0f : variant.poisonDamage;
-        poisonHitRate = variant.poisonHitRate < 0.0f ? 0.0f : variant.poisonHitRate;
-        poisonDuration = variant.poisonDuration < 0.0f ? 0.0f : variant.poisonDuration;
+        poisonDamage = variant.poisonDamage;
+        poisonHitRate = variant.poisonHitRate;
+        poisonDuration = variant.poisonDuration;
 
         explosionPrefab = variant.explosionPrefab;
         explosionSprite = variant.explosionSprite;
@@ -111,5 +113,39 @@ public class Turret : MonoBehaviour
         {
             cannon.GetComponent<Cannon>().UpdateLaserMissileEffects();
         }
+    }
+
+    private void ClampProperties()
+    {
+        void ClampProperty(ref float property, FloatRangeProperty limit)
+        {
+            property = Mathf.Clamp(property, limit.Min, limit.Max);
+        }
+
+        ClampProperty(ref variant.damage, variant.damageLimit);
+        ClampProperty(ref variant.range, variant.rangeLimit);
+        ClampProperty(ref variant.rotationSpeed, variant.rotationSpeedLimit);
+
+        ClampProperty(ref variant.missilesPerSecond, variant.missilesPerSecondLimit);
+        ClampProperty(ref variant.missileSpeed, variant.missileSpeedLimit);
+
+        ClampProperty(ref variant.laserHitsPerSecond, variant.laserHitsPerSecondLimit);
+        ClampProperty(ref variant.laserActivationTime, variant.laserActivationTimeLimit);
+        ClampProperty(ref variant.laserDeactivationTime, variant.laserDeactivationTimeLimit);
+
+        ClampProperty(ref variant.slowdownEffectiveness, variant.slowdownEffectivenessLimit);
+        ClampProperty(ref variant.slowdownEffectDuration, variant.slowdownEffectDurationLimit);
+
+        ClampProperty(ref variant.poisonDamage, variant.poisonDamageLimit);
+        ClampProperty(ref variant.poisonHitRate, variant.poisonHitRateLimit);
+        ClampProperty(ref variant.poisonDuration, variant.poisonDamageLimit);
+
+        ClampProperty(ref variant.explosionDamage, variant.explosionDamageLimit);
+        ClampProperty(ref variant.explosionRange, variant.explosionRangeLimit);
+
+        ClampProperty(ref variant.auraDamage, variant.auraDamageLimit);
+        ClampProperty(ref variant.auraRange, variant.auraRangeLimit);
+
+        ClampProperty(ref variant.auraSlowdownEffectiveness, variant.auraSlowdownEffectivenessLimit);
     }
 }

@@ -62,7 +62,10 @@ namespace Assets.Scripts.InRunUpgrade
 
             GUILayout.Label("New upgrade", EditorStyles.boldLabel);
             upgradeName = EditorGUILayout.TextField("Name", upgradeName);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel("Name preview");
             EditorGUILayout.LabelField(upgradeNameStringBuilder.ToString());
+            EditorGUILayout.EndHorizontal();
             selectedTierId = EditorGUILayout.Popup("Tier", selectedTierId, tiersNames);
             unique = EditorGUILayout.Toggle("Is unique", unique);
             isGameUpgrade = EditorGUILayout.Toggle("Is game upgrade", isGameUpgrade);
@@ -71,6 +74,7 @@ namespace Assets.Scripts.InRunUpgrade
 
             selectedStrategy.OnGui();
 
+            EditorGUILayout.Separator();
             EditorGUILayout.PrefixLabel("Description");
             description = EditorGUILayout.TextArea(description, GUILayout.Height(80.0f));
 

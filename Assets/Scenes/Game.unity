@@ -13686,14 +13686,8 @@ MonoBehaviour:
   tierMaxChance: 0
   inRunUpgrades:
   - {fileID: 11400000, guid: ff4a397be9545fe4bb3a9530ea7b394c, type: 2}
-  - {fileID: 11400000, guid: f064770563746e8419aa4870a7d6344a, type: 2}
-  - {fileID: 11400000, guid: aeaf9a24e17125f468b39ee394b3a0a8, type: 2}
-  - {fileID: 11400000, guid: 87f298dabf2a0074aa04ff08dea89575, type: 2}
-  - {fileID: 11400000, guid: 3f06dc9242c9ee146b9674c5fa28082d, type: 2}
-  - {fileID: 11400000, guid: 766d5c1a24d294e4aacdd214e54c0a37, type: 2}
-  - {fileID: 11400000, guid: a5760eb7bc18e2c428329943c0fbe8f3, type: 2}
-  - {fileID: 11400000, guid: 33780e98510d513499839523ad865ddd, type: 2}
   - {fileID: 11400000, guid: e7aab109413ecbd4fbc05bf793e3c1a2, type: 2}
+  - {fileID: 11400000, guid: 33780e98510d513499839523ad865ddd, type: 2}
   rollUpgradesCollection: []
 --- !u!1001 &1245464120
 PrefabInstance:

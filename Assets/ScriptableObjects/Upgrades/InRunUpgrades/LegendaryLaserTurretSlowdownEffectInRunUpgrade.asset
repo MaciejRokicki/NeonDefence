@@ -14,31 +14,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tier: {fileID: 11400000, guid: a020e2cc7162e374e83ce6fbe2c07396, type: 2}
   Unique: 1
+  Description: 
   turret: {fileID: 11400000, guid: bdc47021dff72434991bb92f7cc76f4f, type: 2}
   poisonMissile: 0
   explosiveMissile: 0
   slowdownMissile: 1
-  trackingMissile: 0
   penetrationMissile: 0
-  damage: 0
+  trackingMissile: 0
+  auraSlowdown: 0
+  damage: -0.5
+  damageIsPercentage: 1
   range: 0
+  rangeIsPercentage: 0
   rotationSpeed: 0
+  rotationSpeedIsPercentage: 0
   missilesPerSecond: 0
+  missilesPerSecondIsPercentage: 0
   missileSpeed: 0
+  missileSpeedIsPercentage: 0
   laserHitsPerSecond: 0
+  laserHitsPerSecondIsPercentage: 0
   laserActivationTime: 0
+  laserActivationTimeIsPercentage: 0
   laserDeactivationTime: 0
+  laserDeactivationTimeIsPercentage: 0
   slowdownEffectiveness: 0.2
+  slowdownEffectivenessIsPercentage: 0
   slowdownEffectDuration: 1
+  slowdownEffectDurationIsPercentage: 0
   poisonDamage: 0
+  poisonDamageIsPercentage: 0
   poisonHitRate: 0
+  poisonHitRateIsPercentage: 0
   poisonDuration: 0
+  poisonDurationIsPercentage: 0
   explosionPrefab: {fileID: 0}
   explosionSprite: {fileID: 0}
   explosionMaterial: {fileID: 0}
   explosionDamage: 0
+  explosionDamageIsPercentage: 0
   explosionRange: 0
+  explosionRangeIsPercentage: 0
   explosionCopyMissileEffects: 0
   auraDamage: 0
+  auraDamageIsPercentage: 0
   auraRange: 0
+  auraRangeIsPercentage: 0
   auraSlowdownEffectiveness: 0
+  auraSlowdownEffectivenessIsPercentage: 0

@@ -33,68 +33,88 @@ public class TurretScriptableObject : ScriptableObject
     private bool _trackingMissile;
     public bool trackingMissile;
 
+    [SerializeField]
+    private bool _auraSlowdown;
     public bool auraSlowdown;
 
     [SerializeField]
     private float _damage;
     public float damage;
+    public FloatRangeProperty damageLimit;
     [SerializeField]
     private float _range;
     public float range;
+    public FloatRangeProperty rangeLimit;
     [SerializeField]
     private float _rotationSpeed;
     public float rotationSpeed;
+    public FloatRangeProperty rotationSpeedLimit;
     [SerializeField]
     private float _missilesPerSecond;
     public float missilesPerSecond;
+    public FloatRangeProperty missilesPerSecondLimit;
     [SerializeField]
     private float _missileSpeed;
     public float missileSpeed;
+    public FloatRangeProperty missileSpeedLimit;
 
     [SerializeField]
     private float _laserHitsPerSecond;
     public float laserHitsPerSecond;
+    public FloatRangeProperty laserHitsPerSecondLimit;
     [SerializeField]
     private float _laserActivationTime;
     public float laserActivationTime;
+    public FloatRangeProperty laserActivationTimeLimit;
     [SerializeField]
     private float _laserDeactivationTime;
     public float laserDeactivationTime;
+    public FloatRangeProperty laserDeactivationTimeLimit;
 
     [SerializeField]
     private float _poisonDamage;
     public float poisonDamage;
+    public FloatRangeProperty poisonDamageLimit;
     [SerializeField]
     private float _poisonHitRate;
     public float poisonHitRate;
+    public FloatRangeProperty poisonHitRateLimit;
     [SerializeField]
     private float _poisonDuration;
     public float poisonDuration;
+    public FloatRangeProperty poisonDurationLimit;
 
     [SerializeField]
     private float _explosionDamage;
     public float explosionDamage;
+    public FloatRangeProperty explosionDamageLimit;
     [SerializeField]
     private float _explosionRange;
     public float explosionRange;
+    public FloatRangeProperty explosionRangeLimit;
 
     [SerializeField]
     private float _slowdownEffectiveness;
     public float slowdownEffectiveness;
+    public FloatRangeProperty slowdownEffectivenessLimit;
     [SerializeField]
     private float _slowdownEffectDuration;
     public float slowdownEffectDuration;
+    public FloatRangeProperty slowdownEffectDurationLimit;
 
     [SerializeField]
     private float _auraDamage;
     public float auraDamage;
+    public FloatRangeProperty auraDamageLimit;
     [SerializeField]
     private float _auraRange;
     public float auraRange;
+    public FloatRangeProperty auraRangeLimit;
 
     [SerializeField]
     private float _auraSlowdownEffectiveness;
     public float auraSlowdownEffectiveness;
+    public FloatRangeProperty auraSlowdownEffectivenessLimit;
 
     public Sprite turretIcon;
     public Material turretIconMaterial;
@@ -145,6 +165,8 @@ public class TurretScriptableObject : ScriptableObject
 
         penetrationMissile = _penetrationMissile;
         trackingMissile = _trackingMissile;
+
+        auraSlowdown = _auraSlowdown;
 
         damage = _damage;
         range = _range;

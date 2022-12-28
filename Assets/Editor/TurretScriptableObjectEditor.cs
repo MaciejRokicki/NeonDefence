@@ -23,29 +23,47 @@ public class TurreteScriptableObjectEditor : Editor
 
 
     SerializedProperty _damage;
+    SerializedProperty _damageLimit;
     SerializedProperty _range;
+    SerializedProperty _rangeLimit;
     SerializedProperty _rotationSpeed;
+    SerializedProperty _rotationSpeedLimit;
     SerializedProperty _missilesPerSecond;
+    SerializedProperty _missilesPerSecondLimit;
     SerializedProperty _missileSpeed;
+    SerializedProperty _missileSpeedLimit;
 
     SerializedProperty _laserHitsPerSecond;
+    SerializedProperty _laserHitsPerSecondLimit;
     SerializedProperty _laserActivationTime;
+    SerializedProperty _laserActivationTimeLimit;
     SerializedProperty _laserDeactivationTime;
+    SerializedProperty _laserDeactivationTimeLimit;
 
     SerializedProperty _slowdownEffectiveness;
+    SerializedProperty _slowdownEffectivenessLimit;
     SerializedProperty _slowdownEffectDuration;
+    SerializedProperty _slowdownEffectDurationLimit;
 
     SerializedProperty _poisonDamage;
+    SerializedProperty _poisonDamageLimit;
     SerializedProperty _poisonHitRate;
+    SerializedProperty _poisonHitRateLimit;
     SerializedProperty _poisonDuration;
+    SerializedProperty _poisonDurationLimit;
 
     SerializedProperty _explosionDamage;
+    SerializedProperty _explosionDamageLimit;
     SerializedProperty _explosionRange;
+    SerializedProperty _explosionRangeLimit;
 
     SerializedProperty _auraDamage;
+    SerializedProperty _auraDamageLimit;
     SerializedProperty _auraRange;
+    SerializedProperty _auraRangeLimit;
 
     SerializedProperty _auraSlowdownEffectiveness;
+    SerializedProperty _auraSlowdownEffectivenessLimit;
 
 
     SerializedProperty _turretIcon;
@@ -90,29 +108,47 @@ public class TurreteScriptableObjectEditor : Editor
 
 
         _damage = serializedObject.FindProperty("_damage");
+        _damageLimit = serializedObject.FindProperty("damageLimit");
         _range = serializedObject.FindProperty("_range");
+        _rangeLimit = serializedObject.FindProperty("rangeLimit");
         _rotationSpeed = serializedObject.FindProperty("_rotationSpeed");
+        _rotationSpeedLimit = serializedObject.FindProperty("rotationSpeedLimit");
         _missilesPerSecond = serializedObject.FindProperty("_missilesPerSecond");
+        _missilesPerSecondLimit = serializedObject.FindProperty("missilesPerSecondLimit");
         _missileSpeed = serializedObject.FindProperty("_missileSpeed");
+        _missileSpeedLimit = serializedObject.FindProperty("missileSpeedLimit");
 
         _laserHitsPerSecond = serializedObject.FindProperty("_laserHitsPerSecond");
+        _laserHitsPerSecondLimit = serializedObject.FindProperty("laserHitsPerSecondLimit");
         _laserActivationTime = serializedObject.FindProperty("_laserActivationTime");
+        _laserActivationTimeLimit = serializedObject.FindProperty("laserActivationTimeLimit");
         _laserDeactivationTime = serializedObject.FindProperty("_laserDeactivationTime");
+        _laserDeactivationTimeLimit = serializedObject.FindProperty("laserDeactivationTimeLimit");
 
         _slowdownEffectiveness = serializedObject.FindProperty("_slowdownEffectiveness");
+        _slowdownEffectivenessLimit = serializedObject.FindProperty("slowdownEffectivenessLimit");
         _slowdownEffectDuration = serializedObject.FindProperty("_slowdownEffectDuration");
+        _slowdownEffectDurationLimit = serializedObject.FindProperty("slowdownEffectDurationLimit");
 
         _poisonDamage = serializedObject.FindProperty("_poisonDamage");
+        _poisonDamageLimit = serializedObject.FindProperty("poisonDamageLimit");
         _poisonHitRate = serializedObject.FindProperty("_poisonHitRate");
+        _poisonHitRateLimit = serializedObject.FindProperty("poisonHitRateLimit");
         _poisonDuration = serializedObject.FindProperty("_poisonDuration");
+        _poisonDurationLimit = serializedObject.FindProperty("poisonDurationLimit");
 
         _explosionDamage = serializedObject.FindProperty("_explosionDamage");
+        _explosionDamageLimit = serializedObject.FindProperty("explosionDamageLimit");
         _explosionRange = serializedObject.FindProperty("_explosionRange");
+        _explosionRangeLimit = serializedObject.FindProperty("explosionRangeLimit");
 
         _auraDamage = serializedObject.FindProperty("_auraDamage");
+        _auraDamageLimit = serializedObject.FindProperty("auraDamageLimit");
         _auraRange = serializedObject.FindProperty("_auraRange");
+        _auraRangeLimit = serializedObject.FindProperty("auraRangeLimit");
 
         _auraSlowdownEffectiveness = serializedObject.FindProperty("_auraSlowdownEffectiveness");
+        _auraSlowdownEffectivenessLimit = serializedObject.FindProperty("auraSlowdownEffectivenessLimit");
 
 
         _turretIcon = serializedObject.FindProperty("turretIcon");
@@ -192,39 +228,54 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Missile Statistics", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_damage);
+            EditorGUILayout.PropertyField(_damageLimit);
             EditorGUILayout.PropertyField(_range);
+            EditorGUILayout.PropertyField(_rangeLimit);
             EditorGUILayout.PropertyField(_rotationSpeed);
+            EditorGUILayout.PropertyField(_rotationSpeedLimit);
 
             if (_missile.boolValue)
             {
                 EditorGUILayout.PropertyField(_missilesPerSecond);
+                EditorGUILayout.PropertyField(_missilesPerSecondLimit);
                 EditorGUILayout.PropertyField(_missileSpeed);
+                EditorGUILayout.PropertyField(_missileSpeedLimit);
             }
 
             if (_laser.boolValue)
             {
                 EditorGUILayout.PropertyField(_laserHitsPerSecond);
+                EditorGUILayout.PropertyField(_laserHitsPerSecondLimit);
                 EditorGUILayout.PropertyField(_laserActivationTime);
+                EditorGUILayout.PropertyField(_laserActivationTimeLimit);
                 EditorGUILayout.PropertyField(_laserDeactivationTime);
+                EditorGUILayout.PropertyField(_laserDeactivationTimeLimit);
             }
 
             if (_slowdownMissile.boolValue)
             {
                 EditorGUILayout.PropertyField(_slowdownEffectiveness);
+                EditorGUILayout.PropertyField(_slowdownEffectivenessLimit);
                 EditorGUILayout.PropertyField(_slowdownEffectDuration);
+                EditorGUILayout.PropertyField(_slowdownEffectDurationLimit);
             }
 
             if (_poisonMissile.boolValue)
             {
                 EditorGUILayout.PropertyField(_poisonDamage);
+                EditorGUILayout.PropertyField(_poisonDamageLimit);
                 EditorGUILayout.PropertyField(_poisonHitRate);
+                EditorGUILayout.PropertyField(_poisonHitRateLimit);
                 EditorGUILayout.PropertyField(_poisonDuration);
+                EditorGUILayout.PropertyField(_poisonDurationLimit);
             }
 
             if (_explosiveMissile.boolValue)
             {
                 EditorGUILayout.PropertyField(_explosionDamage);
+                EditorGUILayout.PropertyField(_explosionDamageLimit);
                 EditorGUILayout.PropertyField(_explosionRange);
+                EditorGUILayout.PropertyField(_explosionRangeLimit);
             }
         }
 
@@ -233,12 +284,15 @@ public class TurreteScriptableObjectEditor : Editor
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Aura Statistics", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_auraDamage);
+            EditorGUILayout.PropertyField(_auraDamageLimit);
             EditorGUILayout.PropertyField(_auraRange);
+            EditorGUILayout.PropertyField(_auraRangeLimit);
         }
 
         if (_auraSlowdown.boolValue)
         {
             EditorGUILayout.PropertyField(_auraSlowdownEffectiveness);
+            EditorGUILayout.PropertyField(_auraSlowdownEffectivenessLimit);
         }
 
         if(_needTarget.boolValue)
