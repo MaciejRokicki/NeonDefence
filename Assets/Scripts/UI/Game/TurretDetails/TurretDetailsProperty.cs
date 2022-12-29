@@ -1,7 +1,7 @@
 using System.Text;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TurretDetailsProperty : MonoBehaviour
 {
@@ -33,9 +33,9 @@ public class TurretDetailsProperty : MonoBehaviour
         stringBuilder = new StringBuilder();
     }
 
-    public void SetValue(float value, float maxValue)
+    public void SetValue(float value, FloatRangeProperty limit)
     {
-        if(value == 0.0f)
+        if(value == limit.Min || value == 0.0f)
         {
             gameObject.SetActive(false);
 
@@ -51,7 +51,7 @@ public class TurretDetailsProperty : MonoBehaviour
 
         propertyBar.GetComponent<Image>().color = barColor;
         propertyBar.GetComponent<Image>().material = barMaterial;
-        propertyBar.offsetMax = new Vector2(-(propertyBarSize.x - propertyBarSize.x * value / maxValue), 0.0f);
+        propertyBar.offsetMax = new Vector2(-(propertyBarSize.x - propertyBarSize.x * value / limit.Max), 0.0f);
 
         if (!boolValue)
         {

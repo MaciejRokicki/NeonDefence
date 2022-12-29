@@ -52,15 +52,15 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        if (variant.needTarget)
+        if (variant.NeedTarget)
         {
-            cannon = Instantiate(variant.cannonPrefab, transform.position, Quaternion.identity, transform);
+            cannon = Instantiate(variant.CannonPrefab, transform.position, Quaternion.identity, transform);
             cannon.GetComponent<Cannon>().SetTurret(this);
         }
 
-        if (variant.aura)
+        if (variant.Aura)
         {
-            aura = Instantiate(variant.auraPrefab, transform.position, Quaternion.identity, transform);
+            aura = Instantiate(variant.AuraPrefab, transform.position, Quaternion.identity, transform);
             aura.GetComponent<Aura>().SetTurret(this);
         }
 
@@ -71,43 +71,43 @@ public class Turret : MonoBehaviour
     {
         ClampProperties();
 
-        spriteRenderer.sprite = variant.turretSprite;
-        spriteRenderer.material = variant.turretMaterial;
+        spriteRenderer.sprite = variant.TurretSprite;
+        spriteRenderer.material = variant.TurretMaterial;
 
-        poisonMissile = variant.poisonMissile;
-        slowdownMissile = variant.slowdownMissile;
-        explosiveMissile = variant.explosiveMissile;
-        trackingMissile = variant.trackingMissile;
-        penetrationMissile = variant.penetrationMissile;
+        poisonMissile = variant.PoisonMissile;
+        slowdownMissile = variant.SlowdownMissile;
+        explosiveMissile = variant.xplosiveMissile;
+        trackingMissile = variant.TrackingMissile;
+        penetrationMissile = variant.PenetrationMissile;
 
-        damage = variant.damage;
-        range = variant.range;
-        rotationSpeed = variant.rotationSpeed;
-        missilesPerSecond = variant.missilesPerSecond;
-        missileSpeed = variant.missileSpeed;
+        damage = variant.Damage;
+        range = variant.Range;
+        rotationSpeed = variant.RotationSpeed;
+        missilesPerSecond = variant.MissilesPerSecond;
+        missileSpeed = variant.MissileSpeed;
 
-        laserHitsPerSecond = variant.laserHitsPerSecond;
-        laserActivationTime = variant.laserActivationTime;
-        laserDeactivationTime = variant.laserDeactivationTime;
+        laserHitsPerSecond = variant.LaserHitsPerSecond;
+        laserActivationTime = variant.LaserActivationTime;
+        laserDeactivationTime = variant.LaserDeactivationTime;
 
-        slowdownEffectiveness = variant.slowdownEffectiveness;
-        slowdownEffectDuration = variant.slowdownEffectDuration;
+        slowdownEffectiveness = variant.SlowdownEffectiveness;
+        slowdownEffectDuration = variant.SlowdownEffectDuration;
 
-        poisonDamage = variant.poisonDamage;
-        poisonHitRate = variant.poisonHitRate;
-        poisonDuration = variant.poisonDuration;
+        poisonDamage = variant.PoisonDamage;
+        poisonHitRate = variant.PoisonHitRate;
+        poisonDuration = variant.PoisonDuration;
 
-        explosionPrefab = variant.explosionPrefab;
-        explosionSprite = variant.explosionSprite;
-        explosionMaterial = variant.explosionMaterial;
-        explosionDamage = variant.explosionDamage;
-        explosionRange = variant.explosionRange;
-        explosionCopyMissileEffects = variant.copyMissileEffects;
+        explosionPrefab = variant.ExplosionPrefab;
+        explosionSprite = variant.ExplosionSprite;
+        explosionMaterial = variant.ExplosionMaterial;
+        explosionDamage = variant.ExplosionDamage;
+        explosionRange = variant.ExplosionRange;
+        explosionCopyMissileEffects = variant.CopyMissileEffects;
 
-        auraDamage = variant.auraDamage;
-        auraRange = variant.auraRange;
+        auraDamage = variant.AuraDamage;
+        auraRange = variant.AuraRange;
 
-        auraSlowdownEffectiveness = variant.auraSlowdownEffectiveness;
+        auraSlowdownEffectiveness = variant.AuraSlowdownEffectiveness;
 
         if(cannon)
         {
@@ -122,30 +122,30 @@ public class Turret : MonoBehaviour
             property = Mathf.Clamp(property, limit.Min, limit.Max);
         }
 
-        ClampProperty(ref variant.damage, variant.damageLimit);
-        ClampProperty(ref variant.range, variant.rangeLimit);
-        ClampProperty(ref variant.rotationSpeed, variant.rotationSpeedLimit);
+        ClampProperty(ref variant.Damage, variant.TurretLimits.DamageLimit);
+        ClampProperty(ref variant.Range, variant.TurretLimits.RangeLimit);
+        ClampProperty(ref variant.RotationSpeed, variant.TurretLimits.RotationSpeedLimit);
 
-        ClampProperty(ref variant.missilesPerSecond, variant.missilesPerSecondLimit);
-        ClampProperty(ref variant.missileSpeed, variant.missileSpeedLimit);
+        ClampProperty(ref variant.MissilesPerSecond, variant.TurretLimits.MissilesPerSecondLimit);
+        ClampProperty(ref variant.MissileSpeed, variant.TurretLimits.MissileSpeedLimit);
 
-        ClampProperty(ref variant.laserHitsPerSecond, variant.laserHitsPerSecondLimit);
-        ClampProperty(ref variant.laserActivationTime, variant.laserActivationTimeLimit);
-        ClampProperty(ref variant.laserDeactivationTime, variant.laserDeactivationTimeLimit);
+        ClampProperty(ref variant.LaserHitsPerSecond, variant.TurretLimits.LaserHitsPerSecondLimit);
+        ClampProperty(ref variant.LaserActivationTime, variant.TurretLimits.LaserActivationTimeLimit);
+        ClampProperty(ref variant.LaserDeactivationTime, variant.TurretLimits.LaserDeactivationTimeLimit);
 
-        ClampProperty(ref variant.slowdownEffectiveness, variant.slowdownEffectivenessLimit);
-        ClampProperty(ref variant.slowdownEffectDuration, variant.slowdownEffectDurationLimit);
+        ClampProperty(ref variant.SlowdownEffectiveness, variant.TurretLimits.SlowdownEffectivenessLimit);
+        ClampProperty(ref variant.SlowdownEffectDuration, variant.TurretLimits.SlowdownEffectDurationLimit);
 
-        ClampProperty(ref variant.poisonDamage, variant.poisonDamageLimit);
-        ClampProperty(ref variant.poisonHitRate, variant.poisonHitRateLimit);
-        ClampProperty(ref variant.poisonDuration, variant.poisonDamageLimit);
+        ClampProperty(ref variant.PoisonDamage, variant.TurretLimits.PoisonDamageLimit);
+        ClampProperty(ref variant.PoisonHitRate, variant.TurretLimits.PoisonHitRateLimit);
+        ClampProperty(ref variant.PoisonDuration, variant.TurretLimits.PoisonDamageLimit);
 
-        ClampProperty(ref variant.explosionDamage, variant.explosionDamageLimit);
-        ClampProperty(ref variant.explosionRange, variant.explosionRangeLimit);
+        ClampProperty(ref variant.ExplosionDamage, variant.TurretLimits.ExplosionDamageLimit);
+        ClampProperty(ref variant.ExplosionRange, variant.TurretLimits.ExplosionRangeLimit);
 
-        ClampProperty(ref variant.auraDamage, variant.auraDamageLimit);
-        ClampProperty(ref variant.auraRange, variant.auraRangeLimit);
+        ClampProperty(ref variant.AuraDamage, variant.TurretLimits.AuraDamageLimit);
+        ClampProperty(ref variant.AuraRange, variant.TurretLimits.AuraRangeLimit);
 
-        ClampProperty(ref variant.auraSlowdownEffectiveness, variant.auraSlowdownEffectivenessLimit);
+        ClampProperty(ref variant.AuraSlowdownEffectiveness, variant.TurretLimits.AuraSlowdownEffectivenessLimit);
     }
 }

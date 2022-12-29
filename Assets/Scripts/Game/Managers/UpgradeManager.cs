@@ -29,13 +29,13 @@ public class UpgradeManager : MonoBehaviour
     public TierScriptableObject[] tiers;
     public float tierMaxChance = 0.0f;
     [SerializeField]
-    private List<InRunUpgrade> inRunUpgrades;
+    private List<InRunUpgradeScriptableObject> inRunUpgrades;
 
-    private Dictionary<string, List<InRunUpgrade>> inGameUpgradesToRand;
+    private Dictionary<string, List<InRunUpgradeScriptableObject>> inGameUpgradesToRand;
 
     //TODO: usunac
     [SerializeField]
-    private InRunUpgrade[] rollUpgradesCollection;
+    private InRunUpgradeScriptableObject[] rollUpgradesCollection;
 
     private void Awake()
     {
@@ -48,7 +48,7 @@ public class UpgradeManager : MonoBehaviour
             _instance = this;
         }
 
-        inGameUpgradesToRand = new Dictionary<string, List<InRunUpgrade>>();
+        inGameUpgradesToRand = new Dictionary<string, List<InRunUpgradeScriptableObject>>();
 
         GetTiers();
         GetUpgrades();
@@ -78,11 +78,11 @@ public class UpgradeManager : MonoBehaviour
     {
         uIManager.blockGameInteraction = true;
 
-        rollUpgradesCollection = new InRunUpgrade[rollUpgradesCount];
+        rollUpgradesCollection = new InRunUpgradeScriptableObject[rollUpgradesCount];
 
         for (int i = 0; i < rollUpgradesCount; i ++)
         {
-            InRunUpgrade inRunUpgrade = RandomizeInRunUpgrade();
+            InRunUpgradeScriptableObject inRunUpgrade = RandomizeInRunUpgrade();
             rollUpgradesCollection[i] = inRunUpgrade;
 
             if (inRunUpgrade.Unique)
@@ -99,7 +99,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void PickInRunUpgrade(int rollUpgradeId)
     {
-        InRunUpgrade inRunUpgrade = rollUpgradesCollection[rollUpgradeId];
+        InRunUpgradeScriptableObject inRunUpgrade = rollUpgradesCollection[rollUpgradeId];
 
         if (inRunUpgrade.Unique)
         {
@@ -114,11 +114,11 @@ public class UpgradeManager : MonoBehaviour
     }
 
     #nullable enable
-    public InRunUpgrade RandomizeInRunUpgrade()
+    public InRunUpgradeScriptableObject RandomizeInRunUpgrade()
     {
-        InRunUpgrade? inRunUpgrade = null;
+        InRunUpgradeScriptableObject? inRunUpgrade = null;
 
-        InRunUpgrade randomizeInTier(TierScriptableObject tier)
+        InRunUpgradeScriptableObject randomizeInTier(TierScriptableObject tier)
         {
             int upgradeId = Random.Range(0, inGameUpgradesToRand[tier.Name].Count());
             inRunUpgrade = inGameUpgradesToRand[tier.Name][upgradeId];
@@ -157,7 +157,7 @@ public class UpgradeManager : MonoBehaviour
         foreach(TierScriptableObject tier in tiers)
         {
             tierMaxChance = tier.MaxChance > tierMaxChance ? tier.MaxChance : tierMaxChance;
-            inGameUpgradesToRand[tier.Name] = new List<InRunUpgrade>();
+            inGameUpgradesToRand[tier.Name] = new List<InRunUpgradeScriptableObject>();
         }
     }
 
@@ -165,16 +165,16 @@ public class UpgradeManager : MonoBehaviour
     {
         foreach (TierScriptableObject tier in tiers)
         {
-            inGameUpgradesToRand[tier.Name] = new List<InRunUpgrade>();
+            inGameUpgradesToRand[tier.Name] = new List<InRunUpgradeScriptableObject>();
         }
 
-        foreach (InRunUpgrade upgrade in inRunUpgrades)
+        foreach (InRunUpgradeScriptableObject upgrade in inRunUpgrades)
         {
             inGameUpgradesToRand[upgrade.Tier.Name].Add(upgrade);
         }
     }
 
-    public void AddUpgrade(InRunUpgrade inRunUpgrade)
+    public void AddUpgrade(InRunUpgradeScriptableObject inRunUpgrade)
     {
         inRunUpgrades.Add(inRunUpgrade);
     }

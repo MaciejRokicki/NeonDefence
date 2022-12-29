@@ -6,11 +6,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get { return _instance; } }
 
     public Vector2 mapSize = new Vector2(50.0f, 30.0f);
-    private float health;
+    public float Health;
     [SerializeField]
-    private float maxHealth = 100.0f;
+    public float MaxHealth = 100.0f;
     [SerializeField]
-    private int neonBlocks;
+    private int NeonBlocks;
 
     public delegate void HealthChangeCallback(float health);
     public event HealthChangeCallback OnHealthChange;
@@ -37,58 +37,56 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        health = maxHealth;
+        Health = MaxHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        Health -= damage;
 
-        if (health < 0)
+        if (Health < 0)
         {
             //TODO: GameOver
         }
 
-        OnHealthChange(health);
+        OnHealthChange(Health);
     }
 
     public void IncreaseHealth(float health)
     {
-        this.health += health;
+        this.Health += health;
 
-        if(this.health > maxHealth)
+        if(this.Health > MaxHealth)
         {
-            this.health = maxHealth;
+            this.Health = MaxHealth;
         }
 
-        OnHealthChange(this.health);
+        OnHealthChange(this.Health);
     }
 
     public void IncreaseMaxHealth(float health, bool addHealth)
     {
-        maxHealth += health;
+        MaxHealth += health;
 
         if(addHealth)
         {
-            this.health += health;
+            this.Health += health;
         }
 
-        OnHealthChange(this.health);
+        OnHealthChange(this.Health);
     }
 
-    public float GetMaxHealth() => maxHealth;
-
-    public int GetNeonBlocks() => neonBlocks;
+    public int GetNeonBlocks() => NeonBlocks;
 
     public void AddNeonBlocks(int amount)
     {
-        neonBlocks += amount;
-        OnNeonBlockChange(neonBlocks);
+        NeonBlocks += amount;
+        OnNeonBlockChange(NeonBlocks);
     }
 
     public void RemoveNeonBlocks(int amount)
     {
-        neonBlocks -= amount;
-        OnNeonBlockChange(neonBlocks);
+        NeonBlocks -= amount;
+        OnNeonBlockChange(NeonBlocks);
     }
 }

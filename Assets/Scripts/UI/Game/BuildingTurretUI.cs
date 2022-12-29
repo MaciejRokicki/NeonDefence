@@ -33,10 +33,10 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         buildingManager = TurretManager.instance;
         turretDetails = TurretDetails.instance;
 
-        GetComponent<Image>().sprite = variant.turretIcon;
-        GetComponent<Image>().material = variant.turretIconMaterial;
+        GetComponent<Image>().sprite = variant.TurretIcon;
+        GetComponent<Image>().material = variant.TurretIconMaterial;
 
-        priceLabelUI.GetComponent<TextMeshProUGUI>().text = variant.cost.ToString();
+        priceLabelUI.GetComponent<TextMeshProUGUI>().text = variant.Cost.ToString();
 
         gameManager.OnNeonBlockChange += OnNeonBlocksChange;
 
@@ -45,7 +45,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void OnNeonBlocksChange(int neonBlocks)
     {
-        if (neonBlocks >= variant.cost)
+        if (neonBlocks >= variant.Cost)
         {
             SetAvailableToPurchase();
         }

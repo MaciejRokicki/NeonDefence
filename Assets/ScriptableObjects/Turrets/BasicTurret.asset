@@ -13,76 +13,81 @@ MonoBehaviour:
   m_Name: BasicTurret
   m_EditorClassIdentifier: 
   _cost: 10
-  cost: 10
-  needTarget: 1
-  aura: 0
-  missile: 1
-  laser: 0
+  Cost: 10
+  NeedTarget: 1
+  Aura: 0
+  TurretLimits: {fileID: 11400000, guid: 47ace63a74f294a49a9a6abb476ed10e, type: 2}
+  Missile: 1
+  Laser: 0
   _poisonMissile: 0
-  poisonMissile: 0
+  PoisonMissile: 0
   _slowdownMissile: 0
-  slowdownMissile: 0
+  SlowdownMissile: 0
   _explosiveMissile: 0
-  explosiveMissile: 0
+  xplosiveMissile: 0
   _copyMissileEffects: 0
-  copyMissileEffects: 0
+  CopyMissileEffects: 0
   _penetrationMissile: 0
-  penetrationMissile: 0
+  PenetrationMissile: 0
   _trackingMissile: 0
-  trackingMissile: 0
-  auraSlowdown: 0
+  TrackingMissile: 0
+  _auraSlowdown: 0
+  AuraSlowdown: 0
   _damage: 10
-  damage: 10
+  Damage: 10
   _range: 5
-  range: 5
+  Range: 5
   _rotationSpeed: 20
-  rotationSpeed: 20
+  RotationSpeed: 20
   _missilesPerSecond: 2
-  missilesPerSecond: 2
+  MissilesPerSecond: 2
   _missileSpeed: 15
-  missileSpeed: 15
+  MissileSpeed: 15
   _laserHitsPerSecond: 0
-  laserHitsPerSecond: 0
+  LaserHitsPerSecond: 0
   _laserActivationTime: 0
-  laserActivationTime: 0
+  LaserActivationTime: 0
   _laserDeactivationTime: 0
-  laserDeactivationTime: 0
+  LaserDeactivationTime: 0
   _poisonDamage: 0
-  poisonDamage: 0
+  PoisonDamage: 0
   _poisonHitRate: 0
-  poisonHitRate: 0
+  PoisonHitRate: 0
   _poisonDuration: 0
-  poisonDuration: 0
+  PoisonDuration: 0
   _explosionDamage: 0
-  explosionDamage: 0
+  ExplosionDamage: 0
   _explosionRange: 0
-  explosionRange: 0
+  ExplosionRange: 0
   _slowdownEffectiveness: 0
-  slowdownEffectiveness: 0
+  SlowdownEffectiveness: 0
   _slowdownEffectDuration: 0
-  slowdownEffectDuration: 0
+  SlowdownEffectDuration: 0
   _auraDamage: 0
-  auraDamage: 0
+  AuraDamage: 0
   _auraRange: 0
-  auraRange: 0
+  AuraRange: 0
   _auraSlowdownEffectiveness: 0
-  auraSlowdownEffectiveness: 0
-  turretIcon: {fileID: 21300000, guid: 5e3100f3cd93c884d95a1893a7156501, type: 3}
-  turretIconMaterial: {fileID: 2100000, guid: 6f4b59013d65b6c4d8fb0454220577aa, type: 2}
-  turretSprite: {fileID: 21300000, guid: 34eba5b696375234795b07afd02be4cb, type: 3}
-  turretMaterial: {fileID: 2100000, guid: 786de340566b7ca4f8314c870c4c216e, type: 2}
-  cannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
-  cannonSprite: {fileID: 21300000, guid: d1b879c1346ef0f41887e0356b4f0746, type: 3}
-  cannonMaterial: {fileID: 2100000, guid: d6f057e9331bb6a46af5c79abee47840, type: 2}
-  missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
-  missileColliderOffset: {x: 0, y: 0}
-  missileColliderSize: {x: 0.5, y: 0.5}
-  missileSpriteSize: {x: 0.5, y: 0.5}
-  missileSprite: {fileID: 21300000, guid: a15c633874dfb174399e81864d25cde8, type: 3}
-  missileMaterial: {fileID: 2100000, guid: 1ac7277447432bc4880c18b83a65a678, type: 2}
-  explosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
-  explosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
-  explosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
-  auraPrefab: {fileID: 0}
-  auraSprite: {fileID: 0}
-  auraMaterial: {fileID: 0}
+  AuraSlowdownEffectiveness: 0
+  TurretIcon: {fileID: 21300000, guid: 5e3100f3cd93c884d95a1893a7156501, type: 3}
+  TurretIconMaterial: {fileID: 2100000, guid: 6f4b59013d65b6c4d8fb0454220577aa, type: 2}
+  TurretSprite: {fileID: 21300000, guid: 34eba5b696375234795b07afd02be4cb, type: 3}
+  TurretMaterial: {fileID: 2100000, guid: 786de340566b7ca4f8314c870c4c216e, type: 2}
+  CannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
+  CannonSprite: {fileID: 21300000, guid: d1b879c1346ef0f41887e0356b4f0746, type: 3}
+  CannonMaterial: {fileID: 2100000, guid: d6f057e9331bb6a46af5c79abee47840, type: 2}
+  MissilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
+  MissileColliderOffset: {x: 0, y: 0}
+  MissileColliderSize: {x: 0.5, y: 0.5}
+  MissileSpriteSize: {x: 0.5, y: 0.5}
+  MissileSprite: {fileID: 21300000, guid: a15c633874dfb174399e81864d25cde8, type: 3}
+  MissileMaterial: {fileID: 2100000, guid: 1ac7277447432bc4880c18b83a65a678, type: 2}
+  _explosionPrefab: {fileID: 0}
+  ExplosionPrefab: {fileID: 0}
+  _explosionSprite: {fileID: 0}
+  ExplosionSprite: {fileID: 0}
+  _explosionMaterial: {fileID: 0}
+  ExplosionMaterial: {fileID: 0}
+  AuraPrefab: {fileID: 0}
+  AuraSprite: {fileID: 0}
+  AuraMaterial: {fileID: 0}

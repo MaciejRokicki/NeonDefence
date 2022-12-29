@@ -53,7 +53,7 @@ public class CannonLaserTypeStrategy : CannonTypeStrategy
 
                     laser.GetComponent<SpriteRenderer>().size 
                         = laser.GetComponent<BoxCollider2D>().size 
-                        = new Vector2(turret.variant.missileSpriteSize.x, range);
+                        = new Vector2(turret.variant.MissileSpriteSize.x, range);
                     laser.transform.localPosition = new Vector2(0.0f, range / 2);
                 }
             }
@@ -70,10 +70,10 @@ public class CannonLaserTypeStrategy : CannonTypeStrategy
         deactiveLaserTimer = 0.0f;
         activationTimer += Time.deltaTime;
 
-        float x = turret.variant.missileSpriteSize.x * activationTimer;
+        float x = turret.variant.MissileSpriteSize.x * activationTimer;
         float y = GetLaserRange();
 
-        x = Mathf.Clamp(x, 0.0f, turret.variant.missileSpriteSize.x);
+        x = Mathf.Clamp(x, 0.0f, turret.variant.MissileSpriteSize.x);
 
         laser.transform.localPosition = new Vector2(0.0f, y / 2);
         laser.GetComponent<SpriteRenderer>().size = new Vector2(x, y);
@@ -103,13 +103,13 @@ public class CannonLaserTypeStrategy : CannonTypeStrategy
     {
         float distance = GetLaserRange();
 
-        laser.GetComponent<SpriteRenderer>().size = laser.GetComponent<BoxCollider2D>().size = new Vector2(turret.variant.missileSpriteSize.x, distance);
+        laser.GetComponent<SpriteRenderer>().size = laser.GetComponent<BoxCollider2D>().size = new Vector2(turret.variant.MissileSpriteSize.x, distance);
         laser.transform.localPosition = new Vector2(0.0f, distance / 2);
     }
 
     private float GetLaserRange()
     {
-        if (turret.variant.penetrationMissile)
+        if (turret.variant.PenetrationMissile)
         {
             return turret.range + cannon.transform.localScale.x / 2;
         }

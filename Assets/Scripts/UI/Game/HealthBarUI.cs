@@ -1,6 +1,6 @@
 using System.Text;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class HealthBarUI : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class HealthBarUI : MonoBehaviour
 
     private void Start()
     {
-        maxHealth = gameManager.GetMaxHealth();
+        maxHealth = gameManager.MaxHealth;
         healthTextBuilder = new StringBuilder();
 
         gameManager.OnHealthChange += OnHealthChange;
@@ -31,7 +31,7 @@ public class HealthBarUI : MonoBehaviour
 
     private void OnHealthChange(float health)
     {
-        maxHealth = gameManager.GetMaxHealth();
+        maxHealth = gameManager.MaxHealth;
 
         healthTextBuilder.Append(health);
         healthTextBuilder.Append(@"\");

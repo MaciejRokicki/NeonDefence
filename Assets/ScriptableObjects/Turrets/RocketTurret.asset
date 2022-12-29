@@ -13,79 +13,81 @@ MonoBehaviour:
   m_Name: RocketTurret
   m_EditorClassIdentifier: 
   _cost: 30
-  cost: 30
-  needTarget: 1
-  aura: 0
-  missile: 1
-  laser: 0
+  Cost: 30
+  NeedTarget: 1
+  Aura: 0
+  TurretLimits: {fileID: 11400000, guid: 47ace63a74f294a49a9a6abb476ed10e, type: 2}
+  Missile: 1
+  Laser: 0
   _poisonMissile: 0
-  poisonMissile: 0
+  PoisonMissile: 0
   _slowdownMissile: 0
-  slowdownMissile: 0
+  SlowdownMissile: 0
   _explosiveMissile: 1
-  explosiveMissile: 1
+  xplosiveMissile: 1
   _copyMissileEffects: 0
-  copyMissileEffects: 0
+  CopyMissileEffects: 0
   _penetrationMissile: 0
-  penetrationMissile: 0
+  PenetrationMissile: 0
   _trackingMissile: 1
-  trackingMissile: 1
-  auraSlowdown: 1
+  TrackingMissile: 1
+  _auraSlowdown: 0
+  AuraSlowdown: 0
   _damage: 20
-  damage: 20
+  Damage: 20
   _range: 20
-  range: 20
+  Range: 20
   _rotationSpeed: 10
-  rotationSpeed: 10
+  RotationSpeed: 10
   _missilesPerSecond: 0.5
-  missilesPerSecond: 0.5
+  MissilesPerSecond: 0.5
   _missileSpeed: 10
-  missileSpeed: 10
+  MissileSpeed: 10
   _laserHitsPerSecond: 0
-  laserHitsPerSecond: 0
+  LaserHitsPerSecond: 0
   _laserActivationTime: 0
-  laserActivationTime: 0
+  LaserActivationTime: 0
   _laserDeactivationTime: 0
-  laserDeactivationTime: 0
+  LaserDeactivationTime: 0
   _poisonDamage: 0
-  poisonDamage: 0
+  PoisonDamage: 0
   _poisonHitRate: 0
-  poisonHitRate: 0
+  PoisonHitRate: 0
   _poisonDuration: 0
-  poisonDuration: 0
+  PoisonDuration: 0
   _explosionDamage: 10
-  explosionDamage: 10
+  ExplosionDamage: 10
   _explosionRange: 3
-  explosionRange: 3
+  ExplosionRange: 3
   _slowdownEffectiveness: 0
-  slowdownEffectiveness: 0
+  SlowdownEffectiveness: 0
   _slowdownEffectDuration: 0
-  slowdownEffectDuration: 0
+  SlowdownEffectDuration: 0
   _auraDamage: 0
-  auraDamage: 0
+  AuraDamage: 0
   _auraRange: 0
-  auraRange: 0
+  AuraRange: 0
   _auraSlowdownEffectiveness: 0
-  auraSlowdownEffectiveness: 0
-  turretIcon: {fileID: 21300000, guid: b7b0d461036ce8c42aa0fac265016832, type: 3}
-  turretIconMaterial: {fileID: 2100000, guid: dcc66ed299b898e448d6a263fbf709f9, type: 2}
-  turretSprite: {fileID: 21300000, guid: 25e3c60383c78794594ae36417b6fcd4, type: 3}
-  turretMaterial: {fileID: 2100000, guid: 79f09fbbe8c8bf14ebb0b73e3077f415, type: 2}
-  cannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
-  cannonSprite: {fileID: 21300000, guid: e406185c4ba359649bba30249f67cbf5, type: 3}
-  cannonMaterial: {fileID: 2100000, guid: db09603f6d4f51142b9d5197b2155219, type: 2}
-  missilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
-  missileColliderOffset: {x: 0, y: 0.07}
-  missileColliderSize: {x: 0.3, y: 0.7}
-  missileSpriteSize: {x: 0.8, y: 0.8}
-  missileSprite: {fileID: 21300000, guid: 7154774cf3172e2468c593dbef3eb999, type: 3}
-  missileMaterial: {fileID: 2100000, guid: e715d7efa3276e141bd94f5e45dd234b, type: 2}
+  AuraSlowdownEffectiveness: 0
+  TurretIcon: {fileID: 21300000, guid: b7b0d461036ce8c42aa0fac265016832, type: 3}
+  TurretIconMaterial: {fileID: 2100000, guid: dcc66ed299b898e448d6a263fbf709f9, type: 2}
+  TurretSprite: {fileID: 21300000, guid: 25e3c60383c78794594ae36417b6fcd4, type: 3}
+  TurretMaterial: {fileID: 2100000, guid: 79f09fbbe8c8bf14ebb0b73e3077f415, type: 2}
+  CannonPrefab: {fileID: 7705074690237467681, guid: 1f9cc13bd3783934f9b0144e2431cf3e, type: 3}
+  CannonSprite: {fileID: 21300000, guid: e406185c4ba359649bba30249f67cbf5, type: 3}
+  CannonMaterial: {fileID: 2100000, guid: db09603f6d4f51142b9d5197b2155219, type: 2}
+  MissilePrefab: {fileID: 2912126211675210948, guid: bd7ae251f8eb6dd498e12b2ed5ad362c, type: 3}
+  MissileColliderOffset: {x: 0, y: 0.07}
+  MissileColliderSize: {x: 0.3, y: 0.7}
+  MissileSpriteSize: {x: 0.8, y: 0.8}
+  MissileSprite: {fileID: 21300000, guid: 7154774cf3172e2468c593dbef3eb999, type: 3}
+  MissileMaterial: {fileID: 2100000, guid: e715d7efa3276e141bd94f5e45dd234b, type: 2}
   _explosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
-  explosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
+  ExplosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
   _explosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
-  explosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
+  ExplosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
   _explosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
-  explosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
-  auraPrefab: {fileID: 0}
-  auraSprite: {fileID: 0}
-  auraMaterial: {fileID: 0}
+  ExplosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
+  AuraPrefab: {fileID: 0}
+  AuraSprite: {fileID: 0}
+  AuraMaterial: {fileID: 0}

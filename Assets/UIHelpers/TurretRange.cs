@@ -34,22 +34,22 @@ public class TurretRange : MonoBehaviour
 
     public void ShowTurretRange(Vector2 position, TurretScriptableObject variant)
     {
-        if(variant.needTarget)
+        if(variant.NeedTarget)
         {
             cannonRangeObject.SetActive(true);
 
             transform.position = position;
-            DrawCircle(cannonLineRenderer, position, variant.range + 0.5f);
-            cannonSpriteRenderer.size = new Vector2(variant.range + 0.5f, variant.range + 0.5f) * 2;
+            DrawCircle(cannonLineRenderer, position, variant.Range + 0.5f);
+            cannonSpriteRenderer.size = new Vector2(variant.Range + 0.5f, variant.Range + 0.5f) * 2;
         }
 
-        if(variant.aura)
+        if(variant.Aura)
         {
             auraRangeObject.SetActive(true);
 
             transform.position = position;
-            DrawCircle(auraLineRenderer, position, variant.auraRange / 2);
-            auraSpriteRenderer.size = new Vector2(variant.auraRange, variant.auraRange);
+            DrawCircle(auraLineRenderer, position, variant.AuraRange / 2);
+            auraSpriteRenderer.size = new Vector2(variant.AuraRange, variant.AuraRange);
         }
     }
 

@@ -5,145 +5,129 @@ public class TurretScriptableObject : ScriptableObject
 {
     [SerializeField]
     private int _cost;
-    public int cost;
+    public int Cost;
 
-    public bool needTarget;
-    public bool aura;
+    public bool NeedTarget;
+    public bool Aura;
 
-    public bool missile;
-    public bool laser;
+    public TurretLimitsScriptableObject TurretLimits;
+
+    public bool Missile;
+    public bool Laser;
 
     [SerializeField]
     private bool _poisonMissile;
-    public bool poisonMissile;
+    public bool PoisonMissile;
     [SerializeField]
     private bool _slowdownMissile;
-    public bool slowdownMissile;
+    public bool SlowdownMissile;
     [SerializeField]
     private bool _explosiveMissile;
-    public bool explosiveMissile;
+    public bool xplosiveMissile;
     [SerializeField]
     private bool _copyMissileEffects;
-    public bool copyMissileEffects;
+    public bool CopyMissileEffects;
 
     [SerializeField]
     private bool _penetrationMissile;
-    public bool penetrationMissile;
+    public bool PenetrationMissile;
     [SerializeField]
     private bool _trackingMissile;
-    public bool trackingMissile;
+    public bool TrackingMissile;
 
     [SerializeField]
     private bool _auraSlowdown;
-    public bool auraSlowdown;
+    public bool AuraSlowdown;
 
     [SerializeField]
     private float _damage;
-    public float damage;
-    public FloatRangeProperty damageLimit;
+    public float Damage;
     [SerializeField]
     private float _range;
-    public float range;
-    public FloatRangeProperty rangeLimit;
+    public float Range;
     [SerializeField]
     private float _rotationSpeed;
-    public float rotationSpeed;
-    public FloatRangeProperty rotationSpeedLimit;
+    public float RotationSpeed;
     [SerializeField]
     private float _missilesPerSecond;
-    public float missilesPerSecond;
-    public FloatRangeProperty missilesPerSecondLimit;
+    public float MissilesPerSecond;
     [SerializeField]
     private float _missileSpeed;
-    public float missileSpeed;
-    public FloatRangeProperty missileSpeedLimit;
+    public float MissileSpeed;
 
     [SerializeField]
     private float _laserHitsPerSecond;
-    public float laserHitsPerSecond;
-    public FloatRangeProperty laserHitsPerSecondLimit;
+    public float LaserHitsPerSecond;
     [SerializeField]
     private float _laserActivationTime;
-    public float laserActivationTime;
-    public FloatRangeProperty laserActivationTimeLimit;
+    public float LaserActivationTime;
     [SerializeField]
     private float _laserDeactivationTime;
-    public float laserDeactivationTime;
-    public FloatRangeProperty laserDeactivationTimeLimit;
+    public float LaserDeactivationTime;
 
     [SerializeField]
     private float _poisonDamage;
-    public float poisonDamage;
-    public FloatRangeProperty poisonDamageLimit;
+    public float PoisonDamage;
     [SerializeField]
     private float _poisonHitRate;
-    public float poisonHitRate;
-    public FloatRangeProperty poisonHitRateLimit;
+    public float PoisonHitRate;
     [SerializeField]
     private float _poisonDuration;
-    public float poisonDuration;
-    public FloatRangeProperty poisonDurationLimit;
+    public float PoisonDuration;
 
     [SerializeField]
     private float _explosionDamage;
-    public float explosionDamage;
-    public FloatRangeProperty explosionDamageLimit;
+    public float ExplosionDamage;
     [SerializeField]
     private float _explosionRange;
-    public float explosionRange;
-    public FloatRangeProperty explosionRangeLimit;
+    public float ExplosionRange;
 
     [SerializeField]
     private float _slowdownEffectiveness;
-    public float slowdownEffectiveness;
-    public FloatRangeProperty slowdownEffectivenessLimit;
+    public float SlowdownEffectiveness;
     [SerializeField]
     private float _slowdownEffectDuration;
-    public float slowdownEffectDuration;
-    public FloatRangeProperty slowdownEffectDurationLimit;
+    public float SlowdownEffectDuration;
 
     [SerializeField]
     private float _auraDamage;
-    public float auraDamage;
-    public FloatRangeProperty auraDamageLimit;
+    public float AuraDamage;
     [SerializeField]
     private float _auraRange;
-    public float auraRange;
-    public FloatRangeProperty auraRangeLimit;
+    public float AuraRange;
 
     [SerializeField]
     private float _auraSlowdownEffectiveness;
-    public float auraSlowdownEffectiveness;
-    public FloatRangeProperty auraSlowdownEffectivenessLimit;
+    public float AuraSlowdownEffectiveness;
 
-    public Sprite turretIcon;
-    public Material turretIconMaterial;
+    public Sprite TurretIcon;
+    public Material TurretIconMaterial;
 
-    public Sprite turretSprite;
-    public Material turretMaterial;
-    public GameObject cannonPrefab;
-    public Sprite cannonSprite;
-    public Material cannonMaterial;
-    public GameObject missilePrefab;
-    public Vector2 missileColliderOffset;
-    public Vector2 missileColliderSize;
-    public Vector2 missileSpriteSize;
-    public Sprite missileSprite;
-    public Material missileMaterial;
+    public Sprite TurretSprite;
+    public Material TurretMaterial;
+    public GameObject CannonPrefab;
+    public Sprite CannonSprite;
+    public Material CannonMaterial;
+    public GameObject MissilePrefab;
+    public Vector2 MissileColliderOffset;
+    public Vector2 MissileColliderSize;
+    public Vector2 MissileSpriteSize;
+    public Sprite MissileSprite;
+    public Material MissileMaterial;
 
     [SerializeField]
     private GameObject _explosionPrefab;
-    public GameObject explosionPrefab;
+    public GameObject ExplosionPrefab;
     [SerializeField]
     private Sprite _explosionSprite;
-    public Sprite explosionSprite;
+    public Sprite ExplosionSprite;
     [SerializeField]
     private Material _explosionMaterial;
-    public Material explosionMaterial;
+    public Material ExplosionMaterial;
 
-    public GameObject auraPrefab;
-    public Sprite auraSprite;
-    public Material auraMaterial;
+    public GameObject AuraPrefab;
+    public Sprite AuraSprite;
+    public Material AuraMaterial;
 
     private void OnEnable()
     {
@@ -157,44 +141,44 @@ public class TurretScriptableObject : ScriptableObject
 
     private void SetProperties()
     {
-        cost = _cost;
+        Cost = _cost;
 
-        poisonMissile = _poisonMissile;
-        slowdownMissile = _slowdownMissile;
-        explosiveMissile = _explosiveMissile;
+        PoisonMissile = _poisonMissile;
+        SlowdownMissile = _slowdownMissile;
+        xplosiveMissile = _explosiveMissile;
 
-        penetrationMissile = _penetrationMissile;
-        trackingMissile = _trackingMissile;
+        PenetrationMissile = _penetrationMissile;
+        TrackingMissile = _trackingMissile;
 
-        auraSlowdown = _auraSlowdown;
+        AuraSlowdown = _auraSlowdown;
 
-        damage = _damage;
-        range = _range;
-        rotationSpeed = _rotationSpeed;
-        missilesPerSecond = _missilesPerSecond;
-        missileSpeed = _missileSpeed;
+        Damage = _damage;
+        Range = _range;
+        RotationSpeed = _rotationSpeed;
+        MissilesPerSecond = _missilesPerSecond;
+        MissileSpeed = _missileSpeed;
 
-        laserHitsPerSecond = _laserHitsPerSecond;
-        laserActivationTime = _laserActivationTime;
-        laserDeactivationTime = _laserDeactivationTime;
+        LaserHitsPerSecond = _laserHitsPerSecond;
+        LaserActivationTime = _laserActivationTime;
+        LaserDeactivationTime = _laserDeactivationTime;
 
-        slowdownEffectiveness = _slowdownEffectiveness;
-        slowdownEffectDuration = _slowdownEffectDuration;
+        SlowdownEffectiveness = _slowdownEffectiveness;
+        SlowdownEffectDuration = _slowdownEffectDuration;
 
-        poisonDamage = _poisonDamage;
-        poisonHitRate = _poisonHitRate;
-        poisonDuration = _poisonDuration;
+        PoisonDamage = _poisonDamage;
+        PoisonHitRate = _poisonHitRate;
+        PoisonDuration = _poisonDuration;
 
-        explosionDamage = _explosionDamage;
-        explosionRange = _explosionRange;
+        ExplosionDamage = _explosionDamage;
+        ExplosionRange = _explosionRange;
 
-        auraDamage = _auraDamage;
-        auraRange = _auraRange;
+        AuraDamage = _auraDamage;
+        AuraRange = _auraRange;
 
-        auraSlowdownEffectiveness = _auraSlowdownEffectiveness;
+        AuraSlowdownEffectiveness = _auraSlowdownEffectiveness;
 
-        explosionPrefab = _explosionPrefab;
-        explosionSprite = _explosionSprite;
-        explosionMaterial = _explosionMaterial;
+        ExplosionPrefab = _explosionPrefab;
+        ExplosionSprite = _explosionSprite;
+        ExplosionMaterial = _explosionMaterial;
     }
 }

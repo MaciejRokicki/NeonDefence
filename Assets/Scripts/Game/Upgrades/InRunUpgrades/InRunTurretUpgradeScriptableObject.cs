@@ -3,78 +3,153 @@
 namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/InRunTurretUpgrade", order = 6)]
-    public class InRunTurretUpgradeScriptableObject : InRunUpgrade
+    public class InRunTurretUpgradeScriptableObject : InRunUpgradeScriptableObject
     {
         #nullable enable
-        public TurretScriptableObject? turret;
+        public TurretScriptableObject? Turret;
         #nullable disable
 
-        public bool poisonMissile;
-        public bool explosiveMissile;
-        public bool slowdownMissile;
-        public bool penetrationMissile;
-        public bool trackingMissile;
+        public bool PoisonMissile;
+        public bool ExplosiveMissile;
+        public bool SlowdownMissile;
+        public bool PenetrationMissile;
+        public bool TrackingMissile;
 
-        public bool auraSlowdown;
+        public bool AuraSlowdown;
 
-        public float damage;
-        public bool damageIsPercentage;
-        public float range;
-        public bool rangeIsPercentage;
-        public float rotationSpeed;
-        public bool rotationSpeedIsPercentage;
-        public float missilesPerSecond;
-        public bool missilesPerSecondIsPercentage;
-        public float missileSpeed;
-        public bool missileSpeedIsPercentage;
+        public float Damage;
+        public bool DamageIsPercentage;
+        public float Range;
+        public bool RangeIsPercentage;
+        public float RotationSpeed;
+        public bool RotationSpeedIsPercentage;
+        public float MissilesPerSecond;
+        public bool MissilesPerSecondIsPercentage;
+        public float MissileSpeed;
+        public bool MissileSpeedIsPercentage;
 
-        public float laserHitsPerSecond;
-        public bool laserHitsPerSecondIsPercentage;
-        public float laserActivationTime;
-        public bool laserActivationTimeIsPercentage;
-        public float laserDeactivationTime;
-        public bool laserDeactivationTimeIsPercentage;
+        public float LaserHitsPerSecond;
+        public bool LaserHitsPerSecondIsPercentage;
+        public float LaserActivationTime;
+        public bool LaserActivationTimeIsPercentage;
+        public float LaserDeactivationTime;
+        public bool LaserDeactivationTimeIsPercentage;
 
-        public float slowdownEffectiveness;
-        public bool slowdownEffectivenessIsPercentage;
-        public float slowdownEffectDuration;
-        public bool slowdownEffectDurationIsPercentage;
+        public float SlowdownEffectiveness;
+        public bool SlowdownEffectivenessIsPercentage;
+        public float SlowdownEffectDuration;
+        public bool SlowdownEffectDurationIsPercentage;
 
-        public float poisonDamage;
-        public bool poisonDamageIsPercentage;
-        public float poisonHitRate;
-        public bool poisonHitRateIsPercentage;
-        public float poisonDuration;
-        public bool poisonDurationIsPercentage;
+        public float PoisonDamage;
+        public bool PoisonDamageIsPercentage;
+        public float PoisonHitRate;
+        public bool PoisonHitRateIsPercentage;
+        public float PoisonDuration;
+        public bool PoisonDurationIsPercentage;
 
-        public GameObject explosionPrefab;
-        public Sprite explosionSprite;
-        public Material explosionMaterial;
-        public float explosionDamage;
-        public bool explosionDamageIsPercentage;
-        public float explosionRange;
-        public bool explosionRangeIsPercentage;
-        public bool explosionCopyMissileEffects;
+        public GameObject ExplosionPrefab;
+        public Sprite ExplosionSprite;
+        public Material ExplosionMaterial;
+        public float ExplosionDamage;
+        public bool ExplosionDamageIsPercentage;
+        public float ExplosionRange;
+        public bool ExplosionRangeIsPercentage;
+        public bool ExplosionCopyMissileEffects;
 
-        public float auraDamage;
-        public bool auraDamageIsPercentage;
-        public float auraRange;
-        public bool auraRangeIsPercentage;
+        public float AuraDamage;
+        public bool AuraDamageIsPercentage;
+        public float AuraRange;
+        public bool AuraRangeIsPercentage;
 
-        public float auraSlowdownEffectiveness;
-        public bool auraSlowdownEffectivenessIsPercentage;
+        public float AuraSlowdownEffectiveness;
+        public bool AuraSlowdownEffectivenessIsPercentage;
+
+        private void SetTurretProperties(TurretScriptableObject turret)
+        {
+            if (turret.Aura)
+            {
+                turret.AuraDamage += CalculatePropertyPercentage(turret.AuraDamage, AuraDamage, AuraDamageIsPercentage); ;
+                turret.AuraRange += CalculatePropertyPercentage(turret.AuraRange, AuraRange, AuraRangeIsPercentage); ;
+
+                turret.AuraSlowdown = turret.AuraSlowdown || AuraSlowdown;
+
+                if (turret.AuraSlowdown)
+                {
+                    turret.AuraSlowdownEffectiveness += CalculatePropertyPercentage(turret.AuraSlowdownEffectiveness, AuraSlowdownEffectiveness, AuraSlowdownEffectivenessIsPercentage);
+                }
+            }
+            else
+            {
+                turret.PoisonMissile = turret.PoisonMissile || PoisonMissile;
+                turret.xplosiveMissile = turret.xplosiveMissile || ExplosiveMissile;
+                turret.SlowdownMissile = turret.SlowdownMissile || SlowdownMissile;
+                turret.TrackingMissile = turret.TrackingMissile || TrackingMissile;
+                turret.PenetrationMissile = turret.PenetrationMissile || PenetrationMissile;
+
+                turret.Damage += CalculatePropertyPercentage(turret.Damage, Damage, DamageIsPercentage); ;
+                turret.Range += CalculatePropertyPercentage(turret.Range, Range, RangeIsPercentage); ;
+                turret.RotationSpeed += CalculatePropertyPercentage(turret.RotationSpeed, RotationSpeed, RotationSpeedIsPercentage);
+
+                if (turret.Missile)
+                {
+                    turret.MissilesPerSecond += CalculatePropertyPercentage(turret.MissilesPerSecond, MissilesPerSecond, MissilesPerSecondIsPercentage);
+                    turret.MissileSpeed += CalculatePropertyPercentage(turret.MissileSpeed, MissileSpeed, MissileSpeedIsPercentage);
+                }
+
+                if (turret.Laser)
+                {
+                    turret.LaserHitsPerSecond += CalculatePropertyPercentage(turret.LaserHitsPerSecond, LaserHitsPerSecond, LaserHitsPerSecondIsPercentage);
+                    turret.LaserActivationTime -= CalculatePropertyPercentage(turret.LaserActivationTime, LaserActivationTime, LaserActivationTimeIsPercentage);
+                    turret.LaserDeactivationTime -= CalculatePropertyPercentage(turret.LaserDeactivationTime, LaserDeactivationTime, LaserDeactivationTimeIsPercentage);
+                }
+
+                if (turret.PoisonMissile)
+                {
+                    turret.PoisonDamage += CalculatePropertyPercentage(turret.PoisonDamage, PoisonDamage, PoisonDamageIsPercentage);
+                    if (PoisonMissile)
+                    {
+                        turret.PoisonHitRate = CalculatePropertyPercentage(turret.PoisonHitRate, PoisonHitRate, PoisonHitRateIsPercentage);
+                    }
+                    else
+                    {
+                        turret.PoisonHitRate -= CalculatePropertyPercentage(turret.PoisonHitRate, PoisonHitRate, PoisonHitRateIsPercentage);
+                    }
+                    turret.PoisonDuration += CalculatePropertyPercentage(turret.PoisonDuration, PoisonDuration, PoisonDurationIsPercentage);
+                }
+
+                if (turret.SlowdownMissile)
+                {
+                    turret.SlowdownEffectiveness += CalculatePropertyPercentage(turret.SlowdownEffectiveness, SlowdownEffectiveness, SlowdownEffectivenessIsPercentage);
+                    turret.SlowdownEffectDuration += CalculatePropertyPercentage(turret.SlowdownEffectDuration, SlowdownEffectDuration, SlowdownEffectDurationIsPercentage);
+                }
+
+                if (turret.xplosiveMissile)
+                {
+                    if (turret.ExplosionPrefab == null)
+                    {
+                        turret.ExplosionPrefab = ExplosionPrefab;
+                        turret.ExplosionSprite = ExplosionSprite;
+                        turret.ExplosionMaterial = ExplosionMaterial;
+                    }
+
+                    turret.ExplosionDamage += CalculatePropertyPercentage(turret.ExplosionDamage, ExplosionDamage, ExplosionDamageIsPercentage);
+                    turret.ExplosionRange += CalculatePropertyPercentage(turret.ExplosionRange, ExplosionRange, ExplosionRangeIsPercentage);
+                    turret.CopyMissileEffects = turret.CopyMissileEffects || ExplosionCopyMissileEffects;
+                }
+            }
+        }
 
         public override void Apply()
         {
-            if(turret)
+            if (Turret)
             {
-                UpdateTurretProperties(turret);
+                SetTurretProperties(Turret);
             }
             else
             {
                 foreach (TurretScriptableObject turret in TurretManager.instance.turretVariants)
                 {
-                    UpdateTurretProperties(turret);
+                    SetTurretProperties(turret);
                 }
             }
 
@@ -82,129 +157,6 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
             {
                 turret.UpdateProperties();
             }
-        }
-
-        private void CalculateTurretProperties(TurretScriptableObject turret)
-        {
-            void CalculateProperty(TurretScriptableObject turret, ref float property, bool isPercentage)
-            {
-                if(isPercentage)
-                {
-                    float turretValue = (float)turret
-                        .GetType()
-                        .GetProperty(property.GetType().Name)
-                        .GetValue(turret);
-
-                    property = property * turretValue;
-                }
-            }
-
-            CalculateProperty(turret, ref damage, damageIsPercentage);
-            CalculateProperty(turret, ref range, rangeIsPercentage);
-            CalculateProperty(turret, ref rotationSpeed, rotationSpeedIsPercentage);
-
-            CalculateProperty(turret, ref missilesPerSecond, missilesPerSecondIsPercentage);
-            CalculateProperty(turret, ref missileSpeed, missileSpeedIsPercentage);
-
-            CalculateProperty(turret, ref laserHitsPerSecond, laserHitsPerSecondIsPercentage);
-            CalculateProperty(turret, ref laserActivationTime, laserActivationTimeIsPercentage);
-            CalculateProperty(turret, ref laserDeactivationTime, laserDeactivationTimeIsPercentage);
-
-            CalculateProperty(turret, ref slowdownEffectiveness, slowdownEffectivenessIsPercentage);
-            CalculateProperty(turret, ref slowdownEffectDuration, slowdownEffectDurationIsPercentage);
-
-            CalculateProperty(turret, ref poisonDamage, poisonDamageIsPercentage);
-            CalculateProperty(turret, ref poisonHitRate, poisonHitRateIsPercentage);
-            CalculateProperty(turret, ref poisonDuration, poisonDurationIsPercentage);
-
-            CalculateProperty(turret, ref explosionDamage, explosionDamageIsPercentage);
-            CalculateProperty(turret, ref explosionRange, explosionRangeIsPercentage);
-
-            CalculateProperty(turret, ref auraDamage, auraDamageIsPercentage);
-            CalculateProperty(turret, ref auraRange, auraRangeIsPercentage);
-
-            CalculateProperty(turret, ref auraSlowdownEffectiveness, auraSlowdownEffectivenessIsPercentage);
-        }
-
-        private void SetTurretProperties(TurretScriptableObject turret)
-        {
-            if (turret.aura)
-            {
-                turret.auraDamage += auraDamage;
-                turret.auraRange += auraRange;
-
-                turret.auraSlowdown = turret.auraSlowdown || auraSlowdown;
-
-                if (turret.auraSlowdown)
-                {
-                    turret.auraSlowdownEffectiveness += auraSlowdownEffectiveness;
-                }
-            }
-            else
-            {
-                turret.poisonMissile = turret.poisonMissile || poisonMissile;
-                turret.explosiveMissile = turret.explosiveMissile || explosiveMissile;
-                turret.slowdownMissile = turret.slowdownMissile || slowdownMissile;
-                turret.trackingMissile = turret.trackingMissile || trackingMissile;
-                turret.penetrationMissile = turret.penetrationMissile || penetrationMissile;
-
-                turret.damage += damage;
-                turret.range += range;
-                turret.rotationSpeed += rotationSpeed;
-
-                if (turret.missile)
-                {
-                    turret.missilesPerSecond += missilesPerSecond;
-                    turret.missileSpeed += missileSpeed;
-                }
-
-                if (turret.laser)
-                {
-                    turret.laserHitsPerSecond += laserHitsPerSecond;
-                    turret.laserActivationTime -= laserActivationTime;
-                    turret.laserDeactivationTime -= laserDeactivationTime;
-                }
-
-                if (turret.poisonMissile)
-                {
-                    turret.poisonDamage += poisonDamage;
-                    if (poisonMissile)
-                    {
-                        turret.poisonHitRate = poisonHitRate;
-                    }
-                    else
-                    {
-                        turret.poisonHitRate -= poisonHitRate;
-                    }
-                    turret.poisonDuration += poisonDuration;
-                }
-
-                if (turret.slowdownMissile)
-                {
-                    turret.slowdownEffectiveness += slowdownEffectiveness;
-                    turret.slowdownEffectDuration += slowdownEffectDuration;
-                }
-
-                if (turret.explosiveMissile)
-                {
-                    if (turret.explosionPrefab == null)
-                    {
-                        turret.explosionPrefab = explosionPrefab;
-                        turret.explosionSprite = explosionSprite;
-                        turret.explosionMaterial = explosionMaterial;
-                    }
-
-                    turret.explosionDamage += explosionDamage;
-                    turret.explosionRange += explosionRange;
-                    turret.copyMissileEffects = turret.copyMissileEffects || explosionCopyMissileEffects;
-                }
-            }
-        }
-
-        private void UpdateTurretProperties(TurretScriptableObject turret)
-        {
-            CalculateTurretProperties(turret);
-            SetTurretProperties(turret);
         }
     }
 }

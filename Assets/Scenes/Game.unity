@@ -11044,8 +11044,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: {x: 50, y: 30}
-  maxHealth: 100
-  neonBlocks: 10000
+  Health: 0
+  MaxHealth: 100
+  NeonBlocks: 9999999
 --- !u!1001 &836097669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12414,7 +12415,6 @@ MonoBehaviour:
   - {fileID: 631093646}
   - {fileID: 1602905548}
   - {fileID: 118863563}
-  propertiesMaxValues: []
 --- !u!95 &1080598163
 Animator:
   serializedVersion: 4
@@ -13685,9 +13685,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c7e5de210a2f6842bc7c834d7b70b57, type: 2}
   tierMaxChance: 0
   inRunUpgrades:
-  - {fileID: 11400000, guid: ff4a397be9545fe4bb3a9530ea7b394c, type: 2}
-  - {fileID: 11400000, guid: e7aab109413ecbd4fbc05bf793e3c1a2, type: 2}
-  - {fileID: 11400000, guid: 33780e98510d513499839523ad865ddd, type: 2}
+  - {fileID: 11400000, guid: 5dfac58718141e549ba078ea4c5ae1da, type: 2}
+  - {fileID: 11400000, guid: 1d8352dcd6537344e9e0d76bcb83f11c, type: 2}
+  - {fileID: 11400000, guid: f275f168f0b7ff242b2aaf2acafd4420, type: 2}
+  - {fileID: 11400000, guid: dfe0c9920d8bc4146af4c2531c28517c, type: 2}
+  - {fileID: 11400000, guid: 39f2ce9957dd2d041962bbf88795652c, type: 2}
+  - {fileID: 11400000, guid: 0b3afe6ac453dd042b00eef07213395d, type: 2}
+  - {fileID: 11400000, guid: f74cb68639bc1714b8dc6de3452e3be7, type: 2}
+  - {fileID: 11400000, guid: 52cee22f902c37949822ac8e6e33e6d5, type: 2}
+  - {fileID: 11400000, guid: 630c7368b05a0b142ae94c520d5d7c02, type: 2}
+  - {fileID: 11400000, guid: d6e92b37a01ff9548b110b04a37fee1e, type: 2}
+  - {fileID: 11400000, guid: 9630839f5fed9f14ea59303d31236dbe, type: 2}
+  - {fileID: 11400000, guid: 71557cef3e37ca641b862a9b0bf9348b, type: 2}
   rollUpgradesCollection: []
 --- !u!1001 &1245464120
 PrefabInstance:

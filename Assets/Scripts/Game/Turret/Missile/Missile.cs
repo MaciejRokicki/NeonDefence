@@ -27,7 +27,7 @@ public class Missile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            if(turret.penetrationMissile || turret.variant.laser)
+            if(turret.penetrationMissile || turret.variant.Laser)
             {
                 missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
                 target = null;
@@ -95,9 +95,9 @@ public class Missile : MonoBehaviour
             enemyHitEffectComponent = new ExplosiveEffectDecorator(turret, gameObject, enemyHitEffectComponent);
         }
 
-        if (turret.variant.needTarget)
+        if (turret.variant.NeedTarget)
         {
-            if (turret.variant.laser)
+            if (turret.variant.Laser)
             {
                 missileTypeStrategy = new MissileLaserTypeStrategy(gameObject, turret, enemyHitEffectComponent);
             }

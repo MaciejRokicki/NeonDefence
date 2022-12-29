@@ -3,22 +3,24 @@
 namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/InRunGameUpgrade", order = 5)]
-    public class InRunGameUpgradeScriptableObject : InRunUpgrade
+    public class InRunGameUpgradeScriptableObject : InRunUpgradeScriptableObject
     {
         private GameManager gameManager;
 
-        public float health;
-        public float maxHealth;
-        public bool increaseHealthToo;
-        public int neonBlocks;
+        public float Health;
+        public bool HealthIsPercentage;
+        public float MaxHealth;
+        public bool MaxHealthIsPercentage;
+        public bool IncreaseHealthToo;
+        public int NeonBlocks;
 
         public override void Apply()
         {
             gameManager = GameManager.instance;
 
-            gameManager.IncreaseHealth(health);
-            gameManager.IncreaseMaxHealth(maxHealth, increaseHealthToo);
-            gameManager.AddNeonBlocks(neonBlocks);
+            gameManager.IncreaseHealth(CalculatePropertyPercentage(gameManager.Health, Health, HealthIsPercentage));
+            gameManager.IncreaseMaxHealth(CalculatePropertyPercentage(gameManager.MaxHealth, MaxHealth, MaxHealthIsPercentage), IncreaseHealthToo);
+            gameManager.AddNeonBlocks(NeonBlocks);
         }
     }
 }

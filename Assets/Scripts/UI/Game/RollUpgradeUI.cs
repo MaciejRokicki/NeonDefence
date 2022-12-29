@@ -18,7 +18,7 @@ public class RollUpgradeUI : MonoBehaviour
 
     private Dictionary<string, Image> icons;
 
-    public InRunUpgrade inRunUpgrade;
+    public InRunUpgradeScriptableObject inRunUpgrade;
 
     private void Awake()
     {
@@ -49,7 +49,7 @@ public class RollUpgradeUI : MonoBehaviour
         {
             InRunTurretUpgradeScriptableObject turretUpgrade = inRunUpgrade as InRunTurretUpgradeScriptableObject;
 
-            if(!turretUpgrade.turret)
+            if(!turretUpgrade.Turret)
             {
                 foreach(Image image in icons.Values.Skip(1))
                 {
@@ -59,7 +59,7 @@ public class RollUpgradeUI : MonoBehaviour
             else
             {
                 stringBuilder.Append("RollUpgrade");
-                stringBuilder.Append(turretUpgrade.turret.name);
+                stringBuilder.Append(turretUpgrade.Turret.name);
                 stringBuilder.Append("Icon");
 
                 icons[stringBuilder.ToString()].color = Color.white;

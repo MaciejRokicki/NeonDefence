@@ -170,14 +170,14 @@ public class TurretManager : MonoBehaviour
 
         turret.GetComponent<Turret>().variant = turretVariant;
 
-        gameManager.RemoveNeonBlocks(turretVariant.cost);
+        gameManager.RemoveNeonBlocks(turretVariant.Cost);
     }
 
     public void SellTurret()
     {
         if (selectedTurret)
         {
-            gameManager.AddNeonBlocks((int)(selectedTurret.variant.cost * 0.9f));
+            gameManager.AddNeonBlocks((int)(selectedTurret.variant.Cost * 0.9f));
             Destroy(selectedTurret.gameObject);
 
             selectedTurret = null;

@@ -54,8 +54,8 @@ public class TurretPlaceholder : MonoBehaviour
     {
         this.variant = variant;
 
-        GetComponent<SpriteRenderer>().sprite = variant.turretSprite;
-        GetComponent<SpriteMask>().sprite = variant.turretSprite;
+        GetComponent<SpriteRenderer>().sprite = variant.TurretSprite;
+        GetComponent<SpriteMask>().sprite = variant.TurretSprite;
     }
 
     public void HidePlaceholder() => gameObject.SetActive(false);

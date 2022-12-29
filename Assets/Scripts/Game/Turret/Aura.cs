@@ -22,14 +22,14 @@ public class Aura : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer.sprite = turret.variant.auraSprite;
-        spriteRenderer.material = turret.variant.auraMaterial;
+        spriteRenderer.sprite = turret.variant.AuraSprite;
+        spriteRenderer.material = turret.variant.AuraMaterial;
         spriteRenderer.size = new Vector2(turret.auraRange, turret.auraRange);
         circleCollider.radius = turret.auraRange / 2;
 
         enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
 
-        if (turret.variant.auraSlowdown)
+        if (turret.variant.AuraSlowdown)
         {
             enemyHitEffectComponent = new SlowdownEffectDecorator(
                 turret, 

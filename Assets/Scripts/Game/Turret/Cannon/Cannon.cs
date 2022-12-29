@@ -31,18 +31,18 @@ public class Cannon : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer.sprite = turret.variant.cannonSprite;
-        spriteRenderer.material = turret.variant.cannonMaterial;
+        spriteRenderer.sprite = turret.variant.CannonSprite;
+        spriteRenderer.material = turret.variant.CannonMaterial;
 
         cannonCollider.radius = turret.range + 0.5f;
 
-        if(!turret.variant.laser)
+        if(!turret.variant.Laser)
         {
             cannonTypeStrategy = new CannonBasicTypeStrategy(this, turret);
         }
         else
         {
-            laser = Instantiate(turret.variant.missilePrefab, transform.parent.position, transform.rotation, transform);
+            laser = Instantiate(turret.variant.MissilePrefab, transform.parent.position, transform.rotation, transform);
             cannonTypeStrategy = new CannonLaserTypeStrategy(this, turret, laser);
         }
 
@@ -94,7 +94,7 @@ public class Cannon : MonoBehaviour
 
     public void UpdateLaserMissileEffects()
     {
-        if(turret.variant.laser && laser)
+        if(turret.variant.Laser && laser)
         {
             laser.GetComponent<Missile>().PrepareMissile();
         }

@@ -12,11 +12,11 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
     {
         collider = baseGameObject.GetComponent<BoxCollider2D>();
 
-        spriteRenderer.sprite = turret.variant.missileSprite;
-        spriteRenderer.material = turret.variant.missileMaterial;
+        spriteRenderer.sprite = turret.variant.MissileSprite;
+        spriteRenderer.material = turret.variant.MissileMaterial;
         spriteRenderer.size = Vector2.zero;
-        collider.offset = turret.variant.missileColliderOffset;
-        collider.size = turret.variant.missileColliderSize;
+        collider.offset = turret.variant.MissileColliderOffset;
+        collider.size = turret.variant.MissileColliderSize;
     }
 
     public override void OnEnemyTriggerStay2D(Collider2D collision)
