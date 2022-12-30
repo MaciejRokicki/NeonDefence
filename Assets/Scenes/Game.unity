@@ -6366,7 +6366,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 234912236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10beb350a99d8c3458497c01aed0e80d, type: 3}
+  m_Script: {fileID: 11500000, guid: c5a1a9f782b124941ba1eebbead379b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   neonBlocksLabel: {fileID: 1338860205}
@@ -11537,7 +11537,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 889798225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073105f8e3a5670438c2ca3b26894801, type: 3}
+  m_Script: {fileID: 11500000, guid: 61b2506863b3dcb4fa96eba29f5320f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waveLabelValue: {fileID: 2112683241}
@@ -12685,7 +12685,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a115da4a9450b49a289c19ce9e2426, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dbb67daf2c55da48ae93970ae8bcb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1110133643
@@ -14473,7 +14473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a115da4a9450b49a289c19ce9e2426, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dbb67daf2c55da48ae93970ae8bcb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1341552224
@@ -17093,7 +17093,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1539931493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d590bf3a4f2f24abda06f45f252e0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4af205ce74d01d348b80edc584650bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthLabelValue: {fileID: 2086213992}
@@ -17781,7 +17781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623414107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bfc1f84d8d8074ab7a1ecceddd3264, type: 3}
+  m_Script: {fileID: 11500000, guid: a07d1ef75217e63418762ba7d6734a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   experienceFillBar: {fileID: 1156132061}
@@ -33381,7 +33381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a115da4a9450b49a289c19ce9e2426, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dbb67daf2c55da48ae93970ae8bcb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1985595856
@@ -34346,6 +34346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingTurretUIPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
+      propertyPath: variant
+      value: 
+      objectReference: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
     - target: {fileID: 2235666236016440215, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
       propertyPath: m_Sprite
       value: 

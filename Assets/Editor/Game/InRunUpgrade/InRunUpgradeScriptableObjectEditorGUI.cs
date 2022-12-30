@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Editor.InRunUpgrade
+namespace Assets.Editor.Game.InRunUpgrade
 {
     public static class InRunUpgradeScriptableObjectEditorGUI
     {

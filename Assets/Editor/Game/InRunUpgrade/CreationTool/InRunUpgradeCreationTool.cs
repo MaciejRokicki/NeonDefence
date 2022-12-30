@@ -3,9 +3,9 @@ using System.Linq;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
-using Assets.Editor.InRunUpgrade.CreationTool.Strategies;
+using Assets.Editor.Game.InRunUpgrade.CreationTool.Strategies;
 
-namespace Assets.Editor.InRunUpgrade.CreationTool
+namespace Assets.Editor.Game.InRunUpgrade.CreationTool
 {
     public class InRunUpgradeCreationTool : EditorWindow
     {

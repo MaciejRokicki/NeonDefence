@@ -1,4 +1,4 @@
-﻿namespace Assets.Editor.InRunUpgrade.CreationTool.Strategies
+﻿namespace Assets.Editor.Game.InRunUpgrade.CreationTool.Strategies
 {
     public abstract class InRunUpgradeCreationToolStrategy
     {

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Editor.InRunUpgrade.ScriptableObjectEditor.Strategies
+namespace Assets.Editor.Game.InRunUpgrade.ScriptableObjectEditor.Strategies
 {
     public class InRunTurretUpgradesScriptableObjectEditorStrategy : InRunUpgradesScriptableObjectEditorStrategy
     {

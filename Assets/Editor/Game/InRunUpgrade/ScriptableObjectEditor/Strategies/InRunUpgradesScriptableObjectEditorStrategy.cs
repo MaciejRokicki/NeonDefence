@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace Assets.Editor.InRunUpgrade.ScriptableObjectEditor.Strategies
+namespace Assets.Editor.Game.InRunUpgrade.ScriptableObjectEditor.Strategies
 {
     public abstract class InRunUpgradesScriptableObjectEditorStrategy
     {

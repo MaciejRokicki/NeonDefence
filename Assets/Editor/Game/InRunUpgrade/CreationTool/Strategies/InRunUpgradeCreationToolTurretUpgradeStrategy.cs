@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using Assets.Scripts.Game.Upgrades.InRunUpgrades;
 
-namespace Assets.Editor.InRunUpgrade.CreationTool.Strategies
+namespace Assets.Editor.Game.InRunUpgrade.CreationTool.Strategies
 {
     public class InRunUpgradeCreationToolTurretUpgradeStrategy : InRunUpgradeCreationToolStrategy
     {

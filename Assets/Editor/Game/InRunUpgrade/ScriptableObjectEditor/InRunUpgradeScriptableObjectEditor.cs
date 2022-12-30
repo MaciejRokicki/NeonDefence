@@ -1,9 +1,9 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using Assets.Scripts.Game.Upgrades.InRunUpgrades;
-using Assets.Editor.InRunUpgrade.ScriptableObjectEditor.Strategies;
+using Assets.Editor.Game.InRunUpgrade.ScriptableObjectEditor.Strategies;
 
-namespace Assets.Editor.InRunUpgrade.ScriptableObjectEditor
+namespace Assets.Editor.Game.InRunUpgrade.ScriptableObjectEditor
 {
     [CustomEditor(typeof(InRunUpgradeScriptableObject), true)]
     public class InRunUpgradeScriptableObjectEditor : UnityEditor.Editor
