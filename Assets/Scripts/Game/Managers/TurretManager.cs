@@ -85,6 +85,14 @@ public class TurretManager : MonoBehaviour
         buildingMenu.Hide();
     }
 
+    public void UnselectVariant()
+    {
+        selectedVariant = null;
+        turretPlaceholder.HidePlaceholder();
+        buildingMenu.Show();
+        turretDetails.Hide();
+    }
+
     public void BuildingManagerClickHandler(InputAction.CallbackContext ctxt)
     {
         if (!uiManager.blockGameInteraction && ctxt.started)
@@ -157,10 +165,7 @@ public class TurretManager : MonoBehaviour
                 BuildTurret(selectedVariant, tilePosition);
             }
 
-            turretPlaceholder.HidePlaceholder();
-            selectedVariant = null;
-            buildingMenu.Show();
-            turretDetails.Hide();
+            UnselectVariant();
         }
     }
 
@@ -180,12 +185,7 @@ public class TurretManager : MonoBehaviour
             gameManager.AddNeonBlocks((int)(selectedTurret.variant.Cost * 0.9f));
             Destroy(selectedTurret.gameObject);
 
-            selectedTurret = null;
-
-            turretDetails.Hide();
-            turretRange.HideTurretRange();
-
-            buildingMenu.Show();
+            UnselectVariant();
         }
     }
 

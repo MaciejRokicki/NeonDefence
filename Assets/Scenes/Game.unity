@@ -6156,7 +6156,7 @@ MonoBehaviour:
     m_ActionName: Player/Click[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: e31227d4-e452-40ef-91dd-c8b98a7db682
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &131824080

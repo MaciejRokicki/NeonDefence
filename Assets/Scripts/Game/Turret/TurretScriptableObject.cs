@@ -23,7 +23,7 @@ public class TurretScriptableObject : ScriptableObject
     public bool SlowdownMissile;
     [SerializeField]
     private bool _explosiveMissile;
-    public bool xplosiveMissile;
+    public bool explosiveMissile;
     [SerializeField]
     private bool _copyMissileEffects;
     public bool CopyMissileEffects;
@@ -145,7 +145,7 @@ public class TurretScriptableObject : ScriptableObject
 
         PoisonMissile = _poisonMissile;
         SlowdownMissile = _slowdownMissile;
-        xplosiveMissile = _explosiveMissile;
+        explosiveMissile = _explosiveMissile;
 
         PenetrationMissile = _penetrationMissile;
         TrackingMissile = _trackingMissile;

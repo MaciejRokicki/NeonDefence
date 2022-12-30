@@ -148,7 +148,7 @@ namespace Assets.Editor.Game.InRunUpgrade.CreationTool.Strategies
                             ref slowdownEffectDurationIsPercentage);
                     }
 
-                    if (turret.xplosiveMissile || explosiveMissile)
+                    if (turret.explosiveMissile || explosiveMissile)
                     {
                         InRunUpgradeScriptableObjectEditorGUI.TurretExplosionSection(
                             ref explosionPrefab,

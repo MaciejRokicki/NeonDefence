@@ -10,6 +10,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameManager gameManager;
     private TurretManager buildingManager;
     private TurretDetails turretDetails;
+    private UIManager uiManager;
 
     public TurretScriptableObject variant;
 
@@ -32,6 +33,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         gameManager = GameManager.instance;
         buildingManager = TurretManager.instance;
         turretDetails = TurretDetails.instance;
+        uiManager = UIManager.instance;
 
         GetComponent<Image>().sprite = variant.TurretIcon;
         GetComponent<Image>().material = variant.TurretIconMaterial;
@@ -67,7 +69,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnClickDown()
     {
-        if(availableToPurchase)
+        if(!uiManager.blockGameInteraction && availableToPurchase)
         {
             if (Touch.activeFingers.Count == 0)
             {

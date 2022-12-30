@@ -35,17 +35,21 @@ public class TurretDetailsProperty : MonoBehaviour
 
     public void SetValue(float value, FloatRangeProperty limit)
     {
-        if(value == limit.Min || value == 0.0f)
-        {
-            gameObject.SetActive(false);
+        //if(value == limit.Min || value == 0.0f)
+        //{
+        //    gameObject.SetActive(false);
 
-            return;
-        }
-        else
-        {
-            gameObject.SetActive(true);
-            turretDetails.activeProperties++;
-        }
+        //    return;
+        //}
+        //else
+        //{
+        //    gameObject.SetActive(true);
+        //    turretDetails.activeProperties++;
+        //}
+
+        gameObject.SetActive(true);
+
+        turretDetails.activeProperties++;
 
         Vector2 propertyBarSize = propertyBar.transform.parent.GetComponent<RectTransform>().sizeDelta;
 

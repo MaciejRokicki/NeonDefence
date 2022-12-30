@@ -90,7 +90,7 @@ public class TurreteScriptableObjectEditor : Editor
         _penetrationMissile = serializedObject.FindProperty("_penetrationMissile");
         _trackingMissile = serializedObject.FindProperty("_trackingMissile");
 
-        _auraSlowdown = serializedObject.FindProperty("AuraSlowdown");
+        _auraSlowdown = serializedObject.FindProperty("_auraSlowdown");
 
 
         _damage = serializedObject.FindProperty("_damage");

@@ -76,7 +76,7 @@ public class Turret : MonoBehaviour
 
         poisonMissile = variant.PoisonMissile;
         slowdownMissile = variant.SlowdownMissile;
-        explosiveMissile = variant.xplosiveMissile;
+        explosiveMissile = variant.explosiveMissile;
         trackingMissile = variant.TrackingMissile;
         penetrationMissile = variant.PenetrationMissile;
 

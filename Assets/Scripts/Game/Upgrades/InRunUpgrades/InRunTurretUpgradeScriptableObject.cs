@@ -81,7 +81,7 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
             else
             {
                 turret.PoisonMissile = turret.PoisonMissile || PoisonMissile;
-                turret.xplosiveMissile = turret.xplosiveMissile || ExplosiveMissile;
+                turret.explosiveMissile = turret.explosiveMissile || ExplosiveMissile;
                 turret.SlowdownMissile = turret.SlowdownMissile || SlowdownMissile;
                 turret.TrackingMissile = turret.TrackingMissile || TrackingMissile;
                 turret.PenetrationMissile = turret.PenetrationMissile || PenetrationMissile;
@@ -123,7 +123,7 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
                     turret.SlowdownEffectDuration += CalculatePropertyPercentage(turret.SlowdownEffectDuration, SlowdownEffectDuration, SlowdownEffectDurationIsPercentage);
                 }
 
-                if (turret.xplosiveMissile)
+                if (turret.explosiveMissile)
                 {
                     if (turret.ExplosionPrefab == null)
                     {

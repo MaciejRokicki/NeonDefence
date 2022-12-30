@@ -11,6 +11,8 @@ public class UpgradeManager : MonoBehaviour
     public static UpgradeManager instance { get { return _instance; } }
 
     private UIManager uIManager;
+    private TurretManager turretManager;
+    private TurretPlaceholder turretPlaceholder;
 
     //TODO: usunac
     [SerializeField]
@@ -57,6 +59,8 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         uIManager = UIManager.instance;
+        turretManager = TurretManager.instance;
+        turretPlaceholder = TurretPlaceholder.instance;
     }
 
     public void IncreaseExperience(int experience = 1)
@@ -76,6 +80,8 @@ public class UpgradeManager : MonoBehaviour
 
     private void InRunUpgradeRoll()
     {
+        turretManager.UnselectVariant();
+
         uIManager.blockGameInteraction = true;
 
         rollUpgradesCollection = new InRunUpgradeScriptableObject[rollUpgradesCount];

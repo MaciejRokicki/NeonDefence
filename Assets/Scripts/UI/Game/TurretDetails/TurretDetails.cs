@@ -49,36 +49,76 @@ public class TurretDetails : MonoBehaviour
     {
         sellButton.SetActive(false);
 
+        foreach (TurretDetailsProperty property in properties)
+        {
+            property.gameObject.SetActive(false);
+        }
+
         activeProperties = 0;
 
-        properties[0].SetValue(variant.Damage, variant.TurretLimits.DamageLimit);
-        properties[1].SetValue(variant.Range, variant.TurretLimits.RangeLimit);
-        properties[2].SetValue(variant.RotationSpeed, variant.TurretLimits.RotationSpeedLimit);
-        properties[3].SetValue(variant.MissilesPerSecond, variant.TurretLimits.MissilesPerSecondLimit);
-        properties[4].SetValue(variant.MissileSpeed, variant.TurretLimits.MissileSpeedLimit);
+        if(variant.NeedTarget)
+        {
+            if(variant.Missile)
+            {
+                properties[0].SetValue(variant.Damage, variant.TurretLimits.DamageLimit);
+                properties[1].SetValue(variant.Range, variant.TurretLimits.RangeLimit);
+                properties[2].SetValue(variant.RotationSpeed, variant.TurretLimits.RotationSpeedLimit);
+                properties[3].SetValue(variant.MissilesPerSecond, variant.TurretLimits.MissilesPerSecondLimit);
+                properties[4].SetValue(variant.MissileSpeed, variant.TurretLimits.MissileSpeedLimit);
+            }
 
-        properties[5].SetValue(variant.LaserHitsPerSecond, variant.TurretLimits.LaserHitsPerSecondLimit);
-        properties[6].SetValue(variant.LaserActivationTime, variant.TurretLimits.LaserActivationTimeLimit);
-        properties[7].SetValue(variant.LaserDeactivationTime, variant.TurretLimits.LaserDeactivationTimeLimit);
+            if(variant.Laser)
+            {
+                properties[0].SetValue(variant.Damage, variant.TurretLimits.DamageLimit);
+                properties[1].SetValue(variant.Range, variant.TurretLimits.RangeLimit);
+                properties[2].SetValue(variant.RotationSpeed, variant.TurretLimits.RotationSpeedLimit);
 
-        properties[8].SetValue(variant.SlowdownEffectiveness, variant.TurretLimits.SlowdownEffectivenessLimit);
-        properties[9].SetValue(variant.SlowdownEffectDuration, variant.TurretLimits.SlowdownEffectDurationLimit);
+                properties[5].SetValue(variant.LaserHitsPerSecond, variant.TurretLimits.LaserHitsPerSecondLimit);
+                properties[6].SetValue(variant.LaserActivationTime, variant.TurretLimits.LaserActivationTimeLimit);
+                properties[7].SetValue(variant.LaserDeactivationTime, variant.TurretLimits.LaserDeactivationTimeLimit);
+            }
 
-        properties[10].SetValue(variant.PoisonDamage, variant.TurretLimits.PoisonDamageLimit);
-        properties[11].SetValue(variant.PoisonHitRate, variant.TurretLimits.PoisonHitRateLimit);
-        properties[12].SetValue(variant.PoisonDuration, variant.TurretLimits.PoisonDurationLimit);
+            if(variant.SlowdownMissile)
+            {
+                properties[8].SetValue(variant.SlowdownEffectiveness, variant.TurretLimits.SlowdownEffectivenessLimit);
+                properties[9].SetValue(variant.SlowdownEffectDuration, variant.TurretLimits.SlowdownEffectDurationLimit);
+            }
 
-        properties[13].SetValue(variant.ExplosionDamage, variant.TurretLimits.ExplosionDamageLimit);
-        properties[14].SetValue(variant.ExplosionRange, variant.TurretLimits.ExplosionRangeLimit);
-        properties[15].SetValue(variant.CopyMissileEffects ? 1.0f : 0.0f, boolPropertyLimit);
+            if(variant.PoisonMissile)
+            {
+                properties[10].SetValue(variant.PoisonDamage, variant.TurretLimits.PoisonDamageLimit);
+                properties[11].SetValue(variant.PoisonHitRate, variant.TurretLimits.PoisonHitRateLimit);
+                properties[12].SetValue(variant.PoisonDuration, variant.TurretLimits.PoisonDurationLimit);
+            }
 
-        properties[16].SetValue(variant.AuraDamage, variant.TurretLimits.AuraDamageLimit);
-        properties[17].SetValue(variant.AuraRange, variant.TurretLimits.AuraRangeLimit);
+            if(variant.explosiveMissile)
+            {
+                properties[13].SetValue(variant.ExplosionDamage, variant.TurretLimits.ExplosionDamageLimit);
+                properties[14].SetValue(variant.ExplosionRange, variant.TurretLimits.ExplosionRangeLimit);
+                properties[15].SetValue(variant.CopyMissileEffects ? 1.0f : 0.0f, boolPropertyLimit);
+            }
 
-        properties[18].SetValue(variant.AuraSlowdownEffectiveness, variant.TurretLimits.AuraSlowdownEffectivenessLimit);
+            if(variant.PenetrationMissile)
+            {
+                properties[19].SetValue(variant.PenetrationMissile ? 1.0f : 0.0f, boolPropertyLimit);
+            }
 
-        properties[19].SetValue(variant.PenetrationMissile ? 1.0f : 0.0f, boolPropertyLimit);
-        properties[20].SetValue(variant.TrackingMissile ? 1.0f : 0.0f, boolPropertyLimit);
+            if(variant.TrackingMissile)
+            {
+                properties[20].SetValue(variant.TrackingMissile ? 1.0f : 0.0f, boolPropertyLimit);
+            }
+        }
+        
+        if(variant.Aura)
+        {
+            properties[16].SetValue(variant.AuraDamage, variant.TurretLimits.AuraDamageLimit);
+            properties[17].SetValue(variant.AuraRange, variant.TurretLimits.AuraRangeLimit);
+
+            if(variant.AuraSlowdown)
+            {
+                properties[18].SetValue(variant.AuraSlowdownEffectiveness, variant.TurretLimits.AuraSlowdownEffectivenessLimit);
+            }
+        }
 
         activeProperties = activeProperties % 2 == 0 ? activeProperties / 2 : (activeProperties + 1) / 2;
 
