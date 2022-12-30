@@ -74,7 +74,7 @@ public class TurretDetailsProperty : MonoBehaviour
             }
             else
             {
-                stringBuilder.Append(value);
+                stringBuilder.Append(value.ToString("0"));
             }
         }
 

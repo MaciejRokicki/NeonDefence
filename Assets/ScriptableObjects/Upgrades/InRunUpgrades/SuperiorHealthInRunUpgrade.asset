@@ -16,12 +16,12 @@ MonoBehaviour:
   Unique: 1
   Description: 'unique
 
-    + slowdown effect
+    <color=#008000>+ slowdown effect</color>
 
-    + 15% slowdown effectiveness
+    <color=#008000>+
+    15% slowdown effectiveness</color>
 
-    +
-    1s slowdown duration'
+    <color=#008000>+ 1s slowdown duration</color>'
   Turret: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
   PoisonMissile: 0
   ExplosiveMissile: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   LaserDeactivationTimeIsPercentage: 0
   SlowdownEffectiveness: 15
   SlowdownEffectivenessIsPercentage: 0
-  SlowdownEffectDuration: 0
+  SlowdownEffectDuration: 1
   SlowdownEffectDurationIsPercentage: 0
   PoisonDamage: 0
   PoisonDamageIsPercentage: 0
