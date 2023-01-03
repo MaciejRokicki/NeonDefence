@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tier: {fileID: 11400000, guid: 7c7e5de210a2f6842bc7c834d7b70b57, type: 2}
   Unique: 0
-  Description: <color=#008000>+ 15 neon blocks</color>
+  Description: + 15 neon blocks
   Health: 0
   HealthIsPercentage: 0
   MaxHealth: 0

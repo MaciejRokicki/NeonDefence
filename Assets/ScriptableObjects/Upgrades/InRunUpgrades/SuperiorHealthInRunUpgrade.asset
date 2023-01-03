@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tier: {fileID: 11400000, guid: 7c7e5de210a2f6842bc7c834d7b70b57, type: 2}
   Unique: 1
-  Description: 'unique
+  Description: '<b>unique</b>
 
-    <color=#008000>+ slowdown effect</color>
+    + slowdown effect
 
-    <color=#008000>+
-    15% slowdown effectiveness</color>
+    + 15% slowdown effectiveness
 
-    <color=#008000>+ 1s slowdown duration</color>'
+    +
+    1s slowdown duration'
   Turret: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
   PoisonMissile: 0
   ExplosiveMissile: 0
