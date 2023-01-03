@@ -18,6 +18,8 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
         {
             gameManager = GameManager.instance;
 
+            StatisticsManager.instance.AddPickedUpgradesCount();
+
             gameManager.IncreaseHealth(CalculatePropertyPercentage(gameManager.Health, Health, HealthIsPercentage));
             gameManager.IncreaseMaxHealth(CalculatePropertyPercentage(gameManager.MaxHealth, MaxHealth, MaxHealthIsPercentage), IncreaseHealthToo);
             gameManager.AddNeonBlocks(NeonBlocks);

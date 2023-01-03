@@ -141,6 +141,8 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
 
         public override void Apply()
         {
+            StatisticsManager.instance.AddPickedUpgradesCount();
+
             if (Turret)
             {
                 SetTurretProperties(Turret);

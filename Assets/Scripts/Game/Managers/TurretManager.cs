@@ -11,6 +11,7 @@ public class TurretManager : MonoBehaviour
     private GameManager gameManager;
     private InputManager inputManager;
     private UIManager uiManager;
+    private StatisticsManager statisticsManager;
 
     private BuildingMenu buildingMenu;
     private TurretDetails turretDetails;
@@ -49,6 +50,7 @@ public class TurretManager : MonoBehaviour
         gameManager = GameManager.instance;
         inputManager = InputManager.instance;
         uiManager = UIManager.instance;
+        statisticsManager = StatisticsManager.instance;
 
         buildingMenu = BuildingMenu.instance;
         turretDetails = TurretDetails.instance;
@@ -176,6 +178,8 @@ public class TurretManager : MonoBehaviour
         turret.GetComponent<Turret>().variant = turretVariant;
 
         gameManager.RemoveNeonBlocks(turretVariant.Cost);
+
+        statisticsManager.AddBuildedTurret(turretVariant.name);
     }
 
     public void SellTurret()

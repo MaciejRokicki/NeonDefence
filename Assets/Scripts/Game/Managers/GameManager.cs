@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager instance { get { return _instance; } }
 
+    private UIManager uiManager;
+    private StatisticsManager statisticsManager;
+
     public Vector2 mapSize = new Vector2(50.0f, 30.0f);
     public float Health;
     [SerializeField]
@@ -37,6 +40,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        uiManager = UIManager.instance;
+        statisticsManager = StatisticsManager.instance;
+
         Health = MaxHealth;
     }
 
@@ -46,7 +52,7 @@ public class GameManager : MonoBehaviour
 
         if (Health < 0)
         {
-            //TODO: GameOver
+            uiManager.ShowPauseAndGameOverMenu(true);
         }
 
         OnHealthChange(Health);
@@ -81,6 +87,7 @@ public class GameManager : MonoBehaviour
     public void AddNeonBlocks(int amount)
     {
         NeonBlocks += amount;
+        statisticsManager.AddEarnedNeonBlocksCount(amount);
         OnNeonBlockChange(NeonBlocks);
     }
 

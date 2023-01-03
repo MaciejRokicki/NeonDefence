@@ -16,7 +16,7 @@ public class Base : MonoBehaviour
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
 
             gameManager.TakeDamage(enemy.DealDamage());
-            enemy.Death();
+            enemy.Death(null);
         }
     }
 }

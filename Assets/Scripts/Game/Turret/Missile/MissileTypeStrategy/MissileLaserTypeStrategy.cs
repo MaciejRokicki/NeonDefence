@@ -26,7 +26,7 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
         if (timer > 1.0f / turret.laserHitsPerSecond)
         {
             enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
-            collision.GetComponent<Enemy>().TakeDamage(turret.damage);
+            collision.GetComponent<Enemy>().TakeDamage(turret.damage, turret);
 
             timer = 0.0f;
         }

@@ -29,14 +29,14 @@ public class MissileExplosion : MonoBehaviour
             foreach (RaycastHit2D hit in hitAll)
             {
                 missileShotEffectComponent.OnEnemyEnter(hit.transform.gameObject.GetComponent<Enemy>());
-                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.explosionDamage);
+                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.explosionDamage, turret);
             }
         }
         else
         {
             foreach (RaycastHit2D hit in hitAll)
             {
-                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.explosionDamage);
+                hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(turret.explosionDamage, turret);
             }
         }
 

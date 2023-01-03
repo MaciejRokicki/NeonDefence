@@ -16,6 +16,6 @@ public class MissileBasicTypeStrategy : MissileTypeStrategy
     public override void OnEnemyTriggerEnter2D(Collider2D collision)
     {
         enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
-        collision.GetComponent<Enemy>().TakeDamage(turret.damage);
+        collision.GetComponent<Enemy>().TakeDamage(turret.damage, turret);
     }
 }

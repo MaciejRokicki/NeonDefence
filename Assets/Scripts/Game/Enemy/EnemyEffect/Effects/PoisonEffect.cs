@@ -14,7 +14,7 @@ public class PoisonEffect : EnemyEffect
 
     public override void OnEffectHit()
     {
-        enemy.TakeDamage(damageOverTime);
+        enemy.TakeDamage(damageOverTime, turret);
     }
 
     public override void Update()

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private UpgradeManager upgradeManager;
+    private StatisticsManager statisticsManager;
 
     [SerializeField]
     public EnemyScriptableObject variant;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         upgradeManager = UpgradeManager.instance;
+        statisticsManager = StatisticsManager.instance;
 
         rb = GetComponent<Rigidbody2D>();
         enemyEffectHandler = GetComponent<EnemyEffectHandler>();
@@ -64,18 +66,24 @@ public class Enemy : MonoBehaviour
         return variant.damage;
     }
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(float dmg, Turret from)
     {
         health -= dmg;
 
         if(health <= 0.0f)
         {
-            Death();
+            Death(from);
         }
     }
 
-    public void Death()
+    public void Death(Turret killedBy)
     {
+        if(killedBy)
+        {
+            statisticsManager.AddKilledBlocksByTurret(killedBy.variant.name);
+        }
+
+        statisticsManager.AddKilledBlocksCount();
         upgradeManager.IncreaseExperience();
         Destroy(gameObject);
     }

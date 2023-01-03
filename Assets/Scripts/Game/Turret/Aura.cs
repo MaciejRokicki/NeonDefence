@@ -61,7 +61,7 @@ public class Aura : MonoBehaviour
             {
                 if (enemies[i])
                 {
-                    enemies[i].GetComponent<Enemy>().TakeDamage(turret.auraDamage);
+                    enemies[i].GetComponent<Enemy>().TakeDamage(turret.auraDamage, turret);
                 }
             }
 
