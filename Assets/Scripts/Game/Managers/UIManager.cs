@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get { return _instance; } }
 
     private StatisticsManager statisticsManager;
+    private GameManager gameManager;
 
     public bool blockGameInteraction = false;
 
@@ -52,6 +53,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         statisticsManager = StatisticsManager.instance;
+        gameManager = GameManager.instance;
     }
 
     public void ShowPauseAndGameOverMenu(bool gameOver = false)
@@ -73,7 +75,7 @@ public class UIManager : MonoBehaviour
             PAGO_Resume.gameObject.SetActive(true);
         }
 
-        StringBuilder sb = new StringBuilder("Score: ").Append("0");
+        StringBuilder sb = new StringBuilder("Score: ").Append(gameManager.GetScore());
         PAGO_GameInfoSection_Score.text = sb.ToString();
 
         TimeSpan playedTimeSpan = TimeSpan.FromSeconds(statisticsManager.GetTimePlayed());

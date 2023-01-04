@@ -20,9 +20,9 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
 
             StatisticsManager.instance.AddPickedUpgradesCount();
 
-            gameManager.IncreaseHealth(CalculatePropertyPercentage(gameManager.Health, Health, HealthIsPercentage));
-            gameManager.IncreaseMaxHealth(CalculatePropertyPercentage(gameManager.MaxHealth, MaxHealth, MaxHealthIsPercentage), IncreaseHealthToo);
-            gameManager.AddNeonBlocks(NeonBlocks);
+            gameManager.IncreaseHealth(CalculatePropertyPercentage(gameManager.GetHealth(), Health, HealthIsPercentage));
+            gameManager.IncreaseMaxHealth(CalculatePropertyPercentage(gameManager.GetMaxHealth(), MaxHealth, MaxHealthIsPercentage), IncreaseHealthToo);
+            gameManager.IncreaseNeonBlocks(NeonBlocks);
         }
     }
 }

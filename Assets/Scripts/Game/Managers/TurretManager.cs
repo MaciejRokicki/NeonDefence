@@ -186,7 +186,7 @@ public class TurretManager : MonoBehaviour
     {
         if (selectedTurret)
         {
-            gameManager.AddNeonBlocks((int)(selectedTurret.variant.Cost * 0.9f));
+            gameManager.IncreaseNeonBlocks((int)(selectedTurret.variant.Cost * 0.9f));
             Destroy(selectedTurret.gameObject);
 
             UnselectVariant();

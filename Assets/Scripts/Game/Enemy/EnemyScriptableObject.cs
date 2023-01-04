@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyScriptableObject", order = 1)]
 public class EnemyScriptableObject : ScriptableObject
 {
+    public int scoreOnKill;
+    public int neonBlocksOnKill;
+
     [Header("Statistics")]
     [SerializeField]
     private float _health;

@@ -7,13 +7,16 @@ public class GameManager : MonoBehaviour
 
     private UIManager uiManager;
     private StatisticsManager statisticsManager;
+    private WaveManager waveManager;
 
     public Vector2 mapSize = new Vector2(50.0f, 30.0f);
-    public float Health;
+    private float health;
     [SerializeField]
-    public float MaxHealth = 100.0f;
+    private float maxHealth = 100.0f;
     [SerializeField]
-    private int NeonBlocks;
+    private int neonBlocks;
+
+    private int score = 0;
 
     public delegate void HealthChangeCallback(float health);
     public event HealthChangeCallback OnHealthChange;
@@ -42,58 +45,74 @@ public class GameManager : MonoBehaviour
     {
         uiManager = UIManager.instance;
         statisticsManager = StatisticsManager.instance;
+        waveManager = WaveManager.instance;
 
-        Health = MaxHealth;
+        health = maxHealth;
+
+        waveManager.OnWaveChange += OnWaveChange;
     }
 
     public void TakeDamage(float damage)
     {
-        Health -= damage;
+        health -= damage;
 
-        if (Health < 0)
+        if (health < 0)
         {
             uiManager.ShowPauseAndGameOverMenu(true);
         }
 
-        OnHealthChange(Health);
+        OnHealthChange(health);
     }
 
     public void IncreaseHealth(float health)
     {
-        this.Health += health;
+        this.health += health;
 
-        if(this.Health > MaxHealth)
+        if(this.health > maxHealth)
         {
-            this.Health = MaxHealth;
+            this.health = maxHealth;
         }
 
-        OnHealthChange(this.Health);
+        OnHealthChange(this.health);
     }
+
+    public float GetHealth() => health;
 
     public void IncreaseMaxHealth(float health, bool addHealth)
     {
-        MaxHealth += health;
+        maxHealth += health;
 
         if(addHealth)
         {
-            this.Health += health;
+            this.health += health;
         }
 
-        OnHealthChange(this.Health);
+        OnHealthChange(this.health);
     }
 
-    public int GetNeonBlocks() => NeonBlocks;
+    public float GetMaxHealth() => maxHealth;
 
-    public void AddNeonBlocks(int amount)
+    public int GetNeonBlocks() => neonBlocks;
+
+    public void IncreaseNeonBlocks(int amount)
     {
-        NeonBlocks += amount;
+        neonBlocks += amount;
         statisticsManager.AddEarnedNeonBlocksCount(amount);
-        OnNeonBlockChange(NeonBlocks);
+        OnNeonBlockChange(neonBlocks);
     }
 
     public void RemoveNeonBlocks(int amount)
     {
-        NeonBlocks -= amount;
-        OnNeonBlockChange(NeonBlocks);
+        neonBlocks -= amount;
+        OnNeonBlockChange(neonBlocks);
+    }
+
+    public void IncreaseScore(int score) => this.score += score;
+
+    public int GetScore() => score;
+
+    private void OnWaveChange(int wave)
+    {
+        score += 25;
     }
 }

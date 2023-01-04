@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     private UpgradeManager upgradeManager;
     private StatisticsManager statisticsManager;
+    private GameManager gameManager;
 
     [SerializeField]
     public EnemyScriptableObject variant;
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
     {
         upgradeManager = UpgradeManager.instance;
         statisticsManager = StatisticsManager.instance;
+        gameManager = GameManager.instance;
 
         rb = GetComponent<Rigidbody2D>();
         enemyEffectHandler = GetComponent<EnemyEffectHandler>();
@@ -80,6 +82,8 @@ public class Enemy : MonoBehaviour
     {
         if(killedBy)
         {
+            gameManager.IncreaseScore(variant.scoreOnKill);
+            gameManager.IncreaseNeonBlocks(variant.neonBlocksOnKill);
             statisticsManager.AddKilledBlocksByTurret(killedBy.variant.name);
         }
 
