@@ -1,0 +1,56 @@
+{
+    "name": "MainMenuInputActions",
+    "maps": [
+        {
+            "name": "LoadGame",
+            "id": "624361ca-0368-4f3a-91a2-2ff118ea33c8",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "ec0f6590-590d-450d-9ed9-20b5ad2e5098",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1cd3b32e-c7bf-408e-869b-322a194242df",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec935717-46a5-4173-b188-d918792bc974",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f360a26-b0c9-4b71-90e9-18c54802f83f",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

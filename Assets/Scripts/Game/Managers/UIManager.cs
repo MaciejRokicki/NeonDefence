@@ -110,7 +110,7 @@ public class UIManager : MonoBehaviour
     public void PlayAgain()
     {
         HidePauseAndGameOverMenu();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     //TODO: .

@@ -11778,9 +11778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: {x: 50, y: 30}
-  Health: 0
-  MaxHealth: 100
-  NeonBlocks: 9999999
+  maxHealth: 100
+  neonBlocks: 99999999
 --- !u!1001 &836097669
 PrefabInstance:
   m_ObjectHideFlags: 0

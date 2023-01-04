@@ -12,21 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710aa6daa5ae36c4ebc2073de94358d0, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
+  scoreOnKill: 5
+  neonBlocksOnKill: 3
   _health: 200
-  _movementSpeed: 1
-  _damage: 3
-  _sprite: {fileID: 21300000, guid: 07cbc98c8042e1a4eb5c34fd9f69d3cc, type: 3}
-  _material: {fileID: 2100000, guid: 6a059ad16cf772049a345b33cac73d52, type: 2}
-  _minWave: 11
-  _lightSource: 0
-  _lightSourceInnerRadius: 0
-  _lightSourceOuterRadius: 0
   health: 200
+  _movementSpeed: 1
   movementSpeed: 1
+  _damage: 3
   damage: 3
   sprite: {fileID: 21300000, guid: 07cbc98c8042e1a4eb5c34fd9f69d3cc, type: 3}
   material: {fileID: 2100000, guid: 6a059ad16cf772049a345b33cac73d52, type: 2}
   minWave: 11
-  lightSource: 0
-  lightSourceInnerRadius: 0
-  lightSourceOuterRadius: 0
