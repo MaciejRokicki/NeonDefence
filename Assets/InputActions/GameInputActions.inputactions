@@ -1,5 +1,5 @@
 {
-    "name": "InputActions",
+    "name": "GameInputActions",
     "maps": [
         {
             "name": "Player",
@@ -36,6 +36,15 @@
                     "name": "Click",
                     "type": "Button",
                     "id": "9d003507-3cf8-4441-b8f6-a15e870d5f05",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "2b12f929-0ba9-4280-962a-f9a63d6b63c8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -117,6 +126,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13e06a95-fad7-4b9e-a0b8-e710f533192f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

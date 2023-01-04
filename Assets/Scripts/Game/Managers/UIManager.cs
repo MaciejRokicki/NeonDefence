@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -107,13 +108,24 @@ public class UIManager : MonoBehaviour
         PAGO.SetActive(false);
     }
 
+    public void TogglePauseMenu(InputAction.CallbackContext ctxt)
+    {
+        if(!PAGO.activeSelf)
+        {
+            ShowPauseAndGameOverMenu();           
+        }
+        else
+        {
+            HidePauseAndGameOverMenu();
+        }
+    }
+
     public void PlayAgain()
     {
         HidePauseAndGameOverMenu();
         SceneManager.LoadScene(1);
     }
 
-    //TODO: .
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
