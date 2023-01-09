@@ -3,15 +3,22 @@
 public class AutoTrackingMissileStrategy : TrackingMissileStrategy
 {
     private GameObject target;
+    private bool changeDirection = true;
 
     public AutoTrackingMissileStrategy(GameObject go, Turret turret, GameObject target) : base(go, turret) 
     {
         this.target = target;
+        direction = (target.transform.position - baseGameObject.transform.position).normalized;
     }
 
     public override void Update()
     {
-        if (target != null)
+        if(!target.activeSelf)
+        {
+            changeDirection = false;
+        }
+
+        if (changeDirection)
         {
             direction = (target.transform.position - baseGameObject.transform.position).normalized;
         }

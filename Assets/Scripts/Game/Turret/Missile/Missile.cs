@@ -4,7 +4,7 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     private Turret turret;
-    private GameObject target;
+    public GameObject target;
 
     private MissileTypeStrategy missileTypeStrategy;
     private TrackingMissileStrategy trackingMissileStrategy;

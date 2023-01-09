@@ -10,7 +10,7 @@ public class Cannon : MonoBehaviour
     #nullable enable
     private GameObject? laser;
     #nullable disable
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject target;
 
     private CannonTypeStrategy cannonTypeStrategy;
@@ -125,7 +125,6 @@ public class Cannon : MonoBehaviour
         missileObject.SetActive(true);
 
         return missileObject;
-
     }
 
     public void PushToMissilePool(GameObject missile)

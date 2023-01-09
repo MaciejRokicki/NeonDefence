@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class WaveManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class WaveManager : MonoBehaviour
     [HideInInspector]
     public EnemySpawner[] enemySpawners;
 
+    public Queue<GameObject> enemyPool;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -39,6 +42,8 @@ public class WaveManager : MonoBehaviour
         }
 
         enemySpawners = FindObjectsOfType<EnemySpawner>();
+
+        enemyPool = new Queue<GameObject>();
     }
 
     private void Start()
@@ -126,5 +131,29 @@ public class WaveManager : MonoBehaviour
             enemy.damage++;
             enemy.movementSpeed += 0.5f;
         }
+    }
+
+    public GameObject GetEnemyObject(EnemySpawner enemySpawner)
+    {
+        GameObject enemyObject;
+        bool isPoolEmpty = enemyPool.TryDequeue(out enemyObject);
+
+        if (!isPoolEmpty)
+        {
+            enemyObject = Instantiate(enemyPrefab, enemySpawner.transform.position, Quaternion.identity, enemiesParent.transform);
+
+            return enemyObject;
+        }
+
+        enemyObject.transform.position = enemySpawner.transform.position;
+        enemyObject.SetActive(true);
+
+        return enemyObject;
+    }
+
+    public void PushToEnemyPool(GameObject enemyObject)
+    {
+        enemyObject.SetActive(false);
+        enemyPool.Enqueue(enemyObject);
     }
 }

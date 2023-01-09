@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     private UpgradeManager upgradeManager;
     private StatisticsManager statisticsManager;
     private GameManager gameManager;
+    private WaveManager waveManager;
 
     [SerializeField]
     public EnemyScriptableObject variant;
@@ -22,30 +23,17 @@ public class Enemy : MonoBehaviour
 
     private int currentWaypointId = -1;
     private Transform waypointTarget;
-    public Transform[] waypoints;
+    private Transform[] waypoints;
 
     private void Awake()
     {
         upgradeManager = UpgradeManager.instance;
         statisticsManager = StatisticsManager.instance;
         gameManager = GameManager.instance;
+        waveManager = WaveManager.instance;
 
         rb = GetComponent<Rigidbody2D>();
         enemyEffectHandler = GetComponent<EnemyEffectHandler>();
-    }
-
-    void Start()
-    {
-        health = variant.health;
-        movementSpeed = variant.movementSpeed;
-        damage = variant.damage;
-
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-
-        spriteRenderer.sprite = variant.sprite;
-        spriteRenderer.material = variant.material;
-
-        SetNextWaypoint();
     }
 
     private void FixedUpdate()
@@ -58,9 +46,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void SetVariant(EnemyScriptableObject variant)
+    public Enemy SetVariant(EnemyScriptableObject variant)
     {
         this.variant = variant;
+        currentWaypointId = -1;
+
+        health = variant.health;
+        movementSpeed = variant.movementSpeed;
+        damage = variant.damage;
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spriteRenderer.sprite = variant.sprite;
+        spriteRenderer.material = variant.material;
+
+        return this;
     }
 
     public float DealDamage()
@@ -89,16 +89,17 @@ public class Enemy : MonoBehaviour
 
         statisticsManager.AddKilledBlocksCount();
         upgradeManager.IncreaseExperience();
-        Destroy(gameObject);
+
+        waveManager.PushToEnemyPool(gameObject);
     }
 
-    private void SetNextWaypoint()
+    public Enemy SetNextWaypoint()
     {
         currentWaypointId++;
 
         if(currentWaypointId > waypoints.Length - 2)
         {
-            return;
+            return this;
         }
 
         waypointTarget = waypoints[currentWaypointId + 1];
@@ -108,6 +109,8 @@ public class Enemy : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, zRot);
         rb.velocity = direction * movementSpeed;
+
+        return this;
     }
 
     public void SetMovementSpeed(float movementSpeed)
@@ -116,5 +119,12 @@ public class Enemy : MonoBehaviour
 
         Vector2 direction = (waypointTarget.position - transform.position).normalized;
         rb.velocity = direction * movementSpeed;
+    }
+
+    public Enemy SetWaypoints(Transform[] waypoints)
+    {
+        this.waypoints = waypoints;
+
+        return this;
     }
 }

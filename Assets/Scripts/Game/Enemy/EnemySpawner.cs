@@ -39,14 +39,18 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    public void SpawnEnemy()
     {
         int randomEnemyVariant = UnityEngine.Random.Range(0, waveManager.availableVariants.Count);
 
-        GameObject enemy = Instantiate(waveManager.enemyPrefab, this.transform.position, Quaternion.identity, waveManager.enemiesParent.transform);
-        enemy.GetComponent<Enemy>().SetVariant(waveManager.availableVariants[randomEnemyVariant]);
+        Enemy enemy = waveManager
+            .GetEnemyObject(this)
+            .GetComponent<Enemy>()
+            .SetVariant(waveManager.availableVariants[randomEnemyVariant])
+            .SetWaypoints(waypoints)
+            .SetNextWaypoint();
 
-        enemy.GetComponent<Enemy>().waypoints = waypoints;
+        enemy.SetMovementSpeed(enemy.variant.movementSpeed);
 
         waveManager.spawnedEnemies++;
         spawnedEnemies++;
