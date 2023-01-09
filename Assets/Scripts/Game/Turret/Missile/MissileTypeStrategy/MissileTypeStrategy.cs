@@ -17,6 +17,8 @@ public abstract class MissileTypeStrategy
 
     public virtual void Start() { }
 
+    public virtual void Update() { }
+
     public virtual void OnEnemyTriggerEnter2D(Collider2D collision) { }
 
     public virtual void OnEnemyTriggerStay2D(Collider2D collision) { }

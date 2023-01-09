@@ -15,6 +15,8 @@ public class Cannon : MonoBehaviour
 
     private CannonTypeStrategy cannonTypeStrategy;
 
+    public Queue<GameObject> missilePool;
+
     [HideInInspector]
     public int enemyLayerMask;
     private List<GameObject> enemiesInRange;
@@ -27,6 +29,8 @@ public class Cannon : MonoBehaviour
 
         enemiesInRange = new List<GameObject>();
         enemyLayerMask = LayerMask.GetMask("Enemy");
+
+        missilePool = new Queue<GameObject>();
     }
 
     private void Start()
@@ -98,6 +102,36 @@ public class Cannon : MonoBehaviour
         {
             laser.GetComponent<Missile>().PrepareMissile();
         }
+    }
+
+    public GameObject GetMissileObject()
+    {
+        GameObject missileObject;
+        bool isPoolEmpty = missilePool.TryDequeue(out missileObject);
+
+        if (!isPoolEmpty)
+        {
+            missileObject = Instantiate(turret.variant.MissilePrefab, transform.position, transform.rotation, transform.parent);
+
+            return missileObject;
+        }
+
+        missileObject.transform.position = transform.position;
+        missileObject.transform.rotation = transform.rotation;
+        missileObject.GetComponent<Missile>()
+            .SetTarget(target)
+            .PrepareMissile();
+
+        missileObject.SetActive(true);
+
+        return missileObject;
+
+    }
+
+    public void PushToMissilePool(GameObject missile)
+    {
+        missile.SetActive(false);
+        missilePool.Enqueue(missile);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

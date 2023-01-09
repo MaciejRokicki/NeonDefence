@@ -5,7 +5,7 @@ public class Turret : MonoBehaviour
     [SerializeField]
     public TurretScriptableObject variant;
 
-    private GameObject cannon;
+    public GameObject cannon;
     private GameObject aura;
 
     private SpriteRenderer spriteRenderer;

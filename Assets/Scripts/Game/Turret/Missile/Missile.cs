@@ -20,6 +20,7 @@ public class Missile : MonoBehaviour
 
     private void Update()
     {
+        missileTypeStrategy.Update();
         trackingMissileStrategy.Update();
     }
 
@@ -40,8 +41,6 @@ public class Missile : MonoBehaviour
 
                     missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
                     target = null;
-
-                    Destroy(gameObject);
                 }
             }
         }
@@ -63,8 +62,10 @@ public class Missile : MonoBehaviour
         }
     }
 
-    public void PrepareMissile()
+    public Missile PrepareMissile()
     {
+        hittedOnce = false;
+
         enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
 
         if (turret.poisonMissile)
@@ -117,6 +118,8 @@ public class Missile : MonoBehaviour
         }
 
         missileTypeStrategy.Start();
+
+        return this;
     }
 
     public Missile SetTurret(Turret turret)
