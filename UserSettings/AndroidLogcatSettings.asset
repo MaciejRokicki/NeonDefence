@@ -3,57 +3,45 @@
     "m_SelectedPackage": {
         "deviceId": "LMG710EM9621def7",
         "name": "com.mkr.neon",
-        "processId": 12924,
+        "processId": 28629,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "LMG710EM9621def7",
-            "name": "com.lge.launcher3",
-            "processId": 2993,
-            "exited": false
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 5066,
-            "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 5344,
-            "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 7823,
-            "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 8432,
-            "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 9275,
-            "exited": false
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
             "processId": 9573,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
             "processId": 12924,
+            "exited": true
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 27953,
+            "exited": true
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 28499,
+            "exited": true
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.lge.launcher3",
+            "processId": 3033,
+            "exited": false
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 28629,
             "exited": false
         }
     ],
