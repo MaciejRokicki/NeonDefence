@@ -131,15 +131,15 @@ public class TurretScriptableObject : ScriptableObject
 
     private void OnEnable()
     {
-        SetProperties();
+        SetDefaultProperties();
     }
 
     private void OnDisable()
     {
-        SetProperties();
+        SetDefaultProperties();
     }
 
-    private void SetProperties()
+    public void SetDefaultProperties()
     {
         Cost = _cost;
 

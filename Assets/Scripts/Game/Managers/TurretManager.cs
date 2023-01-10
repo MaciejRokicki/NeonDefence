@@ -63,6 +63,7 @@ public class TurretManager : MonoBehaviour
         for(int i = 0; i < turretVariants.Length; i++)
         {
             availableTurrets.Add(turretVariants[i]);
+            turretVariants[i].SetDefaultProperties();
         }
     }
 
