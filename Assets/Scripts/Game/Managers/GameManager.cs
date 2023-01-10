@@ -34,11 +34,6 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-
-        if(SystemInfo.deviceType == DeviceType.Handheld)
-        {
-            Application.targetFrameRate = 60;
-        }
     }
 
     private void Start()
