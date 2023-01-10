@@ -41,16 +41,17 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        int randomEnemyVariant = UnityEngine.Random.Range(0, waveManager.availableVariants.Count);
+        int randomEnemyVariant = Random.Range(0, waveManager.availableVariants.Count);
+        EnemyScriptableObject enemyRandVariant = waveManager.availableVariants[randomEnemyVariant];
 
         Enemy enemy = waveManager
             .GetEnemyObject(this)
             .GetComponent<Enemy>()
-            .SetVariant(waveManager.availableVariants[randomEnemyVariant])
+            .SetVariant(enemyRandVariant)
             .SetWaypoints(waypoints)
             .SetNextWaypoint();
 
-        enemy.SetMovementSpeed(enemy.variant.movementSpeed);
+        enemy.SetMovementSpeed(enemyRandVariant.movementSpeed);
 
         waveManager.spawnedEnemies++;
         spawnedEnemies++;

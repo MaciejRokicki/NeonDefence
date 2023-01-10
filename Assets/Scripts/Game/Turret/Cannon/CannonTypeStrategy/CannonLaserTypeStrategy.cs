@@ -22,7 +22,7 @@ public class CannonLaserTypeStrategy : CannonTypeStrategy
 
     public override void Update()
     {
-        if (cannon.target != null)
+        if (cannon.target != null && cannon.target.activeSelf)
         {
             cannon.GetComponent<Cannon>().RotateToTarget();
 

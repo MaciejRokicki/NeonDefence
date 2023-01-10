@@ -70,6 +70,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float dmg, Turret from)
     {
+        if(dmg <= 0.0f)
+        {
+            return;
+        }
+
         health -= dmg;
 
         if(health <= 0.0f)
@@ -85,10 +90,9 @@ public class Enemy : MonoBehaviour
             gameManager.IncreaseScore(variant.scoreOnKill);
             gameManager.IncreaseNeonBlocks(variant.neonBlocksOnKill);
             statisticsManager.AddKilledBlocksByTurret(killedBy.variant.name);
+            statisticsManager.AddKilledBlocksCount();
+            upgradeManager.IncreaseExperience();
         }
-
-        statisticsManager.AddKilledBlocksCount();
-        upgradeManager.IncreaseExperience();
 
         waveManager.PushToEnemyPool(gameObject);
     }
@@ -115,7 +119,7 @@ public class Enemy : MonoBehaviour
 
     public void SetMovementSpeed(float movementSpeed)
     {
-        this.movementSpeed = movementSpeed;
+        this.movementSpeed = variant.GetMovementSpeed() < movementSpeed ? variant.GetMovementSpeed() : movementSpeed;
 
         Vector2 direction = (waypointTarget.position - transform.position).normalized;
         rb.velocity = direction * movementSpeed;

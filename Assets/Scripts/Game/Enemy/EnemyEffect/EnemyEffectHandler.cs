@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyEffectHandler : MonoBehaviour 
@@ -26,6 +24,11 @@ public class EnemyEffectHandler : MonoBehaviour
 
     public void ApplyEffect(EnemyEffect enemyEffect)
     {
+        if(enemyEffect.effectDuration <= 0.0f)
+        {
+            return;
+        }
+
         bool isEffectDuplicated = false;
 
         foreach (EnemyEffect effect in effects)

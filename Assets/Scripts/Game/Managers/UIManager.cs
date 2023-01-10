@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts.Game.Upgrades.InRunUpgrades;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class UIManager : MonoBehaviour
 
     public bool blockGameInteraction = false;
 
+    // Pause/GameOver menu
+    [InspectorLabel("Pause/GameOver menu")]
     public GameObject PauseButton;
     public GameObject BuildingMenu;
 
@@ -39,6 +43,13 @@ public class UIManager : MonoBehaviour
     };
 
     public Button PAGO_Resume;
+
+    // Roll upgrades menu
+    [InspectorLabel("Roll upgrade menu")]
+    [SerializeField]
+    private GameObject rollUpgrades;
+    [SerializeField]
+    private RollUpgradeUI[] rollUpgradeUI;
 
     private void Awake()
     {
@@ -134,5 +145,25 @@ public class UIManager : MonoBehaviour
         HidePauseAndGameOverMenu();
         resolutionManager.SetNativeResolution();
         SceneManager.LoadScene(0);
+    }
+
+    public void ShowUpgradeRoll(InRunUpgradeScriptableObject[] inRunUpgrades)
+    {
+        blockGameInteraction = true;
+
+        for(int i = 0; i < rollUpgradeUI.Length; i++)
+        {
+            rollUpgradeUI[i].inRunUpgrade = inRunUpgrades[i];
+        }
+
+        rollUpgrades.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    public void HideUpgradeRoll()
+    {
+        rollUpgrades.SetActive(false);
+        Time.timeScale = 1.0f;
+        blockGameInteraction = false;
     }
 }

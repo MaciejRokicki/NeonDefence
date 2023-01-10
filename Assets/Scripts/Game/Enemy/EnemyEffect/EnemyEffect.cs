@@ -3,7 +3,7 @@
     public Turret turret;
     protected Enemy enemy;
     protected float effectTimer = 0.0f;
-    protected float effectDuration;
+    public float effectDuration;
 
     protected EnemyEffect(Turret turret, Enemy enemy, float effectDuration)
     {

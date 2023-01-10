@@ -30,4 +30,6 @@ public class EnemyScriptableObject : ScriptableObject
         movementSpeed = _movementSpeed;
         damage = _damage;
     }
+
+    public float GetMovementSpeed() => _movementSpeed;
 }

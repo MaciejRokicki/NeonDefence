@@ -10,7 +10,7 @@ public class UpgradeManager : MonoBehaviour
     private static UpgradeManager _instance;
     public static UpgradeManager instance { get { return _instance; } }
 
-    private UIManager uIManager;
+    private UIManager uiManager;
     private TurretManager turretManager;
     private TurretPlaceholder turretPlaceholder;
 
@@ -23,10 +23,6 @@ public class UpgradeManager : MonoBehaviour
     public delegate void ExperienceChangeCallback(int experience, int experienceToNextRoll);
     public event ExperienceChangeCallback OnExperienceChange;
 
-    [SerializeField]
-    private GameObject rollUpgrades;
-    [SerializeField]
-    private RollUpgradeUI[] rollUpgradeUI;
     private int rollUpgradesCount = 3;
     public TierScriptableObject[] tiers;
     public float tierMaxChance = 0.0f;
@@ -58,7 +54,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
-        uIManager = UIManager.instance;
+        uiManager = UIManager.instance;
         turretManager = TurretManager.instance;
         turretPlaceholder = TurretPlaceholder.instance;
     }
@@ -81,10 +77,9 @@ public class UpgradeManager : MonoBehaviour
     private void InRunUpgradeRoll()
     {
         turretManager.UnselectVariant();
-
-        uIManager.blockGameInteraction = true;
-
         rollUpgradesCollection = new InRunUpgradeScriptableObject[rollUpgradesCount];
+
+        InRunUpgradeScriptableObject[] inRunUpgrades = new InRunUpgradeScriptableObject[rollUpgradesCount];
 
         for (int i = 0; i < rollUpgradesCount; i ++)
         {
@@ -96,11 +91,10 @@ public class UpgradeManager : MonoBehaviour
                 inGameUpgradesToRand[inRunUpgrade.Tier.Name].Remove(inRunUpgrade);
             }
 
-            rollUpgradeUI[i].inRunUpgrade = inRunUpgrade;
+            inRunUpgrades[i] = inRunUpgrade;
         }
 
-        rollUpgrades.SetActive(true);
-        Time.timeScale = 0.0f;
+        uiManager.ShowUpgradeRoll(inRunUpgrades);
     }
 
     public void PickInRunUpgrade(int rollUpgradeId)
@@ -114,9 +108,7 @@ public class UpgradeManager : MonoBehaviour
 
         inRunUpgrade.Apply();
 
-        rollUpgrades.SetActive(false);
-        Time.timeScale = 1.0f;
-        uIManager.blockGameInteraction = false;
+        uiManager.HideUpgradeRoll();
     }
 
     #nullable enable
