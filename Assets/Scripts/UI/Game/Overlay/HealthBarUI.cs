@@ -33,7 +33,7 @@ public class HealthBarUI : MonoBehaviour
     {
         maxHealth = gameManager.GetMaxHealth();
 
-        healthTextBuilder.Append(health);
+        healthTextBuilder.Append((int)health);
         healthTextBuilder.Append(@"\");
         healthTextBuilder.Append(maxHealth);
 
