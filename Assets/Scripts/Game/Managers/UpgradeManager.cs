@@ -95,6 +95,8 @@ public class UpgradeManager : MonoBehaviour
         }
 
         uiManager.ShowUpgradeRoll(inRunUpgrades);
+
+        //PickInRunUpgrade(Random.Range(0, 3));
     }
 
     public void PickInRunUpgrade(int rollUpgradeId)

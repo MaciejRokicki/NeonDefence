@@ -96,12 +96,14 @@ public class Cannon : MonoBehaviour
         this.turret = turret;
     }
 
-    public void UpdateLaserMissileEffects()
+    public void UpdateCannon()
     {
         if(turret.variant.Laser && laser)
         {
             laser.GetComponent<Missile>().PrepareMissile();
         }
+
+        cannonCollider.radius = turret.range + 0.5f;
     }
 
     public GameObject GetMissileObject()

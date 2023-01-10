@@ -111,7 +111,7 @@ public class Turret : MonoBehaviour
 
         if(cannon)
         {
-            cannon.GetComponent<Cannon>().UpdateLaserMissileEffects();
+            cannon.GetComponent<Cannon>().UpdateCannon();
         }
     }
 
