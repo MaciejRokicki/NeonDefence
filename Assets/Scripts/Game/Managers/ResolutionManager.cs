@@ -6,6 +6,8 @@ public class ResolutionManager : MonoBehaviour
     public static ResolutionManager instance { get { return _instance; } }
 
     private Resolution nativeResolution;
+    private float aspectRatio;
+    private int scaledWidth = 720;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class ResolutionManager : MonoBehaviour
 
     private void Start()
     {
+        aspectRatio = (float)Screen.width / Screen.height;
+        Debug.Log(aspectRatio);
         SetScaledResolution();
     }
 
@@ -31,11 +35,8 @@ public class ResolutionManager : MonoBehaviour
         if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             Application.targetFrameRate = 60;
-
-            if (Screen.width > 720)
-            {
-                Screen.SetResolution((int)(Screen.width * 0.5), (int)(Screen.height * 0.5), true, 60);
-            }
+            
+            Screen.SetResolution((int)(scaledWidth * aspectRatio), scaledWidth, true);
         }
     }
 

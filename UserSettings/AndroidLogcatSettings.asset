@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "LMG710EM9621def7",
         "name": "com.mkr.neon",
-        "processId": 8791,
+        "processId": 1614,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -17,24 +17,6 @@
         {
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
-            "processId": 29705,
-            "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 30911,
-            "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 31248,
-            "exited": true
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
             "processId": 31818,
             "exited": true
         },
@@ -42,12 +24,24 @@
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
             "processId": 699,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
             "processId": 8791,
+            "exited": true
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 576,
+            "exited": true
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 1614,
             "exited": false
         }
     ],
