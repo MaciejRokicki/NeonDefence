@@ -139,6 +139,25 @@ public class TurretScriptableObject : ScriptableObject
         SetDefaultProperties();
     }
 
+    public float GetBaseDamage() => _damage;
+    public float GetBaseRange() => _range;
+    public float GetBaseRotationSpeed() => _rotationSpeed;
+    public float GetBaseMissilesPerSecond() => _missilesPerSecond;
+    public float GetBaseMissileSpeed() => _missileSpeed;
+    public float GetBaseLaserHitsPerSecond() => _laserHitsPerSecond;
+    public float GetBaseLaserActivationTime() => _laserActivationTime;
+    public float GetBaseLaserDeactivationTime() => _laserDeactivationTime;
+    public float GetBasePoisonDamage() => _poisonDamage;
+    public float GetBasePoisonHitRate() => _poisonHitRate;
+    public float GetBasePoisonDuration() => _poisonDuration;
+    public float GetBaseExplosionDamage() => _explosionDamage;
+    public float GetBaseExplosionRange() => _explosionRange;
+    public float GetBaseSlowdownEffectiveness() => _slowdownEffectiveness;
+    public float GetBaseSlowdownEffectDuration() => _slowdownEffectDuration;
+    public float GetBaseAuraDamage() => _auraDamage;
+    public float GetBaseAuraRange() => _auraRange;
+    public float GetBaseAuraSlowdownEffectiveness() => _auraSlowdownEffectiveness;
+
     public void SetDefaultProperties()
     {
         Cost = _cost;

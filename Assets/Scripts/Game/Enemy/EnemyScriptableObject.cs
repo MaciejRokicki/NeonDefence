@@ -31,5 +31,7 @@ public class EnemyScriptableObject : ScriptableObject
         damage = _damage;
     }
 
-    public float GetMovementSpeed() => _movementSpeed;
+    public float GetBaseHealth() => _health;
+    public float GetBaseMovementSpeed() => _movementSpeed;
+    public float GetBaseDamage() => _damage;
 }

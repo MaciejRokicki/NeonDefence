@@ -68,14 +68,14 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
         {
             if (turret.Aura)
             {
-                turret.AuraDamage += CalculatePropertyPercentage(turret.AuraDamage, AuraDamage, AuraDamageIsPercentage); ;
-                turret.AuraRange += CalculatePropertyPercentage(turret.AuraRange, AuraRange, AuraRangeIsPercentage); ;
+                turret.AuraDamage += CalculatePropertyPercentage(turret.GetBaseAuraDamage(), AuraDamage, AuraDamageIsPercentage); ;
+                turret.AuraRange += CalculatePropertyPercentage(turret.GetBaseAuraRange(), AuraRange, AuraRangeIsPercentage); ;
 
                 turret.AuraSlowdown = turret.AuraSlowdown || AuraSlowdown;
 
                 if (turret.AuraSlowdown)
                 {
-                    turret.AuraSlowdownEffectiveness += CalculatePropertyPercentage(turret.AuraSlowdownEffectiveness, AuraSlowdownEffectiveness, AuraSlowdownEffectivenessIsPercentage);
+                    turret.AuraSlowdownEffectiveness += CalculatePropertyPercentage(turret.GetBaseAuraSlowdownEffectiveness(), AuraSlowdownEffectiveness, AuraSlowdownEffectivenessIsPercentage);
                 }
             }
             else
@@ -86,41 +86,41 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
                 turret.TrackingMissile = turret.TrackingMissile || TrackingMissile;
                 turret.PenetrationMissile = turret.PenetrationMissile || PenetrationMissile;
 
-                turret.Damage += CalculatePropertyPercentage(turret.Damage, Damage, DamageIsPercentage); ;
-                turret.Range += CalculatePropertyPercentage(turret.Range, Range, RangeIsPercentage); ;
-                turret.RotationSpeed += CalculatePropertyPercentage(turret.RotationSpeed, RotationSpeed, RotationSpeedIsPercentage);
+                turret.Damage += CalculatePropertyPercentage(turret.GetBaseDamage(), Damage, DamageIsPercentage); ;
+                turret.Range += CalculatePropertyPercentage(turret.GetBaseRange(), Range, RangeIsPercentage); ;
+                turret.RotationSpeed += CalculatePropertyPercentage(turret.GetBaseRotationSpeed(), RotationSpeed, RotationSpeedIsPercentage);
 
                 if (turret.Missile)
                 {
-                    turret.MissilesPerSecond += CalculatePropertyPercentage(turret.MissilesPerSecond, MissilesPerSecond, MissilesPerSecondIsPercentage);
-                    turret.MissileSpeed += CalculatePropertyPercentage(turret.MissileSpeed, MissileSpeed, MissileSpeedIsPercentage);
+                    turret.MissilesPerSecond += CalculatePropertyPercentage(turret.GetBaseMissilesPerSecond(), MissilesPerSecond, MissilesPerSecondIsPercentage);
+                    turret.MissileSpeed += CalculatePropertyPercentage(turret.GetBaseMissileSpeed(), MissileSpeed, MissileSpeedIsPercentage);
                 }
 
                 if (turret.Laser)
                 {
-                    turret.LaserHitsPerSecond += CalculatePropertyPercentage(turret.LaserHitsPerSecond, LaserHitsPerSecond, LaserHitsPerSecondIsPercentage);
-                    turret.LaserActivationTime -= CalculatePropertyPercentage(turret.LaserActivationTime, LaserActivationTime, LaserActivationTimeIsPercentage);
-                    turret.LaserDeactivationTime -= CalculatePropertyPercentage(turret.LaserDeactivationTime, LaserDeactivationTime, LaserDeactivationTimeIsPercentage);
+                    turret.LaserHitsPerSecond += CalculatePropertyPercentage(turret.GetBaseLaserHitsPerSecond(), LaserHitsPerSecond, LaserHitsPerSecondIsPercentage);
+                    turret.LaserActivationTime -= CalculatePropertyPercentage(turret.GetBaseLaserActivationTime(), LaserActivationTime, LaserActivationTimeIsPercentage);
+                    turret.LaserDeactivationTime -= CalculatePropertyPercentage(turret.GetBaseLaserDeactivationTime(), LaserDeactivationTime, LaserDeactivationTimeIsPercentage);
                 }
 
                 if (turret.PoisonMissile)
                 {
-                    turret.PoisonDamage += CalculatePropertyPercentage(turret.PoisonDamage, PoisonDamage, PoisonDamageIsPercentage);
+                    turret.PoisonDamage += CalculatePropertyPercentage(turret.GetBasePoisonDamage(), PoisonDamage, PoisonDamageIsPercentage);
                     if (PoisonMissile)
                     {
-                        turret.PoisonHitRate = CalculatePropertyPercentage(turret.PoisonHitRate, PoisonHitRate, PoisonHitRateIsPercentage);
+                        turret.PoisonHitRate = CalculatePropertyPercentage(turret.GetBasePoisonHitRate(), PoisonHitRate, PoisonHitRateIsPercentage);
                     }
                     else
                     {
-                        turret.PoisonHitRate -= CalculatePropertyPercentage(turret.PoisonHitRate, PoisonHitRate, PoisonHitRateIsPercentage);
+                        turret.PoisonHitRate -= CalculatePropertyPercentage(turret.GetBasePoisonHitRate(), PoisonHitRate, PoisonHitRateIsPercentage);
                     }
-                    turret.PoisonDuration += CalculatePropertyPercentage(turret.PoisonDuration, PoisonDuration, PoisonDurationIsPercentage);
+                    turret.PoisonDuration += CalculatePropertyPercentage(turret.GetBasePoisonDuration(), PoisonDuration, PoisonDurationIsPercentage);
                 }
 
                 if (turret.SlowdownMissile)
                 {
-                    turret.SlowdownEffectiveness += CalculatePropertyPercentage(turret.SlowdownEffectiveness, SlowdownEffectiveness, SlowdownEffectivenessIsPercentage);
-                    turret.SlowdownEffectDuration += CalculatePropertyPercentage(turret.SlowdownEffectDuration, SlowdownEffectDuration, SlowdownEffectDurationIsPercentage);
+                    turret.SlowdownEffectiveness += CalculatePropertyPercentage(turret.GetBaseSlowdownEffectiveness(), SlowdownEffectiveness, SlowdownEffectivenessIsPercentage);
+                    turret.SlowdownEffectDuration += CalculatePropertyPercentage(turret.GetBaseSlowdownEffectDuration(), SlowdownEffectDuration, SlowdownEffectDurationIsPercentage);
                 }
 
                 if (turret.explosiveMissile)
@@ -132,8 +132,8 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
                         turret.ExplosionMaterial = ExplosionMaterial;
                     }
 
-                    turret.ExplosionDamage += CalculatePropertyPercentage(turret.ExplosionDamage, ExplosionDamage, ExplosionDamageIsPercentage);
-                    turret.ExplosionRange += CalculatePropertyPercentage(turret.ExplosionRange, ExplosionRange, ExplosionRangeIsPercentage);
+                    turret.ExplosionDamage += CalculatePropertyPercentage(turret.GetBaseExplosionDamage(), ExplosionDamage, ExplosionDamageIsPercentage);
+                    turret.ExplosionRange += CalculatePropertyPercentage(turret.GetBaseExplosionRange(), ExplosionRange, ExplosionRangeIsPercentage);
                     turret.CopyMissileEffects = turret.CopyMissileEffects || ExplosionCopyMissileEffects;
                 }
             }

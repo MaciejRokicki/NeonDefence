@@ -34,17 +34,17 @@ MonoBehaviour:
   _auraSlowdown: 1
   AuraSlowdown: 1
   _damage: 0
-  Damage: 0
+  Damage: 1
   _range: 0
-  Range: 0
+  Range: 5
   _rotationSpeed: 0
-  RotationSpeed: 0
+  RotationSpeed: 10
   _missilesPerSecond: 0
-  MissilesPerSecond: 0
+  MissilesPerSecond: 0.1
   _missileSpeed: 0
-  MissileSpeed: 0
+  MissileSpeed: 5
   _laserHitsPerSecond: 0
-  LaserHitsPerSecond: 0
+  LaserHitsPerSecond: 0.1
   _laserActivationTime: 0
   LaserActivationTime: 0
   _laserDeactivationTime: 0
@@ -52,19 +52,19 @@ MonoBehaviour:
   _poisonDamage: 0
   PoisonDamage: 0
   _poisonHitRate: 0
-  PoisonHitRate: 0
+  PoisonHitRate: 0.1
   _poisonDuration: 0
   PoisonDuration: 0
   _explosionDamage: 0
-  ExplosionDamage: 0
+  ExplosionDamage: 1
   _explosionRange: 0
-  ExplosionRange: 0
+  ExplosionRange: 3
   _slowdownEffectiveness: 0
   SlowdownEffectiveness: 0
   _slowdownEffectDuration: 0
   SlowdownEffectDuration: 0
   _auraDamage: 0
-  AuraDamage: 0
+  AuraDamage: 10
   _auraRange: 5
   AuraRange: 5
   _auraSlowdownEffectiveness: 0.5
