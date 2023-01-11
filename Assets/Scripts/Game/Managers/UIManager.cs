@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
 
     private StatisticsManager statisticsManager;
     private GameManager gameManager;
-    private ResolutionManager resolutionManager;
 
     public bool blockGameInteraction = false;
 
@@ -67,7 +66,6 @@ public class UIManager : MonoBehaviour
     {
         statisticsManager = StatisticsManager.instance;
         gameManager = GameManager.instance;
-        resolutionManager = ResolutionManager.instance;
     }
 
     public void ShowPauseAndGameOverMenu(bool gameOver = false)
@@ -136,14 +134,12 @@ public class UIManager : MonoBehaviour
     public void PlayAgain()
     {
         HidePauseAndGameOverMenu();
-        resolutionManager.SetNativeResolution();
         SceneManager.LoadScene(1);
     }
 
     public void MainMenu()
     {
         HidePauseAndGameOverMenu();
-        resolutionManager.SetNativeResolution();
         SceneManager.LoadScene(0);
     }
 
