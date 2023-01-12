@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "LMG710EM9621def7",
         "name": "com.mkr.neon",
-        "processId": 2122,
+        "processId": 3498,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,12 +13,6 @@
             "name": "com.lge.launcher3",
             "processId": 3033,
             "exited": false
-        },
-        {
-            "deviceId": "LMG710EM9621def7",
-            "name": "com.mkr.neon",
-            "processId": 699,
-            "exited": true
         },
         {
             "deviceId": "LMG710EM9621def7",
@@ -42,6 +36,12 @@
             "deviceId": "LMG710EM9621def7",
             "name": "com.mkr.neon",
             "processId": 2122,
+            "exited": true
+        },
+        {
+            "deviceId": "LMG710EM9621def7",
+            "name": "com.mkr.neon",
+            "processId": 3498,
             "exited": false
         }
     ],
