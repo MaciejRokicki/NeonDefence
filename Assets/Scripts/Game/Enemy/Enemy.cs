@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public EnemyScriptableObject variant;
     private Rigidbody2D rb;
+    private Animator animator;
 
     [SerializeField]
     private float health;
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
         waveManager = WaveManager.instance;
 
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         enemyEffectHandler = GetComponent<EnemyEffectHandler>();
     }
 
@@ -60,6 +62,8 @@ public class Enemy : MonoBehaviour
         spriteRenderer.sprite = variant.sprite;
         spriteRenderer.material = variant.material;
 
+        animator.enabled = true;
+
         return this;
     }
 
@@ -74,6 +78,9 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
+        if(gameObject.activeSelf)
+            animator.Play("EnemyHitAnimation");
 
         health -= dmg;
 
@@ -93,6 +100,8 @@ public class Enemy : MonoBehaviour
             statisticsManager.AddKilledBlocksCount();
             upgradeManager.IncreaseExperience();
         }
+
+        animator.enabled = false;
 
         waveManager.PushToEnemyPool(gameObject);
     }
