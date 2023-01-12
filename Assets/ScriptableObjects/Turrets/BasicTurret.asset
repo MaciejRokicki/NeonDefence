@@ -22,7 +22,7 @@ MonoBehaviour:
   _poisonMissile: 0
   PoisonMissile: 0
   _slowdownMissile: 0
-  SlowdownMissile: 1
+  SlowdownMissile: 0
   _explosiveMissile: 0
   explosiveMissile: 0
   _copyMissileEffects: 0
@@ -34,9 +34,9 @@ MonoBehaviour:
   _auraSlowdown: 0
   AuraSlowdown: 0
   _damage: 10
-  Damage: 10
+  Damage: 15
   _range: 5
-  Range: 5
+  Range: 8
   _rotationSpeed: 20
   RotationSpeed: 20
   _missilesPerSecond: 2
@@ -60,9 +60,9 @@ MonoBehaviour:
   _explosionRange: 0
   ExplosionRange: 3
   _slowdownEffectiveness: 0
-  SlowdownEffectiveness: 0.2
+  SlowdownEffectiveness: 0
   _slowdownEffectDuration: 0
-  SlowdownEffectDuration: 1
+  SlowdownEffectDuration: 0
   _auraDamage: 0
   AuraDamage: 0
   _auraRange: 0

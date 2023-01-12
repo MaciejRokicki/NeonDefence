@@ -5,6 +5,8 @@ public class Cannon : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private CircleCollider2D cannonCollider;
+    [SerializeField]
+    private Transform shootTransformPosition;
 
     private Turret turret;
     #nullable enable
@@ -113,13 +115,13 @@ public class Cannon : MonoBehaviour
 
         if (!isPoolEmpty)
         {
-            missileObject = Instantiate(turret.variant.MissilePrefab, transform.position, transform.rotation, transform.parent);
-
+            missileObject = Instantiate(turret.variant.MissilePrefab, shootTransformPosition.position, transform.rotation, transform.parent);
             return missileObject;
         }
 
-        missileObject.transform.position = transform.position;
+        missileObject.transform.position = shootTransformPosition.position;
         missileObject.transform.rotation = transform.rotation;
+
         missileObject.GetComponent<Missile>()
             .SetTarget(target)
             .PrepareMissile();
