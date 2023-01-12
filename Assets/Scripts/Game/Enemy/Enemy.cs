@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public EnemyScriptableObject variant;
     private Rigidbody2D rb;
     private Animator animator;
+    public SpriteRenderer effectSprite;
 
     [SerializeField]
     private float health;
@@ -21,6 +22,9 @@ public class Enemy : MonoBehaviour
     public float damage;
 
     public EnemyEffectHandler enemyEffectHandler;
+    public Color slowdownEffectSpriteColor;
+    public Color poisonEffectSpriteColor;
+    public Color poisonAndSlowdownEffectSpriteColor;
 
     private int currentWaypointId = -1;
     private Transform waypointTarget;
@@ -36,6 +40,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         enemyEffectHandler = GetComponent<EnemyEffectHandler>();
+        effectSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -61,6 +66,11 @@ public class Enemy : MonoBehaviour
 
         spriteRenderer.sprite = variant.sprite;
         spriteRenderer.material = variant.material;
+
+        GetComponent<SpriteMask>().sprite = variant.sprite;
+        effectSprite.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
+        enemyEffectHandler.Reset();
 
         animator.enabled = true;
 

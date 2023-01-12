@@ -21,7 +21,7 @@ MonoBehaviour:
   Laser: 0
   _poisonMissile: 0
   PoisonMissile: 0
-  _slowdownMissile: 1
+  _slowdownMissile: 0
   SlowdownMissile: 1
   _explosiveMissile: 0
   explosiveMissile: 0
@@ -59,10 +59,10 @@ MonoBehaviour:
   ExplosionDamage: 1
   _explosionRange: 0
   ExplosionRange: 3
-  _slowdownEffectiveness: 0.8
-  SlowdownEffectiveness: 0.8
-  _slowdownEffectDuration: 2
-  SlowdownEffectDuration: 2
+  _slowdownEffectiveness: 0
+  SlowdownEffectiveness: 0.2
+  _slowdownEffectDuration: 0
+  SlowdownEffectDuration: 1
   _auraDamage: 0
   AuraDamage: 0
   _auraRange: 0

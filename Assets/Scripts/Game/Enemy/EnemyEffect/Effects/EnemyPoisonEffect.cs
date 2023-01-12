@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 
-public class PoisonEffect : EnemyEffect
+public class EnemyPoisonEffect : EnemyEffect
 {
     private float damageCooldownTimer = 0.0f;
     private float damageCooldown;
     private float damageOverTime;
 
-    public PoisonEffect(Turret turret, Enemy enemy, float effectDuration, float damageCooldown, float damageOverTime) : base(turret, enemy, effectDuration)
+    public EnemyPoisonEffect(Turret turret, Enemy enemy, float effectDuration, float damageCooldown, float damageOverTime) : base(turret, enemy, effectDuration)
     {
         this.damageCooldown = damageCooldown;
         this.damageOverTime = damageOverTime;
+    }
+
+    public override void OnEffectStart()
+    {
+        enemy.enemyEffectHandler.poisonEffect = true;
     }
 
     public override void OnEffectHit()

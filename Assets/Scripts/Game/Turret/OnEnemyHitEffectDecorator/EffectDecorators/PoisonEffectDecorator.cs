@@ -23,7 +23,7 @@ public class PoisonEffectDecorator : EnemyHitEffectBaseDecorator
     public override void OnEnemyEnter(Enemy enemy)
     {
         enemyHitEffectComponent.OnEnemyEnter(enemy);
-        enemy.enemyEffectHandler.ApplyEffect(new PoisonEffect(turret, enemy, effectDuration, effectCooldown, effectEffectiveness));
+        enemy.enemyEffectHandler.ApplyEffect(new EnemyPoisonEffect(turret, enemy, effectDuration, effectCooldown, effectEffectiveness));
     }
 
     public override void OnEnemyExit(Enemy enemy)

@@ -12,6 +12,7 @@ public class EnemySlowdownEffect : EnemyEffect
     public override void OnEffectStart()
     {
         enemy.SetMovementSpeed(enemy.movementSpeed - slowdownEffectiveness);
+        enemy.enemyEffectHandler.slowdownEffect = true;
     }
 
     public override void OnEffectEnd()

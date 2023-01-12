@@ -12271,7 +12271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWave: 0
   currentWaveTime: 0
-  nextWaveRefresh: 0
+  nextWaveRefresh: 15
   spawnedEnemies: 0
   enemiesPerSpawner: 0
   enemySpawnTime: 1
