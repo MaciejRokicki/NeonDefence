@@ -4,6 +4,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private GameManager gameManager;
+    private UIManager uiManager;
 
     private CameraControllerStrategy cameraControllerStrategy;
 
@@ -33,10 +34,12 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         gameManager = GameManager.instance;
+        uiManager = UIManager.instance;
 
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
             cameraControllerStrategy = new DesktopCameraControllerStrategy(transform, this, spaceOffset, speed);
+            Camera.main.orthographicSize = 7.5f;
         }
         else if (SystemInfo.deviceType == DeviceType.Handheld)
         {
@@ -51,8 +54,11 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        cameraControllerStrategy.Move();
-        cameraControllerStrategy.Zoom();
+        if(!uiManager.blockGameInteraction)
+        {
+            cameraControllerStrategy.Move();
+            cameraControllerStrategy.Zoom();
+        }
     }
 
     public void MoveHandler(Vector3 targetPosition, float smoothTime = 0.05f)

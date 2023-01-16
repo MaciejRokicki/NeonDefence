@@ -43,6 +43,11 @@ public class Enemy : MonoBehaviour
         effectSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        animator.keepAnimatorControllerStateOnDisable = true;
+    }
+
     private void FixedUpdate()
     {
         float dist = Vector2.Distance(transform.position, waypointTarget.position);
@@ -66,13 +71,14 @@ public class Enemy : MonoBehaviour
 
         spriteRenderer.sprite = variant.sprite;
         spriteRenderer.material = variant.material;
+        spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
         GetComponent<SpriteMask>().sprite = variant.sprite;
         effectSprite.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 
-        enemyEffectHandler.Reset();
+        animator.Play("Idle", 0, 0f);
 
-        animator.enabled = true;
+        enemyEffectHandler.Reset();
 
         return this;
     }
@@ -102,7 +108,7 @@ public class Enemy : MonoBehaviour
 
     public void Death(Turret killedBy)
     {
-        if(killedBy)
+        if (killedBy)
         {
             gameManager.IncreaseScore(variant.scoreOnKill);
             gameManager.IncreaseNeonBlocks(variant.neonBlocksOnKill);
@@ -110,8 +116,6 @@ public class Enemy : MonoBehaviour
             statisticsManager.AddKilledBlocksCount();
             upgradeManager.IncreaseExperience();
         }
-
-        animator.enabled = false;
 
         waveManager.PushToEnemyPool(gameObject);
     }
