@@ -128,7 +128,7 @@ public class TurretDetails : MonoBehaviour
         float containerHeight = padding + activeProperties * cellSize.y + (activeProperties - 1) * spacing;
 
         GetComponent<RectTransform>().sizeDelta = new Vector2(450.0f, containerHeight);
-        GetComponent<RectTransform>().anchoredPosition = new Vector2(225.0f, containerHeight / 2 + 70.0f);
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(225.0f, containerHeight / 2 + 75.0f);
 
         if (showSellButton)
         {

@@ -121,13 +121,16 @@ public class UIManager : MonoBehaviour
 
     public void TogglePauseMenu(InputAction.CallbackContext ctxt)
     {
-        if(!PAGO.activeSelf)
+        if(!rollUpgrades.activeSelf)
         {
-            ShowPauseAndGameOverMenu();           
-        }
-        else
-        {
-            HidePauseAndGameOverMenu();
+            if (!PAGO.activeSelf)
+            {
+                ShowPauseAndGameOverMenu();
+            }
+            else
+            {
+                HidePauseAndGameOverMenu();
+            }
         }
     }
 
