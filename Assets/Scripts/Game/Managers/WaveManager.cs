@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class WaveManager : MonoBehaviour
 {
@@ -76,7 +75,7 @@ public class WaveManager : MonoBehaviour
 
         SetAvailableEnemyVariants();
 
-        int enemyMultiplier = currentWave / 10 == 0 ? 1 : currentWave / 10 + 1;
+        //int enemyMultiplier = currentWave / 10 == 0 ? 1 : currentWave / 10 + 1;
 
         if (currentWave > 9 && currentWave % 10 == 0)
         {
@@ -85,7 +84,7 @@ public class WaveManager : MonoBehaviour
             UpgradeEnemies();
         }
 
-        enemiesPerSpawner += enemyMultiplier * 2;
+        enemiesPerSpawner = 3 + Mathf.CeilToInt(currentWave * 1.3f);
 
         foreach (EnemySpawner spawner in enemySpawners)
         {
@@ -129,7 +128,7 @@ public class WaveManager : MonoBehaviour
         {
             enemy.health += enemy.health / 10.0f;
             enemy.damage++;
-            enemy.movementSpeed += 0.5f;
+            enemy.movementSpeed += 0.15f;
         }
     }
 

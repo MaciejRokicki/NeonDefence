@@ -12271,7 +12271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWave: 0
   currentWaveTime: 0
-  nextWaveRefresh: 0
+  nextWaveRefresh: 10
   spawnedEnemies: 0
   enemiesPerSpawner: 0
   enemySpawnTime: 1
@@ -21193,7 +21193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 269.99997, y: 17.49997}
+  m_AnchoredPosition: {x: 270, y: 17.5}
   m_SizeDelta: {x: 500, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623414109
