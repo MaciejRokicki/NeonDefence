@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Superior
   color: {r: 0.6839622, g: 0.9195344, b: 1, a: 0.43137255}
   material: {fileID: 2100000, guid: 444ebe00c503c2e43a59a67ddced25d3, type: 2}
-  MinChance: 60
-  MaxChance: 90
+  MinChance: 70
+  MaxChance: 95
