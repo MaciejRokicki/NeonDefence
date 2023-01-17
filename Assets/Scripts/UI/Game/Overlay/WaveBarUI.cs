@@ -50,7 +50,7 @@ public class WaveBarUI : MonoBehaviour
         waveTimeSpan = TimeSpan.FromSeconds(time);
 
         waveTimerLabelValue.text = waveTimeSpan.ToString(@"ss\.ff\s");
-        waveTimerFillBar.offsetMax = new Vector2(-(400.0f - 400.0f * time / 15.0f), waveTimerFillBar.offsetMax.y);
+        waveTimerFillBar.offsetMax = new Vector2(-(400.0f - 400.0f * time / waveManager.nextWaveRefresh), waveTimerFillBar.offsetMax.y);
     }
 
     private void OnEnemySpawn()
