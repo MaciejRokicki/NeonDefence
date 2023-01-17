@@ -1,7 +1,5 @@
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using Assets.Scripts.Game.Upgrades.InRunUpgrades;
 
@@ -14,8 +12,6 @@ public class UpgradeManager : MonoBehaviour
     private TurretManager turretManager;
     private TurretPlaceholder turretPlaceholder;
 
-    //TODO: usunac
-    [SerializeField]
     private int currentExperience = 0;
     [SerializeField]
     private int experienceToNextRoll = 2;
@@ -31,8 +27,6 @@ public class UpgradeManager : MonoBehaviour
 
     private Dictionary<string, List<InRunUpgradeScriptableObject>> inGameUpgradesToRand;
 
-    //TODO: usunac
-    [SerializeField]
     private InRunUpgradeScriptableObject[] rollUpgradesCollection;
 
     private void Awake()

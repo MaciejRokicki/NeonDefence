@@ -23,7 +23,8 @@ public class WaveManager : MonoBehaviour
     public GameObject enemiesParent;
     [SerializeField]
     private EnemyScriptableObject[] enemyVariants;
-    public List<EnemyScriptableObject> availableVariants; //TODO: HideInInspector
+    [HideInInspector]
+    public List<EnemyScriptableObject> availableVariants;
     [HideInInspector]
     public EnemySpawner[] enemySpawners;
 
