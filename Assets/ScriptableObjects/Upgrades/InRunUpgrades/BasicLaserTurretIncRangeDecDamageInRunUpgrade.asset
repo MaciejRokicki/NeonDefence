@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce6c598ef27c5541890af07caeb318e, type: 3}
+  m_Name: BasicLaserTurretIncRangeDecDamageInRunUpgrade
+  m_EditorClassIdentifier: 
+  Tier: {fileID: 11400000, guid: 19cb0744d0832e942a504e8952d5e6ad, type: 2}
+  Unique: 0
+  Description: '+ 0.75 range
+
+    - 0.5 damage'
+  Turret: {fileID: 11400000, guid: bdc47021dff72434991bb92f7cc76f4f, type: 2}
+  PoisonMissile: 0
+  ExplosiveMissile: 0
+  SlowdownMissile: 0
+  PenetrationMissile: 0
+  TrackingMissile: 0
+  AuraSlowdown: 0
+  Damage: -0.5
+  DamageIsPercentage: 0
+  Range: 0.75
+  RangeIsPercentage: 0
+  RotationSpeed: 0
+  RotationSpeedIsPercentage: 0
+  MissilesPerSecond: 0
+  MissilesPerSecondIsPercentage: 0
+  MissileSpeed: 0
+  MissileSpeedIsPercentage: 0
+  LaserHitsPerSecond: 0
+  LaserHitsPerSecondIsPercentage: 0
+  LaserActivationTime: 0
+  LaserActivationTimeIsPercentage: 0
+  LaserDeactivationTime: 0
+  LaserDeactivationTimeIsPercentage: 0
+  SlowdownEffectiveness: 0
+  SlowdownEffectivenessIsPercentage: 0
+  SlowdownEffectDuration: 0
+  SlowdownEffectDurationIsPercentage: 0
+  PoisonDamage: 0
+  PoisonDamageIsPercentage: 0
+  PoisonHitRate: 0
+  PoisonHitRateIsPercentage: 0
+  PoisonDuration: 0
+  PoisonDurationIsPercentage: 0
+  ExplosionPrefab: {fileID: 0}
+  ExplosionSprite: {fileID: 0}
+  ExplosionMaterial: {fileID: 0}
+  ExplosionDamage: 0
+  ExplosionDamageIsPercentage: 0
+  ExplosionRange: 0
+  ExplosionRangeIsPercentage: 0
+  ExplosionCopyMissileEffects: 1
+  AuraDamage: 2
+  AuraDamageIsPercentage: 0
+  AuraRange: 1
+  AuraRangeIsPercentage: 0
+  AuraSlowdownEffectiveness: 10
+  AuraSlowdownEffectivenessIsPercentage: 0
