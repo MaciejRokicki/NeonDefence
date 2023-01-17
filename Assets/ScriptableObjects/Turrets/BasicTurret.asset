@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
   m_Name: BasicTurret
   m_EditorClassIdentifier: 
-  _cost: 10
-  Cost: 10
+  _cost: 15
+  Cost: 25
   NeedTarget: 1
   Aura: 0
   TurretLimits: {fileID: 11400000, guid: 47ace63a74f294a49a9a6abb476ed10e, type: 2}
@@ -34,15 +34,15 @@ MonoBehaviour:
   _auraSlowdown: 0
   AuraSlowdown: 0
   _damage: 10
-  Damage: 15
+  Damage: 11
   _range: 5
-  Range: 8
+  Range: 6
   _rotationSpeed: 20
-  RotationSpeed: 20
+  RotationSpeed: 14
   _missilesPerSecond: 2
-  MissilesPerSecond: 2
+  MissilesPerSecond: 1.8
   _missileSpeed: 15
-  MissileSpeed: 15
+  MissileSpeed: 21.15
   _laserHitsPerSecond: 0
   LaserHitsPerSecond: 0.1
   _laserActivationTime: 0

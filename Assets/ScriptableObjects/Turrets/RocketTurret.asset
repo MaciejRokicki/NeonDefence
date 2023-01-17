@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
   m_Name: RocketTurret
   m_EditorClassIdentifier: 
-  _cost: 30
-  Cost: 30
+  _cost: 40
+  Cost: 60
   NeedTarget: 1
   Aura: 0
   TurretLimits: {fileID: 11400000, guid: 47ace63a74f294a49a9a6abb476ed10e, type: 2}
@@ -24,7 +24,7 @@ MonoBehaviour:
   _slowdownMissile: 0
   SlowdownMissile: 0
   _explosiveMissile: 1
-  xplosiveMissile: 1
+  explosiveMissile: 1
   _copyMissileEffects: 0
   CopyMissileEffects: 0
   _penetrationMissile: 0

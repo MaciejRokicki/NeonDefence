@@ -19,7 +19,7 @@ public class EnemySpawnerPathPlaceholder : MonoBehaviour
 
     private void UnlockPath(int wave)
     {
-        if (gameObject.activeSelf && enemySpawners[0].spawnStartWave <= wave)
+        if (gameObject.activeSelf && enemySpawners[0].spawnStartWave - 1 <= wave)
         {
             gameObject.SetActive(false);
         }

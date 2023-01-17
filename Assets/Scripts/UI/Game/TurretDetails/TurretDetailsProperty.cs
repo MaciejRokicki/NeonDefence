@@ -35,18 +35,6 @@ public class TurretDetailsProperty : MonoBehaviour
 
     public void SetValue(float value, FloatRangeProperty limit)
     {
-        //if(value == limit.Min || value == 0.0f)
-        //{
-        //    gameObject.SetActive(false);
-
-        //    return;
-        //}
-        //else
-        //{
-        //    gameObject.SetActive(true);
-        //    turretDetails.activeProperties++;
-        //}
-
         gameObject.SetActive(true);
 
         turretDetails.activeProperties++;
@@ -78,7 +66,7 @@ public class TurretDetailsProperty : MonoBehaviour
             }
             else
             {
-                stringBuilder.Append(value.ToString("0"));
+                stringBuilder.Append(value.ToString("0.0"));
             }
         }
 

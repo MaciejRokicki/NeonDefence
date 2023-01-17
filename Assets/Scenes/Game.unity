@@ -140,11 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -366,11 +366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -7159,7 +7159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -10467,11 +10467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -11114,9 +11114,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -11714,9 +11718,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -14422,7 +14430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapSize: {x: 50, y: 30}
   maxHealth: 100
-  neonBlocks: 9999999
+  neonBlocks: 100
 --- !u!1 &833100490
 GameObject:
   m_ObjectHideFlags: 0
@@ -17357,9 +17365,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -18335,8 +18347,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a020e2cc7162e374e83ce6fbe2c07396, type: 2}
   - {fileID: 11400000, guid: 7c7e5de210a2f6842bc7c834d7b70b57, type: 2}
   tierMaxChance: 0
-  inRunUpgrades: []
-  rollUpgradesCollection:
+  inRunUpgrades:
   - {fileID: 11400000, guid: 5ed0c2729170ab34cb4b22b5db72e2aa, type: 2}
   - {fileID: 11400000, guid: 26dd4debae6384e498dace590fac2dee, type: 2}
   - {fileID: 11400000, guid: 325e1ac003d522d4a9b682c157dd308a, type: 2}
@@ -18387,6 +18398,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86969edf9ec86a946942f39e44aeb309, type: 2}
   - {fileID: 11400000, guid: 0afe623997a9c0044b4685e805889479, type: 2}
   - {fileID: 11400000, guid: d28e4eabaeef0f3418b51d92550c12ce, type: 2}
+  rollUpgradesCollection: []
 --- !u!1001 &1245464120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24445,9 +24457,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 25
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -25031,11 +25047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -32952,11 +32968,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 25
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -43028,11 +43044,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: spawnStartWave
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size
@@ -44493,6 +44509,10 @@ PrefabInstance:
     - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704763892451351086, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179676639563343250, guid: 8100f31aa1d1082408062bb9eec18bd3, type: 3}
       propertyPath: waypoints.Array.size

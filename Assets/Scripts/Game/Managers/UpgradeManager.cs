@@ -66,7 +66,7 @@ public class UpgradeManager : MonoBehaviour
         if(currentExperience >= experienceToNextRoll)
         {
             currentExperience = currentExperience % experienceToNextRoll;
-            experienceToNextRoll = Mathf.CeilToInt(experienceToNextRoll * 1.5f);
+            experienceToNextRoll += 2;
 
             InRunUpgradeRoll();
         }

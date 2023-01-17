@@ -59,12 +59,18 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GetComponent<Image>().color = hoverColor;
+        if(availableToPurchase)
+        {
+            GetComponent<Image>().color = hoverColor;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        GetComponent<Image>().color = defaultColor;
+        if (availableToPurchase)
+        {
+            GetComponent<Image>().color = defaultColor;
+        }
     }
 
     public void OnClickDown()
