@@ -283,6 +283,7 @@ namespace Assets.Editor.Game.InRunUpgrade.CreationTool.Strategies
             turretUpgradeScriptableObject.SlowdownMissile = slowdownMissile;
             turretUpgradeScriptableObject.SlowdownEffectiveness = slowdownEffectiveness;
             turretUpgradeScriptableObject.SlowdownEffectivenessIsPercentage = slowdownEffectivenessIsPercentage;
+            turretUpgradeScriptableObject.SlowdownEffectDuration = slowdownEffectDuration;
             turretUpgradeScriptableObject.SlowdownEffectDurationIsPercentage = slowdownEffectDurationIsPercentage;
 
             turretUpgradeScriptableObject.ExplosiveMissile = explosiveMissile;

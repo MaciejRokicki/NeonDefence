@@ -30,7 +30,7 @@ MonoBehaviour:
   RotationSpeedIsPercentage: 1
   MissilesPerSecond: -0.1
   MissilesPerSecondIsPercentage: 1
-  MissileSpeed: 0.15
+  MissileSpeed: 0
   MissileSpeedIsPercentage: 0
   LaserHitsPerSecond: 0
   LaserHitsPerSecondIsPercentage: 0

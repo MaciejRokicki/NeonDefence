@@ -49,9 +49,9 @@ MonoBehaviour:
   SlowdownEffectDurationIsPercentage: 0
   PoisonDamage: 1
   PoisonDamageIsPercentage: 0
-  PoisonHitRate: 0.25
+  PoisonHitRate: 0.5
   PoisonHitRateIsPercentage: 0
-  PoisonDuration: 0.25
+  PoisonDuration: 2
   PoisonDurationIsPercentage: 0
   ExplosionPrefab: {fileID: 0}
   ExplosionSprite: {fileID: 0}

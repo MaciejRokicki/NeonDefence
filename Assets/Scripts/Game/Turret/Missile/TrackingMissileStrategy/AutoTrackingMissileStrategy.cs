@@ -26,4 +26,9 @@ public class AutoTrackingMissileStrategy : TrackingMissileStrategy
         baseGameObject.transform.position += direction * turret.missileSpeed * Time.deltaTime;
         baseGameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f);
     }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        changeDirection = false;
+    }
 }

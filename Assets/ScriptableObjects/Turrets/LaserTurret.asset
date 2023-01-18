@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
   m_Name: LaserTurret
   m_EditorClassIdentifier: 
-  _cost: 25
-  Cost: 35
+  _cost: 60
+  Cost: 60
   NeedTarget: 1
   Aura: 0
   TurretLimits: {fileID: 11400000, guid: 47ace63a74f294a49a9a6abb476ed10e, type: 2}
@@ -34,17 +34,17 @@ MonoBehaviour:
   _auraSlowdown: 0
   AuraSlowdown: 0
   _damage: 10
-  Damage: 11
+  Damage: 10
   _range: 7
-  Range: 6.5
+  Range: 7
   _rotationSpeed: 5
-  RotationSpeed: 10
+  RotationSpeed: 5
   _missilesPerSecond: 0
-  MissilesPerSecond: 0.1
+  MissilesPerSecond: 0
   _missileSpeed: 0
-  MissileSpeed: 5
+  MissileSpeed: 0
   _laserHitsPerSecond: 4
-  LaserHitsPerSecond: 4
+  LaserHitsPerSecond: 4.25
   _laserActivationTime: 0.75
   LaserActivationTime: 0.75
   _laserDeactivationTime: 0
@@ -52,13 +52,13 @@ MonoBehaviour:
   _poisonDamage: 0
   PoisonDamage: 0
   _poisonHitRate: 0
-  PoisonHitRate: 0.1
+  PoisonHitRate: 0
   _poisonDuration: 0
   PoisonDuration: 0
   _explosionDamage: 0
-  ExplosionDamage: 1
+  ExplosionDamage: 0
   _explosionRange: 0
-  ExplosionRange: 3
+  ExplosionRange: 0
   _slowdownEffectiveness: 0
   SlowdownEffectiveness: 0
   _slowdownEffectDuration: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   _auraDamage: 0
   AuraDamage: 0
   _auraRange: 0
-  AuraRange: 3
+  AuraRange: 0
   _auraSlowdownEffectiveness: 0
   AuraSlowdownEffectiveness: 0
   TurretIcon: {fileID: 21300000, guid: 74f2741a824bd184d962a80399441c88, type: 3}

@@ -30,6 +30,7 @@ public class Missile : MonoBehaviour
         {
             if(turret.penetrationMissile || turret.variant.Laser)
             {
+                trackingMissileStrategy.OnTriggerEnter2D(collision);
                 missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
                 target = null;
             }
@@ -39,6 +40,7 @@ public class Missile : MonoBehaviour
                 {
                     hittedOnce = true;
 
+                    trackingMissileStrategy.OnTriggerEnter2D(collision);
                     missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
                     target = null;
                 }

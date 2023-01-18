@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9e400d243cd0478d76c839d205b64, type: 3}
   m_Name: RocketTurret
   m_EditorClassIdentifier: 
-  _cost: 40
-  Cost: 60
+  _cost: 80
+  Cost: 80
   NeedTarget: 1
   Aura: 0
   TurretLimits: {fileID: 11400000, guid: 47ace63a74f294a49a9a6abb476ed10e, type: 2}
@@ -22,7 +22,7 @@ MonoBehaviour:
   _poisonMissile: 0
   PoisonMissile: 0
   _slowdownMissile: 0
-  SlowdownMissile: 0
+  SlowdownMissile: 1
   _explosiveMissile: 1
   explosiveMissile: 1
   _copyMissileEffects: 0
@@ -34,9 +34,9 @@ MonoBehaviour:
   _auraSlowdown: 0
   AuraSlowdown: 0
   _damage: 20
-  Damage: 20
+  Damage: 21
   _range: 20
-  Range: 20
+  Range: 19.5
   _rotationSpeed: 10
   RotationSpeed: 10
   _missilesPerSecond: 0.5
@@ -60,9 +60,9 @@ MonoBehaviour:
   _explosionRange: 3
   ExplosionRange: 3
   _slowdownEffectiveness: 0
-  SlowdownEffectiveness: 0
+  SlowdownEffectiveness: 5
   _slowdownEffectDuration: 0
-  SlowdownEffectDuration: 0
+  SlowdownEffectDuration: 0.25
   _auraDamage: 0
   AuraDamage: 0
   _auraRange: 0

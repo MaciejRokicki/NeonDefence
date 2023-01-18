@@ -13,4 +13,6 @@ public abstract class TrackingMissileStrategy
     }
 
     public abstract void Update();
+
+    public virtual void OnTriggerEnter2D(Collider2D collision) { }
 }
