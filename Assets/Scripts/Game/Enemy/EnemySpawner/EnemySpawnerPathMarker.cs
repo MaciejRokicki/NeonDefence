@@ -41,8 +41,6 @@ public class EnemySpawnerPathMarker : MonoBehaviour
             }
 
             transform.position = hitPoint;
-            //Vector3 dir = basePosition.normalized;
-            //transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         }
         else
         {
