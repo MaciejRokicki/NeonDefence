@@ -6,6 +6,8 @@ public class EnemySpawnerPathPlaceholder : MonoBehaviour
 
     [SerializeField]
     private EnemySpawner[] enemySpawners;
+    [SerializeField]
+    private EnemySpawnerPathMarker[] enemySpawnerPathMarkers;
 
     private void Awake()
     {
@@ -19,9 +21,25 @@ public class EnemySpawnerPathPlaceholder : MonoBehaviour
 
     private void UnlockPath(int wave)
     {
-        if (gameObject.activeSelf && enemySpawners[0].spawnStartWave - 1 <= wave)
+        if (enemySpawners[0].spawnStartWave - 1 <= wave)
         {
-            gameObject.SetActive(false);
+            foreach(EnemySpawnerPathMarker marker in enemySpawnerPathMarkers)
+            {
+                marker.gameObject.SetActive(true);
+            }
+        }
+
+        if (enemySpawners[0].spawnStartWave == wave)
+        {
+            if(gameObject.activeSelf)
+            {
+                gameObject.SetActive(false);
+            }
+
+            foreach (EnemySpawnerPathMarker marker in enemySpawnerPathMarkers)
+            {
+                marker.gameObject.SetActive(false);
+            }
         }
     }
 }
