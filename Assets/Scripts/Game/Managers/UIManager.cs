@@ -19,20 +19,31 @@ public class UIManager : MonoBehaviour
 
     public bool blockGameInteraction = false;
 
-    // Pause/GameOver menu
+    #region Pause/GameOver menu
     [InspectorLabel("Pause/GameOver menu")]
-    public GameObject PauseButton;
-    public GameObject BuildingMenu;
+    [SerializeField]
+    private GameObject PauseButton;
+    [SerializeField]
+    private GameObject BuildingMenu;
 
-    public GameObject PAGO;
-    public TextMeshProUGUI PAGO_Title;
-    public TextMeshProUGUI PAGO_GameInfoSection_Score;
-    public TextMeshProUGUI PAGO_GameInfoSection_TimePlayed;
-    public TextMeshProUGUI PAGO_GameInfoSection_KilledBlocks;
-    public TextMeshProUGUI PAGO_GameInfoSection_PickedUpgrades;
-    public TextMeshProUGUI PAGO_GameInfoSection_EarnedNeonBlocks;
+    [SerializeField]
+    private GameObject PAGO;
+    [SerializeField]
+    private TextMeshProUGUI PAGO_Title;
+    [SerializeField]
+    private TextMeshProUGUI PAGO_GameInfoSection_Score;
+    [SerializeField]
+    private TextMeshProUGUI PAGO_GameInfoSection_TimePlayed;
+    [SerializeField]
+    private TextMeshProUGUI PAGO_GameInfoSection_KilledBlocks;
+    [SerializeField]
+    private TextMeshProUGUI PAGO_GameInfoSection_PickedUpgrades;
+    [SerializeField]
+    private TextMeshProUGUI PAGO_GameInfoSection_EarnedNeonBlocks;
 
-    public TurretStatsInfo[] turretStatsInfos;
+    [SerializeField]
+    private TurretStatsInfo[] turretStatsInfos;
+    [SerializeField]
     private readonly Dictionary<int, string> turretIds = new()
     {
         { 0, "BasicTurret" },
@@ -41,14 +52,20 @@ public class UIManager : MonoBehaviour
         { 3 , "AuraTurret" }
     };
 
-    public Button PAGO_Resume;
+    [SerializeField]
+    private Button PAGO_Resume;
+    [SerializeField]
+    private Button PAGO_Exit;
+    
+    #endregion
 
-    // Roll upgrades menu
+    #region Roll upgrades menu
     [InspectorLabel("Roll upgrade menu")]
     [SerializeField]
     private GameObject rollUpgrades;
     [SerializeField]
     private RollUpgradeUI[] rollUpgradeUI;
+    #endregion
 
     private void Awake()
     {
@@ -66,6 +83,11 @@ public class UIManager : MonoBehaviour
     {
         statisticsManager = StatisticsManager.instance;
         gameManager = GameManager.instance;
+
+        if(SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            PAGO_Exit.gameObject.SetActive(true);
+        }
     }
 
     public void ShowPauseAndGameOverMenu(bool gameOver = false)
@@ -144,6 +166,11 @@ public class UIManager : MonoBehaviour
     {
         HidePauseAndGameOverMenu();
         SceneManager.LoadScene(0);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     public void ShowUpgradeRoll(InRunUpgradeScriptableObject[] inRunUpgrades)

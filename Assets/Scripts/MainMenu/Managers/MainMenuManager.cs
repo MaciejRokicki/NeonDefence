@@ -7,6 +7,8 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI mainMenuPressAnyKey;
+    [SerializeField]
+    private GameObject pressEscapeToExitObject;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
             default:
                 mainMenuPressAnyKey.text = "Press any key to play";
+                pressEscapeToExitObject.SetActive(true);
                 break;
         }
     }
@@ -25,5 +28,10 @@ public class MainMenuManager : MonoBehaviour
     public void LoadGame(InputAction.CallbackContext ctxt)
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ExitGame(InputAction.CallbackContext ctxt)
+    {
+        Application.Quit();
     }
 }
