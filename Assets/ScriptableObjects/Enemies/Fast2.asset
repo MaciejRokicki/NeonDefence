@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 710aa6daa5ae36c4ebc2073de94358d0, type: 3}
-  m_Name: Tank
+  m_Name: Fast2
   m_EditorClassIdentifier: 
-  scoreOnKill: 5
-  neonBlocksOnKill: 3
-  _health: 200
-  health: 200
-  _movementSpeed: 1
-  movementSpeed: 1
-  _damage: 3
-  damage: 3
-  sprite: {fileID: 21300000, guid: 07cbc98c8042e1a4eb5c34fd9f69d3cc, type: 3}
-  material: {fileID: 2100000, guid: 6a059ad16cf772049a345b33cac73d52, type: 2}
-  minWave: 15
+  scoreOnKill: 8
+  neonBlocksOnKill: 4
+  _health: 150
+  health: 165
+  _movementSpeed: 7
+  movementSpeed: 7.15
+  _damage: 5
+  damage: 6
+  sprite: {fileID: 21300000, guid: da0bccd185412564fa5708a57e76c191, type: 3}
+  material: {fileID: 2100000, guid: 0f10361e4bbb12b41b4b6fcc647827cb, type: 2}
+  minWave: 25

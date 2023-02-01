@@ -22,4 +22,4 @@ MonoBehaviour:
   damage: 2
   sprite: {fileID: 21300000, guid: 1d1237dccb48e134e88965469dc3f9f2, type: 3}
   material: {fileID: 2100000, guid: 2af59e115ef7c3f4bb52a51c465d83b6, type: 2}
-  minWave: 3
+  minWave: 7

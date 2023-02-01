@@ -12572,7 +12572,11 @@ MonoBehaviour:
   enemyVariants:
   - {fileID: 11400000, guid: 63160d4f58da286418f029228055a41b, type: 2}
   - {fileID: 11400000, guid: 515266bc261494e469792eaa53e671a0, type: 2}
+  - {fileID: 11400000, guid: 4ad107441db8a6f44937d747886b5345, type: 2}
+  - {fileID: 11400000, guid: b8434b6cbdaf54c448c27955c4539860, type: 2}
+  - {fileID: 11400000, guid: 0f800f3fde71837479ec597c48107b91, type: 2}
   - {fileID: 11400000, guid: 3becda1e96719b94e8527b9d7c0665e1, type: 2}
+  - {fileID: 11400000, guid: 4095ba54e0fdcde499a35fedfcd609e8, type: 2}
   availableVariants: []
   enemySpawners: []
 --- !u!1 &768031761
@@ -14068,7 +14072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: {x: 50, y: 30}
-  maxHealth: 100
+  maxHealth: 1e+10
   neonBlocks: 200
 --- !u!1 &833100490
 GameObject:

@@ -9,12 +9,15 @@ public class EnemyScriptableObject : ScriptableObject
     [Header("Statistics")]
     [SerializeField]
     private float _health;
+    [HideInInspector]
     public float health;
     [SerializeField]
     private float _movementSpeed;
+    [HideInInspector]
     public float movementSpeed;
     [SerializeField]
     private float _damage;
+    [HideInInspector]
     public float damage;
 
     [Header("Appearance")]
