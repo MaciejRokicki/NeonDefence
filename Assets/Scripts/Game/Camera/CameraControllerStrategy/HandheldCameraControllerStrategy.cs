@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
@@ -14,6 +15,8 @@ public class HandheldCameraControllerStrategy : CameraControllerStrategy
     public HandheldCameraControllerStrategy(Transform cameraTransform, CameraController cameraController) : base(cameraTransform, cameraController)
     {
         turretManager = TurretManager.instance;
+
+        EnhancedTouchSupport.Enable();
     }
 
     public override void Move()

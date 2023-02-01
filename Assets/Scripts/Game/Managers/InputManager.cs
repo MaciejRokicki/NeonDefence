@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class InputManager : MonoBehaviour
 {
