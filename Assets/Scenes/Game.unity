@@ -14072,7 +14072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: {x: 50, y: 30}
-  maxHealth: 1e+10
+  maxHealth: 100
   neonBlocks: 200
 --- !u!1 &833100490
 GameObject:

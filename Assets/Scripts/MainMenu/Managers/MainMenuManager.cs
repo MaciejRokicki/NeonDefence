@@ -27,6 +27,12 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadGame(InputAction.CallbackContext ctxt)
     {
+        if(SystemInfo.deviceType == DeviceType.Desktop && (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.escapeKey.isPressed || Keyboard.current.escapeKey.wasReleasedThisFrame))
+        {
+            ExitGame(ctxt);
+            return;
+        }
+
         SceneManager.LoadScene(1);
     }
 
