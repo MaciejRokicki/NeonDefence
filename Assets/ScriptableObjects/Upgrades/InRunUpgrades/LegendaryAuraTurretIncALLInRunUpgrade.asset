@@ -62,7 +62,7 @@ MonoBehaviour:
   ExplosionCopyMissileEffects: 1
   AuraDamage: 2
   AuraDamageIsPercentage: 0
-  AuraRange: 1
+  AuraRange: 2
   AuraRangeIsPercentage: 0
   AuraSlowdownEffectiveness: 10
   AuraSlowdownEffectivenessIsPercentage: 0

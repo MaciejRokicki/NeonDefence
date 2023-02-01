@@ -68,8 +68,8 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
         {
             if (turret.Aura)
             {
-                turret.AuraDamage += CalculatePropertyPercentage(turret.GetBaseAuraDamage(), AuraDamage, AuraDamageIsPercentage); ;
-                turret.AuraRange += CalculatePropertyPercentage(turret.GetBaseAuraRange(), AuraRange, AuraRangeIsPercentage); ;
+                turret.AuraDamage += CalculatePropertyPercentage(turret.GetBaseAuraDamage(), AuraDamage, AuraDamageIsPercentage);
+                turret.AuraRange += CalculatePropertyPercentage(turret.GetBaseAuraRange(), AuraRange, AuraRangeIsPercentage);
 
                 turret.AuraSlowdown = turret.AuraSlowdown || AuraSlowdown;
 
@@ -86,8 +86,8 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
                 turret.TrackingMissile = turret.TrackingMissile || TrackingMissile;
                 turret.PenetrationMissile = turret.PenetrationMissile || PenetrationMissile;
 
-                turret.Damage += CalculatePropertyPercentage(turret.GetBaseDamage(), Damage, DamageIsPercentage); ;
-                turret.Range += CalculatePropertyPercentage(turret.GetBaseRange(), Range, RangeIsPercentage); ;
+                turret.Damage += CalculatePropertyPercentage(turret.GetBaseDamage(), Damage, DamageIsPercentage);
+                turret.Range += CalculatePropertyPercentage(turret.GetBaseRange(), Range, RangeIsPercentage);
                 turret.RotationSpeed += CalculatePropertyPercentage(turret.GetBaseRotationSpeed(), RotationSpeed, RotationSpeedIsPercentage);
 
                 if (turret.Missile)

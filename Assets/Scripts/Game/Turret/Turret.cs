@@ -113,6 +113,14 @@ public class Turret : MonoBehaviour
         {
             cannon.GetComponent<Cannon>().UpdateCannon();
         }
+
+        if(aura)
+        {
+            CircleCollider2D auraCircleCollider2D = transform.GetChild(0).GetComponent<CircleCollider2D>();
+
+            auraCircleCollider2D.radius = auraRange / 2f;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(auraRange, auraRange);
+        }
     }
 
     private void ClampProperties()
