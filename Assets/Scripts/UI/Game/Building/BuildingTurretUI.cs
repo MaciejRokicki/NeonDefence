@@ -12,7 +12,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private TurretDetails turretDetails;
     private UIManager uiManager;
 
-    public TurretScriptableObject variant;
+    public TurretScriptableObject Variant;
 
     [SerializeField]
     private GameObject priceLabelUI;
@@ -31,14 +31,14 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private void Start()
     {
         gameManager = GameManager.instance;
-        buildingManager = TurretManager.instance;
+        buildingManager = TurretManager.Instance;
         turretDetails = TurretDetails.instance;
         uiManager = UIManager.instance;
 
-        GetComponent<Image>().sprite = variant.TurretIcon;
-        GetComponent<Image>().material = variant.TurretIconMaterial;
+        GetComponent<Image>().sprite = Variant.TurretIcon;
+        GetComponent<Image>().material = Variant.TurretIconMaterial;
 
-        priceLabelUI.GetComponent<TextMeshProUGUI>().text = variant.Cost.ToString();
+        UpdateCost();
 
         gameManager.OnNeonBlockChange += OnNeonBlocksChange;
 
@@ -47,7 +47,7 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void OnNeonBlocksChange(int neonBlocks)
     {
-        if (neonBlocks >= variant.Cost)
+        if (neonBlocks >= Variant.Cost)
         {
             SetAvailableToPurchase();
         }
@@ -79,8 +79,8 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         {
             if (Touch.activeFingers.Count == 0)
             {
-                buildingManager.SelectVariant(variant);
-                turretDetails.Show(variant);
+                buildingManager.SelectVariant(Variant);
+                turretDetails.Show(Variant);
             }
             else if (Touch.activeFingers.Count == 1)
             {
@@ -88,8 +88,8 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 {
                     if (!onTouchDrag)
                     {
-                        buildingManager.SelectVariant(variant);
-                        turretDetails.Show(variant);
+                        buildingManager.SelectVariant(Variant);
+                        turretDetails.Show(Variant);
                     }
 
                     onTouchDrag = true;
@@ -116,5 +116,10 @@ public class BuildingTurretUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         GetComponent<Image>().color = unavailableBackgroundColor;
         availableToPurchase = false;
+    }
+
+    public void UpdateCost()
+    {
+        priceLabelUI.GetComponent<TextMeshProUGUI>().text = Variant.Cost.ToString();
     }
 }

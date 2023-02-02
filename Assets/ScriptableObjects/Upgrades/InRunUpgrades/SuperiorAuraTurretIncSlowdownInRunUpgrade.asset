@@ -60,5 +60,5 @@ MonoBehaviour:
   AuraDamageIsPercentage: 0
   AuraRange: 0
   AuraRangeIsPercentage: 0
-  AuraSlowdownEffectiveness: 5
+  AuraSlowdownEffectiveness: 0.05
   AuraSlowdownEffectivenessIsPercentage: 0

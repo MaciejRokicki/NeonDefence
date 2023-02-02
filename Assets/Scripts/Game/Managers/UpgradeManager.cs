@@ -49,7 +49,7 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         uiManager = UIManager.instance;
-        turretManager = TurretManager.instance;
+        turretManager = TurretManager.Instance;
         turretPlaceholder = TurretPlaceholder.instance;
     }
 
@@ -89,8 +89,6 @@ public class UpgradeManager : MonoBehaviour
         }
 
         uiManager.ShowUpgradeRoll(inRunUpgrades);
-
-        //PickInRunUpgrade(Random.Range(0, 3));
     }
 
     public void PickInRunUpgrade(int rollUpgradeId)

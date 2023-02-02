@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: 
   scoreOnKill: 5
-  neonBlocksOnKill: 3
+  neonBlocksOnKill: 4
   _health: 200
   health: 200
   _movementSpeed: 1

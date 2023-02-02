@@ -33,7 +33,7 @@ public class TurretPlaceholder : MonoBehaviour
 
     private void Start()
     {
-        buildingManager = TurretManager.instance;
+        buildingManager = TurretManager.Instance;
     }
 
     private void Update()

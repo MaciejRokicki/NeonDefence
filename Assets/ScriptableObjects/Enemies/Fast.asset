@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fast
   m_EditorClassIdentifier: 
   scoreOnKill: 4
-  neonBlocksOnKill: 2
+  neonBlocksOnKill: 3
   _health: 50
   health: 50
   _movementSpeed: 5

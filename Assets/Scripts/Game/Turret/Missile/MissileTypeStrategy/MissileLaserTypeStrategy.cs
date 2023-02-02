@@ -23,10 +23,10 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
     {
         timer += Time.deltaTime;
 
-        if (timer > 1.0f / turret.laserHitsPerSecond)
+        if (timer > 1.0f / turret.LaserHitsPerSecond)
         {
             enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
-            collision.GetComponent<Enemy>().TakeDamage(turret.damage, turret);
+            collision.GetComponent<Enemy>().TakeDamage(turret.Damage, turret);
 
             timer = 0.0f;
         }

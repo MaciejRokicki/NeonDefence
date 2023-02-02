@@ -149,7 +149,7 @@ namespace Assets.Scripts.Game.Upgrades.InRunUpgrades
             }
             else
             {
-                foreach (TurretScriptableObject turret in TurretManager.instance.turretVariants)
+                foreach (TurretScriptableObject turret in TurretManager.Instance.TurretVariants)
                 {
                     SetTurretProperties(turret);
                 }

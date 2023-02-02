@@ -5,45 +5,47 @@ public class Turret : MonoBehaviour
     [SerializeField]
     public TurretScriptableObject variant;
 
-    public GameObject cannon;
+    public int Cost;
+
+    public GameObject Cannon;
     private GameObject aura;
 
     private SpriteRenderer spriteRenderer;
 
-    public bool poisonMissile;
-    public bool explosiveMissile;
-    public bool slowdownMissile;
-    public bool trackingMissile;
-    public bool penetrationMissile;
+    public bool PoisonMissile;
+    public bool ExplosiveMissile;
+    public bool SlowdownMissile;
+    public bool TrackingMissile;
+    public bool PenetrationMissile;
 
-    public float damage;
-    public float range;
-    public float rotationSpeed;
-    public float missilesPerSecond;
-    public float missileSpeed;
+    public float Damage;
+    public float Range;
+    public float RotationSpeed;
+    public float MissilesPerSecond;
+    public float MissileSpeed;
 
-    public float laserHitsPerSecond;
-    public float laserActivationTime;
-    public float laserDeactivationTime;
+    public float LaserHitsPerSecond;
+    public float LaserActivationTime;
+    public float LaserDeactivationTime;
 
-    public float slowdownEffectiveness;
-    public float slowdownEffectDuration;
+    public float SlowdownEffectiveness;
+    public float SlowdownEffectDuration;
 
-    public float poisonDamage;
-    public float poisonHitRate;
-    public float poisonDuration;
+    public float PoisonDamage;
+    public float PoisonHitRate;
+    public float PoisonDuration;
 
-    public GameObject explosionPrefab;
-    public Sprite explosionSprite;
-    public Material explosionMaterial;
-    public float explosionDamage;
-    public float explosionRange;
-    public bool explosionCopyMissileEffects;
+    public GameObject ExplosionPrefab;
+    public Sprite ExplosionSprite;
+    public Material ExplosionMaterial;
+    public float ExplosionDamage;
+    public float ExplosionRange;
+    public bool ExplosionCopyMissileEffects;
 
-    public float auraDamage;
-    public float auraRange;
+    public float AuraDamage;
+    public float AuraRange;
 
-    public float auraSlowdownEffectiveness;
+    public float AuraSlowdownEffectiveness;
 
     private void Awake()
     {
@@ -54,8 +56,8 @@ public class Turret : MonoBehaviour
     {
         if (variant.NeedTarget)
         {
-            cannon = Instantiate(variant.CannonPrefab, transform.position, Quaternion.identity, transform);
-            cannon.GetComponent<Cannon>().SetTurret(this);
+            Cannon = Instantiate(variant.CannonPrefab, transform.position, Quaternion.identity, transform);
+            Cannon.GetComponent<Cannon>().SetTurret(this);
         }
 
         if (variant.Aura)
@@ -74,52 +76,52 @@ public class Turret : MonoBehaviour
         spriteRenderer.sprite = variant.TurretSprite;
         spriteRenderer.material = variant.TurretMaterial;
 
-        poisonMissile = variant.PoisonMissile;
-        slowdownMissile = variant.SlowdownMissile;
-        explosiveMissile = variant.explosiveMissile;
-        trackingMissile = variant.TrackingMissile;
-        penetrationMissile = variant.PenetrationMissile;
+        PoisonMissile = variant.PoisonMissile;
+        SlowdownMissile = variant.SlowdownMissile;
+        ExplosiveMissile = variant.explosiveMissile;
+        TrackingMissile = variant.TrackingMissile;
+        PenetrationMissile = variant.PenetrationMissile;
 
-        damage = variant.Damage;
-        range = variant.Range;
-        rotationSpeed = variant.RotationSpeed;
-        missilesPerSecond = variant.MissilesPerSecond;
-        missileSpeed = variant.MissileSpeed;
+        Damage = variant.Damage;
+        Range = variant.Range;
+        RotationSpeed = variant.RotationSpeed;
+        MissilesPerSecond = variant.MissilesPerSecond;
+        MissileSpeed = variant.MissileSpeed;
 
-        laserHitsPerSecond = variant.LaserHitsPerSecond;
-        laserActivationTime = variant.LaserActivationTime;
-        laserDeactivationTime = variant.LaserDeactivationTime;
+        LaserHitsPerSecond = variant.LaserHitsPerSecond;
+        LaserActivationTime = variant.LaserActivationTime;
+        LaserDeactivationTime = variant.LaserDeactivationTime;
 
-        slowdownEffectiveness = variant.SlowdownEffectiveness;
-        slowdownEffectDuration = variant.SlowdownEffectDuration;
+        SlowdownEffectiveness = variant.SlowdownEffectiveness;
+        SlowdownEffectDuration = variant.SlowdownEffectDuration;
 
-        poisonDamage = variant.PoisonDamage;
-        poisonHitRate = variant.PoisonHitRate;
-        poisonDuration = variant.PoisonDuration;
+        PoisonDamage = variant.PoisonDamage;
+        PoisonHitRate = variant.PoisonHitRate;
+        PoisonDuration = variant.PoisonDuration;
 
-        explosionPrefab = variant.ExplosionPrefab;
-        explosionSprite = variant.ExplosionSprite;
-        explosionMaterial = variant.ExplosionMaterial;
-        explosionDamage = variant.ExplosionDamage;
-        explosionRange = variant.ExplosionRange;
-        explosionCopyMissileEffects = variant.CopyMissileEffects;
+        ExplosionPrefab = variant.ExplosionPrefab;
+        ExplosionSprite = variant.ExplosionSprite;
+        ExplosionMaterial = variant.ExplosionMaterial;
+        ExplosionDamage = variant.ExplosionDamage;
+        ExplosionRange = variant.ExplosionRange;
+        ExplosionCopyMissileEffects = variant.CopyMissileEffects;
 
-        auraDamage = variant.AuraDamage;
-        auraRange = variant.AuraRange;
+        AuraDamage = variant.AuraDamage;
+        AuraRange = variant.AuraRange;
 
-        auraSlowdownEffectiveness = variant.AuraSlowdownEffectiveness;
+        AuraSlowdownEffectiveness = variant.AuraSlowdownEffectiveness;
 
-        if(cannon)
+        if(Cannon)
         {
-            cannon.GetComponent<Cannon>().UpdateCannon();
+            Cannon.GetComponent<Cannon>().UpdateCannon();
         }
 
         if(aura)
         {
             CircleCollider2D auraCircleCollider2D = transform.GetChild(0).GetComponent<CircleCollider2D>();
 
-            auraCircleCollider2D.radius = auraRange / 2f;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(auraRange, auraRange);
+            auraCircleCollider2D.radius = AuraRange / 2f;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(AuraRange, AuraRange);
         }
     }
 

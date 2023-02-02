@@ -30,6 +30,8 @@ public class WaveManager : MonoBehaviour
 
     public Queue<GameObject> enemyPool;
 
+    private float enemyMultiplier = 1.0f;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -76,16 +78,17 @@ public class WaveManager : MonoBehaviour
 
         SetAvailableEnemyVariants();
 
-        //int enemyMultiplier = currentWave / 10 == 0 ? 1 : currentWave / 10 + 1;
-
         if (currentWave > 9 && currentWave % 10 == 0)
         {
             enemiesPerSpawner = 0;
+            enemyMultiplier = 1.0f;
 
             UpgradeEnemies();
         }
 
-        enemiesPerSpawner = 3 + Mathf.CeilToInt(currentWave * 1.3f);
+        enemiesPerSpawner = 6 + Mathf.CeilToInt(currentWave * enemyMultiplier);
+
+        enemyMultiplier += 0.5f;
 
         foreach (EnemySpawner spawner in enemySpawners)
         {

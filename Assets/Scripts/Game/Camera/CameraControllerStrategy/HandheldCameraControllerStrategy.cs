@@ -14,7 +14,7 @@ public class HandheldCameraControllerStrategy : CameraControllerStrategy
 
     public HandheldCameraControllerStrategy(Transform cameraTransform, CameraController cameraController) : base(cameraTransform, cameraController)
     {
-        turretManager = TurretManager.instance;
+        turretManager = TurretManager.Instance;
 
         EnhancedTouchSupport.Enable();
     }
@@ -33,7 +33,7 @@ public class HandheldCameraControllerStrategy : CameraControllerStrategy
             {
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    if (!turretManager.selectedVariant)
+                    if (!turretManager.SelectedVariant)
                     {
                         Vector3 deltaPosition = initialTouchPosition.Value - Camera.main.ScreenToWorldPoint(touch.screenPosition);
 

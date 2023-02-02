@@ -28,7 +28,7 @@ public class Missile : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            if(turret.penetrationMissile || turret.variant.Laser)
+            if(turret.PenetrationMissile || turret.variant.Laser)
             {
                 trackingMissileStrategy.OnTriggerEnter2D(collision);
                 missileTypeStrategy.OnEnemyTriggerEnter2D(collision);
@@ -70,30 +70,30 @@ public class Missile : MonoBehaviour
 
         enemyHitEffectComponent = new BasicEnemyHitEffectComponent();
 
-        if (turret.poisonMissile)
+        if (turret.PoisonMissile)
         {
             enemyHitEffectComponent = new PoisonEffectDecorator(
                 turret,
                 gameObject,
                 enemyHitEffectComponent,
-                turret.poisonDuration,
-                turret.poisonHitRate,
-                turret.poisonDamage
+                turret.PoisonDuration,
+                turret.PoisonHitRate,
+                turret.PoisonDamage
             );
         }
 
-        if (turret.slowdownMissile)
+        if (turret.SlowdownMissile)
         {
             enemyHitEffectComponent = new SlowdownEffectDecorator(
                 turret,
                 gameObject,
                 enemyHitEffectComponent,
-                turret.slowdownEffectDuration,
-                turret.slowdownEffectiveness
+                turret.SlowdownEffectDuration,
+                turret.SlowdownEffectiveness
             );
         }
 
-        if (turret.explosiveMissile)
+        if (turret.ExplosiveMissile)
         {
             enemyHitEffectComponent = new ExplosiveEffectDecorator(turret, gameObject, enemyHitEffectComponent);
         }
@@ -110,7 +110,7 @@ public class Missile : MonoBehaviour
             }
         }
 
-        if (turret.trackingMissile)
+        if (turret.TrackingMissile)
         {
             trackingMissileStrategy = new AutoTrackingMissileStrategy(gameObject, turret, target);
         }

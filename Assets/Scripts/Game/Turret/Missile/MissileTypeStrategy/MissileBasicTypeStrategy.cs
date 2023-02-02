@@ -32,18 +32,18 @@ public class MissileBasicTypeStrategy : MissileTypeStrategy
             pos.x< -mapSize.x ||
             pos.y < -mapSize.y)
         {
-            turret.cannon.GetComponent<Cannon>().PushToMissilePool(baseGameObject);
+            turret.Cannon.GetComponent<Cannon>().PushToMissilePool(baseGameObject);
         }
     }
 
     public override void OnEnemyTriggerEnter2D(Collider2D collision)
     {
         enemyHitEffectComponent.OnEnemyEnter(collision.GetComponent<Enemy>());
-        collision.GetComponent<Enemy>().TakeDamage(turret.damage, turret);
+        collision.GetComponent<Enemy>().TakeDamage(turret.Damage, turret);
 
         if(!turret.variant.PenetrationMissile)
         {
-            turret.cannon.GetComponent<Cannon>().PushToMissilePool(baseGameObject);
+            turret.Cannon.GetComponent<Cannon>().PushToMissilePool(baseGameObject);
         }
     }
 }

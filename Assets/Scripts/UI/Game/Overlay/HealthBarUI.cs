@@ -35,7 +35,7 @@ public class HealthBarUI : MonoBehaviour
 
         healthTextBuilder.Append((int)health);
         healthTextBuilder.Append(@"\");
-        healthTextBuilder.Append(maxHealth);
+        healthTextBuilder.Append((int)maxHealth);
 
         healthLabelValue.text = healthTextBuilder.ToString();
         healthFillBar.offsetMax = new Vector2(-(300.0f - 300.0f * health / maxHealth), healthFillBar.offsetMax.y);

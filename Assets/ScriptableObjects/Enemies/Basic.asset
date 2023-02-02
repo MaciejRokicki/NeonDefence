@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Basic
   m_EditorClassIdentifier: 
   scoreOnKill: 2
-  neonBlocksOnKill: 1
+  neonBlocksOnKill: 2
   _health: 100
   health: 100
   _movementSpeed: 2

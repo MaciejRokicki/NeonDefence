@@ -29,11 +29,11 @@ public class StatisticsManager : MonoBehaviour
 
     private void Start()
     {
-        turretManager = TurretManager.instance;
+        turretManager = TurretManager.Instance;
 
         turretStats = new();
 
-        foreach(TurretScriptableObject turret in turretManager.turretVariants)
+        foreach(TurretScriptableObject turret in turretManager.TurretVariants)
         {
             turretStats.Add(turret.name, new int[2] { 0, 0 });
         }

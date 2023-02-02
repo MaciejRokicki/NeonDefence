@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class TurretManager : MonoBehaviour
 {
     private static TurretManager _instance;
-    public static TurretManager instance { get { return _instance; } }
+    public static TurretManager Instance { get { return _instance; } }
 
     private GameManager gameManager;
     private InputManager inputManager;
@@ -24,14 +24,17 @@ public class TurretManager : MonoBehaviour
     [SerializeField]
     private Transform turretParent;
 
-    public TurretScriptableObject[] turretVariants;
-    public List<TurretScriptableObject> availableTurrets;
+    public TurretScriptableObject[] TurretVariants;
+    public List<TurretScriptableObject> AvailableTurrets;
 
     private TurretPlaceholder turretPlaceholder;
     private TurretRange turretRange;
 
     private Turret selectedTurret;
-    public TurretScriptableObject selectedVariant;
+    public TurretScriptableObject SelectedVariant;
+
+    [SerializeField]
+    private Transform turretsUI;
 
     private void Awake()
     {
@@ -58,18 +61,18 @@ public class TurretManager : MonoBehaviour
         turretPlaceholder = TurretPlaceholder.instance;
         turretRange = TurretRange.instance;
 
-        availableTurrets = new List<TurretScriptableObject>();
+        AvailableTurrets = new List<TurretScriptableObject>();
 
-        for(int i = 0; i < turretVariants.Length; i++)
+        for(int i = 0; i < TurretVariants.Length; i++)
         {
-            availableTurrets.Add(turretVariants[i]);
-            turretVariants[i].SetDefaultProperties();
+            AvailableTurrets.Add(TurretVariants[i]);
+            TurretVariants[i].SetDefaultProperties();
         }
     }
 
     private void Update()
     {
-        if (selectedVariant)
+        if (SelectedVariant)
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(inputManager.GetClickPosition());
             Vector3Int tilePosition;
@@ -82,7 +85,7 @@ public class TurretManager : MonoBehaviour
 
     public void SelectVariant(TurretScriptableObject variant)
     {
-        selectedVariant = variant;
+        SelectedVariant = variant;
         turretPlaceholder.gameObject.SetActive(true);
         turretPlaceholder.ShowPlaceholder(variant);
         buildingMenu.Hide();
@@ -90,7 +93,7 @@ public class TurretManager : MonoBehaviour
 
     public void UnselectVariant()
     {
-        selectedVariant = null;
+        SelectedVariant = null;
         turretRange.HideTurretRange();
         turretPlaceholder.HidePlaceholder();
         buildingMenu.Show();
@@ -157,7 +160,7 @@ public class TurretManager : MonoBehaviour
 
     public void OnTurretDrop(InputAction.CallbackContext ctxt)
     {
-        if (selectedVariant && ctxt.canceled)
+        if (SelectedVariant && ctxt.canceled)
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(inputManager.GetClickPosition());
             Vector3Int tilePosition;
@@ -166,7 +169,7 @@ public class TurretManager : MonoBehaviour
 
             if (tile)
             {
-                BuildTurret(selectedVariant, tilePosition);
+                BuildTurret(SelectedVariant, tilePosition);
             }
 
             UnselectVariant();
@@ -178,8 +181,15 @@ public class TurretManager : MonoBehaviour
         GameObject turret = Instantiate(turretPrefab, position, Quaternion.identity, turretParent);
 
         turret.GetComponent<Turret>().variant = turretVariant;
+        turret.GetComponent<Turret>().Cost = Mathf.RoundToInt(turretVariant.Cost * 0.9f);
 
         gameManager.RemoveNeonBlocks(turretVariant.Cost);
+        turretVariant.Cost += Mathf.RoundToInt(turretVariant.Cost * 0.2f);
+
+        for(int i = 0; i < turretsUI.childCount; i++)
+        {
+            turretsUI.GetChild(i).GetComponent<BuildingTurretUI>().UpdateCost();
+        }
 
         statisticsManager.AddBuildedTurret(turretVariant.name);
     }
@@ -188,7 +198,7 @@ public class TurretManager : MonoBehaviour
     {
         if (selectedTurret)
         {
-            gameManager.IncreaseNeonBlocks((int)(selectedTurret.variant.Cost * 0.9f));
+            gameManager.IncreaseNeonBlocks(selectedTurret.Cost);
             Destroy(selectedTurret.gameObject);
 
             UnselectVariant();
@@ -197,7 +207,7 @@ public class TurretManager : MonoBehaviour
 
     private void ShowTurretDetails(TurretScriptableObject variant)
     {
-        turretDetails.Show(variant, true);
+        turretDetails.Show(variant, selectedTurret);
         turretRange.ShowTurretRange(selectedTurret.transform.position, variant);
     }
 }

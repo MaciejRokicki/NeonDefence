@@ -11558,6 +11558,10 @@ PrefabInstance:
       value: BuildingTurretUIPrefab (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
+      propertyPath: Variant
+      value: 
+      objectReference: {fileID: 11400000, guid: aa26c76351413a5439036407b572706e, type: 2}
+    - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
       propertyPath: variant
       value: 
       objectReference: {fileID: 11400000, guid: aa26c76351413a5439036407b572706e, type: 2}
@@ -14073,7 +14077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapSize: {x: 50, y: 30}
   maxHealth: 100
-  neonBlocks: 200
+  neonBlocks: 250
 --- !u!1 &833100490
 GameObject:
   m_ObjectHideFlags: 0
@@ -17869,6 +17873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingTurretUIPrefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
+      propertyPath: Variant
+      value: 
+      objectReference: {fileID: 11400000, guid: bdc47021dff72434991bb92f7cc76f4f, type: 2}
     - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
       propertyPath: variant
       value: 
@@ -25419,6 +25427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingTurretUIPrefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
+      propertyPath: Variant
+      value: 
+      objectReference: {fileID: 11400000, guid: b8f0ea6934c57774faa49e5525e95d20, type: 2}
     - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
       propertyPath: variant
       value: 
@@ -42600,13 +42612,14 @@ MonoBehaviour:
   backgroundTilemap: {fileID: 1972033968}
   turretPrefab: {fileID: 3134689106102566678, guid: 59ae7dca0c1de6548ada29a2076798c2, type: 3}
   turretParent: {fileID: 1258939970}
-  turretVariants:
+  TurretVariants:
+  - {fileID: 11400000, guid: aa26c76351413a5439036407b572706e, type: 2}
   - {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
   - {fileID: 11400000, guid: bdc47021dff72434991bb92f7cc76f4f, type: 2}
   - {fileID: 11400000, guid: b8f0ea6934c57774faa49e5525e95d20, type: 2}
-  - {fileID: 11400000, guid: aa26c76351413a5439036407b572706e, type: 2}
-  availableTurrets: []
-  selectedVariant: {fileID: 0}
+  AvailableTurrets: []
+  SelectedVariant: {fileID: 0}
+  turretsUI: {fileID: 1945766897}
 --- !u!1001 &2051949933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42826,6 +42839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingTurretUIPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
+      propertyPath: Variant
+      value: 
+      objectReference: {fileID: 11400000, guid: 97912c6fb3a18844a973ee3d6503aba9, type: 2}
     - target: {fileID: 2235666236016440213, guid: 22b5c6c9d78f5694fa1cc6c01706a210, type: 3}
       propertyPath: variant
       value: 

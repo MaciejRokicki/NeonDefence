@@ -45,7 +45,7 @@ public class TurretDetails : MonoBehaviour
         boolPropertyLimit.Max = 1.0f;
     }
 
-    public void Show(TurretScriptableObject variant, bool showSellButton = false)
+    public void Show(TurretScriptableObject variant, Turret turret = null)
     {
         sellButton.SetActive(false);
 
@@ -130,13 +130,13 @@ public class TurretDetails : MonoBehaviour
         GetComponent<RectTransform>().sizeDelta = new Vector2(450.0f, containerHeight);
         GetComponent<RectTransform>().anchoredPosition = new Vector2(225.0f, containerHeight / 2 + 75.0f);
 
-        if (showSellButton)
+        if (turret)
         {
             stringBuilder.Clear();
 
             stringBuilder
                 .Append("Sell (")
-                .Append((int)(variant.Cost * 0.9f))
+                .Append(turret.Cost)
                 .Append(")");
 
             sellButtonValue.text = stringBuilder.ToString();

@@ -40,7 +40,7 @@ public class Cannon : MonoBehaviour
         spriteRenderer.sprite = turret.variant.CannonSprite;
         spriteRenderer.material = turret.variant.CannonMaterial;
 
-        cannonCollider.radius = turret.range + 0.5f;
+        cannonCollider.radius = turret.Range + 0.5f;
 
         if(!turret.variant.Laser)
         {
@@ -62,7 +62,7 @@ public class Cannon : MonoBehaviour
 
     public void FindTarget()
     {
-        nearestDistance = turret.range;
+        nearestDistance = turret.Range;
         GameObject targetTmp = null;
 
         foreach(GameObject enemy in enemiesInRange)
@@ -89,7 +89,7 @@ public class Cannon : MonoBehaviour
         Vector2 dir = target.transform.position - turret.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f;
 
-        Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, angle), Time.deltaTime * turret.rotationSpeed);
+        Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, angle), Time.deltaTime * turret.RotationSpeed);
         transform.rotation = rotation;
     }
 
@@ -105,7 +105,7 @@ public class Cannon : MonoBehaviour
             laser.GetComponent<Missile>().PrepareMissile();
         }
 
-        cannonCollider.radius = turret.range + 0.5f;
+        cannonCollider.radius = turret.Range + 0.5f;
     }
 
     public GameObject GetMissileObject()
@@ -162,7 +162,7 @@ public class Cannon : MonoBehaviour
     {
         if(target != null)
         {
-            Debug.DrawRay(transform.position, transform.rotation * Vector2.up * (turret.range + transform.localScale.x / 2), Color.red);
+            Debug.DrawRay(transform.position, transform.rotation * Vector2.up * (turret.Range + transform.localScale.x / 2), Color.red);
         }
     }
 }
