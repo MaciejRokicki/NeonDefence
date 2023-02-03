@@ -184,7 +184,7 @@ public class TurretManager : MonoBehaviour
         turret.GetComponent<Turret>().Cost = Mathf.RoundToInt(turretVariant.Cost * 0.9f);
 
         gameManager.RemoveNeonBlocks(turretVariant.Cost);
-        turretVariant.Cost += Mathf.RoundToInt(turretVariant.Cost * 0.2f);
+        turretVariant.Cost += Mathf.RoundToInt(turretVariant.Cost * 0.1f);
 
         for(int i = 0; i < turretsUI.childCount; i++)
         {
