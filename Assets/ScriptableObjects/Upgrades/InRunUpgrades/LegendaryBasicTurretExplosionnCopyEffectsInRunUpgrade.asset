@@ -50,9 +50,9 @@ MonoBehaviour:
   PoisonHitRateIsPercentage: 0
   PoisonDuration: 0
   PoisonDurationIsPercentage: 0
-  ExplosionPrefab: {fileID: 0}
-  ExplosionSprite: {fileID: 0}
-  ExplosionMaterial: {fileID: 0}
+  ExplosionPrefab: {fileID: 655600585511438282, guid: 20fd85f9e59c3094b8b08a03c51efada, type: 3}
+  ExplosionSprite: {fileID: 21300000, guid: d10391b4f000fb943929c5202a855b39, type: 3}
+  ExplosionMaterial: {fileID: 2100000, guid: 53eb6d90138212f418ee845da4af5455, type: 2}
   ExplosionDamage: 0
   ExplosionDamageIsPercentage: 0
   ExplosionRange: 0

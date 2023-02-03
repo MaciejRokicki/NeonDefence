@@ -45,7 +45,7 @@ MonoBehaviour:
   LaserActivationTimeIsPercentage: 0
   LaserDeactivationTime: 0
   LaserDeactivationTimeIsPercentage: 0
-  SlowdownEffectiveness: 15
+  SlowdownEffectiveness: 0.15
   SlowdownEffectivenessIsPercentage: 0
   SlowdownEffectDuration: 0.5
   SlowdownEffectDurationIsPercentage: 0
