@@ -17,6 +17,7 @@ public class MissileLaserTypeStrategy : MissileTypeStrategy
         spriteRenderer.size = Vector2.zero;
         collider.offset = turret.variant.MissileColliderOffset;
         collider.size = turret.variant.MissileColliderSize;
+        spriteRenderer.sortingOrder = 4;
     }
 
     public override void OnEnemyTriggerStay2D(Collider2D collision)

@@ -158,9 +158,7 @@ MonoBehaviour:
   damage: 0
   enemyEffectHandler: {fileID: 0}
   slowdownEffectSpriteColor: {r: 0.3501971, g: 0, b: 0.49056602, a: 0.7490196}
-  slowdownEffect: 0
   poisonEffectSpriteColor: {r: 0, g: 0.3679245, b: 0.045657754, a: 0.7490196}
-  poisonEffect: 0
   poisonAndSlowdownEffectSpriteColor: {r: 0.6226415, g: 0.32648534, b: 0, a: 0.7490196}
 --- !u!114 &6557812781738569617
 MonoBehaviour:
@@ -174,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945623b2baef605498b5918a954b914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowdownEffect: 0
+  poisonEffect: 0
 --- !u!95 &2732633899282737330
 Animator:
   serializedVersion: 4
@@ -204,7 +204,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
 --- !u!331 &3072763632867345647
 SpriteMask:
   m_ObjectHideFlags: 0
