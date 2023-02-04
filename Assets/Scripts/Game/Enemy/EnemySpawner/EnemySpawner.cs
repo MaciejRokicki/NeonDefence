@@ -44,14 +44,13 @@ public class EnemySpawner : MonoBehaviour
         int randomEnemyVariant = Random.Range(0, waveManager.availableVariants.Count);
         EnemyScriptableObject enemyRandVariant = waveManager.availableVariants[randomEnemyVariant];
 
-        Enemy enemy = waveManager
-            .GetEnemyObject(this)
-            .GetComponent<Enemy>()
+        Enemy enemy = waveManager.enemyPool
+            .Get()
+            .SetEnemySpawnerPosition(this)
             .SetVariant(enemyRandVariant)
             .SetWaypoints(waypoints)
-            .SetNextWaypoint();
-
-        enemy.SetMovementSpeed(enemyRandVariant.movementSpeed);
+            .SetNextWaypoint()
+            .SetMovementSpeed(enemyRandVariant.movementSpeed);
 
         waveManager.spawnedEnemies++;
         spawnedEnemies++;

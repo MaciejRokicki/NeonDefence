@@ -90,6 +90,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float dmg, Turret from)
     {
+        if(!gameObject.activeSelf)
+        {
+            return;
+        }
+
         if(dmg <= 0.0f)
         {
             return;
@@ -117,7 +122,31 @@ public class Enemy : MonoBehaviour
             upgradeManager.IncreaseExperience();
         }
 
-        waveManager.PushToEnemyPool(gameObject);
+        waveManager.enemyPool.Release(this);
+    }
+
+    public Enemy SetEnemySpawnerPosition(EnemySpawner enemySpawner)
+    {
+        this.transform.position = enemySpawner.transform.position;
+
+        return this;
+    }
+
+    public Enemy SetMovementSpeed(float movementSpeed)
+    {
+        this.movementSpeed = variant.GetBaseMovementSpeed() < movementSpeed ? variant.GetBaseMovementSpeed() : movementSpeed;
+
+        Vector2 direction = (waypointTarget.position - transform.position).normalized;
+        rb.velocity = direction * movementSpeed;
+
+        return this;
+    }
+
+    public Enemy SetWaypoints(Transform[] waypoints)
+    {
+        this.waypoints = waypoints;
+
+        return this;
     }
 
     public Enemy SetNextWaypoint()
@@ -136,21 +165,6 @@ public class Enemy : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, zRot);
         rb.velocity = direction * movementSpeed;
-
-        return this;
-    }
-
-    public void SetMovementSpeed(float movementSpeed)
-    {
-        this.movementSpeed = variant.GetBaseMovementSpeed() < movementSpeed ? variant.GetBaseMovementSpeed() : movementSpeed;
-
-        Vector2 direction = (waypointTarget.position - transform.position).normalized;
-        rb.velocity = direction * movementSpeed;
-    }
-
-    public Enemy SetWaypoints(Transform[] waypoints)
-    {
-        this.waypoints = waypoints;
 
         return this;
     }

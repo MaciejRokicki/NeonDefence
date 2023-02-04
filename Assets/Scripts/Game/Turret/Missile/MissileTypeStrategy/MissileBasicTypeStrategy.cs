@@ -32,7 +32,7 @@ public class MissileBasicTypeStrategy : MissileTypeStrategy
             pos.x< -mapSize.x ||
             pos.y < -mapSize.y)
         {
-            turret.Cannon.GetComponent<Cannon>().PushToMissilePool(baseGameObject);
+            turret.Cannon.GetComponent<Cannon>().missilePool.Release(baseGameObject.GetComponent<Missile>());
         }
     }
 
@@ -43,7 +43,7 @@ public class MissileBasicTypeStrategy : MissileTypeStrategy
 
         if(!turret.variant.PenetrationMissile)
         {
-            turret.Cannon.GetComponent<Cannon>().PushToMissilePool(baseGameObject);
+            turret.Cannon.GetComponent<Cannon>().missilePool.Release(baseGameObject.GetComponent<Missile>());
         }
     }
 }

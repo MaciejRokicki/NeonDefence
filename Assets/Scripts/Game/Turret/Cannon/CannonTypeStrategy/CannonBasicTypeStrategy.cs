@@ -35,10 +35,11 @@ public class CannonBasicTypeStrategy : CannonTypeStrategy
 
         if (shootTimer > 1.0f / turret.MissilesPerSecond)
         {
-            GameObject missile = cannon.GetMissileObject();
-            missile.GetComponent<Missile>()
+            cannon.missilePool
+                .Get()
                 .SetTurret(turret)
-                .SetTarget(cannon.target);
+                .SetTarget(cannon.target)
+                .PrepareMissile();
 
             shootTimer = 0.0f;
         }

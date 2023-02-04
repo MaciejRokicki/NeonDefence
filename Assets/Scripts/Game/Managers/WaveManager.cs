@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class WaveManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class WaveManager : MonoBehaviour
     [HideInInspector]
     public EnemySpawner[] enemySpawners;
 
-    public Queue<GameObject> enemyPool;
+    public IObjectPool<Enemy> enemyPool;
 
     private float enemyMultiplier = 1.0f;
 
@@ -45,7 +46,7 @@ public class WaveManager : MonoBehaviour
 
         enemySpawners = FindObjectsOfType<EnemySpawner>();
 
-        enemyPool = new Queue<GameObject>();
+        enemyPool = new ObjectPool<Enemy>(CreatePooledEnemy, OnTakeFromPool, OnReturnedToPool);
     }
 
     private void Start()
@@ -136,27 +137,20 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    public GameObject GetEnemyObject(EnemySpawner enemySpawner)
+    private Enemy CreatePooledEnemy()
     {
-        GameObject enemyObject;
-        bool isPoolEmpty = enemyPool.TryDequeue(out enemyObject);
-
-        if (!isPoolEmpty)
-        {
-            enemyObject = Instantiate(enemyPrefab, enemySpawner.transform.position, Quaternion.identity, enemiesParent.transform);
-
-            return enemyObject;
-        }
-
-        enemyObject.transform.position = enemySpawner.transform.position;
-        enemyObject.SetActive(true);
+        Enemy enemyObject = Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity, enemiesParent.transform).GetComponent<Enemy>();
 
         return enemyObject;
     }
 
-    public void PushToEnemyPool(GameObject enemyObject)
+    private void OnReturnedToPool(Enemy enemy)
     {
-        enemyObject.SetActive(false);
-        enemyPool.Enqueue(enemyObject);
+        enemy.gameObject.SetActive(false);
+    }
+
+    private void OnTakeFromPool(Enemy enemy)
+    {
+        enemy.gameObject.SetActive(true);
     }
 }

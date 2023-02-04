@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Cannon : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class Cannon : MonoBehaviour
     #nullable enable
     private GameObject? laser;
     #nullable disable
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject target;
 
     private CannonTypeStrategy cannonTypeStrategy;
 
-    public Queue<GameObject> missilePool;
+    public IObjectPool<Missile> missilePool;
 
     [HideInInspector]
     public int enemyLayerMask;
@@ -32,7 +33,7 @@ public class Cannon : MonoBehaviour
         enemiesInRange = new List<GameObject>();
         enemyLayerMask = LayerMask.GetMask("Enemy");
 
-        missilePool = new Queue<GameObject>();
+        missilePool = new ObjectPool<Missile>(CreatePooledMissile, OnTakeFromPool, OnReturnedToPool);
     }
 
     private void Start()
@@ -108,33 +109,24 @@ public class Cannon : MonoBehaviour
         cannonCollider.radius = turret.Range + 0.5f;
     }
 
-    public GameObject GetMissileObject()
+    private Missile CreatePooledMissile()
     {
-        GameObject missileObject;
-        bool isPoolEmpty = missilePool.TryDequeue(out missileObject);
+        Missile missile = Instantiate(turret.variant.MissilePrefab, shootTransformPosition.position, transform.rotation, transform.parent).GetComponent<Missile>();
 
-        if (!isPoolEmpty)
-        {
-            missileObject = Instantiate(turret.variant.MissilePrefab, shootTransformPosition.position, transform.rotation, transform.parent);
-            return missileObject;
-        }
-
-        missileObject.transform.position = shootTransformPosition.position;
-        missileObject.transform.rotation = transform.rotation;
-
-        missileObject.GetComponent<Missile>()
-            .SetTarget(target)
-            .PrepareMissile();
-
-        missileObject.SetActive(true);
-
-        return missileObject;
+        return missile;
     }
 
-    public void PushToMissilePool(GameObject missile)
+    private void OnTakeFromPool(Missile missile)
     {
-        missile.SetActive(false);
-        missilePool.Enqueue(missile);
+        missile.transform.position = shootTransformPosition.position;
+        missile.transform.rotation = transform.rotation;
+
+        missile.gameObject.SetActive(true);
+    }
+
+    private void OnReturnedToPool(Missile missile)
+    {
+        missile.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
