@@ -70,7 +70,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void InRunUpgradeRoll()
     {
-        turretManager.UnselectVariant();
+        turretManager.UnselectVariant(false);
         rollUpgradesCollection = new InRunUpgradeScriptableObject[rollUpgradesCount];
 
         InRunUpgradeScriptableObject[] inRunUpgrades = new InRunUpgradeScriptableObject[rollUpgradesCount];

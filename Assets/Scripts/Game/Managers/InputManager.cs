@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
     private PointerEventData pointerEventData;
     private List<RaycastResult> raycastResults;
 
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject pressedUiButton;
 
     Vector2 lastTouchPosition;

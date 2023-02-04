@@ -91,12 +91,17 @@ public class TurretManager : MonoBehaviour
         buildingMenu.Hide();
     }
 
-    public void UnselectVariant()
+    public void UnselectVariant(bool showBuildingMenu = true)
     {
         SelectedVariant = null;
         turretRange.HideTurretRange();
         turretPlaceholder.HidePlaceholder();
-        buildingMenu.Show();
+
+        if(showBuildingMenu)
+        {
+            buildingMenu.Show();
+        }
+
         turretDetails.Hide();
     }
 
