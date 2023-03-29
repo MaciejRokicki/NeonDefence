@@ -3,10 +3,10 @@
 ## Builds
 
 ### Windows build
-https://github.com/MaciejRokicki/NeonDefence/releases/download/v1.0.0/NeonDefencePC.zip
+https://github.com/MaciejRokicki/NeonDefence/releases/download/v1.0.1/NeonDefencePC.zip
 
 ### Android build
-https://github.com/MaciejRokicki/NeonDefence/releases/download/v1.0.0/NeonDefenceAndroid.apk
+https://github.com/MaciejRokicki/NeonDefence/releases/download/v1.0.1/NeonDefenceAndroid.apk
 
 ## Screenshots
 
