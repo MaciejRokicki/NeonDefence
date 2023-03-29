@@ -51,9 +51,10 @@ public class GameManager : MonoBehaviour
     {
         health -= damage;
 
-        if (health < 0)
+        if (health <= 0)
         {
             uiManager.ShowPauseAndGameOverMenu(true);
+            health = 0.0f;
         }
 
         OnHealthChange(health);
